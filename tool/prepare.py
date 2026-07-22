@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import os
+import html
 import re
 import shutil
 from pathlib import Path
@@ -11,6 +11,117 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
 STAGING = ROOT / "tool" / "staging"
 DEV_DOCS = WORKSPACE / "dev" / "docs"
+
+CAMP_DECLARATION_KEYWORDS = {
+    "abstract",
+    "alias",
+    "class",
+    "enum",
+    "export",
+    "extern",
+    "fixed",
+    "inline",
+    "interface",
+    "internal",
+    "namespace",
+    "newtype",
+    "override",
+    "public",
+    "sealed",
+    "shadow",
+    "static",
+    "struct",
+    "virtual",
+}
+
+CAMP_STATEMENT_KEYWORDS = {
+    "await",
+    "break",
+    "case",
+    "catch",
+    "continue",
+    "default",
+    "delete",
+    "do",
+    "else",
+    "finally",
+    "for",
+    "foreach",
+    "goto",
+    "if",
+    "import",
+    "init",
+    "new",
+    "postpone",
+    "return",
+    "switch",
+    "throw",
+    "try",
+    "while",
+    "within",
+    "yield",
+}
+
+CAMP_MODIFIER_KEYWORDS = {
+    "const",
+    "constof",
+    "copyable",
+    "escaped",
+    "implements",
+    "in",
+    "once",
+    "out",
+    "overload",
+    "scoped",
+    "thrown",
+    "unsafe",
+    "unscoped",
+    "volatile",
+}
+
+CAMP_TYPE_KEYWORDS = {
+    "achar",
+    "any",
+    "astring",
+    "async",
+    "auto",
+    "bool",
+    "byte",
+    "char",
+    "classtype",
+    "delegate",
+    "double",
+    "float",
+    "fn",
+    "int",
+    "iter",
+    "long",
+    "nint",
+    "nuint",
+    "sbyte",
+    "short",
+    "string",
+    "uchar",
+    "uint",
+    "ulong",
+    "ushort",
+    "void",
+    "wchar",
+    "wstring",
+}
+
+CAMP_CONSTANTS = {"false", "null", "true"}
+CAMP_INTRINSICS = {"caller", "sizeof", "sourceof", "typenameof", "vtableof"}
+CAMP_KEYWORDS = CAMP_DECLARATION_KEYWORDS | CAMP_STATEMENT_KEYWORDS | CAMP_MODIFIER_KEYWORDS
+CAMP_TOKEN_RE = re.compile(
+    r"(?P<comment>//[^\n]*|/\*.*?\*/)"
+    r"|(?P<string>\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*')"
+    r"|(?P<attribute>@[A-Za-z_][A-Za-z0-9_]*)"
+    r"|(?P<number>\b(?:0x[0-9A-Fa-f_]+|0b[01_]+|\d(?:[\d_]*\d)?(?:\.\d(?:[\d_]*\d)?)?(?:[eE][+-]?\d(?:[\d_]*\d)?)?)\b)"
+    r"|(?P<word>\b[A-Za-z_][A-Za-z0-9_]*\b)",
+    re.DOTALL,
+)
+FENCED_CAMP_RE = re.compile(r"```(?:camp|Camp)\n(.*?)\n```", re.DOTALL)
 
 
 def clean_dir(path: Path) -> None:
@@ -41,33 +152,100 @@ def doc_weight(path: Path) -> int:
     return 100
 
 
-def write_section(path: Path, title: str, sort_by: str = "weight") -> None:
+def numbered_title(path: Path, title: str) -> str:
+    match = re.match(r"^(\d+)-", path.name)
+    if not match:
+        return title
+    return f"{int(match.group(1))}. {title}"
+
+
+def replace_markdown_title(text: str, title: str) -> str:
+    return re.sub(r"^# .*$", f"# {title}", text, count=1, flags=re.MULTILINE)
+
+
+def camp_token_class(match: re.Match[str]) -> str | None:
+    group = match.lastgroup
+    value = match.group()
+    if group == "comment":
+        return "c-comment"
+    if group == "string":
+        return "c-string"
+    if group == "attribute":
+        return "c-attribute"
+    if group == "number":
+        return "c-number"
+    if group == "word":
+        if value in CAMP_KEYWORDS:
+            return "c-keyword"
+        if value in CAMP_TYPE_KEYWORDS:
+            return "c-type"
+        if value in CAMP_INTRINSICS:
+            return "c-intrinsic"
+        if value in CAMP_CONSTANTS:
+            return "c-constant"
+    return None
+
+
+def highlight_camp_code(code: str) -> str:
+    result: list[str] = []
+    offset = 0
+    for match in CAMP_TOKEN_RE.finditer(code):
+        result.append(html.escape(code[offset : match.start()]))
+        token = html.escape(match.group())
+        token_class = camp_token_class(match)
+        if token_class is None:
+            result.append(token)
+        else:
+            result.append(f'<span class="{token_class}">{token}</span>')
+        offset = match.end()
+    result.append(html.escape(code[offset:]))
+    return "".join(result)
+
+
+def render_camp_fences(text: str) -> str:
+    def replace(match: re.Match[str]) -> str:
+        highlighted = highlight_camp_code(match.group(1))
+        return f'<pre class="camp-code"><code data-lang="camp">{highlighted}</code></pre>'
+
+    return FENCED_CAMP_RE.sub(replace, text)
+
+
+def write_section(path: Path, title: str, sort_by: str = "weight", weight: int | None = None) -> None:
     path.mkdir(parents=True, exist_ok=True)
-    (path / "_index.md").write_text(
-        "+++\n"
-        f"title = \"{title}\"\n"
-        f"sort_by = \"{sort_by}\"\n"
-        "template = \"docs_section.html\"\n"
-        "page_template = \"docs_page.html\"\n"
-        "+++\n\n",
-        encoding="utf-8",
+    lines = [
+        "+++",
+        f'title = "{title}"',
+        f'sort_by = "{sort_by}"',
+    ]
+    if weight is not None:
+        lines.append(f"weight = {weight}")
+    lines.extend(
+        [
+            'template = "docs_section.html"',
+            'page_template = "docs_page.html"',
+            "+++",
+            "",
+        ]
     )
+    (path / "_index.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def copy_docs(source_dir: Path, destination_dir: Path, section_title: str) -> None:
-    write_section(destination_dir, section_title)
+def copy_docs(source_dir: Path, destination_dir: Path, section_title: str, section_weight: int) -> None:
+    write_section(destination_dir, section_title, weight=section_weight)
     for source in sorted(source_dir.glob("*.md")):
-        text = source.read_text(encoding="utf-8")
-        title = title_from_markdown(text, source.stem)
-        slug = "_index" if source.name == "index.md" else source.stem
-        destination = destination_dir / f"{slug}.md"
         if source.name == "index.md":
             continue
+
+        text = source.read_text(encoding="utf-8")
+        title = numbered_title(source, title_from_markdown(text, source.stem))
+        text = replace_markdown_title(text, title)
+        text = render_camp_fences(text)
+        destination = destination_dir / f"{source.stem}.md"
         front_matter = (
             "+++\n"
-            f"title = \"{title}\"\n"
+            f'title = "{title}"\n'
             f"weight = {doc_weight(source)}\n"
-            "template = \"docs_page.html\"\n"
+            'template = "docs_page.html"\n'
             "+++\n\n"
         )
         destination.write_text(front_matter + text, encoding="utf-8")
@@ -76,16 +254,16 @@ def copy_docs(source_dir: Path, destination_dir: Path, section_title: str) -> No
 def write_generated_docs() -> None:
     docs_root = STAGING / "content" / "docs"
     write_section(docs_root, "Docs")
-    copy_docs(DEV_DOCS / "language", docs_root / "language", "Language Guide")
-    copy_docs(DEV_DOCS / "compiler", docs_root / "compiler", "Compiler Guide")
+    copy_docs(DEV_DOCS / "language", docs_root / "language", "Language Guide", section_weight=1)
+    copy_docs(DEV_DOCS / "compiler", docs_root / "compiler", "Compiler Guide", section_weight=2)
 
     stdlib = docs_root / "stdlib"
-    write_section(stdlib, "Standard Library API")
+    write_section(stdlib, "Standard Library API", weight=3)
     (stdlib / "overview.md").write_text(
         "+++\n"
-        "title = \"Standard Library API\"\n"
+        'title = "Standard Library API"\n'
         "weight = 1\n"
-        "template = \"docs_page.html\"\n"
+        'template = "docs_page.html"\n'
         "+++\n\n"
         "# Standard Library API\n\n"
         "The standard library API reference will be generated from Camp metadata. "
@@ -94,27 +272,27 @@ def write_generated_docs() -> None:
     )
 
     packages = docs_root / "packages"
-    write_section(packages, "Package APIs")
+    write_section(packages, "Package APIs", weight=4)
     package_root = WORKSPACE / "pkg.camplang.org"
     entries = [path for path in sorted(package_root.iterdir()) if path.is_dir() and not path.name.startswith(".")]
     if not entries:
         (packages / "overview.md").write_text(
             "+++\n"
-            "title = \"Package APIs\"\n"
+            'title = "Package APIs"\n'
             "weight = 1\n"
-            "template = \"docs_page.html\"\n"
+            'template = "docs_page.html"\n'
             "+++\n\n"
             "# Package APIs\n\nNo package API references are available yet.\n",
             encoding="utf-8",
         )
     for index, package in enumerate(entries, start=1):
         package_dir = packages / package.name
-        write_section(package_dir, package.name)
+        write_section(package_dir, package.name, weight=index)
         (package_dir / "overview.md").write_text(
             "+++\n"
-            f"title = \"{package.name} API\"\n"
+            f'title = "{package.name} API"\n'
             f"weight = {index}\n"
-            "template = \"docs_page.html\"\n"
+            'template = "docs_page.html"\n'
             "+++\n\n"
             f"# {package.name} API\n\n"
             "This package API reference will be generated from Camp metadata. "
@@ -136,4 +314,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

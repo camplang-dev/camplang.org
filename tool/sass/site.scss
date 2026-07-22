@@ -3,14 +3,14 @@
 	--flame: #DC7924;
 	--brown: #523828;
 	--charcoal: #2F1E15;
-	--warm-white: #FAF8F6;
-	--ash: #E2D8D3;
-	--taupe: #B29B8C;
-	--paper: #FFFDFB;
+	--warm-white: #F7F5F2;
+	--ash: #DED7D1;
+	--taupe: #A99B91;
+	--paper: #FFFDFC;
 	--ink: #261B16;
 	--muted: #6F5E55;
-	--line: #E8DFDA;
-	--code-bg: #F4EFEC;
+	--line: #E4DED8;
+	--code-bg: #F2EFEC;
 	--max: 1120px;
 	--doc: 780px;
 }
@@ -28,7 +28,7 @@ html {
 
 body {
 	margin: 0;
-	background: linear-gradient(180deg, #fffdfb 0, var(--warm-white) 420px);
+	background: linear-gradient(180deg, #FFFDFC 0, var(--warm-white) 420px);
 }
 
 a {
@@ -231,12 +231,49 @@ pre {
 	white-space: pre-wrap;
 }
 
+.camp-code {
+	background: var(--code-bg);
+}
+
+.camp-code code {
+	color: #30251F;
+}
+
+.camp-code .c-keyword,
+.camp-code .c-intrinsic {
+	color: #A94718;
+	font-weight: 680;
+}
+
+.camp-code .c-type {
+	color: #2F5E69;
+	font-weight: 650;
+}
+
+.camp-code .c-string {
+	color: #7A4F11;
+}
+
+.camp-code .c-number,
+.camp-code .c-constant {
+	color: #6B4A91;
+}
+
+.camp-code .c-comment {
+	color: #84756A;
+	font-style: italic;
+}
+
+.camp-code .c-attribute {
+	color: #8B4F5F;
+}
+
 code {
 	font-size: 0.92em;
 }
 
 .band {
-	background: #F7F3F0;
+	background: #F3F0EC;
 	border-bottom: 1px solid var(--line);
 }
 
@@ -325,7 +362,11 @@ code {
 
 .docs-nav {
 	border-right: 1px solid var(--line);
+	height: calc(100vh - 4.25rem);
+	overflow: auto;
 	padding: 2rem 1rem 3rem 1.25rem;
+	position: sticky;
+	top: 4.25rem;
 }
 
 .docs-nav__title {
@@ -340,6 +381,16 @@ code {
 
 .docs-nav a:hover {
 	color: var(--ember);
+}
+
+.docs-nav a.is-active {
+	background: #EEE8E2;
+	border-left: 3px solid var(--ember);
+	border-radius: 0 6px 6px 0;
+	color: var(--charcoal);
+	font-weight: 720;
+	margin-left: -0.55rem;
+	padding-left: 0.55rem;
 }
 
 .docs-nav__group {
@@ -367,6 +418,8 @@ code {
 	display: block;
 	font-size: 0.88rem;
 	line-height: 1.35;
+	padding-bottom: 0.2rem;
+	padding-top: 0.2rem;
 }
 
 .docs-main {
@@ -379,7 +432,7 @@ code {
 }
 
 .prose h1 {
-	font-size: clamp(2rem, 4vw, 3.25rem);
+	font-size: 2rem;
 	margin: 0 0 1.2rem;
 }
 
@@ -469,8 +522,10 @@ code {
 	.docs-nav {
 		border-bottom: 1px solid var(--line);
 		border-right: 0;
+		height: auto;
 		max-height: 18rem;
 		overflow: auto;
+		position: static;
 		padding-bottom: 1rem;
 	}
 }

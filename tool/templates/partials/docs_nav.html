@@ -1,13 +1,17 @@
 {% set docs = get_section(path="docs/_index.md") %}
-<p class="docs-nav__title"><a href="{{ docs.permalink | safe }}">Docs</a></p>
+<p class="docs-nav__title">
+	<a {% if active_permalink == docs.permalink %}class="is-active"{% endif %} href="{{ docs.permalink | safe }}">Docs</a>
+</p>
 {% for subsection_path in docs.subsections %}
 	{% set subsection = get_section(path=subsection_path) %}
 	<details class="docs-nav__group" open>
-		<summary><a href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a></summary>
+		<summary>
+			<a {% if active_permalink == subsection.permalink %}class="is-active"{% endif %} href="{{ subsection.permalink | safe }}">{{ subsection.title | replace(from="`", to="") }}</a>
+		</summary>
 		{% if subsection.pages %}
 		<ul>
 			{% for item in subsection.pages %}
-			<li><a href="{{ item.permalink | safe }}">{{ item.title }}</a></li>
+			<li><a {% if active_permalink == item.permalink %}class="is-active"{% endif %} href="{{ item.permalink | safe }}">{{ item.title | replace(from="`", to="") }}</a></li>
 			{% endfor %}
 		</ul>
 		{% endif %}
@@ -15,10 +19,9 @@
 		<ul>
 			{% for child_path in subsection.subsections %}
 				{% set child = get_section(path=child_path) %}
-				<li><a href="{{ child.permalink | safe }}">{{ child.title }}</a></li>
+				<li><a {% if active_permalink == child.permalink %}class="is-active"{% endif %} href="{{ child.permalink | safe }}">{{ child.title | replace(from="`", to="") }}</a></li>
 			{% endfor %}
 		</ul>
 		{% endif %}
 	</details>
 {% endfor %}
-

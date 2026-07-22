@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="docs-layout">
+	{% set active_permalink = page.permalink %}
 	<aside class="docs-nav" aria-label="Documentation sections">
 		{% include "partials/docs_nav.html" %}
 	</aside>
@@ -10,4 +11,3 @@
 	</article>
 </div>
 {% endblock content %}
-
