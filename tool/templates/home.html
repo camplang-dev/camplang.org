@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Camp | A Modern Native Programming Language{% endblock title %}
+
+{% block content %}
+<section class="hero">
+	<div class="hero__inner">
+		<div class="hero__copy">
+			<p class="eyebrow">Modern tools gathered around durable foundations.</p>
+			<h1>Native code with honest contracts.</h1>
+			<p class="hero__lead">Camp is a systems language for libraries, runtimes, bindings, embedded targets, classic platforms, and native code that needs clear API boundaries.</p>
+			<div class="hero__actions" aria-label="Primary actions">
+				<a class="button button--primary" href="{{ get_url(path='install') }}">Install Camp</a>
+				<a class="button button--secondary" href="{{ get_url(path='docs/language') }}">Read the Guide</a>
+			</div>
+		</div>
+		<div class="hero__panel" aria-label="Camp example">
+			<img class="hero__logo" src="{{ get_url(path='images/camp-logo.png') }}" alt="Camp logo">
+			<pre><code>export int main()
+{
+    Console.writeLine("Camp");
+    return 0;
+}</code></pre>
+		</div>
+	</div>
+</section>
+
+<section class="band">
+	<div class="band__inner feature-grid">
+		<article>
+			<h2>Native API clarity</h2>
+			<p>Allocation context, lifetimes, thrown values, callback ownership, and ABI shape are visible in source.</p>
+		</article>
+		<article>
+			<h2>Modern language surfaces</h2>
+			<p>Classes, interfaces, generics, properties, iterators, lambdas, async calls, overload selectors, and metadata work with native boundaries.</p>
+		</article>
+		<article>
+			<h2>Established toolchains</h2>
+			<p>Camp lowers through C and native build tools, keeping the language practical across contemporary and legacy targets.</p>
+		</article>
+	</div>
+</section>
+
+<section class="docs-callout">
+	<div class="docs-callout__inner">
+		<div>
+			<h2>Readable docs, generated references.</h2>
+			<p>The website combines hand-written language and compiler guides with generated API documentation for the standard library and sponsored packages.</p>
+		</div>
+		<a class="button button--secondary" href="{{ get_url(path='docs') }}">Browse Docs</a>
+	</div>
+</section>
+{% endblock content %}

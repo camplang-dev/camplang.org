@@ -1,0 +1,17 @@
+base_url = "https://camplang.org"
+title = "Camp"
+description = "A modern native programming language with durable foundations."
+compile_sass = true
+build_search_index = false
+generate_feeds = false
+minify_html = true
+
+[markdown]
+smart_punctuation = true
+
+[markdown.highlighting]
+enable = true
+theme = "everforest-light"
+
+[extra]
+github_url = "https://github.com/camplang-dev/camp"

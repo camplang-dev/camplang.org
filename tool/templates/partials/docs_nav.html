@@ -1,0 +1,24 @@
+{% set docs = get_section(path="docs/_index.md") %}
+<p class="docs-nav__title"><a href="{{ docs.permalink | safe }}">Docs</a></p>
+{% for subsection_path in docs.subsections %}
+	{% set subsection = get_section(path=subsection_path) %}
+	<details class="docs-nav__group" open>
+		<summary><a href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a></summary>
+		{% if subsection.pages %}
+		<ul>
+			{% for item in subsection.pages %}
+			<li><a href="{{ item.permalink | safe }}">{{ item.title }}</a></li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		{% if subsection.subsections %}
+		<ul>
+			{% for child_path in subsection.subsections %}
+				{% set child = get_section(path=child_path) %}
+				<li><a href="{{ child.permalink | safe }}">{{ child.title }}</a></li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</details>
+{% endfor %}
+

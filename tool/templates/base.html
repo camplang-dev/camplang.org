@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% if page %}{{ page.title }} | {{ config.title }}{% elif section %}{{ section.title }} | {{ config.title }}{% else %}{{ config.title }}{% endif %}{% endblock title %}</title>
+	<meta name="description" content="{% if page and page.description %}{{ page.description }}{% elif section and section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+	<link rel="icon" href="{{ get_url(path='images/camp-logo.png') }}">
+	<link rel="stylesheet" href="{{ get_url(path='site.css') }}">
+</head>
+<body>
+	<a class="skip-link" href="#main">Skip to content</a>
+	<header class="site-header">
+		<div class="site-header__inner">
+			<a class="brand" href="{{ get_url(path='') }}" aria-label="Camp home">
+				<img class="brand__mark" src="{{ get_url(path='images/camp-logo.png') }}" alt="">
+				<span class="brand__name">Camp</span>
+			</a>
+			<nav class="site-nav" aria-label="Primary navigation">
+				<a href="{{ get_url(path='install') }}">Install</a>
+				<a href="{{ get_url(path='features') }}">Features</a>
+				<a href="{{ get_url(path='docs') }}">Docs</a>
+				<a href="{{ config.extra.github_url }}">GitHub</a>
+			</nav>
+		</div>
+	</header>
+	<main id="main">
+		{% block content %}{% endblock content %}
+	</main>
+	<footer class="site-footer">
+		<div class="site-footer__inner">
+			<p>Camp is a modern native programming language with durable foundations.</p>
+			<nav aria-label="Footer navigation">
+				<a href="{{ get_url(path='docs/language') }}">Language Guide</a>
+				<a href="{{ get_url(path='docs/compiler') }}">Compiler Guide</a>
+				<a href="{{ config.extra.github_url }}">Compiler Source</a>
+			</nav>
+		</div>
+	</footer>
+</body>
+</html>
+

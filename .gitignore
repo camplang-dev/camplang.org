@@ -1,0 +1,8 @@
+# Generated site output. CI should build and publish this.
+public/
+
+# Generated staging input assembled by tool/build.sh.
+tool/staging/
+
+# Local OS/editor files.
+.DS_Store

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="docs-layout">
+	<aside class="docs-nav" aria-label="Documentation sections">
+		{% include "partials/docs_nav.html" %}
+	</aside>
+	<article class="docs-main prose">
+		{{ page.content | safe }}
+	</article>
+</div>
+{% endblock content %}
+
