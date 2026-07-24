@@ -22,6 +22,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Check out compiler docs
+        uses: actions/checkout@v4
+        with:
+          repository: camplang-dev/camp
+          path: deps/dev
+
       - name: Install Zola
         run: |
           curl -L https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-x86_64-unknown-linux-gnu.tar.gz -o zola.tar.gz
@@ -29,6 +35,8 @@ jobs:
           sudo mv zola /usr/local/bin/zola
 
       - name: Build site
+        env:
+          CAMP_DEV_DOCS: ${{ github.workspace }}/deps/dev/docs
         run: tool/build.sh
 
       - name: Configure GitHub Pages

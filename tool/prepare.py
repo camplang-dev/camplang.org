@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import os
 import re
 import shutil
 from pathlib import Path
@@ -10,7 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
 STAGING = ROOT / "tool" / "staging"
-DEV_DOCS = WORKSPACE / "dev" / "docs"
+DEV_DOCS = Path(os.environ.get("CAMP_DEV_DOCS", WORKSPACE / "dev" / "docs"))
+PACKAGE_ROOT = Path(os.environ.get("CAMP_PACKAGE_ROOT", WORKSPACE / "pkg.camplang.org"))
 
 CAMP_DECLARATION_KEYWORDS = {
     "abstract",
@@ -313,8 +315,7 @@ def write_generated_docs() -> None:
 
     packages = docs_root / "packages"
     write_section(packages, "Package APIs", weight=4)
-    package_root = WORKSPACE / "pkg.camplang.org"
-    entries = [path for path in sorted(package_root.iterdir()) if path.is_dir() and not path.name.startswith(".")]
+    entries = [path for path in sorted(PACKAGE_ROOT.iterdir()) if path.is_dir() and not path.name.startswith(".")] if PACKAGE_ROOT.exists() else []
     if not entries:
         (packages / "overview.md").write_text(
             "+++\n"
