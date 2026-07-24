@@ -122,6 +122,8 @@ CAMP_TOKEN_RE = re.compile(
     re.DOTALL,
 )
 FENCED_CAMP_RE = re.compile(r"```(?:camp|Camp)\n(.*?)\n```", re.DOTALL)
+SOURCE_FRONT_MATTER_RE = re.compile(r"\A\+\+\+\n(.*?)\n\+\+\+\n\n?", re.DOTALL)
+SOURCE_FRONT_MATTER_VALUE_RE = re.compile(r'^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*"(.*)"\s*$', re.MULTILINE)
 
 
 def clean_dir(path: Path) -> None:
@@ -141,6 +143,15 @@ def title_from_markdown(text: str, fallback: str) -> str:
         if line.startswith("# "):
             return line[2:].strip()
     return fallback
+
+
+def read_source_front_matter(text: str) -> tuple[dict[str, str], str]:
+    match = SOURCE_FRONT_MATTER_RE.match(text)
+    if not match:
+        return {}, text
+
+    values = {item.group(1): item.group(2) for item in SOURCE_FRONT_MATTER_VALUE_RE.finditer(match.group(1))}
+    return values, text[match.end() :]
 
 
 def doc_weight(path: Path) -> int:
@@ -210,7 +221,17 @@ def render_camp_fences(text: str) -> str:
     return FENCED_CAMP_RE.sub(replace, text)
 
 
-def write_section(path: Path, title: str, sort_by: str = "weight", weight: int | None = None) -> None:
+def remove_markdown_title(text: str) -> str:
+    return re.sub(r"^# .*$\n?", "", text, count=1, flags=re.MULTILINE).lstrip()
+
+
+def write_section(
+    path: Path,
+    title: str,
+    sort_by: str = "weight",
+    weight: int | None = None,
+    content: str = "",
+) -> None:
     path.mkdir(parents=True, exist_ok=True)
     lines = [
         "+++",
@@ -227,27 +248,46 @@ def write_section(path: Path, title: str, sort_by: str = "weight", weight: int |
             "",
         ]
     )
-    (path / "_index.md").write_text("\n".join(lines), encoding="utf-8")
+    (path / "_index.md").write_text("\n".join(lines) + content, encoding="utf-8")
 
 
 def copy_docs(source_dir: Path, destination_dir: Path, section_title: str, section_weight: int) -> None:
-    write_section(destination_dir, section_title, weight=section_weight)
+    index = source_dir / "index.md"
+    section_content = ""
+    if index.exists():
+        _, index_text = read_source_front_matter(index.read_text(encoding="utf-8"))
+        section_content = render_camp_fences(remove_markdown_title(index_text))
+    write_section(destination_dir, section_title, weight=section_weight, content=section_content)
     for source in sorted(source_dir.glob("*.md")):
         if source.name == "index.md":
             continue
 
-        text = source.read_text(encoding="utf-8")
-        title = numbered_title(source, title_from_markdown(text, source.stem))
+        source_front_matter, text = read_source_front_matter(source.read_text(encoding="utf-8"))
+        title = title_from_markdown(text, source.stem)
+        nav_title = source_front_matter.get("nav_title", numbered_title(source, title))
         text = replace_markdown_title(text, title)
         text = render_camp_fences(text)
         destination = destination_dir / f"{source.stem}.md"
-        front_matter = (
-            "+++\n"
-            f'title = "{title}"\n'
-            f"weight = {doc_weight(source)}\n"
-            'template = "docs_page.html"\n'
-            "+++\n\n"
+        front_matter_lines = [
+            "+++",
+            f'title = "{title}"',
+        ]
+        front_matter_lines.extend(
+            [
+                f"weight = {doc_weight(source)}",
+                'template = "docs_page.html"',
+            ]
         )
+        if nav_title != title:
+            front_matter_lines.extend(
+                [
+                    "",
+                    "[extra]",
+                    f'nav_title = "{nav_title}"',
+                ]
+            )
+        front_matter_lines.extend(["+++", ""])
+        front_matter = "\n".join(front_matter_lines)
         destination.write_text(front_matter + text, encoding="utf-8")
 
 

@@ -1,0 +1,18 @@
+{% set docs = get_section(path="docs/_index.md") %}
+{% for subsection_path in docs.subsections %}
+	{% set subsection = get_section(path=subsection_path) %}
+	<div class="docs-dropdown__section">
+		<a class="docs-dropdown__section-title{% if active_path == subsection.path %} is-active{% endif %}" href="{{ subsection.path | safe }}">{{ subsection.title | replace(from="`", to="") }}</a>
+		{% if subsection.pages %}
+			{% for item in subsection.pages %}
+			<a class="docs-dropdown__item{% if active_path == item.path %} is-active{% endif %}" href="{{ item.path | safe }}">{{ item.extra.nav_title | default(value=item.title) | replace(from="`", to="") }}</a>
+			{% endfor %}
+		{% endif %}
+		{% if subsection.subsections %}
+			{% for child_path in subsection.subsections %}
+				{% set child = get_section(path=child_path) %}
+				<a class="docs-dropdown__item{% if active_path == child.path %} is-active{% endif %}" href="{{ child.path | safe }}">{{ child.title | replace(from="`", to="") }}</a>
+			{% endfor %}
+		{% endif %}
+	</div>
+{% endfor %}

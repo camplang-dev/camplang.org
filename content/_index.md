@@ -3,6 +3,5 @@ title = "Camp"
 template = "home.html"
 +++
 
-Camp is a native programming language for code that wants to be honest about
-the machine without giving up clear, modern API design.
-
+Camp is a C-shaped native programming language with modern source contracts and
+a C ABI-compatible lowering model.

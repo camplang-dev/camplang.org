@@ -2,10 +2,20 @@
 
 {% block content %}
 <div class="docs-layout">
-	{% set active_permalink = page.permalink %}
-	<aside class="docs-nav" aria-label="Documentation sections">
+	{% set active_path = page.path %}
+	{% set docs_current_title = page.extra.nav_title | default(value=page.title) | replace(from="`", to="") %}
+	<aside class="docs-nav docs-nav--desktop" aria-label="Documentation sections">
+		{% set docs_nav_mobile = false %}
 		{% include "partials/docs_nav.html" %}
 	</aside>
+	<nav class="docs-mobile-picker" aria-label="Documentation sections">
+		<details>
+			<summary>{{ docs_current_title }}</summary>
+			<div class="docs-mobile-picker__body">
+				{% include "partials/docs_dropdown_nav.html" %}
+			</div>
+		</details>
+	</nav>
 	<article class="docs-main prose">
 		{{ page.content | safe }}
 	</article>

@@ -5,21 +5,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{% block title %}{% if page %}{{ page.title }} | {{ config.title }}{% elif section %}{{ section.title }} | {{ config.title }}{% else %}{{ config.title }}{% endif %}{% endblock title %}</title>
 	<meta name="description" content="{% if page and page.description %}{{ page.description }}{% elif section and section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
-	<link rel="icon" href="{{ get_url(path='images/camp-logo.png') }}">
-	<link rel="stylesheet" href="{{ get_url(path='site.css') }}">
+	<link rel="icon" href="/images/camp-logo-transparent.png">
+	<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/roboto-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="/site.css">
 </head>
-<body>
+<body class="{% block body_class %}{% endblock body_class %}">
 	<a class="skip-link" href="#main">Skip to content</a>
 	<header class="site-header">
 		<div class="site-header__inner">
-			<a class="brand" href="{{ get_url(path='') }}" aria-label="Camp home">
-				<img class="brand__mark" src="{{ get_url(path='images/camp-logo.png') }}" alt="">
-				<span class="brand__name">Camp</span>
+			<a class="brand" href="/" aria-label="Camp home">
+				<img class="brand__mark" src="/images/campfire-logo.png" alt="">
+				<span class="brand__name">CAMP</span>
 			</a>
 			<nav class="site-nav" aria-label="Primary navigation">
-				<a href="{{ get_url(path='install') }}">Install</a>
-				<a href="{{ get_url(path='features') }}">Features</a>
-				<a href="{{ get_url(path='docs') }}">Docs</a>
+				<a href="/docs/language/01-camp-in-one-page/">Learn</a>
+				<a href="/install/">Install</a>
 				<a href="{{ config.extra.github_url }}">GitHub</a>
 			</nav>
 		</div>
@@ -31,12 +34,11 @@
 		<div class="site-footer__inner">
 			<p>Camp is a modern native programming language with durable foundations.</p>
 			<nav aria-label="Footer navigation">
-				<a href="{{ get_url(path='docs/language') }}">Language Guide</a>
-				<a href="{{ get_url(path='docs/compiler') }}">Compiler Guide</a>
+				<a href="/docs/language/">Language Guide</a>
+				<a href="/docs/compiler/">Compiler Guide</a>
 				<a href="{{ config.extra.github_url }}">Compiler Source</a>
 			</nav>
 		</div>
 	</footer>
 </body>
 </html>
-

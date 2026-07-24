@@ -6,3 +6,6 @@ tool/staging/
 
 # Local OS/editor files.
 .DS_Store
+
+# Local HTTPS development certificates.
+.local/

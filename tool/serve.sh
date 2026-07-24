@@ -10,4 +10,4 @@ if ! command -v zola >/dev/null 2>&1; then
 fi
 
 python3 "$ROOT/tool/prepare.py"
-zola --root "$ROOT/tool/staging" serve --interface 127.0.0.1 --port 1111
+zola --root "$ROOT/tool/staging" serve --interface 0.0.0.0 --port 1111

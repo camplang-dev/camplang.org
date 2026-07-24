@@ -117,10 +117,41 @@ The home page should be a landing page, but not a marketing maze. It should quic
 
 - What is Camp?
 - What does Camp optimize for?
+- What makes Camp different from the growing set of systems programming languages?
 - What does a tiny Camp program look like?
 - How do I install it?
 - Where are the docs?
 - Where is the compiler source?
+
+The central value proposition should be direct: Camp is for people who still
+want C-shaped native programming, but want the language to carry modern source
+contracts and API surfaces that are usually maintained by convention, macros,
+or separate tooling.
+
+The website should emphasize this in narrative form rather than as a dense
+feature inventory:
+
+- Camp is intentionally C-like at the source level. It uses familiar statement
+  keywords, braces, declaration order, pointers, and imperative flow. It should
+  feel like C if C were designed today, not like a functional language with a
+  native backend.
+- Camp adds modern language surfaces as source-level sugar over shapes that can
+  lower cleanly through C. Arrays, strings, lambdas, contracts in signatures,
+  class models, virtual methods, interfaces, C-ABI-compatible overloads,
+  iterators, async calls, allocators, generics, and metadata should be presented
+  as tools for expressing native intent, not as runtime magic.
+- Camp is built around interop. Its constructs lower to C ABI-compatible forms,
+  it has no garbage collector, its runtime is a lightweight static library, it
+  can build with a range of C compilers including embedded or old compilers, it
+  can include plain C in a build, and its target model is meant to support
+  16-bit, 32-bit, and 64-bit binaries.
+
+The public copy should avoid long prose lists of feature names. When features
+need to be named, place them in compact code-adjacent callouts, captions, or
+short supporting phrases. The page should keep returning to the practical claim:
+Camp gives native C-oriented projects a modern source language without asking
+them to give up C ABI compatibility, explicit memory ownership, or old and
+embedded toolchains.
 
 For installation, we can show intended commands with clear “planned” wording until package managers are real:
 

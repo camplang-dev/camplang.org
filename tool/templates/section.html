@@ -8,14 +8,14 @@
 	</header>
 	<div class="link-list">
 		{% for page in section.pages %}
-		<a href="{{ page.permalink | safe }}">
+		<a href="{{ page.path | safe }}">
 			<span>{{ page.title }}</span>
 			{% if page.description %}<small>{{ page.description }}</small>{% endif %}
 		</a>
 		{% endfor %}
 		{% for subsection_path in section.subsections %}
 			{% set subsection = get_section(path=subsection_path) %}
-			<a href="{{ subsection.permalink | safe }}">
+			<a href="{{ subsection.path | safe }}">
 				<span>{{ subsection.title }}</span>
 				<small>{{ subsection.pages | length }} pages</small>
 			</a>
@@ -23,4 +23,3 @@
 	</div>
 </div>
 {% endblock content %}
-

@@ -2,22 +2,23 @@
 
 {% block content %}
 <div class="docs-layout">
-	{% set active_permalink = section.permalink %}
-	<aside class="docs-nav" aria-label="Documentation sections">
+	{% set active_path = section.path %}
+	{% set docs_current_title = section.title | replace(from="`", to="") %}
+	<aside class="docs-nav docs-nav--desktop" aria-label="Documentation sections">
+		{% set docs_nav_mobile = false %}
 		{% include "partials/docs_nav.html" %}
 	</aside>
+	<nav class="docs-mobile-picker" aria-label="Documentation sections">
+		<details>
+			<summary>{{ docs_current_title }}</summary>
+			<div class="docs-mobile-picker__body">
+				{% include "partials/docs_dropdown_nav.html" %}
+			</div>
+		</details>
+	</nav>
 	<article class="docs-main prose">
 		<h1>{{ section.title }}</h1>
 		{{ section.content | safe }}
-		<div class="link-list link-list--docs">
-			{% for page in section.pages %}
-			<a href="{{ page.permalink | safe }}"><span>{{ page.title }}</span></a>
-			{% endfor %}
-			{% for subsection_path in section.subsections %}
-				{% set subsection = get_section(path=subsection_path) %}
-				<a href="{{ subsection.permalink | safe }}"><span>{{ subsection.title }}</span><small>{{ subsection.pages | length }} pages</small></a>
-			{% endfor %}
-		</div>
 	</article>
 </div>
 {% endblock content %}
