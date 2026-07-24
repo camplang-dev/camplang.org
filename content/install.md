@@ -12,9 +12,12 @@ checksum, and installs the Camp tools into your user profile.
 
 ## macOS and Linux
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/camplang-dev/camp/master/install.sh | sh
-```
+<div class="command-copy">
+	<pre><code>curl -fsSL https://raw.githubusercontent.com/camplang-dev/camp/master/install.sh | sh</code></pre>
+	<button type="button" data-copy="curl -fsSL https://raw.githubusercontent.com/camplang-dev/camp/master/install.sh | sh" aria-label="Copy command">
+		<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15V7a2 2 0 0 1 2-2h8"></path></svg>
+	</button>
+</div>
 
 The default install location is `~/.camp`. The script prints PATH instructions
 after installation. To let it update a recognized shell profile, pass
@@ -22,9 +25,12 @@ after installation. To let it update a recognized shell profile, pass
 
 ## Windows
 
-```powershell
-irm https://raw.githubusercontent.com/camplang-dev/camp/master/install.ps1 | iex
-```
+<div class="command-copy">
+	<pre><code>irm https://raw.githubusercontent.com/camplang-dev/camp/master/install.ps1 | iex</code></pre>
+	<button type="button" data-copy="irm https://raw.githubusercontent.com/camplang-dev/camp/master/install.ps1 | iex" aria-label="Copy command">
+		<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15V7a2 2 0 0 1 2-2h8"></path></svg>
+	</button>
+</div>
 
 The default install location is `%LOCALAPPDATA%\Camp`. Run the script from a
 normal, non-admin PowerShell session. To update the user PATH automatically, run
@@ -67,14 +73,6 @@ not a preview 1 host tool distribution.
 ## Package managers
 
 Package manager distribution is planned after the first preview release.
-
-```sh
-brew install camplang/tap/camp
-```
-
-```powershell
-winget install CampLang.Camp
-```
 
 ## Build from source
 
