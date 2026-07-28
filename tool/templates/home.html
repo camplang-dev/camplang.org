@@ -32,65 +32,89 @@
 					<div class="example-tabs__panes">
 						<pre class="camp-code example-pane example-pane--hello"><code data-lang="camp"><span class="c-keyword">export</span> <span class="c-type">int</span> main()
 {
-	Console.writeLine(<span class="c-string">"Hello, Camp."</span>);
-	<span class="c-keyword">return</span> <span class="c-number">0</span>;
+    Console.writeLine(<span class="c-string">"Hello, Camp."</span>);
+    <span class="c-keyword">return</span> <span class="c-number">0</span>;
 }</code></pre>
 						<pre class="camp-code example-pane example-pane--file"><code data-lang="camp"><span class="c-keyword">export</span> <span class="c-type">int</span> main()
 {
-	string text = File.readAllText(<span class="c-string">"notes.txt"</span>, <span class="c-keyword">catch</span> error);
+    IoError error = <span class="c-keyword">default</span>;
+    FileOptions options = <span class="c-keyword">default</span>;
 
-	<span class="c-keyword">if</span> (error != <span class="c-keyword">default</span>)
-		<span class="c-keyword">return</span> <span class="c-number">1</span>;
+    FileHandle file = FileHandle.open(
+        <span class="c-string">"notes.txt"</span>,
+        FileAccess.READ,
+        FileMode.OPEN_EXISTING,
+        options,
+        <span class="c-keyword">catch</span> error) <span class="c-keyword">finally</span> close();
 
-	<span class="c-keyword">foreach</span> (string line <span class="c-keyword">in</span> text.lines())
-	{
-		<span class="c-keyword">if</span> (line.indexOf(<span class="c-string">"camp"</span>, caseInsensitive: <span class="c-keyword">true</span>) &gt;= <span class="c-number">0</span>)
-		{
-			Console.writeLine(line);
-		}
-	}
+    <span class="c-keyword">if</span> (error != <span class="c-keyword">default</span>)
+        <span class="c-keyword">return</span> <span class="c-number">1</span>;
 
-	<span class="c-keyword">return</span> <span class="c-number">0</span>;
+    <span class="c-type">ulong</span> fileLength = file.getLength(<span class="c-keyword">catch</span> error);
+    <span class="c-keyword">if</span> (error != <span class="c-keyword">default</span>)
+        <span class="c-keyword">return</span> <span class="c-number">1</span>;
+
+    byte[] buffer = <span class="c-keyword">new</span> byte[(<span class="c-type">nuint</span>)fileLength] <span class="c-keyword">finally</span> <span class="c-keyword">delete</span>;
+    <span class="c-type">nuint</span> readCount = <span class="c-number">0</span>;
+    file.read(buffer, <span class="c-keyword">out</span> readCount, <span class="c-keyword">catch</span> error);
+
+    <span class="c-keyword">if</span> (error != <span class="c-keyword">default</span>)
+        <span class="c-keyword">return</span> <span class="c-number">1</span>;
+
+    <span class="c-type">nuint</span> lineStart = <span class="c-number">0</span>;
+    <span class="c-keyword">for</span> (<span class="c-type">nuint</span> i = <span class="c-number">0</span>; i &lt;= readCount; i++)
+    {
+        <span class="c-keyword">if</span> (i == readCount || buffer[i] == (byte)<span class="c-string">'\n'</span>)
+        {
+            const char[] line = { (const char*)&amp;buffer[lineStart], i - lineStart };
+            <span class="c-keyword">if</span> (line.indexOf(<span class="c-string">"camp"</span>, caseInsensitive: <span class="c-keyword">true</span>) &gt;= <span class="c-number">0</span>)
+                Console.writeLine(line);
+
+            lineStart = i + <span class="c-number">1</span>;
+        }
+    }
+
+    <span class="c-keyword">return</span> <span class="c-number">0</span>;
 }</code></pre>
 						<pre class="camp-code example-pane example-pane--greeter"><code data-lang="camp"><span class="c-keyword">export</span> void main()
 {
-	auto greeter = <span class="c-keyword">new</span> Greeter(<span class="c-string">"Camp"</span>) <span class="c-keyword">finally</span> <span class="c-keyword">delete</span>;
-	greeter.greet();
+    auto greeter = <span class="c-keyword">new</span> Greeter(<span class="c-string">"Camp"</span>) <span class="c-keyword">finally</span> <span class="c-keyword">delete</span>;
+    greeter.greet();
 }
 
 <span class="c-keyword">class</span> <span class="c-type">Greeter</span>
 {
-	string name;
+    string name;
 
-	Greeter(<span class="c-keyword">unscoped</span> string name)
-	{
-		<span class="c-keyword">this</span>.name = name;
-	}
+    Greeter(<span class="c-keyword">unscoped</span> string name)
+    {
+        <span class="c-keyword">this</span>.name = name;
+    }
 
-	void greet(<span class="c-keyword">const</span> <span class="c-keyword">this</span>)
-	{
-		Console.write(<span class="c-string">"Hello, "</span>);
-		Console.writeLine(<span class="c-keyword">this</span>.name);
-	}
+    void greet(<span class="c-keyword">const</span> <span class="c-keyword">this</span>)
+    {
+        Console.write(<span class="c-string">"Hello, "</span>);
+        Console.writeLine(<span class="c-keyword">this</span>.name);
+    }
 }</code></pre>
 						<pre class="camp-code example-pane example-pane--generator"><code data-lang="camp"><span class="c-keyword">export</span> <span class="c-type">int</span> main()
 {
-	<span class="c-comment">// Print even values</span>
-	<span class="c-keyword">foreach</span> (auto value <span class="c-keyword">in</span> iterateMatches(n =&gt; n % <span class="c-number">2</span> == <span class="c-number">0</span>))
-	{
-		Console.writeLine(value);
-	}
+    <span class="c-comment">// Print even values</span>
+    <span class="c-keyword">foreach</span> (auto value <span class="c-keyword">in</span> iterateMatches(n =&gt; n % <span class="c-number">2</span> == <span class="c-number">0</span>))
+    {
+        Console.writeLine(value);
+    }
 
-	<span class="c-keyword">return</span> <span class="c-number">0</span>;
+    <span class="c-keyword">return</span> <span class="c-number">0</span>;
 }
 
-<span class="c-keyword">iter</span> <span class="c-type">uint</span> iterateMatches(delegate bool(<span class="c-type">uint</span> value) predicate)
+<span class="c-keyword">struct</span> <span class="c-keyword">iter</span> <span class="c-type">uint</span> iterateMatches(delegate bool(<span class="c-type">uint</span> value) predicate)
 {
-	<span class="c-keyword">for</span> (<span class="c-type">uint</span> value = <span class="c-number">1</span>; value &lt;= <span class="c-number">10</span>; value++)
-	{
-		<span class="c-keyword">if</span> (predicate(value))
-			<span class="c-keyword">yield</span> value;
-	}
+    <span class="c-keyword">for</span> (<span class="c-type">uint</span> value = <span class="c-number">1</span>; value &lt;= <span class="c-number">10</span>; value++)
+    {
+        <span class="c-keyword">if</span> (predicate(value))
+            <span class="c-keyword">yield</span> value;
+    }
 }</code></pre>
 					</div>
 				</div>
