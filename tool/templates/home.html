@@ -20,12 +20,12 @@
 			<div class="hero__panel" aria-label="Camp examples">
 				<div class="example-tabs">
 					<input checked id="example-hello" name="homepage-example" type="radio">
-					<input id="example-file" name="homepage-example" type="radio">
+					<input id="example-interface" name="homepage-example" type="radio">
 					<input id="example-greeter" name="homepage-example" type="radio">
 					<input id="example-generator" name="homepage-example" type="radio">
 					<div class="example-tabs__labels" aria-label="Example selector">
 						<label for="example-hello">Hello</label>
-						<label for="example-file">File</label>
+						<label for="example-interface">Interface</label>
 						<label for="example-greeter">Class</label>
 						<label for="example-generator">Generator</label>
 					</div>
@@ -35,46 +35,28 @@
     Console.writeLine(<span class="c-string">"Hello, Camp."</span>);
     <span class="c-keyword">return</span> <span class="c-number">0</span>;
 }</code></pre>
-						<pre class="camp-code example-pane example-pane--file"><code data-lang="camp"><span class="c-keyword">export</span> <span class="c-type">int</span> main()
+						<pre class="camp-code example-pane example-pane--interface"><code data-lang="camp"><span class="c-keyword">interface</span> <span class="c-type">ValueSource</span>
 {
-    IoError error = <span class="c-keyword">default</span>;
-    FileOptions options = <span class="c-keyword">default</span>;
+    <span class="c-type">int</span> read();
+}
 
-    FileHandle file = FileHandle.open(
-        <span class="c-string">"notes.txt"</span>,
-        FileAccess.READ,
-        FileMode.OPEN_EXISTING,
-        options,
-        <span class="c-keyword">catch</span> error) <span class="c-keyword">finally</span> close();
+<span class="c-keyword">class</span> <span class="c-type">Counter</span>: <span class="c-type">ValueSource</span>
+{
+    <span class="c-type">int</span> value = <span class="c-number">42</span>;
 
-    <span class="c-keyword">if</span> (error != <span class="c-keyword">default</span>)
-        <span class="c-keyword">return</span> <span class="c-number">1</span>;
+    <span class="c-type">int</span> read(): <span class="c-type">ValueSource</span> =&gt; <span class="c-keyword">this</span>.value;
+}
 
-    <span class="c-type">ulong</span> fileLength = file.getLength(<span class="c-keyword">catch</span> error);
-    <span class="c-keyword">if</span> (error != <span class="c-keyword">default</span>)
-        <span class="c-keyword">return</span> <span class="c-number">1</span>;
-
-    byte[] buffer = <span class="c-keyword">new</span> byte[(<span class="c-type">nuint</span>)fileLength] <span class="c-keyword">finally</span> <span class="c-keyword">delete</span>;
-    <span class="c-type">nuint</span> readCount = <span class="c-number">0</span>;
-    file.read(buffer, <span class="c-keyword">out</span> readCount, <span class="c-keyword">catch</span> error);
-
-    <span class="c-keyword">if</span> (error != <span class="c-keyword">default</span>)
-        <span class="c-keyword">return</span> <span class="c-number">1</span>;
-
-    <span class="c-type">nuint</span> lineStart = <span class="c-number">0</span>;
-    <span class="c-keyword">for</span> (<span class="c-type">nuint</span> i = <span class="c-number">0</span>; i &lt;= readCount; i++)
-    {
-        <span class="c-keyword">if</span> (i == readCount || buffer[i] == (byte)<span class="c-string">'\n'</span>)
-        {
-            const char[] line = { (const char*)&amp;buffer[lineStart], i - lineStart };
-            <span class="c-keyword">if</span> (line.indexOf(<span class="c-string">"camp"</span>, caseInsensitive: <span class="c-keyword">true</span>) &gt;= <span class="c-number">0</span>)
-                Console.writeLine(line);
-
-            lineStart = i + <span class="c-number">1</span>;
-        }
-    }
-
+<span class="c-keyword">export</span> <span class="c-type">int</span> main()
+{
+    auto counter = <span class="c-keyword">new</span> Counter() <span class="c-keyword">finally</span> <span class="c-keyword">delete</span>;
+    printValue(counter);
     <span class="c-keyword">return</span> <span class="c-number">0</span>;
+}
+
+void printValue(<span class="c-type">ValueSource</span>* source)
+{
+    Console.writeLine(source.read());
 }</code></pre>
 						<pre class="camp-code example-pane example-pane--greeter"><code data-lang="camp"><span class="c-keyword">export</span> void main()
 {

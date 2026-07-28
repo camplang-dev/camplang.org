@@ -377,7 +377,7 @@ pre {
 }
 
 #example-hello:checked ~ .example-tabs__labels label[for="example-hello"],
-#example-file:checked ~ .example-tabs__labels label[for="example-file"],
+#example-interface:checked ~ .example-tabs__labels label[for="example-interface"],
 #example-greeter:checked ~ .example-tabs__labels label[for="example-greeter"],
 #example-generator:checked ~ .example-tabs__labels label[for="example-generator"] {
 	background: var(--ember);
@@ -386,7 +386,7 @@ pre {
 }
 
 #example-hello:checked ~ .example-tabs__panes .example-pane--hello,
-#example-file:checked ~ .example-tabs__panes .example-pane--file,
+#example-interface:checked ~ .example-tabs__panes .example-pane--interface,
 #example-greeter:checked ~ .example-tabs__panes .example-pane--greeter,
 #example-generator:checked ~ .example-tabs__panes .example-pane--generator {
 	display: block;
