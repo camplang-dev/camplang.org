@@ -80,8 +80,7 @@ void printValue(<span class="c-type">ValueSource</span>* source)
 
     void greet(<span class="c-keyword">const</span> <span class="c-keyword">this</span>)
     {
-        Console.write(<span class="c-string">"Hello, "</span>);
-        Console.writeLine(<span class="c-keyword">this</span>.name);
+        Console.writeLine(<span class="c-string">$"Hello, </span>{<span class="c-keyword">this</span>.name}<span class="c-string">"</span>);
     }
 }</code></pre>
 						<pre class="camp-code example-pane example-pane--generator"><code data-lang="camp"><span class="c-keyword">export</span> <span class="c-type">int</span> main()
