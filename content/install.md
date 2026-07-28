@@ -66,9 +66,9 @@ Manual release archives are available from the compiler repository:
 https://github.com/camplang-dev/camp/releases
 ```
 
-Preview 1 includes host tool distributions for Windows x64, Windows x86, Linux
-x64, macOS Intel, and macOS Apple Silicon. Linux x86 is a generated-code target,
-not a preview 1 host tool distribution.
+Preview releases include host tool distributions for Windows x64, Windows x86,
+Linux x64, macOS Intel, and macOS Apple Silicon. Linux x86 is a generated-code
+target, not a host tool distribution.
 
 ## Package managers
 
