@@ -72,7 +72,7 @@ target, not a host tool distribution.
 
 ## Package managers
 
-Package manager distribution is planned after the first preview release.
+Package manager distribution is planned for a later release.
 
 ## Build from source
 
