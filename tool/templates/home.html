@@ -42,14 +42,19 @@
 
 <span class="c-keyword">class</span> <span class="c-type">Counter</span>: <span class="c-type">ValueSource</span>
 {
-    <span class="c-type">int</span> value = <span class="c-number">42</span>;
+    <span class="c-type">int</span> value;
+
+    Counter(<span class="c-type">int</span> value)
+    {
+        <span class="c-keyword">this</span>.value = value;
+    }
 
     <span class="c-type">int</span> read(): <span class="c-type">ValueSource</span> =&gt; <span class="c-keyword">this</span>.value;
 }
 
 <span class="c-keyword">export</span> <span class="c-type">int</span> main()
 {
-    auto counter = <span class="c-keyword">new</span> Counter() <span class="c-keyword">finally</span> <span class="c-keyword">delete</span>;
+    auto counter = <span class="c-keyword">new</span> Counter(<span class="c-number">42</span>) <span class="c-keyword">finally</span> <span class="c-keyword">delete</span>;
     printValue(counter);
     <span class="c-keyword">return</span> <span class="c-number">0</span>;
 }
