@@ -293,9 +293,37 @@ def copy_docs(source_dir: Path, destination_dir: Path, section_title: str, secti
         destination.write_text(front_matter + text, encoding="utf-8")
 
 
+def docs_index_content() -> str:
+    return """
+The Camp documentation is split into guides for learning the language, using the
+compiler, and reading generated API references. Start with the language guide if
+you are new to Camp; use the other sections when you need the compiler,
+standard library, or package surface in front of you.
+
+<div class="link-list">
+    <a href="/docs/language/01-camp-in-one-page/">
+        <span>Language Guide</span>
+        <small>Learn Camp as a language for writing clear C-like code, from small programs through declarations, types, allocation, errors, generics, iterators, async, and interop.</small>
+    </a>
+    <a href="/docs/compiler/01-campc-command-line/">
+        <span>Compiler Guide</span>
+        <small>Use campc, build files, packages, targets, metadata, diagnostics, editor tooling, debugging, and standard-library build integration.</small>
+    </a>
+    <a href="/docs/stdlib/overview/">
+        <span>Standard Library API</span>
+        <small>Browse the standard library surface generated from Camp metadata.</small>
+    </a>
+    <a href="/docs/packages/ext-json/overview/">
+        <span>Package APIs</span>
+        <small>Browse API references for Camp package sources, including compiler-sponsored packages.</small>
+    </a>
+</div>
+"""
+
+
 def write_generated_docs() -> None:
     docs_root = STAGING / "content" / "docs"
-    write_section(docs_root, "Docs")
+    write_section(docs_root, "Docs", content=docs_index_content())
     copy_docs(DEV_DOCS / "language", docs_root / "language", "Language Guide", section_weight=1)
     copy_docs(DEV_DOCS / "compiler", docs_root / "compiler", "Compiler Guide", section_weight=2)
 
