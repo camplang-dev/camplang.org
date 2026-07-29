@@ -10,7 +10,7 @@ Camp preview builds are distributed as GitHub Release archives. The installer
 script detects your platform, downloads the matching archive, verifies its
 checksum, and installs the Camp tools into your user profile.
 
-## macOS and Linux
+## macOS and Linux x64
 
 <div class="command-copy">
 	<pre><code>curl -fsSL https://raw.githubusercontent.com/camplang-dev/camp/master/install.sh | sh</code></pre>
@@ -68,7 +68,7 @@ https://github.com/camplang-dev/camp/releases
 
 Preview releases include host tool distributions for Windows x64, Windows x86,
 Linux x64, macOS Intel, and macOS Apple Silicon. Linux x86 is a generated-code
-target, not a host tool distribution.
+target only; Camp does not provide a Linux x86 host tool distribution.
 
 ## Package managers
 
