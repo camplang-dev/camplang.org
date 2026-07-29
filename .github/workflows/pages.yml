@@ -34,6 +34,9 @@ jobs:
           tar -xzf zola.tar.gz
           sudo mv zola /usr/local/bin/zola
 
+      - name: Install website dependencies
+        run: npm ci
+
       - name: Build site
         env:
           CAMP_DEV_DOCS: ${{ github.workspace }}/deps/dev/docs

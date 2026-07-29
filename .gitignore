@@ -4,6 +4,9 @@ public/
 # Generated staging input assembled by tool/build.sh.
 tool/staging/
 
+# Local Node dependencies.
+node_modules/
+
 # Local OS/editor files.
 .DS_Store
 

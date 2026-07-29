@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 
+{% block head_extra %}
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+{% endblock head_extra %}
+
 {% block content %}
 <div class="docs-layout">
 	{% set active_path = page.path %}
 	{% set docs_current_title = page.extra.nav_title | default(value=page.title) | replace(from="`", to="") %}
 	<aside class="docs-nav docs-nav--desktop" aria-label="Documentation sections">
 		{% set docs_nav_mobile = false %}
+		{% include "partials/docs_search.html" %}
 		{% include "partials/docs_nav.html" %}
 	</aside>
 	<nav class="docs-mobile-picker" aria-label="Documentation sections">
+		{% include "partials/docs_search.html" %}
 		<details>
 			<summary>{{ docs_current_title }}</summary>
 			<div class="docs-mobile-picker__body">
@@ -16,8 +22,14 @@
 			</div>
 		</details>
 	</nav>
-	<article class="docs-main prose">
+	<article class="docs-main prose" data-pagefind-body>
 		{{ page.content | safe }}
 	</article>
+	{% include "partials/docs_search_dialog.html" %}
 </div>
 {% endblock content %}
+
+{% block scripts %}
+<script src="/pagefind/pagefind-ui.js"></script>
+<script src="/js/docs-search.js"></script>
+{% endblock scripts %}

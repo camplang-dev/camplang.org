@@ -11,3 +11,7 @@ fi
 
 python3 "$ROOT/tool/prepare.py"
 zola --root "$ROOT/tool/staging" build --output-dir "$ROOT/public" --force
+
+if command -v npm >/dev/null 2>&1 && [ -d "$ROOT/node_modules/pagefind" ]; then
+	(cd "$ROOT" && npm run index)
+fi

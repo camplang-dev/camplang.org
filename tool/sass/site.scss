@@ -639,6 +639,103 @@ code {
 	top: 4.25rem;
 }
 
+.docs-search {
+	margin: 0 0 1rem;
+}
+
+.docs-search__trigger {
+	align-items: center;
+	background: var(--paper);
+	border: 1px solid var(--line);
+	border-radius: 7px;
+	color: var(--muted);
+	cursor: pointer;
+	display: flex;
+	font: inherit;
+	font-size: 0.9rem;
+	gap: 0.5rem;
+	min-height: 2.45rem;
+	padding: 0 0.65rem;
+	text-align: left;
+	width: 100%;
+}
+
+.docs-search__trigger:hover {
+	background: #F4EFEB;
+	color: var(--charcoal);
+}
+
+.docs-search__trigger svg {
+	fill: none;
+	flex: 0 0 auto;
+	height: 1rem;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 2;
+	width: 1rem;
+}
+
+.docs-search__dialog {
+	background: transparent;
+	border: 0;
+	max-width: min(42rem, calc(100vw - 2rem));
+	padding: 0;
+	width: 42rem;
+}
+
+.docs-search__dialog::backdrop {
+	background: rgba(47, 30, 21, 0.28);
+}
+
+.docs-search__panel {
+	background: var(--paper);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	box-shadow: 0 1.5rem 4rem rgba(47, 30, 21, 0.22);
+	padding: 1rem;
+	position: relative;
+}
+
+.docs-search__close {
+	align-items: center;
+	background: #F4EFEB;
+	border: 1px solid var(--line);
+	border-radius: 5px;
+	color: var(--muted);
+	cursor: pointer;
+	display: inline-flex;
+	font: inherit;
+	font-size: 1.35rem;
+	height: 2rem;
+	justify-content: center;
+	line-height: 1;
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	width: 2rem;
+	z-index: 1;
+}
+
+.docs-search__close:hover {
+	color: var(--charcoal);
+}
+
+.docs-search__panel .pagefind-ui {
+	--pagefind-ui-primary: #CB5A1D;
+	--pagefind-ui-text: #261B16;
+	--pagefind-ui-background: #FFFDFC;
+	--pagefind-ui-border: #E4DED8;
+	--pagefind-ui-tag: #EEE8E2;
+	--pagefind-ui-border-width: 1px;
+	--pagefind-ui-border-radius: 7px;
+	--pagefind-ui-font: "Camp Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.docs-search__panel .pagefind-ui__form {
+	margin-right: 2.65rem;
+}
+
 .docs-mobile-picker {
 	display: none;
 	padding: 1rem 1rem 0;
@@ -911,6 +1008,10 @@ code {
 
 	.docs-mobile-picker {
 		display: block;
+	}
+
+	.docs-mobile-picker .docs-search {
+		margin: 0 0 0.6rem;
 	}
 }
 
