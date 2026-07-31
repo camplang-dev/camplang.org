@@ -5,7 +5,7 @@
 {% endblock head_extra %}
 
 {% block content %}
-<div class="docs-layout">
+<div class="docs-layout" id="docs-swup">
 	{% set active_path = page.path %}
 	{% set docs_current_title = page.extra.nav_title | default(value=page.title) | replace(from="`", to="") %}
 	<aside class="docs-nav docs-nav--desktop" aria-label="Documentation sections">
@@ -31,5 +31,7 @@
 
 {% block scripts %}
 <script src="/pagefind/pagefind-ui.js"></script>
+<script src="/js/swup.umd.js"></script>
 <script src="/js/docs-search.js"></script>
+<script src="/js/docs-swup.js"></script>
 {% endblock scripts %}

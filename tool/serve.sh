@@ -9,6 +9,7 @@ if ! command -v zola >/dev/null 2>&1; then
 	exit 1
 fi
 
+"$ROOT/tool/generate-api-docs.sh"
 python3 "$ROOT/tool/prepare.py"
 
 zola --root "$ROOT/tool/staging" build --output-dir "$ROOT/public" --force >/dev/null

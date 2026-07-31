@@ -12,7 +12,9 @@
 		{% if subsection.pages %}
 		<ul>
 			{% for item in subsection.pages %}
+			{% if not item.extra.nav_hidden %}
 			<li><a {% if active_path == item.path %}class="is-active"{% endif %} href="{{ item.path | safe }}">{{ item.extra.nav_title | default(value=item.title) | replace(from="`", to="") }}</a></li>
+			{% endif %}
 			{% endfor %}
 		</ul>
 		{% endif %}
@@ -20,7 +22,18 @@
 		<ul>
 			{% for child_path in subsection.subsections %}
 				{% set child = get_section(path=child_path) %}
+				{% if not child.extra.nav_hidden %}
 				<li><a {% if active_path == child.path %}class="is-active"{% endif %} href="{{ child.path | safe }}">{{ child.title | replace(from="`", to="") }}</a></li>
+				{% if child.pages %}
+					<ul>
+					{% for item in child.pages %}
+					{% if not item.extra.nav_hidden %}
+						<li><a {% if active_path == item.path %}class="is-active"{% endif %} href="{{ item.path | safe }}">{{ item.extra.nav_title | default(value=item.title) | replace(from="`", to="") }}</a></li>
+					{% endif %}
+					{% endfor %}
+					</ul>
+				{% endif %}
+				{% endif %}
 			{% endfor %}
 		</ul>
 		{% endif %}

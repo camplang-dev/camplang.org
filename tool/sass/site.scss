@@ -622,6 +622,245 @@ code {
 	color: var(--muted);
 }
 
+.api-lede {
+	color: var(--muted);
+	font-size: 0.96rem;
+	margin: 0 0 1.35rem;
+}
+
+.api-lede p {
+	margin: 0.35rem 0;
+}
+
+.api-declaration pre {
+	background: var(--code-bg);
+	border: 1px solid var(--line);
+	border-radius: 7px;
+	color: #211815;
+	margin: 0 0 1.2rem;
+	overflow-x: auto;
+	padding: 0.9rem 1rem;
+	white-space: pre-wrap;
+}
+
+.api-declaration code {
+	overflow-wrap: anywhere;
+	white-space: pre-wrap;
+}
+
+.api-declaration code,
+.api-signature,
+.api-member-type,
+.api-member-sig,
+.api-param-type {
+	font-family: "Camp Mono", "Liberation Mono", Consolas, monospace;
+	font-size: 0.86rem;
+}
+
+.api-docblock {
+	background: var(--paper);
+	border-left: 3px solid var(--ember);
+	margin: 1rem 0 1.6rem;
+	padding: 0.7rem 0.9rem;
+}
+
+.api-doc-summary p,
+.api-doc-section p {
+	margin: 0.35rem 0;
+}
+
+.api-doc-section {
+	border-top: 1px solid var(--line-soft);
+	color: var(--muted);
+	font-size: 0.9rem;
+	margin-top: 0.22rem;
+	padding-top: 0.18rem;
+}
+
+.api-doc-section h3 {
+	color: var(--charcoal);
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	margin: 0 0 0.45rem;
+	text-transform: uppercase;
+}
+
+.api-doc-section pre {
+	background: #F4EFEB;
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	font-size: 0.86rem;
+	overflow: auto;
+	padding: 0.7rem;
+}
+
+.api-index-group {
+	margin-top: 1.9rem;
+}
+
+.api-index-list,
+.api-member-list,
+.api-param-list {
+	border-top: 1px solid var(--line);
+}
+
+.api-index-row {
+	border-bottom: 1px solid var(--line-soft);
+	color: var(--charcoal);
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 7rem minmax(0, 1fr);
+	padding: 0.65rem 0;
+	text-decoration: none;
+}
+
+.api-index-row:hover .api-signature {
+	color: var(--ember);
+	text-decoration: underline;
+}
+
+.api-index-kind {
+	color: var(--muted);
+	font-size: 0.78rem;
+	text-transform: uppercase;
+}
+
+.api-index-main {
+	min-width: 0;
+}
+
+.api-member-section {
+	margin-top: 1.75rem;
+}
+
+.api-overload {
+	border-top: 1px solid var(--line);
+	padding: 1rem 0 1.85rem;
+}
+
+.api-overload .api-declaration pre {
+	margin-bottom: 0.85rem;
+}
+
+.api-overload .api-member-section {
+	margin-top: 1rem;
+}
+
+.api-overload .api-param-list {
+	margin-bottom: 0.35rem;
+}
+
+.api-member-row {
+	background: var(--paper);
+	border-bottom: 1px solid var(--line-soft);
+	display: grid;
+	gap: 1.25rem;
+	grid-template-columns: 12rem minmax(0, 1fr);
+	padding: 0.45rem 0.9rem;
+}
+
+.api-member-row--single {
+	grid-template-columns: 1fr;
+}
+
+.api-member-type,
+.api-param-type {
+	color: var(--muted);
+	overflow-wrap: anywhere;
+}
+
+.api-member-sig a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.api-member-sig a:hover {
+	color: var(--ember);
+	text-decoration: underline;
+}
+
+.api-member-main .api-doc-summary {
+	font-size: 0.88rem;
+	line-height: 1.45;
+	margin-top: 0.25rem;
+}
+
+.api-member-main .api-doc-summary p,
+.api-param-main .api-doc-summary p {
+	color: #9A9289;
+}
+
+.api-constant-value,
+.api-default-value {
+	color: #9A9289;
+	font-weight: 400;
+}
+
+.api-member-main .api-doc-summary code,
+.api-index-main .api-doc-summary code {
+	font-size: 0.84em;
+}
+
+.api-badges {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+	margin-left: 0.55rem;
+	vertical-align: middle;
+}
+
+.api-badge {
+	background: #F4EFEB;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	color: var(--muted);
+	font-family: var(--font-body);
+	font-size: 0.68rem;
+	padding: 0.08rem 0.38rem;
+}
+
+.api-param-row {
+	background: var(--paper);
+	border-bottom: 1px solid var(--line-soft);
+	display: grid;
+	gap: 1.25rem;
+	grid-template-columns: 12rem minmax(0, 1fr);
+	padding: 0.45rem 0.9rem;
+}
+
+.api-param-name {
+	font-family: "Camp Mono", "Liberation Mono", Consolas, monospace;
+	font-size: 0.86rem;
+	font-weight: 700;
+}
+
+.api-param-main .api-doc-summary {
+	font-size: 0.88rem;
+	line-height: 1.45;
+	margin-top: 0.25rem;
+}
+
+.api-empty {
+	color: var(--muted);
+}
+
+.api-backlink {
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+}
+
+.api-generated {
+	border-top: 1px solid var(--line-soft);
+	color: #ABA39B;
+	font-size: 0.84rem;
+	margin-top: 2.5rem;
+	padding-top: 1rem;
+}
+
+.prose .api-generated {
+	color: #ABA39B;
+}
+
 .docs-layout {
 	display: grid;
 	grid-template-columns: 17rem minmax(0, 1fr);
@@ -830,6 +1069,10 @@ code {
 	padding: 0.36rem 0.55rem;
 }
 
+.docs-dropdown__item--nested {
+	padding-left: 1.25rem;
+}
+
 .docs-dropdown__section-title:hover,
 .docs-dropdown__item:hover {
 	background: #F4EFEB;
@@ -881,6 +1124,12 @@ code {
 	list-style: none;
 	margin: 0.65rem 0 0;
 	padding: 0;
+}
+
+.docs-nav ul ul {
+	border-left: 1px solid var(--line);
+	margin: 0.25rem 0 0.5rem 0.35rem;
+	padding-left: 0.65rem;
 }
 
 .docs-nav li {
@@ -1012,6 +1261,13 @@ code {
 
 	.docs-mobile-picker .docs-search {
 		margin: 0 0 0.6rem;
+	}
+
+	.api-index-row,
+	.api-member-row,
+	.api-param-row {
+		gap: 0.35rem;
+		grid-template-columns: 1fr;
 	}
 }
 

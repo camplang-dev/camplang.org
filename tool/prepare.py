@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import importlib.util
 import os
 import re
 import shutil
@@ -12,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
 STAGING = ROOT / "tool" / "staging"
 DEV_DOCS = Path(os.environ.get("CAMP_DEV_DOCS", WORKSPACE / "dev" / "docs"))
-PACKAGE_ROOT = Path(os.environ.get("CAMP_PACKAGE_ROOT", WORKSPACE / "pkg.camplang.org"))
+API_SRC = Path(os.environ.get("CAMP_API_SRC", ROOT / "api-src"))
 
 CAMP_DECLARATION_KEYWORDS = {
     "abstract",
@@ -123,7 +124,7 @@ CAMP_TOKEN_RE = re.compile(
     r"|(?P<word>\b[A-Za-z_][A-Za-z0-9_]*\b)",
     re.DOTALL,
 )
-FENCED_CAMP_RE = re.compile(r"```(?:camp|Camp)\n(.*?)\n```", re.DOTALL)
+FENCED_CAMP_RE = re.compile(r"^(`{3,})(?:camp|Camp)[^\n]*\n(.*?)^\1[ \t]*$", re.MULTILINE | re.DOTALL)
 SOURCE_FRONT_MATTER_RE = re.compile(r"\A\+\+\+\n(.*?)\n\+\+\+\n\n?", re.DOTALL)
 SOURCE_FRONT_MATTER_VALUE_RE = re.compile(r'^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*"(.*)"\s*$', re.MULTILINE)
 
@@ -138,6 +139,16 @@ def copy_tree(source: Path, destination: Path) -> None:
     if destination.exists():
         shutil.rmtree(destination)
     shutil.copytree(source, destination, ignore=shutil.ignore_patterns(".DS_Store", ".gitkeep"))
+
+
+def copy_vendor_scripts() -> None:
+    swup_source = ROOT / "node_modules" / "swup" / "dist" / "Swup.umd.js"
+    if not swup_source.exists():
+        raise FileNotFoundError("Swup is not installed. Run `npm install` before building the website.")
+
+    js_dir = STAGING / "static" / "js"
+    js_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(swup_source, js_dir / "swup.umd.js")
 
 
 def title_from_markdown(text: str, fallback: str) -> str:
@@ -217,7 +228,7 @@ def highlight_camp_code(code: str) -> str:
 
 def render_camp_fences(text: str) -> str:
     def replace(match: re.Match[str]) -> str:
-        highlighted = highlight_camp_code(match.group(1))
+        highlighted = highlight_camp_code(match.group(2))
         return f'<pre class="camp-code"><code data-lang="camp">{highlighted}</code></pre>'
 
     return FENCED_CAMP_RE.sub(replace, text)
@@ -313,12 +324,27 @@ standard library, or package surface in front of you.
         <span>Standard Library API</span>
         <small>Browse the standard library surface generated from Camp metadata.</small>
     </a>
-    <a href="/docs/packages/ext-json/overview/">
+    <a href="/docs/packages/overview/">
         <span>Package APIs</span>
-        <small>Browse API references for Camp package sources, including compiler-sponsored packages.</small>
+        <small>Package API references will appear here when they are available.</small>
     </a>
 </div>
 """
+
+
+def generate_api_docs(docs_root: Path) -> bool:
+    generator_path = ROOT / "tool" / "api-docs" / "generate_api_docs.py"
+    if not generator_path.exists():
+        return False
+
+    spec = importlib.util.spec_from_file_location("camp_api_docs_generator", generator_path)
+    if spec is None or spec.loader is None:
+        return False
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.generate_api_docs(API_SRC, docs_root)
+    return True
 
 
 def write_generated_docs() -> None:
@@ -326,48 +352,7 @@ def write_generated_docs() -> None:
     write_section(docs_root, "Docs", content=docs_index_content())
     copy_docs(DEV_DOCS / "language", docs_root / "language", "Language Guide", section_weight=1)
     copy_docs(DEV_DOCS / "compiler", docs_root / "compiler", "Compiler Guide", section_weight=2)
-
-    stdlib = docs_root / "stdlib"
-    write_section(stdlib, "Standard Library API", weight=3)
-    (stdlib / "overview.md").write_text(
-        "+++\n"
-        'title = "Standard Library API"\n'
-        "weight = 1\n"
-        'template = "docs_page.html"\n'
-        "+++\n\n"
-        "# Standard Library API\n\n"
-        "The standard library API reference will be generated from Camp metadata. "
-        "This placeholder exists so the first site build has the final navigation shape.\n",
-        encoding="utf-8",
-    )
-
-    packages = docs_root / "packages"
-    write_section(packages, "Package APIs", weight=4)
-    entries = [path for path in sorted(PACKAGE_ROOT.iterdir()) if path.is_dir() and not path.name.startswith(".")] if PACKAGE_ROOT.exists() else []
-    if not entries:
-        (packages / "overview.md").write_text(
-            "+++\n"
-            'title = "Package APIs"\n'
-            "weight = 1\n"
-            'template = "docs_page.html"\n'
-            "+++\n\n"
-            "# Package APIs\n\nNo package API references are available yet.\n",
-            encoding="utf-8",
-        )
-    for index, package in enumerate(entries, start=1):
-        package_dir = packages / package.name
-        write_section(package_dir, package.name, weight=index)
-        (package_dir / "overview.md").write_text(
-            "+++\n"
-            f'title = "{package.name} API"\n'
-            f"weight = {index}\n"
-            'template = "docs_page.html"\n'
-            "+++\n\n"
-            f"# {package.name} API\n\n"
-            "This package API reference will be generated from Camp metadata. "
-            f"For now, this page reserves the documentation home for `{package.name}`.\n",
-            encoding="utf-8",
-        )
+    generate_api_docs(docs_root)
 
 
 def main() -> None:
@@ -376,6 +361,7 @@ def main() -> None:
     copy_tree(ROOT / "tool" / "templates", STAGING / "templates")
     copy_tree(ROOT / "tool" / "sass", STAGING / "sass")
     copy_tree(ROOT / "tool" / "static", STAGING / "static")
+    copy_vendor_scripts()
     shutil.copy2(ROOT / "tool" / "config.toml", STAGING / "config.toml")
     write_generated_docs()
     (STAGING / "static" / "CNAME").write_text("camplang.org\n", encoding="utf-8")
