@@ -6,7 +6,6 @@ WORKSPACE="$(cd "$ROOT/.." && pwd)"
 
 CAMPC="${CAMPC:-$WORKSPACE/dev/bin/campc}"
 DEV_ROOT="${CAMP_DEV_ROOT:-$WORKSPACE/dev}"
-PACKAGE_ROOT="${CAMP_PACKAGE_ROOT:-$WORKSPACE/pkg.camplang.org}"
 OUTPUT_ROOT="${CAMP_API_SRC:-$ROOT/api-src}"
 
 if [ ! -x "$CAMPC" ]; then
@@ -15,7 +14,7 @@ if [ ! -x "$CAMPC" ]; then
 	exit 1
 fi
 
-mkdir -p "$OUTPUT_ROOT/stdlib" "$OUTPUT_ROOT/packages/ext-json"
+mkdir -p "$OUTPUT_ROOT/stdlib"
 "$CAMPC" --version > "$OUTPUT_ROOT/campc-version.txt"
 
 tmp="$(mktemp "${TMPDIR:-/tmp}/camp-api-docs.XXXXXX")"
@@ -48,10 +47,14 @@ generate_metadata "$OUTPUT_ROOT/stdlib/std_api.json" \
 	--metadata public \
 	--nostdlib
 
-if [ -d "$PACKAGE_ROOT/ext-json/src" ]; then
-	generate_metadata "$OUTPUT_ROOT/packages/ext-json/ext_json_api.json" \
-		"$PACKAGE_ROOT/ext-json/src/"*.camp \
-		--metadata public
+if [ "${CAMP_GENERATE_PACKAGE_API_DOCS:-}" = "1" ]; then
+	PACKAGE_ROOT="${CAMP_PACKAGE_ROOT:-$WORKSPACE/pkg.camplang.org}"
+	if [ -d "$PACKAGE_ROOT/ext-json/src" ]; then
+		mkdir -p "$OUTPUT_ROOT/packages/ext-json"
+		generate_metadata "$OUTPUT_ROOT/packages/ext-json/ext_json_api.json" \
+			"$PACKAGE_ROOT/ext-json/src/"*.camp \
+			--metadata public
+	fi
 fi
 
 echo "generated API metadata in $OUTPUT_ROOT"

@@ -1332,23 +1332,6 @@
           ]
         },
         {
-          "id": "class:Std::Console/function:writeCharFormatter",
-          "name": "write",
-          "visibility": "public",
-          "invokerName": "write",
-          "callableName": "writeCharFormatter",
-          "modifier": "static",
-          "returnType": "void",
-          "parameters": [
-            {
-              "id": "class:Std::Console/function:writeCharFormatter/parameter:value",
-              "name": "value",
-              "overload": true,
-              "type": "CharFormatter"
-            }
-          ]
-        },
-        {
           "id": "class:Std::Console/function:writeChar",
           "name": "write",
           "visibility": "public",
@@ -1583,23 +1566,6 @@
               "name": "value",
               "overload": true,
               "type": "nint"
-            }
-          ]
-        },
-        {
-          "id": "class:Std::Console/function:writeLineCharFormatter",
-          "name": "writeLine",
-          "visibility": "public",
-          "invokerName": "writeLine",
-          "callableName": "writeLineCharFormatter",
-          "modifier": "static",
-          "returnType": "void",
-          "parameters": [
-            {
-              "id": "class:Std::Console/function:writeLineCharFormatter/parameter:value",
-              "name": "value",
-              "overload": true,
-              "type": "CharFormatter"
             }
           ]
         },
@@ -2153,393 +2119,323 @@
       ]
     },
     {
-      "id": "newtype:Std::CharFormatter",
-      "kind": "newtype",
-      "name": "CharFormatter",
+      "id": "function:Std::format",
+      "kind": "function",
+      "name": "format",
+      "symbol": "Char_format",
       "visibility": "public",
-      "callableType": "delegate",
       "returnType": "nuint",
       "parameters": [
         {
-          "id": "newtype:Std::CharFormatter/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
-          "type": "escaped this"
+          "modifier": "in",
+          "type": "char"
         },
         {
-          "id": "newtype:Std::CharFormatter/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
+          "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::copyString",
-      "kind": "function",
-      "name": "copyString",
-      "symbol": "CharFormatter_copyString",
-      "visibility": "public",
-      "returnType": "escaped string",
-      "parameters": [
-        {
-          "id": "function:Std::copyString/parameter:this",
-          "name": "this",
-          "type": "CharFormatter"
-        },
-        {
-          "id": "function:Std::copyString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "Char_formatCharArray",
+      "symbol": "CharArray_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
-          "name": "this",
-          "modifier": "in",
-          "type": "char"
-        },
-        {
-          "id": "function:Std::formatCharArray/parameter:buffer",
-          "name": "buffer",
-          "overload": true,
-          "type": "char[]"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::formatCharArray",
-      "kind": "function",
-      "name": "format",
-      "symbol": "CharArray_formatCharArray",
-      "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
-      "returnType": "nuint",
-      "ascription": "CharFormatter",
-      "parameters": [
-        {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "String_formatCharArray",
+      "symbol": "String_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "string"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "Bool_formatCharArray",
+      "symbol": "Bool_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "bool"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "Byte_formatCharArray",
+      "symbol": "Byte_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "byte"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "SByte_formatCharArray",
+      "symbol": "SByte_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "sbyte"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "UShort_formatCharArray",
+      "symbol": "UShort_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "ushort"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "Short_formatCharArray",
+      "symbol": "Short_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "short"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "UInt_formatCharArray",
+      "symbol": "UInt_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "uint"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "Int_formatCharArray",
+      "symbol": "Int_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "int"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "NUInt_formatCharArray",
+      "symbol": "NUInt_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "nuint"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "NInt_formatCharArray",
+      "symbol": "NInt_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "nint"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "ULong_formatCharArray",
+      "symbol": "ULong_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "ulong"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "Long_formatCharArray",
+      "symbol": "Long_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "long"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
-          "type": "char[]"
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ]
     },
@@ -6539,110 +6435,6 @@
       ]
     },
     {
-      "id": "function:Std::writeCharFormatter",
-      "kind": "function",
-      "name": "write",
-      "symbol": "CharWriter_writeCharFormatter",
-      "visibility": "public",
-      "invokerName": "write",
-      "callableName": "writeCharFormatter",
-      "returnType": "void",
-      "parameters": [
-        {
-          "id": "function:Std::writeCharFormatter/parameter:this",
-          "name": "this",
-          "type": "CharWriter"
-        },
-        {
-          "id": "function:Std::writeCharFormatter/parameter:formatter",
-          "name": "formatter",
-          "overload": true,
-          "type": "CharFormatter"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::tryWriteCharFormatter",
-      "kind": "function",
-      "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteCharFormatter",
-      "visibility": "public",
-      "invokerName": "tryWrite",
-      "callableName": "tryWriteCharFormatter",
-      "returnType": "bool",
-      "parameters": [
-        {
-          "id": "function:Std::tryWriteCharFormatter/parameter:this",
-          "name": "this",
-          "type": "CharWriter"
-        },
-        {
-          "id": "function:Std::tryWriteCharFormatter/parameter:formatter",
-          "name": "formatter",
-          "overload": true,
-          "type": "CharFormatter"
-        },
-        {
-          "id": "function:Std::tryWriteCharFormatter/parameter:error",
-          "name": "error",
-          "modifier": "thrown",
-          "type": "IoError"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::writeLineCharFormatter",
-      "kind": "function",
-      "name": "writeLine",
-      "symbol": "CharWriter_writeLineCharFormatter",
-      "visibility": "public",
-      "invokerName": "writeLine",
-      "callableName": "writeLineCharFormatter",
-      "returnType": "void",
-      "parameters": [
-        {
-          "id": "function:Std::writeLineCharFormatter/parameter:this",
-          "name": "this",
-          "type": "CharWriter"
-        },
-        {
-          "id": "function:Std::writeLineCharFormatter/parameter:formatter",
-          "name": "formatter",
-          "overload": true,
-          "type": "CharFormatter"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::tryWriteLineCharFormatter",
-      "kind": "function",
-      "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineCharFormatter",
-      "visibility": "public",
-      "invokerName": "tryWriteLine",
-      "callableName": "tryWriteLineCharFormatter",
-      "returnType": "bool",
-      "parameters": [
-        {
-          "id": "function:Std::tryWriteLineCharFormatter/parameter:this",
-          "name": "this",
-          "type": "CharWriter"
-        },
-        {
-          "id": "function:Std::tryWriteLineCharFormatter/parameter:formatter",
-          "name": "formatter",
-          "overload": true,
-          "type": "CharFormatter"
-        },
-        {
-          "id": "function:Std::tryWriteLineCharFormatter/parameter:error",
-          "name": "error",
-          "modifier": "thrown",
-          "type": "IoError"
-        }
-      ]
-    },
-    {
       "id": "function:Std::writeLineCharArray",
       "kind": "function",
       "name": "writeLine",
@@ -9066,27 +8858,25 @@
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "TimeSpan_formatCharArray",
+      "symbol": "TimeSpan_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "TimeSpan"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
+          "modifier": "prep",
           "type": "char[]",
+          "defaultValue": "default",
           "metadata": [
             {
               "name": "summary",
@@ -9250,27 +9040,25 @@
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "UtcOffset_formatCharArray",
+      "symbol": "UtcOffset_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "UtcOffset"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
+          "modifier": "prep",
           "type": "char[]",
+          "defaultValue": "default",
           "metadata": [
             {
               "name": "summary",
@@ -9632,27 +9420,25 @@
       ]
     },
     {
-      "id": "function:Std::formatCharArray",
+      "id": "function:Std::format",
       "kind": "function",
       "name": "format",
-      "symbol": "Instant_formatCharArray",
+      "symbol": "Instant_format",
       "visibility": "public",
-      "invokerName": "format",
-      "callableName": "formatCharArray",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Std::formatCharArray/parameter:this",
+          "id": "function:Std::format/parameter:this",
           "name": "this",
           "modifier": "in",
           "type": "Instant"
         },
         {
-          "id": "function:Std::formatCharArray/parameter:buffer",
+          "id": "function:Std::format/parameter:buffer",
           "name": "buffer",
-          "overload": true,
+          "modifier": "prep",
           "type": "char[]",
+          "defaultValue": "default",
           "metadata": [
             {
               "name": "summary",
@@ -9880,24 +9666,22 @@
           ]
         },
         {
-          "id": "struct:Std::Date/function:formatCharArray",
+          "id": "struct:Std::Date/function:format",
           "name": "format",
           "visibility": "public",
-          "invokerName": "format",
-          "callableName": "formatCharArray",
           "returnType": "nuint",
-          "ascription": "CharFormatter",
           "parameters": [
             {
-              "id": "struct:Std::Date/function:formatCharArray/parameter:this",
+              "id": "struct:Std::Date/function:format/parameter:this",
               "name": "this",
               "type": "const Date*"
             },
             {
-              "id": "struct:Std::Date/function:formatCharArray/parameter:buffer",
+              "id": "struct:Std::Date/function:format/parameter:buffer",
               "name": "buffer",
-              "overload": true,
+              "modifier": "prep",
               "type": "char[]",
+              "defaultValue": "default",
               "metadata": [
                 {
                   "name": "summary",
@@ -10057,24 +9841,22 @@
           ]
         },
         {
-          "id": "struct:Std::TimeOfDay/function:formatCharArray",
+          "id": "struct:Std::TimeOfDay/function:format",
           "name": "format",
           "visibility": "public",
-          "invokerName": "format",
-          "callableName": "formatCharArray",
           "returnType": "nuint",
-          "ascription": "CharFormatter",
           "parameters": [
             {
-              "id": "struct:Std::TimeOfDay/function:formatCharArray/parameter:this",
+              "id": "struct:Std::TimeOfDay/function:format/parameter:this",
               "name": "this",
               "type": "const TimeOfDay*"
             },
             {
-              "id": "struct:Std::TimeOfDay/function:formatCharArray/parameter:buffer",
+              "id": "struct:Std::TimeOfDay/function:format/parameter:buffer",
               "name": "buffer",
-              "overload": true,
+              "modifier": "prep",
               "type": "char[]",
+              "defaultValue": "default",
               "metadata": [
                 {
                   "name": "summary",
@@ -10322,24 +10104,22 @@
           ]
         },
         {
-          "id": "struct:Std::DateTime/function:formatCharArray",
+          "id": "struct:Std::DateTime/function:format",
           "name": "format",
           "visibility": "public",
-          "invokerName": "format",
-          "callableName": "formatCharArray",
           "returnType": "nuint",
-          "ascription": "CharFormatter",
           "parameters": [
             {
-              "id": "struct:Std::DateTime/function:formatCharArray/parameter:this",
+              "id": "struct:Std::DateTime/function:format/parameter:this",
               "name": "this",
               "type": "const DateTime*"
             },
             {
-              "id": "struct:Std::DateTime/function:formatCharArray/parameter:buffer",
+              "id": "struct:Std::DateTime/function:format/parameter:buffer",
               "name": "buffer",
-              "overload": true,
+              "modifier": "prep",
               "type": "char[]",
+              "defaultValue": "default",
               "metadata": [
                 {
                   "name": "summary",
@@ -10614,24 +10394,22 @@
           ]
         },
         {
-          "id": "struct:Std::OffsetDateTime/function:formatCharArray",
+          "id": "struct:Std::OffsetDateTime/function:format",
           "name": "format",
           "visibility": "public",
-          "invokerName": "format",
-          "callableName": "formatCharArray",
           "returnType": "nuint",
-          "ascription": "CharFormatter",
           "parameters": [
             {
-              "id": "struct:Std::OffsetDateTime/function:formatCharArray/parameter:this",
+              "id": "struct:Std::OffsetDateTime/function:format/parameter:this",
               "name": "this",
               "type": "const OffsetDateTime*"
             },
             {
-              "id": "struct:Std::OffsetDateTime/function:formatCharArray/parameter:buffer",
+              "id": "struct:Std::OffsetDateTime/function:format/parameter:buffer",
               "name": "buffer",
-              "overload": true,
+              "modifier": "prep",
               "type": "char[]",
+              "defaultValue": "default",
               "metadata": [
                 {
                   "name": "summary",
