@@ -19,6 +19,111 @@ API_GROUPS = [
     ("variable", "constants", "Constants"),
 ]
 API_GROUP_BY_KIND = {kind: (path, title) for kind, path, title in API_GROUPS}
+CAMP_DECLARATION_KEYWORDS = {
+    "abstract",
+    "alias",
+    "class",
+    "enum",
+    "export",
+    "extern",
+    "fixed",
+    "inline",
+    "interface",
+    "internal",
+    "namespace",
+    "newtype",
+    "override",
+    "public",
+    "sealed",
+    "shadow",
+    "static",
+    "struct",
+    "virtual",
+}
+CAMP_STATEMENT_KEYWORDS = {
+    "await",
+    "break",
+    "case",
+    "catch",
+    "continue",
+    "default",
+    "delete",
+    "do",
+    "else",
+    "finally",
+    "for",
+    "foreach",
+    "goto",
+    "if",
+    "import",
+    "init",
+    "new",
+    "postpone",
+    "return",
+    "switch",
+    "throw",
+    "try",
+    "while",
+    "within",
+    "yield",
+}
+CAMP_MODIFIER_KEYWORDS = {
+    "const",
+    "constof",
+    "copyable",
+    "escaped",
+    "implements",
+    "in",
+    "once",
+    "out",
+    "overload",
+    "scoped",
+    "thrown",
+    "unsafe",
+    "unscoped",
+    "volatile",
+}
+CAMP_TYPE_KEYWORDS = {
+    "achar",
+    "any",
+    "astring",
+    "async",
+    "auto",
+    "bool",
+    "byte",
+    "char",
+    "classtype",
+    "delegate",
+    "double",
+    "float",
+    "fn",
+    "int",
+    "iter",
+    "long",
+    "nint",
+    "nuint",
+    "sbyte",
+    "short",
+    "string",
+    "uchar",
+    "uint",
+    "ulong",
+    "ushort",
+    "void",
+    "wchar",
+    "wstring",
+}
+CAMP_CONSTANTS = {"false", "null", "true"}
+CAMP_INTRINSICS = {"caller", "sizeof", "sourceof", "typenameof", "vtableof"}
+CAMP_KEYWORDS = CAMP_DECLARATION_KEYWORDS | CAMP_STATEMENT_KEYWORDS | CAMP_MODIFIER_KEYWORDS
+CAMP_TOKEN_RE = re.compile(
+    r"(?P<comment>//[^\n]*|/\*.*?\*/)"
+    r"|(?P<string>\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*')"
+    r"|(?P<attribute>@[A-Za-z_][A-Za-z0-9_]*)"
+    r"|(?P<number>\b(?:0x[0-9A-Fa-f_]+|0b[01_]+|\d(?:[\d_]*\d)?(?:\.\d(?:[\d_]*\d)?)?(?:[eE][+-]?\d(?:[\d_]*\d)?)?)\b)"
+    r"|(?P<word>\b[A-Za-z_][A-Za-z0-9_]*\b)",
+    re.DOTALL,
+)
 
 
 def generate_api_docs(api_src: Path, docs_root: Path) -> None:
@@ -54,14 +159,16 @@ class ApiReference:
         self.detail_urls: dict[str, str] = {}
         self.page_weights: dict[str, int] = {}
         self.type_names: set[str] = set()
+        self.written_paths: set[Path] = set()
+        self.top_level_function_group_counts: dict[tuple[str, str], int] = {}
+        self.constant_group_counts: dict[tuple[str, str], int] = {}
 
     def write(self, metadata: dict[str, Any] | None = None) -> None:
         metadata = metadata or read_metadata(self.metadata_path)
         declarations = [d for d in metadata.get("declarations") or [] if is_public_declaration(d)]
-        module = metadata.get("module") or {}
-        module_name = module.get("namespace") or module.get("name") or self.title
 
-        write_section(self.output_dir, self.title, weight=self.weight)
+        self.written_paths = set()
+        self.write_section(self.output_dir, self.title, weight=self.weight)
         self.type_names = {d.get("name") for d in declarations if d.get("kind") in TYPE_KINDS and d.get("name")}
 
         types = sorted_declarations([d for d in declarations if d.get("kind") in TYPE_KINDS])
@@ -69,9 +176,10 @@ class ApiReference:
         variables = sorted_declarations([d for d in declarations if d.get("kind") == "variable"])
         functions = sorted_declarations([d for d in declarations if d.get("kind") == "function"])
         self.assign_page_weights(types, enums, variables, functions)
+        self.assign_overload_group_counts(variables, functions)
 
         if self.grouped_sidebar:
-            self.write_group_sections(types, enums, variables, functions)
+            self.write_category_sections(declarations, types, enums, variables, functions)
 
         for obj in [*types, *enums]:
             url = self.object_url(obj)
@@ -88,13 +196,13 @@ class ApiReference:
             if fn.get("id"):
                 self.detail_urls[fn["id"]] = self.top_level_detail_url(fn)
 
-        self.write_overview(module_name, declarations, types, enums, variables, functions)
         for obj in types:
-            self.write_type_page(obj, functions)
+            self.write_type_page(obj, functions, variables)
         for obj in enums:
             self.write_enum_page(obj)
         self.write_functions_page(functions)
         self.write_constants_page(variables)
+        self.remove_stale_pages()
 
     def assign_page_weights(self, types: list[dict[str, Any]], enums: list[dict[str, Any]], variables: list[dict[str, Any]], functions: list[dict[str, Any]]) -> None:
         if not self.grouped_sidebar:
@@ -115,20 +223,41 @@ class ApiReference:
             for index, obj in enumerate(sorted_declarations(items), start=1):
                 self.page_weights[declaration_key(obj)] = index
 
-    def write_group_sections(self, types: list[dict[str, Any]], enums: list[dict[str, Any]], variables: list[dict[str, Any]], functions: list[dict[str, Any]]) -> None:
-        groups = {
-            "class": [d for d in types if d.get("kind") == "class"],
-            "struct": [d for d in types if d.get("kind") == "struct"],
-            "interface": [d for d in types if d.get("kind") == "interface"],
-            "enum": enums,
-            "newtype": [d for d in types if d.get("kind") == "newtype"],
-            "function": [d for d in functions if not receiver_type(d)],
-            "variable": variables,
-        }
-        for index, (kind, path_name, title) in enumerate(API_GROUPS, start=1):
-            items = sorted_declarations(groups[kind])
-            content = self.declaration_rows(items, kind) + "\n" + self.footer()
-            write_section(self.output_dir / path_name, title, weight=index + 1, content=content)
+    def assign_overload_group_counts(self, variables: list[dict[str, Any]], functions: list[dict[str, Any]]) -> None:
+        function_counts: dict[tuple[str, str], int] = {}
+        for fn in functions:
+            if self.grouped_sidebar and not self.is_external_extension_function(fn) and receiver_type(fn):
+                continue
+            key = (category_name(fn), fn.get("name") or "")
+            function_counts[key] = function_counts.get(key, 0) + 1
+        self.top_level_function_group_counts = function_counts
+
+        constant_counts: dict[tuple[str, str], int] = {}
+        for variable in variables:
+            owner = extension_variable_owner_name(variable)
+            if owner is None or owner in self.type_names:
+                continue
+            key = (category_name(variable), extension_variable_name(variable))
+            constant_counts[key] = constant_counts.get(key, 0) + 1
+        self.constant_group_counts = constant_counts
+
+    def write_category_sections(
+        self,
+        declarations: list[dict[str, Any]],
+        types: list[dict[str, Any]],
+        enums: list[dict[str, Any]],
+        variables: list[dict[str, Any]],
+        functions: list[dict[str, Any]],
+    ) -> None:
+        for index, category in enumerate(self.categories(declarations), start=1):
+            category_root = self.output_dir / category_slug(category)
+            category_declarations = [item for item in declarations if category_name(item) == category]
+            category_types = [item for item in types if category_name(item) == category]
+            category_enums = [item for item in enums if category_name(item) == category]
+            category_variables = [item for item in variables if category_name(item) == category]
+            category_functions = [item for item in functions if category_name(item) == category]
+            content = self.category_overview(category, category_declarations, category_types, category_enums, category_variables, category_functions)
+            self.write_section(category_root, category, weight=index, content=content)
 
     def write_overview(
         self,
@@ -164,21 +293,54 @@ class ApiReference:
                 body.append(
                     f'<a class="api-index-row" href="{attr(self.object_url(obj))}">'
                     f'<span class="api-index-kind">{esc(kind)}</span>'
-                    f'<span class="api-index-main"><span class="api-signature">{declaration_signature(obj)}</span>'
+                    f'<span class="api-index-main"><span class="api-signature">{self.index_signature(obj)}</span>'
                     f"{self.summary(obj)}</span></a>"
                 )
             body.append("</div></section>")
         body.append(self.footer())
-        write_page(self.output_dir / "overview.md", self.title, 1, "\n".join(body), nav_title="Overview")
+        self.write_page(self.output_dir / "overview.md", self.title, 1, "\n".join(body), nav_title="Overview")
 
-    def write_type_page(self, obj: dict[str, Any], all_functions: list[dict[str, Any]]) -> None:
+    def categories(self, declarations: list[dict[str, Any]]) -> list[str]:
+        return sorted({category_name(item) for item in declarations}, key=lambda value: value.lower())
+
+    def category_overview(
+        self,
+        category: str,
+        declarations: list[dict[str, Any]],
+        types: list[dict[str, Any]],
+        enums: list[dict[str, Any]],
+        variables: list[dict[str, Any]],
+        functions: list[dict[str, Any]],
+    ) -> str:
+        body = [
+            '<div class="api-lede">',
+            f"<p>{len(declarations)} public declarations in the {esc(category)} category.</p>",
+            "</div>",
+        ]
+        type_items = sorted_declarations([*types, *enums])
+        extension_functions = [item for item in functions if self.is_external_extension_function(item)]
+        extension_variables = [item for item in variables if self.is_external_extension_variable(item)]
+        category_functions = [*extension_functions, *[item for item in functions if not receiver_type(item)]]
+        category_variables = [*extension_variables, *[item for item in variables if not self.extension_variable_owner(item)]]
+        if type_items:
+            body.append(f'<section class="api-index-group"><h2>Types</h2>{self.type_rows(type_items)}</section>')
+        if category_functions:
+            body.append(f'<section class="api-index-group"><h2>Functions</h2>{self.declaration_rows(category_functions, "function")}</section>')
+        if category_variables:
+            body.append(f'<section class="api-index-group"><h2>Constants</h2>{self.declaration_rows(category_variables, "variable")}</section>')
+        body.append(self.footer())
+        return "\n".join(body)
+
+    def write_type_page(self, obj: dict[str, Any], all_functions: list[dict[str, Any]], all_variables: list[dict[str, Any]]) -> None:
         name = display_name(obj)
-        extensions = [fn for fn in all_functions if is_public_member(fn, None) and normalize_receiver_base(receiver_type(fn)) == obj.get("name")]
-        lifecycle_members, fields, instance_members, static_members = split_members(obj, extensions)
+        extensions = [fn for fn in all_functions if is_public_member(fn, None) and self.extension_owner_name(receiver_type(fn)) == obj.get("name")]
+        extension_variables = [variable for variable in all_variables if is_public_member(variable, None) and self.extension_variable_owner(variable) == obj.get("name")]
+        lifecycle_members, fields, instance_members, static_members = split_members(obj, extensions, extension_variables)
         body = [
             f"<h1>{esc(name)}</h1>",
             "",
-            f'<div class="api-declaration"><pre><code>{declaration_signature(obj)}</code></pre></div>',
+            f'<p class="api-backlink"><a href="{attr(self.category_prefix(obj))}">Back to {esc(category_name(obj))}</a></p>' if self.grouped_sidebar else "",
+            self.declaration_block(declaration_signature(obj, escape=False)),
             self.metadata(obj),
         ]
         if obj.get("kind") == "newtype" and obj.get("callableType") and obj.get("parameters"):
@@ -190,7 +352,7 @@ class ApiReference:
         if not lifecycle_members and not fields and not instance_members and not static_members:
             body.append('<p class="api-empty">No members.</p>')
         body.append(self.footer())
-        write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name)
+        self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar)
         for member in [*lifecycle_members, *fields, *instance_members, *static_members]:
             self.write_member_detail(obj, member)
         for member in [*collapse_overload_items(instance_members), *collapse_overload_items(static_members)]:
@@ -203,58 +365,66 @@ class ApiReference:
         body = [
             f"<h1>{esc(name)}</h1>",
             "",
-            f'<div class="api-declaration"><pre><code>{declaration_signature(obj)}</code></pre></div>',
+            f'<p class="api-backlink"><a href="{attr(self.category_prefix(obj))}">Back to {esc(category_name(obj))}</a></p>' if self.grouped_sidebar else "",
+            self.declaration_block(declaration_signature(obj, escape=False)),
             self.metadata(obj),
             self.member_section("Values", obj, values, preserve_order=True),
             self.footer(),
         ]
-        write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name)
+        self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar)
 
     def write_functions_page(self, functions: list[dict[str, Any]]) -> None:
-        free = [fn for fn in functions if not receiver_type(fn)]
+        free = functions if self.grouped_sidebar else [fn for fn in functions if not receiver_type(fn)]
         if not self.grouped_sidebar:
             body = ["<h1>Functions</h1>", "", self.declaration_rows(free, "function"), self.footer()]
-            write_page(self.output_dir / "functions.md", "Functions", 9000, "\n".join(body), nav_hidden=True)
+            self.write_page(self.output_dir / "functions.md", "Functions", 9000, "\n".join(body), nav_hidden=True)
         for index, fn in enumerate(sorted_declarations(free), start=1):
             self.write_top_level_detail(fn, index)
-        for item in collapse_overload_items([("function", fn, False, {}) for fn in sorted_declarations(free)]):
+        for item in collapse_overload_items([("function", fn, False, {"fullReceiver": self.grouped_sidebar}) for fn in sorted_declarations(free)]):
             if item[0] == "overload-group":
                 self.write_top_level_overload_group_detail(item)
 
     def write_constants_page(self, variables: list[dict[str, Any]]) -> None:
         if not self.grouped_sidebar:
             body = ["<h1>Constants</h1>", "", self.declaration_rows(variables, "variable"), self.footer()]
-            write_page(self.output_dir / "constants.md", "Constants", 9001, "\n".join(body), nav_hidden=True)
+            self.write_page(self.output_dir / "constants.md", "Constants", 9001, "\n".join(body), nav_hidden=True)
         for index, variable in enumerate(sorted_declarations(variables), start=1):
             self.write_constant_detail(variable, index)
+        for item in collapse_constant_overload_items([("variable", variable, False, {}) for variable in sorted_declarations(variables)], self.type_names):
+            if item[0] == "constant-overload-group":
+                self.write_constant_overload_group_detail(item)
 
     def write_member_detail(self, owner: dict[str, Any], item: tuple[str, dict[str, Any], bool, dict[str, Any]]) -> None:
         kind, obj, omit_receiver, options = item
-        title = f"{owner.get('name', 'Type')}.{obj.get('name', 'member')}"
+        title = f"{owner.get('name', 'Type')}.{options.get('memberName') or obj.get('name', 'member')}"
+        backlink_url = self.member_backlink_url(owner, kind, obj)
+        backlink_text = self.member_backlink_text(owner, kind, obj)
         body = [
             f"<h1>{esc(title)}</h1>",
             "",
-            f'<p class="api-backlink"><a href="{attr(self.object_url(owner))}">Back to {esc(display_name(owner))}</a></p>',
-            f'<div class="api-declaration"><pre><code>{self.detail_signature(kind, obj, omit_receiver, full_receiver=options.get("extension", False))}</code></pre></div>',
+            f'<p class="api-backlink"><a href="{attr(backlink_url)}">Back to {esc(backlink_text)}</a></p>',
+            self.declaration_block(self.detail_signature(kind, obj, omit_receiver, full_receiver=options.get("extension", False), member_name=options.get("memberName"), escape=False)),
             self.metadata(obj),
         ]
         if kind == "function":
             body.append(self.parameters(obj.get("parameters") or [], omit_receiver, full_receiver=options.get("extension", False)))
         body.append(self.footer())
-        write_page(self.member_detail_path(owner, obj), title, 10000, "\n".join(filter(None, body)), nav_hidden=True)
+        self.write_page(self.member_detail_path(owner, obj), title, 10000, "\n".join(filter(None, body)), nav_hidden=True)
 
     def write_top_level_detail(self, fn: dict[str, Any], index: int = 10000) -> None:
         title = fn.get("name") or "Function"
+        backlink_url = self.top_level_function_backlink_url(fn)
+        backlink_text = self.top_level_function_backlink_text(fn)
         body = [
             f"<h1>{esc(title)}</h1>",
             "",
-            f'<p class="api-backlink"><a href="{attr(self.prefix())}functions/">Back to Functions</a></p>',
-            f'<div class="api-declaration"><pre><code>{self.detail_signature("function", fn, False, full_receiver=True)}</code></pre></div>',
+            f'<p class="api-backlink"><a href="{attr(backlink_url)}">Back to {esc(backlink_text)}</a></p>',
+            self.declaration_block(self.detail_signature("function", fn, False, full_receiver=True, escape=False)),
             self.metadata(fn),
             self.parameters(fn.get("parameters") or []),
             self.footer(),
         ]
-        write_page(self.top_level_detail_path(fn), title, index if self.grouped_sidebar else 10000, "\n".join(filter(None, body)), nav_title=signature_plain(fn, False), nav_hidden=True)
+        self.write_page(self.top_level_detail_path(fn), title, index if self.grouped_sidebar else 10000, "\n".join(filter(None, body)), nav_title=signature_plain(fn, False), nav_hidden=True)
 
     def write_top_level_overload_group_detail(self, item: tuple[str, dict[str, Any], bool, dict[str, Any]]) -> None:
         _, group, _, _ = item
@@ -262,25 +432,40 @@ class ApiReference:
         body = [
             f"<h1>{esc(title)}</h1>",
             "",
-            f'<p class="api-backlink"><a href="{attr(self.prefix())}functions/">Back to Functions</a></p>',
+            f'<p class="api-backlink"><a href="{attr(self.category_prefix(group))}">Back to {esc(category_name(group))}</a></p>',
             self.overloads(None, group),
             self.footer(),
         ]
-        write_page(self.top_level_overload_group_path(group), title, 10000, "\n".join(filter(None, body)), nav_hidden=True)
+        self.write_page(self.top_level_overload_group_path(group), title, 10000, "\n".join(filter(None, body)), nav_hidden=True)
 
     def write_constant_detail(self, variable: dict[str, Any], index: int = 10000) -> None:
         if not self.grouped_sidebar:
             return
         title = variable.get("name") or "Constant"
+        backlink_url = self.constant_backlink_url(variable)
+        backlink_text = self.constant_backlink_text(variable)
         body = [
             f"<h1>{esc(title)}</h1>",
             "",
-            f'<p class="api-backlink"><a href="{attr(self.prefix())}constants/">Back to Constants</a></p>',
-            f'<div class="api-declaration"><pre><code>{self.detail_signature("variable", variable, False)}</code></pre></div>',
+            f'<p class="api-backlink"><a href="{attr(backlink_url)}">Back to {esc(backlink_text)}</a></p>',
+            self.declaration_block(self.detail_signature("variable", variable, False, escape=False)),
             self.metadata(variable),
             self.footer(),
         ]
-        write_page(self.constant_detail_path(variable), title, index, "\n".join(filter(None, body)), nav_hidden=True)
+        self.write_page(self.constant_detail_path(variable), title, index, "\n".join(filter(None, body)), nav_hidden=True)
+
+    def write_constant_overload_group_detail(self, item: tuple[str, dict[str, Any], bool, dict[str, Any]]) -> None:
+        _, group, _, _ = item
+        title = group.get("name") or "Constants"
+        rows = [self.row(None, ("variable", variable, False, {})) for variable in group.get("overloads") or []]
+        body = [
+            f"<h1>{esc(title)}</h1>",
+            "",
+            f'<p class="api-backlink"><a href="{attr(self.category_prefix(group))}">Back to {esc(category_name(group))}</a></p>',
+            '<div class="api-member-list api-declaration-list">' + "\n".join(rows) + "</div>",
+            self.footer(),
+        ]
+        self.write_page(self.constant_overload_group_path(group), title, 10000, "\n".join(filter(None, body)), nav_hidden=True)
 
     def member_section(self, title: str, owner: dict[str, Any], items: list[tuple[str, dict[str, Any], bool, dict[str, Any]]], preserve_order: bool = False) -> str:
         if not items:
@@ -292,9 +477,48 @@ class ApiReference:
     def declaration_rows(self, items: list[dict[str, Any]], kind: str) -> str:
         if not items:
             return '<p class="api-empty">No declarations.</p>'
-        row_items = [("function", item, False, {}) for item in sorted_declarations(items)] if kind == "function" else [(kind, item, False, {}) for item in sorted_declarations(items)]
-        rows = [self.row(None, item) for item in collapse_overload_items(row_items)]
+        row_items = [("function", item, False, {"fullReceiver": True}) for item in sorted_declarations(items)] if kind == "function" else [(kind, item, False, {}) for item in sorted_declarations(items)]
+        row_items = collapse_overload_items(row_items) if kind == "function" else collapse_constant_overload_items(row_items, self.type_names) if kind == "variable" else row_items
+        rows = [self.row(None, item) for item in row_items]
         return '<div class="api-member-list api-declaration-list">' + "\n".join(rows) + "</div>"
+
+    def type_rows(self, items: list[dict[str, Any]]) -> str:
+        rows = []
+        for obj in sorted_declarations(items):
+            signature = type_list_signature(obj)
+            rows.append(
+                '<div class="api-member-row">'
+                f'<div class="api-member-type">{esc(obj.get("kind") or "")}</div>'
+                '<div class="api-member-main">'
+                f'<div class="api-member-sig"><a href="{attr(self.object_url(obj))}">{signature}</a></div>'
+                f'{self.metadata(obj, compact=True)}'
+                '</div>'
+                '</div>'
+            )
+        return '<div class="api-member-list api-declaration-list">' + "\n".join(rows) + "</div>"
+
+    def is_external_extension_function(self, fn: dict[str, Any]) -> bool:
+        receiver = receiver_type(fn)
+        if not receiver:
+            return False
+        owner = self.extension_owner_name(receiver)
+        return owner not in self.type_names
+
+    def is_external_extension_variable(self, variable: dict[str, Any]) -> bool:
+        owner = self.extension_variable_owner(variable)
+        return owner is not None and owner not in self.type_names
+
+    def extension_owner_name(self, value: str | None) -> str | None:
+        return normalize_receiver_base(value)
+
+    def extension_receiver_label(self, value: str | None) -> str | None:
+        return normalize_receiver_label(value)
+
+    def extension_variable_owner(self, variable: dict[str, Any]) -> str | None:
+        name = variable.get("name") or ""
+        if "." not in name:
+            return None
+        return name.split(".", 1)[0]
 
     def row(self, owner: dict[str, Any] | None, item: tuple[str, dict[str, Any], bool, dict[str, Any]]) -> str:
         kind, obj, omit_receiver, options = item
@@ -302,10 +526,13 @@ class ApiReference:
         signature = ""
         if kind == "overload-group":
             first = esc(obj.get("returnType") or "void")
-            signature = f"<strong>{esc(obj.get('name') or '')}</strong>()"
+            signature = f"<strong>{esc(obj.get('name') or '')}</strong>(...)"
+        elif kind == "constant-overload-group":
+            first = esc(obj.get("type") or "(multiple types)")
+            signature = f"<strong>{esc(obj.get('name') or '')}</strong>"
         elif kind == "function":
             first = esc(lifecycle_kind(obj) or obj.get("returnType") or "void")
-            signature = member_signature(obj, omit_receiver, full_receiver=options.get("extension", False))
+            signature = member_signature(obj, omit_receiver, full_receiver=options.get("extension", False) or options.get("fullReceiver", False))
         elif kind in DECLARATION_KINDS:
             first = esc(kind)
             signature = declaration_signature(obj)
@@ -314,7 +541,7 @@ class ApiReference:
             signature = f"<strong>{esc(obj.get('name', ''))}</strong>{constant_value_display(obj)}"
         elif kind == "variable":
             first = esc(inline_constant_type(obj))
-            signature = f"<strong>{esc(obj.get('name', ''))}</strong>{constant_value_display(obj)}"
+            signature = f"<strong>{esc(options.get('memberName') or obj.get('name', ''))}</strong>{constant_value_display(obj)}"
         elif kind == "enum-value":
             signature = f"<strong>{esc(obj.get('name', ''))}</strong>{enum_value_display(obj)}"
         href = ""
@@ -322,6 +549,8 @@ class ApiReference:
             href = self.overload_group_url(owner, obj)
         elif kind == "overload-group":
             href = self.top_level_overload_group_url(obj)
+        elif kind == "constant-overload-group":
+            href = self.constant_overload_group_url(obj)
         elif owner:
             href = self.member_detail_url(owner, obj)
         elif obj.get("kind") in DECLARATION_KINDS:
@@ -371,9 +600,9 @@ class ApiReference:
             omit_receiver = overload["omitReceiver"]
             rows.append(
                 '<section class="api-overload">'
-                f'<div class="api-declaration"><pre><code>{self.detail_signature("function", obj, omit_receiver, full_receiver=overload.get("extension", False))}</code></pre></div>'
+                f'{self.declaration_block(self.detail_signature("function", obj, omit_receiver, full_receiver=overload.get("extension", False) or overload.get("fullReceiver", False), escape=False))}'
                 f"{self.metadata(obj)}"
-                f"{self.parameters(obj.get('parameters') or [], omit_receiver, show_title=False, full_receiver=overload.get('extension', False))}"
+                f"{self.parameters(obj.get('parameters') or [], omit_receiver, show_title=False, full_receiver=overload.get('extension', False) or overload.get('fullReceiver', False))}"
                 "</section>"
             )
         return '<div class="api-overload-list">' + "\n".join(rows) + "</div>" if rows else ""
@@ -388,10 +617,10 @@ class ApiReference:
             self.overloads(owner, group),
             self.footer(),
         ]
-        write_page(self.overload_group_path(owner, group), title, 10000, "\n".join(filter(None, body)), nav_hidden=True)
+        self.write_page(self.overload_group_path(owner, group), title, 10000, "\n".join(filter(None, body)), nav_hidden=True)
 
     def metadata(self, obj: dict[str, Any], compact: bool = False, summary_only: bool = False) -> str:
-        items = obj.get("metadata") or []
+        items = [item for item in obj.get("metadata") or [] if item.get("name") not in {"category", "overload"}]
         if summary_only:
             items = [item for item in items if item.get("name") == "summary"]
         if compact:
@@ -410,7 +639,7 @@ class ApiReference:
             if name == "summary":
                 summary_blocks.append(f'<div class="api-doc-summary">{doc_text(content)}</div>')
             elif name == "example":
-                section_blocks.append(f'<section class="api-doc-section"><h3>Example</h3><pre><code>{esc(example_text(str(raw_content or "")))}</code></pre></section>')
+                section_blocks.append(f'<section class="api-doc-section"><h3>Example</h3><pre class="camp-code"><code data-lang="camp">{highlight_camp_code(example_text(str(raw_content or "")))}</code></pre></section>')
             elif name == "see":
                 section_blocks.append(f'<section class="api-doc-section"><h3>See also</h3>{doc_text(content)}</section>')
             else:
@@ -468,22 +697,64 @@ class ApiReference:
             return f'<a href="{attr(self.name_to_url[text])}">{esc(text)}</a>'
         return f"<code>{esc(text)}</code>"
 
-    def detail_signature(self, kind: str, obj: dict[str, Any], omit_receiver: bool, full_receiver: bool = False) -> str:
+    def declaration_block(self, code: str) -> str:
+        return f'<div class="api-declaration"><pre class="camp-code"><code data-lang="camp">{highlight_camp_code(code)}</code></pre></div>'
+
+    def member_backlink_url(self, owner: dict[str, Any], kind: str, obj: dict[str, Any]) -> str:
+        if kind == "function" and is_overload_function(obj):
+            return self.overload_group_url(owner, {"name": obj.get("name") or "overloads"})
+        return self.object_url(owner)
+
+    def member_backlink_text(self, owner: dict[str, Any], kind: str, obj: dict[str, Any]) -> str:
+        if kind == "function" and is_overload_function(obj):
+            return f"{obj.get('name') or 'member'} overloads"
+        return display_name(owner)
+
+    def top_level_function_backlink_url(self, fn: dict[str, Any]) -> str:
+        if self.top_level_function_group_counts.get((category_name(fn), fn.get("name") or ""), 0) > 1:
+            return self.top_level_overload_group_url(fn)
+        return self.category_prefix(fn)
+
+    def top_level_function_backlink_text(self, fn: dict[str, Any]) -> str:
+        if self.top_level_function_group_counts.get((category_name(fn), fn.get("name") or ""), 0) > 1:
+            return f"{fn.get('name') or 'function'} overloads"
+        return category_name(fn)
+
+    def constant_backlink_url(self, variable: dict[str, Any]) -> str:
+        key = (category_name(variable), extension_variable_name(variable))
+        if self.constant_group_counts.get(key, 0) > 1:
+            return self.constant_overload_group_url({"name": extension_variable_name(variable), "metadata": variable.get("metadata") or []})
+        return self.category_prefix(variable)
+
+    def constant_backlink_text(self, variable: dict[str, Any]) -> str:
+        key = (category_name(variable), extension_variable_name(variable))
+        if self.constant_group_counts.get(key, 0) > 1:
+            return f"{extension_variable_name(variable)} overloads"
+        return category_name(variable)
+
+    def detail_signature(self, kind: str, obj: dict[str, Any], omit_receiver: bool, full_receiver: bool = False, member_name: str | None = None, escape: bool = True) -> str:
         if kind == "function":
-            return esc((obj.get("returnType") or "void") + " " + signature_plain(obj, omit_receiver, full_receiver=full_receiver))
+            text = (obj.get("returnType") or "void") + " " + signature_plain(obj, omit_receiver, full_receiver=full_receiver)
+            return esc(text) if escape else text
         if kind == "field":
             text = (field_type_display(obj) + " " + obj.get("name", "")).strip()
             if "value" in obj:
                 text += " = " + str(obj["value"])
-            return esc(text)
+            return esc(text) if escape else text
         if kind == "variable":
-            text = (inline_constant_type(obj) + " " + obj.get("name", "")).strip()
+            text = (inline_constant_type(obj) + " " + (member_name or obj.get("name", ""))).strip()
             if "value" in obj:
                 text += " = " + str(obj["value"])
-            return esc(text)
+            return esc(text) if escape else text
         if kind == "enum-value":
-            return esc(obj.get("name", "") + (" = " + str(obj["value"]) if "value" in obj else ""))
-        return esc(obj.get("name", ""))
+            text = obj.get("name", "") + (" = " + str(obj["value"]) if "value" in obj else "")
+            return esc(text) if escape else text
+        return esc(obj.get("name", "")) if escape else obj.get("name", "")
+
+    def index_signature(self, obj: dict[str, Any]) -> str:
+        if obj.get("kind") == "function":
+            return f"{esc(obj.get('returnType') or 'void')} <strong>{esc(obj.get('name') or '')}</strong>{declaration_type_parameters_display(obj)}({params_display(obj, False, full_receiver=True)})"
+        return declaration_signature(obj)
 
     def object_url(self, obj: dict[str, Any]) -> str:
         if obj.get("kind") == "function":
@@ -504,15 +775,18 @@ class ApiReference:
         return prefix + overload_group_slug(owner, group) + "/"
 
     def top_level_detail_url(self, fn: dict[str, Any]) -> str:
-        prefix = self.prefix() + ("functions/" if self.grouped_sidebar else "")
-        return prefix + "function-" + slug(signature_plain(fn, False)) + "/"
+        prefix = self.category_prefix(fn) if self.grouped_sidebar else self.prefix()
+        return prefix + "function-" + slug(signature_plain(fn, False, full_receiver=self.grouped_sidebar)) + "/"
 
     def top_level_overload_group_url(self, group: dict[str, Any]) -> str:
-        prefix = self.prefix() + ("functions/" if self.grouped_sidebar else "")
+        prefix = self.category_prefix(group) if self.grouped_sidebar else self.prefix()
         return prefix + "function-" + slug(group.get("name") or "overloads") + "-overloads/"
 
     def constant_detail_url(self, variable: dict[str, Any]) -> str:
-        return self.prefix() + "constants/" + slug(variable.get("name") or "constant") + "/"
+        return self.category_prefix(variable) + slug(variable.get("name") or "constant") + "/" if self.grouped_sidebar else self.prefix() + "constants/" + slug(variable.get("name") or "constant") + "/"
+
+    def constant_overload_group_url(self, group: dict[str, Any]) -> str:
+        return self.category_prefix(group) + "constant-" + slug(group.get("name") or "overloads") + "-overloads/"
 
     def member_detail_path(self, owner: dict[str, Any], member: dict[str, Any]) -> Path:
         return self.output_dir / f"{self.declaration_group_path(owner)}" / f"{detail_slug(owner, member)}.md" if self.grouped_sidebar else self.output_dir / f"{detail_slug(owner, member)}.md"
@@ -521,13 +795,16 @@ class ApiReference:
         return self.output_dir / f"{self.declaration_group_path(owner)}" / f"{overload_group_slug(owner, group)}.md" if self.grouped_sidebar else self.output_dir / f"{overload_group_slug(owner, group)}.md"
 
     def top_level_detail_path(self, fn: dict[str, Any]) -> Path:
-        return (self.output_dir / "functions" if self.grouped_sidebar else self.output_dir) / f"function-{slug(signature_plain(fn, False))}.md"
+        return (self.output_dir / category_slug(category_name(fn)) if self.grouped_sidebar else self.output_dir) / f"function-{slug(signature_plain(fn, False, full_receiver=self.grouped_sidebar))}.md"
 
     def top_level_overload_group_path(self, group: dict[str, Any]) -> Path:
-        return (self.output_dir / "functions" if self.grouped_sidebar else self.output_dir) / f"function-{slug(group.get('name') or 'overloads')}-overloads.md"
+        return (self.output_dir / category_slug(category_name(group)) if self.grouped_sidebar else self.output_dir) / f"function-{slug(group.get('name') or 'overloads')}-overloads.md"
 
     def constant_detail_path(self, variable: dict[str, Any]) -> Path:
-        return self.output_dir / "constants" / f"{slug(variable.get('name') or 'constant')}.md"
+        return self.output_dir / category_slug(category_name(variable)) / f"{slug(variable.get('name') or 'constant')}.md" if self.grouped_sidebar else self.output_dir / "constants" / f"{slug(variable.get('name') or 'constant')}.md"
+
+    def constant_overload_group_path(self, group: dict[str, Any]) -> Path:
+        return self.output_dir / category_slug(category_name(group)) / f"constant-{slug(group.get('name') or 'overloads')}-overloads.md"
 
     def declaration_path(self, obj: dict[str, Any]) -> Path:
         group = self.declaration_group_path(obj)
@@ -536,8 +813,17 @@ class ApiReference:
     def declaration_group_path(self, obj: dict[str, Any]) -> str:
         if not self.grouped_sidebar:
             return ""
-        info = API_GROUP_BY_KIND.get(obj.get("kind"))
-        return info[0] if info else ""
+        return category_slug(category_name(obj))
+
+    def category_prefix(self, obj: dict[str, Any]) -> str:
+        return self.prefix() + category_slug(category_name(obj)) + "/"
+
+    def kind_url(self, obj: dict[str, Any], kind: str) -> str:
+        if not self.grouped_sidebar:
+            info = API_GROUP_BY_KIND.get(kind)
+            return self.prefix() + (info[0] + "/" if info else "")
+        info = API_GROUP_BY_KIND.get(kind)
+        return self.category_prefix(obj) + (info[0] + "/" if info else "")
 
     def declaration_weight(self, obj: dict[str, Any]) -> int:
         return self.page_weights.get(declaration_key(obj), 10000)
@@ -547,6 +833,26 @@ class ApiReference:
 
     def footer(self) -> str:
         return f'<p class="api-generated">Generated with campc {esc(self.campc_version)}.</p>'
+
+    def write_section(self, path: Path, title: str, weight: int | None = None, content: str = "", nav_hidden: bool = False) -> None:
+        self.written_paths.add(path / "_index.md")
+        write_section(path, title, weight=weight, content=content, nav_hidden=nav_hidden)
+
+    def write_page(self, path: Path, title: str, weight: int, content: str, nav_title: str | None = None, nav_hidden: bool = False) -> None:
+        self.written_paths.add(path)
+        write_page(path, title, weight, content, nav_title=nav_title, nav_hidden=nav_hidden)
+
+    def remove_stale_pages(self) -> None:
+        if not self.output_dir.exists():
+            return
+        for path in sorted(self.output_dir.rglob("*.md"), reverse=True):
+            if path not in self.written_paths:
+                path.unlink()
+        for path in sorted((p for p in self.output_dir.rglob("*") if p.is_dir()), reverse=True):
+            try:
+                path.rmdir()
+            except OSError:
+                pass
 
 
 def read_metadata(path: Path) -> dict[str, Any]:
@@ -562,6 +868,13 @@ def read_text(path: Path, fallback: str) -> str:
     return path.read_text(encoding="utf-8") if path.exists() else fallback
 
 
+def write_text_if_changed(path: Path, text: str) -> None:
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
 def write_section(path: Path, title: str, weight: int | None = None, content: str = "", nav_hidden: bool = False) -> None:
     path.mkdir(parents=True, exist_ok=True)
     lines = ["+++", f'title = "{toml(title)}"', 'sort_by = "weight"']
@@ -571,7 +884,7 @@ def write_section(path: Path, title: str, weight: int | None = None, content: st
     if nav_hidden:
         lines.extend(["", "[extra]", "nav_hidden = true"])
     lines.extend(["+++", "", content])
-    (path / "_index.md").write_text("\n".join(lines), encoding="utf-8")
+    write_text_if_changed(path / "_index.md", "\n".join(lines))
 
 
 def write_page(path: Path, title: str, weight: int, content: str, nav_title: str | None = None, nav_hidden: bool = False) -> None:
@@ -584,7 +897,7 @@ def write_page(path: Path, title: str, weight: int, content: str, nav_title: str
     if extra:
         lines.extend(["", "[extra]", *extra])
     lines.extend(["+++", "", content])
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    write_text_if_changed(path, "\n".join(lines) + "\n")
 
 
 def write_placeholder(path: Path, title: str, weight: int, message: str) -> None:
@@ -604,8 +917,47 @@ def toml(value: str) -> str:
     return value.replace("\\", "\\\\").replace('"', '\\"')
 
 
+def camp_token_class(match: re.Match[str]) -> str | None:
+    group = match.lastgroup
+    value = match.group()
+    if group == "comment":
+        return "c-comment"
+    if group == "string":
+        return "c-string"
+    if group == "attribute":
+        return "c-attribute"
+    if group == "number":
+        return "c-number"
+    if group == "word":
+        if value in CAMP_KEYWORDS:
+            return "c-keyword"
+        if value in CAMP_TYPE_KEYWORDS:
+            return "c-type"
+        if value in CAMP_INTRINSICS:
+            return "c-intrinsic"
+        if value in CAMP_CONSTANTS:
+            return "c-constant"
+    return None
+
+
+def highlight_camp_code(code: str) -> str:
+    result: list[str] = []
+    offset = 0
+    for match in CAMP_TOKEN_RE.finditer(code):
+        result.append(html.escape(code[offset : match.start()]))
+        token = html.escape(match.group())
+        token_class = camp_token_class(match)
+        if token_class is None:
+            result.append(token)
+        else:
+            result.append(f'<span class="{token_class}">{token}</span>')
+        offset = match.end()
+    result.append(html.escape(code[offset:]))
+    return "".join(result)
+
+
 def slug(value: Any) -> str:
-    return re.sub(r"[^A-Za-z0-9_-]+", "-", str(value or "")).strip("-").lower() or "item"
+    return re.sub(r"[^A-Za-z0-9]+", "-", str(value or "")).strip("-").lower() or "item"
 
 
 def display_name(obj: dict[str, Any]) -> str:
@@ -624,6 +976,17 @@ def sorted_declarations(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def declaration_key(obj: dict[str, Any]) -> str:
     return obj.get("id") or f"{obj.get('kind')}:{display_name(obj)}:{signature_plain(obj, False)}"
+
+
+def category_name(obj: dict[str, Any]) -> str:
+    for item in obj.get("metadata") or []:
+        if item.get("name") == "category" and item.get("content"):
+            return str(item["content"])
+    return "Uncategorized"
+
+
+def category_slug(name: str) -> str:
+    return slug(name)
 
 
 def children_of(obj: dict[str, Any]) -> list[dict[str, Any]]:
@@ -760,8 +1123,31 @@ def member_signature(obj: dict[str, Any], omit_receiver: bool, full_receiver: bo
     return f"<strong>{esc(obj.get('name') or '')}</strong>{type_parameters_display(obj)}({params_display(obj, omit_receiver, full_receiver=full_receiver)})"
 
 
-def declaration_signature(obj: dict[str, Any]) -> str:
+def declaration_signature(obj: dict[str, Any], escape: bool = True) -> str:
     kind = obj.get("kind")
+    if not escape:
+        if kind in {"class", "interface", "struct", "enum"}:
+            parts: list[str] = []
+            if obj.get("modifier"):
+                parts.append(obj["modifier"])
+            parts.extend([kind, (obj.get("name") or "") + type_parameters_plain(obj.get("typeParameters") or [], include_constraints=True)])
+            if obj.get("baseTypes"):
+                parts.append(": " + ", ".join(obj["baseTypes"]))
+            return " ".join(parts)
+        if kind == "newtype":
+            if obj.get("callableType"):
+                return f"newtype {obj.get('callableType')} {obj.get('returnType') or 'void'} {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}({params_plain(obj, False)})"
+            if obj.get("underlyingType"):
+                return f"newtype {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}: {obj.get('underlyingType')}"
+        if kind == "function":
+            return f"{obj.get('returnType') or 'void'} {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}({params_plain(obj, False)})"
+        if kind == "variable":
+            text = f"{inline_constant_type(obj)} {obj.get('name') or ''}"
+            if "value" in obj:
+                text += " = " + str(obj["value"])
+            return text
+        return display_name(obj)
+
     if kind in {"class", "interface", "struct", "enum"}:
         parts: list[str] = []
         if obj.get("modifier"):
@@ -780,6 +1166,37 @@ def declaration_signature(obj: dict[str, Any]) -> str:
     if kind == "variable":
         return f"{esc(inline_constant_type(obj))} <strong>{esc(obj.get('name') or '')}</strong>{constant_value_display(obj)}"
     return "<strong>" + esc(display_name(obj)) + "</strong>"
+
+
+def type_list_signature(obj: dict[str, Any]) -> str:
+    kind = obj.get("kind")
+    if kind in {"class", "interface", "struct", "enum"}:
+        parts = ["<strong>" + esc(obj.get("name") or "") + declaration_type_parameters_display(obj) + "</strong>"]
+        if obj.get("baseTypes"):
+            parts.append(": " + ", ".join(esc(item) for item in obj["baseTypes"]))
+        return " ".join(parts)
+    if kind == "newtype":
+        if obj.get("callableType"):
+            return f"{esc(obj.get('callableType'))} {esc(obj.get('returnType') or 'void')} <strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>({params_display(obj, False)})"
+        if obj.get("underlyingType"):
+            return f"<strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>: {esc(obj.get('underlyingType'))}"
+    return "<strong>" + esc(display_name(obj)) + "</strong>"
+
+
+def extension_function_label(obj: dict[str, Any]) -> str:
+    return esc((obj.get("name") or "") + type_parameters_plain(obj.get("typeParameters") or [], include_constraints=False) + "()")
+
+
+def extension_variable_name(obj: dict[str, Any]) -> str:
+    name = obj.get("name") or ""
+    return name.split(".", 1)[1] if "." in name else name
+
+
+def extension_variable_owner_name(obj: dict[str, Any]) -> str | None:
+    name = obj.get("name") or ""
+    if "." not in name:
+        return None
+    return name.split(".", 1)[0]
 
 
 def inline_constant_type(obj: dict[str, Any]) -> str:
@@ -869,7 +1286,30 @@ def normalize_receiver_base(value: str | None) -> str | None:
     return text.split("<", 1)[0].strip() if "<" in text else text or None
 
 
-def split_members(obj: dict[str, Any], extensions: list[dict[str, Any]]) -> tuple[list[tuple[str, dict[str, Any], bool, dict[str, Any]]], list[tuple[str, dict[str, Any], bool, dict[str, Any]]], list[tuple[str, dict[str, Any], bool, dict[str, Any]]], list[tuple[str, dict[str, Any], bool, dict[str, Any]]]]:
+def normalize_receiver_label(value: str | None) -> str | None:
+    if not value:
+        return None
+    text = value.strip()
+    changed = True
+    while changed:
+        changed = False
+        for qualifier in ["const ", "volatile ", "escaped ", "scoped ", "unscoped ", "in "]:
+            if text.startswith(qualifier):
+                text = text[len(qualifier) :].strip()
+                changed = True
+        new_text = re.sub(r"^(scoped|unscoped)\([^)]*\)\s+", "", text).strip()
+        if new_text != text:
+            text = new_text
+            changed = True
+    while True:
+        new_text = re.sub(r"\s*\*\s*$", "", text).strip()
+        if new_text == text:
+            break
+        text = new_text
+    return text.split("<", 1)[0].strip() if "<" in text else text or None
+
+
+def split_members(obj: dict[str, Any], extensions: list[dict[str, Any]], extension_variables: list[dict[str, Any]]) -> tuple[list[tuple[str, dict[str, Any], bool, dict[str, Any]]], list[tuple[str, dict[str, Any], bool, dict[str, Any]]], list[tuple[str, dict[str, Any], bool, dict[str, Any]]], list[tuple[str, dict[str, Any], bool, dict[str, Any]]]]:
     lifecycle: list[tuple[str, dict[str, Any], bool, dict[str, Any]]] = []
     fields: list[tuple[str, dict[str, Any], bool, dict[str, Any]]] = []
     instance: list[tuple[str, dict[str, Any], bool, dict[str, Any]]] = []
@@ -888,6 +1328,8 @@ def split_members(obj: dict[str, Any], extensions: list[dict[str, Any]]) -> tupl
             (static if fn.get("modifier") == "static" else instance).append(("function", fn, False, {"omitVisibility": obj.get("kind") == "interface"}))
     for fn in extensions:
         instance.append(("function", fn, False, {"extension": True}))
+    for variable in extension_variables:
+        static.append(("variable", variable, False, {"extension": True, "memberName": extension_variable_name(variable)}))
     return lifecycle, fields, instance, static
 
 
@@ -903,7 +1345,8 @@ def lifecycle_kind(obj: dict[str, Any]) -> str | None:
 def member_sort_key(item: tuple[str, dict[str, Any], bool, dict[str, Any]]) -> tuple[int, str, str]:
     _, obj, omit_receiver, options = item
     rank = 0 if obj.get("modifier") == "constructor" else 1 if obj.get("modifier") == "destructor" else 2
-    return rank, obj.get("name", "").lower(), signature_plain(obj, omit_receiver, full_receiver=options.get("extension", False)).lower()
+    signature = signature_plain(obj, omit_receiver, full_receiver=options.get("extension", False)) if obj.get("kind") == "function" else obj.get("name", "")
+    return rank, obj.get("name", "").lower(), signature.lower()
 
 
 def collapse_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[str, Any]]]) -> list[tuple[str, dict[str, Any], bool, dict[str, Any]]]:
@@ -913,7 +1356,7 @@ def collapse_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[st
 
     for item in items:
         kind, obj, omit_receiver, options = item
-        if kind != "function" or not is_overload_function(obj):
+        if kind != "function" or not (is_overload_function(obj) or options.get("fullReceiver", False)):
             result.append(item)
             continue
 
@@ -940,18 +1383,64 @@ def collapse_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[st
             {
                 "kind": "function",
                 "name": first.get("name") or "",
-                "returnType": next(iter(return_types)) if len(return_types) == 1 else "overload",
+                "returnType": next(iter(return_types)) if len(return_types) == 1 else "(multiple types)",
                 "modifier": first.get("modifier"),
                 "static": first.get("static"),
                 "overloadGroup": True,
                 "overloads": [
-                    {"member": item[1], "omitReceiver": item[2], "extension": item[3].get("extension", False)}
+                    {
+                        "member": item[1],
+                        "omitReceiver": item[2],
+                        "extension": item[3].get("extension", False),
+                        "fullReceiver": item[3].get("fullReceiver", False),
+                    }
                     for item in sorted(group, key=member_sort_key)
                 ],
-                "metadata": first.get("metadata") or [],
+                "metadata": overload_group_metadata([item[1] for item in group]),
             },
             group[0][2],
             {"extension": group[0][3].get("extension", False)},
+        ))
+
+    return sorted(result, key=member_sort_key)
+
+
+def collapse_constant_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[str, Any]]], type_names: set[str]) -> list[tuple[str, dict[str, Any], bool, dict[str, Any]]]:
+    result: list[tuple[str, dict[str, Any], bool, dict[str, Any]]] = []
+    groups: dict[tuple[str, str], list[tuple[str, dict[str, Any], bool, dict[str, Any]]]] = {}
+    group_order: list[tuple[str, str]] = []
+
+    for item in items:
+        kind, obj, _, _ = item
+        owner = extension_variable_owner_name(obj)
+        if kind != "variable" or owner is None or owner in type_names:
+            result.append(item)
+            continue
+
+        key = (category_name(obj), extension_variable_name(obj))
+        if key not in groups:
+            group_order.append(key)
+        groups.setdefault(key, []).append(item)
+
+    for key in group_order:
+        group = groups[key]
+        if len(group) == 1:
+            result.append(group[0])
+            continue
+        first = group[0][1]
+        types = {item[1].get("type") or "const" for item in group}
+        result.append((
+            "constant-overload-group",
+            {
+                "kind": "variable",
+                "name": extension_variable_name(first),
+                "type": next(iter(types)) if len(types) == 1 else "(multiple types)",
+                "overloadGroup": True,
+                "overloads": [item[1] for item in sorted(group, key=member_sort_key)],
+                "metadata": overload_group_metadata([item[1] for item in group]),
+            },
+            False,
+            {},
         ))
 
     return sorted(result, key=member_sort_key)
@@ -961,8 +1450,21 @@ def is_overload_function(obj: dict[str, Any]) -> bool:
     return any(parameter.get("overload") for parameter in obj.get("parameters") or [])
 
 
+def overload_group_metadata(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    for obj in items:
+        for item in obj.get("metadata") or []:
+            if item.get("name") == "overload" and item.get("content"):
+                return [{"name": "summary", "content": item["content"]}]
+    first = items[0] if items else {}
+    return [item for item in first.get("metadata") or [] if item.get("name") != "overload"]
+
+
 def detail_slug(owner: dict[str, Any], member: dict[str, Any]) -> str:
-    return slug((owner.get("name") or "type") + "-" + signature_plain(member, False))
+    if member.get("modifier") in {"constructor", "destructor"}:
+        text = f"{member.get('modifier')}-{signature_plain(member, False)}"
+    else:
+        text = signature_plain(member, False) if member.get("kind") == "function" else member.get("name", "")
+    return slug((owner.get("name") or "type") + "-" + text)
 
 
 def overload_group_slug(owner: dict[str, Any], group: dict[str, Any]) -> str:

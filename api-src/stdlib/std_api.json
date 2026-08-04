@@ -23,6 +23,16 @@
           "name": "size",
           "type": "nuint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Allocates a native heap block."
+        },
+        {
+          "name": "category",
+          "content": "Memory"
+        }
       ]
     },
     {
@@ -42,6 +52,16 @@
           "name": "new_size",
           "type": "nuint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Resizes a native heap block."
+        },
+        {
+          "name": "category",
+          "content": "Memory"
+        }
       ]
     },
     {
@@ -55,6 +75,16 @@
           "id": "function:Std::free/parameter:ptr",
           "name": "ptr",
           "type": "void*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Releases a native heap block."
+        },
+        {
+          "name": "category",
+          "content": "Memory"
         }
       ]
     },
@@ -105,84 +135,32 @@
             }
           ]
         }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Common allocation interface used by \u0060within\u0060, collection storage, and other standard-library APIs that need caller-selected allocation."
+        },
+        {
+          "name": "category",
+          "content": "Memory"
+        }
       ]
     },
     {
-      "id": "class:Std::HeapAllocator",
-      "kind": "class",
+      "id": "variable:Std::HeapAllocator",
+      "kind": "variable",
       "name": "HeapAllocator",
       "visibility": "public",
-      "baseTypes": [
-        "Allocator"
-      ],
-      "interfaces": [
+      "type": "Allocator* const",
+      "metadata": [
         {
-          "type": "Allocator",
-          "ref": "interface:Std::Allocator"
-        }
-      ],
-      "functions": [
-        {
-          "id": "class:Std::HeapAllocator/function:alloc",
-          "name": "alloc",
-          "visibility": "public",
-          "returnType": "void*",
-          "interfaceImplementation": {
-            "interfaceRef": "interface:Std::Allocator",
-            "interface": "Allocator",
-            "slot": "alloc",
-            "slotRef": "interface:Std::Allocator/function:alloc"
-          },
-          "parameters": [
-            {
-              "id": "class:Std::HeapAllocator/function:alloc/parameter:size",
-              "name": "size",
-              "type": "nuint"
-            }
-          ]
+          "name": "summary",
+          "content": "Default allocator backed by \u0060malloc\u0060, \u0060realloc\u0060, and \u0060free\u0060."
         },
         {
-          "id": "class:Std::HeapAllocator/function:realloc",
-          "name": "realloc",
-          "visibility": "public",
-          "returnType": "void*",
-          "interfaceImplementation": {
-            "interfaceRef": "interface:Std::Allocator",
-            "interface": "Allocator",
-            "slot": "realloc",
-            "slotRef": "interface:Std::Allocator/function:realloc"
-          },
-          "parameters": [
-            {
-              "id": "class:Std::HeapAllocator/function:realloc/parameter:ptr",
-              "name": "ptr",
-              "type": "void*"
-            },
-            {
-              "id": "class:Std::HeapAllocator/function:realloc/parameter:newSize",
-              "name": "newSize",
-              "type": "nuint"
-            }
-          ]
-        },
-        {
-          "id": "class:Std::HeapAllocator/function:free",
-          "name": "free",
-          "visibility": "public",
-          "returnType": "void",
-          "interfaceImplementation": {
-            "interfaceRef": "interface:Std::Allocator",
-            "interface": "Allocator",
-            "slot": "free",
-            "slotRef": "interface:Std::Allocator/function:free"
-          },
-          "parameters": [
-            {
-              "id": "class:Std::HeapAllocator/function:free/parameter:ptr",
-              "name": "ptr",
-              "type": "void*"
-            }
-          ]
+          "name": "category",
+          "content": "Memory"
         }
       ]
     },
@@ -212,6 +190,16 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Clears every slot in an array to \u0060default\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -248,6 +236,16 @@
           "type": "nuint",
           "targetType": "T"
         }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies an array into newly allocated storage."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
       ]
     },
     {
@@ -273,7 +271,13 @@
         {
           "id": "function:Std::copyTo/parameter:destination",
           "name": "destination",
-          "type": "T[]"
+          "type": "T[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The array that receives copied elements. If it is shorter than the source, only the destination length is copied."
+            }
+          ]
         },
         {
           "id": "function:Std::copyTo/parameter:sizeof_T",
@@ -281,6 +285,16 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies array elements into another array."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -307,7 +321,13 @@
         {
           "id": "function:Std::copyFrom/parameter:source",
           "name": "source",
-          "type": "const T[]"
+          "type": "const T[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The array to copy from. If it is longer than this array, only this array\u0027s length is copied."
+            }
+          ]
         },
         {
           "id": "function:Std::copyFrom/parameter:sizeof_T",
@@ -315,6 +335,16 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies elements from another array into this array."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -341,7 +371,13 @@
         {
           "id": "function:Std::resize/parameter:newSize",
           "name": "newSize",
-          "type": "nuint"
+          "type": "nuint",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The requested element count after resizing."
+            }
+          ]
         },
         {
           "id": "function:Std::resize/parameter:allocator",
@@ -355,6 +391,16 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Resizes an array buffer."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -385,6 +431,16 @@
           "type": "nuint",
           "targetType": "T"
         }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Reverses the elements of an array in place."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
       ]
     },
     {
@@ -410,7 +466,13 @@
         {
           "id": "function:Std::sort/parameter:compare",
           "name": "compare",
-          "type": "delegate int(in T left, in T right)"
+          "type": "delegate int(in T left, in T right)",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a negative value when the left item sorts before the right item, zero when equal, and a positive value otherwise."
+            }
+          ]
         },
         {
           "id": "function:Std::sort/parameter:sizeof_T",
@@ -418,6 +480,16 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Sorts an array in place using insertion sort."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -445,12 +517,30 @@
           "id": "function:Std::binarySearch/parameter:value",
           "name": "value",
           "modifier": "in",
-          "type": "T"
+          "type": "T",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The item to find."
+            }
+          ]
         },
         {
           "id": "function:Std::binarySearch/parameter:compare",
           "name": "compare",
-          "type": "delegate int(in T left, in T right)"
+          "type": "delegate int(in T left, in T right)",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Compares an array item with %s using the same ordering used to sort the array.",
+              "symbols": [
+                {
+                  "ref": "function:Std::binarySearch/parameter:value",
+                  "text": "value"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "function:Std::binarySearch/parameter:sizeof_T",
@@ -458,6 +548,20 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Searches a sorted array for a value."
+        },
+        {
+          "name": "returns",
+          "content": "The zero-based index of the matching item, or \u0060-1\u0060 when no match exists."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -485,12 +589,30 @@
           "id": "function:Std::findIndex/parameter:item",
           "name": "item",
           "modifier": "in",
-          "type": "T"
+          "type": "T",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The item to find."
+            }
+          ]
         },
         {
           "id": "function:Std::findIndex/parameter:equals",
           "name": "equals",
-          "type": "delegate bool(in T left, in T right)"
+          "type": "delegate bool(in T left, in T right)",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when an array item matches %s.",
+              "symbols": [
+                {
+                  "ref": "function:Std::findIndex/parameter:item",
+                  "text": "item"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "function:Std::findIndex/parameter:sizeof_T",
@@ -498,6 +620,20 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first matching item in an array."
+        },
+        {
+          "name": "returns",
+          "content": "The zero-based index of the first match, or \u0060-1\u0060 when no match exists."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -525,12 +661,30 @@
           "id": "function:Std::findLastIndex/parameter:item",
           "name": "item",
           "modifier": "in",
-          "type": "T"
+          "type": "T",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The item to find."
+            }
+          ]
         },
         {
           "id": "function:Std::findLastIndex/parameter:equals",
           "name": "equals",
-          "type": "delegate bool(in T left, in T right)"
+          "type": "delegate bool(in T left, in T right)",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when an array item matches %s.",
+              "symbols": [
+                {
+                  "ref": "function:Std::findIndex/parameter:item",
+                  "text": "item"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "function:Std::findLastIndex/parameter:sizeof_T",
@@ -538,6 +692,20 @@
           "capability": "sizeof",
           "type": "nuint",
           "targetType": "T"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last matching item in an array."
+        },
+        {
+          "name": "returns",
+          "content": "The zero-based index of the last match, or \u0060-1\u0060 when no match exists."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -593,6 +761,10 @@
         {
           "name": "example",
           "content": "\u0060\u0060\u0060camp\n@test\nvoid addReturnsSum(thrown Assertion*)\n{\n\tassert(add(2, 3) == 5);\n}\n\u0060\u0060\u0060"
+        },
+        {
+          "name": "category",
+          "content": "Diagnostics"
         }
       ]
     },
@@ -700,6 +872,10 @@
         {
           "name": "example",
           "content": "\u0060\u0060\u0060camp\nassert(count == 3);\n\u0060\u0060\u0060"
+        },
+        {
+          "name": "category",
+          "content": "Diagnostics"
         }
       ]
     },
@@ -785,6 +961,10 @@
         {
           "name": "example",
           "content": "\u0060\u0060\u0060camp\nif (value == default)\n\tfail(\u0022value was not created\u0022);\n\u0060\u0060\u0060"
+        },
+        {
+          "name": "category",
+          "content": "Diagnostics"
         }
       ]
     },
@@ -812,6 +992,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -837,6 +1023,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -864,6 +1056,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -889,6 +1087,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -916,6 +1120,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -941,6 +1151,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -968,6 +1184,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -993,6 +1215,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -1020,6 +1248,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -1045,6 +1279,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -1072,6 +1312,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -1086,6 +1332,12 @@
           "id": "function:Std::trim/parameter:this",
           "name": "this",
           "type": "const achar[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -1102,6 +1354,12 @@
           "name": "this",
           "type": "const achar[]"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -1116,6 +1374,12 @@
           "id": "function:Std::trimEnd/parameter:this",
           "name": "this",
           "type": "const achar[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -1138,6 +1402,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -1158,6 +1428,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -1180,6 +1456,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -1200,6 +1482,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -1227,6 +1515,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -1243,6 +1537,12 @@
           "name": "this",
           "type": "astring"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -1257,7 +1557,13 @@
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharReader",
-          "propertyName": "Reader"
+          "propertyName": "Reader",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a character reader for standard input."
+            }
+          ]
         },
         {
           "id": "class:Std::Console/function:getWriter",
@@ -1265,7 +1571,13 @@
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharWriter",
-          "propertyName": "Writer"
+          "propertyName": "Writer",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a character writer for standard output."
+            }
+          ]
         },
         {
           "id": "class:Std::Console/function:getError",
@@ -1273,7 +1585,13 @@
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharWriter",
-          "propertyName": "Error"
+          "propertyName": "Error",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a character writer for standard error."
+            }
+          ]
         },
         {
           "id": "class:Std::Console/function:writeFd",
@@ -1346,6 +1664,16 @@
               "overload": true,
               "type": "char"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a character to standard output."
+            },
+            {
+              "name": "overload",
+              "content": "Writes a value to standard output."
+            }
           ]
         },
         {
@@ -1362,6 +1690,12 @@
               "name": "value",
               "overload": true,
               "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output."
             }
           ]
         },
@@ -1380,6 +1714,12 @@
               "overload": true,
               "type": "string"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output."
+            }
           ]
         },
         {
@@ -1396,6 +1736,12 @@
               "name": "value",
               "overload": true,
               "type": "bool"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a boolean value to standard output."
             }
           ]
         },
@@ -1414,6 +1760,12 @@
               "overload": true,
               "type": "byte"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 8-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1430,6 +1782,12 @@
               "name": "value",
               "overload": true,
               "type": "sbyte"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 8-bit integer value to standard output."
             }
           ]
         },
@@ -1448,6 +1806,12 @@
               "overload": true,
               "type": "ushort"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 16-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1464,6 +1828,12 @@
               "name": "value",
               "overload": true,
               "type": "short"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 16-bit integer value to standard output."
             }
           ]
         },
@@ -1482,6 +1852,12 @@
               "overload": true,
               "type": "uint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 32-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1498,6 +1874,12 @@
               "name": "value",
               "overload": true,
               "type": "int"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 32-bit integer value to standard output."
             }
           ]
         },
@@ -1516,6 +1898,12 @@
               "overload": true,
               "type": "ulong"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 64-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1532,6 +1920,12 @@
               "name": "value",
               "overload": true,
               "type": "long"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 64-bit integer value to standard output."
             }
           ]
         },
@@ -1550,6 +1944,12 @@
               "overload": true,
               "type": "nuint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned native-size integer value to standard output."
+            }
           ]
         },
         {
@@ -1566,6 +1966,12 @@
               "name": "value",
               "overload": true,
               "type": "nint"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed native-size integer value to standard output."
             }
           ]
         },
@@ -1584,6 +1990,16 @@
               "overload": true,
               "type": "char"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a character to standard output followed by a newline."
+            },
+            {
+              "name": "overload",
+              "content": "Writes a value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1600,6 +2016,12 @@
               "name": "value",
               "overload": true,
               "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output followed by a newline."
             }
           ]
         },
@@ -1618,6 +2040,12 @@
               "overload": true,
               "type": "string"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1634,6 +2062,12 @@
               "name": "value",
               "overload": true,
               "type": "bool"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a boolean value to standard output followed by a newline."
             }
           ]
         },
@@ -1652,6 +2086,12 @@
               "overload": true,
               "type": "byte"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 8-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1668,6 +2108,12 @@
               "name": "value",
               "overload": true,
               "type": "sbyte"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 8-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -1686,6 +2132,12 @@
               "overload": true,
               "type": "ushort"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 16-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1702,6 +2154,12 @@
               "name": "value",
               "overload": true,
               "type": "short"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 16-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -1720,6 +2178,12 @@
               "overload": true,
               "type": "uint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 32-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1736,6 +2200,12 @@
               "name": "value",
               "overload": true,
               "type": "int"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 32-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -1754,6 +2224,12 @@
               "overload": true,
               "type": "ulong"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 64-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1770,6 +2246,12 @@
               "name": "value",
               "overload": true,
               "type": "long"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 64-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -1788,6 +2270,12 @@
               "overload": true,
               "type": "nuint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned native-size integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1805,6 +2293,12 @@
               "overload": true,
               "type": "nint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed native-size integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1812,14 +2306,26 @@
           "name": "newLine",
           "visibility": "public",
           "modifier": "static",
-          "returnType": "void"
+          "returnType": "void",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a newline to standard output."
+            }
+          ]
         },
         {
           "id": "class:Std::Console/function:readChar",
           "name": "readChar",
           "visibility": "public",
           "modifier": "static",
-          "returnType": "char"
+          "returnType": "char",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Reads one character from standard input."
+            }
+          ]
         },
         {
           "id": "class:Std::Console/function:readLine",
@@ -1834,7 +2340,27 @@
               "modifier": "within",
               "type": "Allocator*"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Reads one line from standard input."
+            }
           ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Provides access to the process standard input, output, and error streams."
+        },
+        {
+          "name": "example",
+          "content": "\u0060\u0060\u0060camp\nauto name = Console.readLine();\nConsole.writeLine($\u0022Hello, {name}\u0022);\n\u0060\u0060\u0060"
+        },
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -1865,6 +2391,12 @@
           "symbol": "FileAccess_READ_WRITE",
           "type": "FileAccess",
           "value": 2
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -1903,6 +2435,12 @@
           "type": "FileMode",
           "value": 3
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -1935,6 +2473,12 @@
           "id": "struct:Std::FileOptions/field:allowSharedWrite",
           "name": "allowSharedWrite",
           "type": "bool"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -2116,6 +2660,12 @@
           "returnType": "CharWriter",
           "propertyName": "CharWriter"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -2139,6 +2689,12 @@
           "type": "char[]",
           "defaultValue": "default"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -2160,6 +2716,12 @@
           "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -2184,6 +2746,12 @@
           "type": "char[]",
           "defaultValue": "default"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -2206,6 +2774,12 @@
           "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -2230,6 +2804,12 @@
           "type": "char[]",
           "defaultValue": "default"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -2252,6 +2832,12 @@
           "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -2276,6 +2862,12 @@
           "type": "char[]",
           "defaultValue": "default"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -2298,6 +2890,12 @@
           "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -2322,6 +2920,12 @@
           "type": "char[]",
           "defaultValue": "default"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -2344,6 +2948,12 @@
           "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -2368,6 +2978,12 @@
           "type": "char[]",
           "defaultValue": "default"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -2390,6 +3006,12 @@
           "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -2414,6 +3036,12 @@
           "type": "char[]",
           "defaultValue": "default"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -2436,6 +3064,12 @@
           "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -2467,6 +3101,10 @@
         {
           "name": "summary",
           "content": "Groups the hash and equality functions used by a hash-based collection."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2489,6 +3127,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for an \u0060sbyte\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2517,6 +3159,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060sbyte\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2532,6 +3178,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060sbyte\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2554,6 +3204,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for a \u0060ushort\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2582,6 +3236,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060ushort\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2597,6 +3255,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060ushort\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2619,6 +3281,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for a \u0060short\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2647,6 +3313,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060short\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2662,6 +3332,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060short\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2684,6 +3358,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for a \u0060uint\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2712,6 +3390,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060uint\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2727,6 +3409,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060uint\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2749,6 +3435,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for an \u0060int\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2777,6 +3467,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060int\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2792,6 +3486,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060int\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2814,6 +3512,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for a \u0060ulong\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2842,6 +3544,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060ulong\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2857,6 +3563,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060ulong\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2879,6 +3589,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for a \u0060long\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2907,6 +3621,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060long\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2922,6 +3640,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060long\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2944,6 +3666,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for a \u0060nuint\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2972,6 +3698,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060nuint\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -2987,6 +3717,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060nuint\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3009,6 +3743,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for an \u0060nint\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3037,6 +3775,10 @@
         {
           "name": "summary",
           "content": "Returns true when two \u0060nint\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3052,6 +3794,10 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060nint\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3080,6 +3826,10 @@
         {
           "name": "summary",
           "content": "Returns a pointer-identity hash code."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3114,18 +3864,22 @@
         {
           "name": "summary",
           "content": "Returns true when two pointer keys have the same address."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
     {
-      "id": "function:Std::Ptr_hashPolicy",
+      "id": "function:Std::pointerHashPolicy",
       "kind": "function",
-      "name": "Ptr_hashPolicy",
+      "name": "pointerHashPolicy",
       "visibility": "public",
       "returnType": "HashPolicy\u003CT*\u003E",
       "typeParameters": [
         {
-          "id": "function:Std::Ptr_hashPolicy/type-parameter:T",
+          "id": "function:Std::pointerHashPolicy/type-parameter:T",
           "name": "T",
           "constraint": "any"
         }
@@ -3134,6 +3888,10 @@
         {
           "name": "summary",
           "content": "Returns a pointer-identity hash policy for \u0060T*\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3156,6 +3914,10 @@
         {
           "name": "summary",
           "content": "Returns a content hash code for a string."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3178,6 +3940,10 @@
         {
           "name": "summary",
           "content": "Returns a hash code for case-insensitive string matching."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3206,6 +3972,10 @@
         {
           "name": "summary",
           "content": "Returns true when two strings have the same content."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3234,6 +4004,10 @@
         {
           "name": "summary",
           "content": "Returns true when two strings have the same content ignoring case."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3249,6 +4023,10 @@
         {
           "name": "summary",
           "content": "Standard case-sensitive string hash policy."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3264,6 +4042,10 @@
         {
           "name": "summary",
           "content": "Standard case-insensitive string hash policy."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3465,6 +4247,10 @@
             {
               "name": "summary",
               "content": "Gets a value and returns true when the key is present."
+            },
+            {
+              "name": "category",
+              "content": "Collections"
             }
           ]
         },
@@ -3494,6 +4280,10 @@
             {
               "name": "summary",
               "content": "Returns the value for a key, or \u0060default\u0060 when the key is absent."
+            },
+            {
+              "name": "category",
+              "content": "Collections"
             }
           ]
         },
@@ -3519,6 +4309,10 @@
             {
               "name": "summary",
               "content": "Returns true when the key is present."
+            },
+            {
+              "name": "category",
+              "content": "Collections"
             }
           ]
         },
@@ -3609,6 +4403,12 @@
               "name": "hash",
               "type": "nuint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "category",
+              "content": "Collections"
+            }
           ]
         },
         {
@@ -3671,6 +4471,10 @@
         {
           "name": "remarks",
           "content": "HashMap owns shallow copies of its keys and values. Pointer and string keys copy the pointer value; the supplied hash policy controls identity or content comparison."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -3987,6 +4791,10 @@
         {
           "name": "remarks",
           "content": "HashSet owns shallow copies of its keys. Pointer and string keys copy the pointer value; the supplied hash policy controls identity or content comparison."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -4648,6 +5456,10 @@
               "text": "List\u003CT\u003E"
             }
           ]
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -4676,6 +5488,10 @@
         {
           "name": "summary",
           "content": "Returns a writer that appends characters to the list."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
         }
       ]
     },
@@ -4688,7 +5504,13 @@
       "type": "byte",
       "static": true,
       "inline": true,
-      "value": 0
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::byte.MAX",
@@ -4699,7 +5521,13 @@
       "type": "byte",
       "static": true,
       "inline": true,
-      "value": 255
+      "value": 255,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::sbyte.MIN",
@@ -4710,7 +5538,13 @@
       "type": "sbyte",
       "static": true,
       "inline": true,
-      "value": -128
+      "value": -128,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::sbyte.MAX",
@@ -4721,7 +5555,13 @@
       "type": "sbyte",
       "static": true,
       "inline": true,
-      "value": 127
+      "value": 127,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::short.MIN",
@@ -4732,7 +5572,13 @@
       "type": "short",
       "static": true,
       "inline": true,
-      "value": -32768
+      "value": -32768,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::short.MAX",
@@ -4743,7 +5589,13 @@
       "type": "short",
       "static": true,
       "inline": true,
-      "value": 32767
+      "value": 32767,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::ushort.MIN",
@@ -4754,7 +5606,13 @@
       "type": "ushort",
       "static": true,
       "inline": true,
-      "value": 0
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::ushort.MAX",
@@ -4765,7 +5623,13 @@
       "type": "ushort",
       "static": true,
       "inline": true,
-      "value": 65535
+      "value": 65535,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::int.MIN",
@@ -4776,7 +5640,13 @@
       "type": "int",
       "static": true,
       "inline": true,
-      "value": -2147483648
+      "value": -2147483648,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::int.MAX",
@@ -4787,7 +5657,13 @@
       "type": "int",
       "static": true,
       "inline": true,
-      "value": 2147483647
+      "value": 2147483647,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::uint.MIN",
@@ -4798,7 +5674,13 @@
       "type": "uint",
       "static": true,
       "inline": true,
-      "value": 0
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::uint.MAX",
@@ -4809,7 +5691,13 @@
       "type": "uint",
       "static": true,
       "inline": true,
-      "value": 4294967295
+      "value": 4294967295,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::long.MIN",
@@ -4820,7 +5708,13 @@
       "type": "long",
       "static": true,
       "inline": true,
-      "value": -9223372036854775808
+      "value": -9223372036854775808,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::long.MAX",
@@ -4831,7 +5725,13 @@
       "type": "long",
       "static": true,
       "inline": true,
-      "value": 9223372036854775807
+      "value": 9223372036854775807,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::ulong.MIN",
@@ -4842,7 +5742,13 @@
       "type": "ulong",
       "static": true,
       "inline": true,
-      "value": 0
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::ulong.MAX",
@@ -4853,7 +5759,13 @@
       "type": "ulong",
       "static": true,
       "inline": true,
-      "value": 18446744073709551615
+      "value": 18446744073709551615,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::nint.MIN",
@@ -4864,7 +5776,13 @@
       "type": "nint",
       "static": true,
       "inline": true,
-      "value": -2147483648
+      "value": -2147483648,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::nint.MAX",
@@ -4875,7 +5793,13 @@
       "type": "nint",
       "static": true,
       "inline": true,
-      "value": 2147483647
+      "value": 2147483647,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::nuint.MIN",
@@ -4886,7 +5810,13 @@
       "type": "nuint",
       "static": true,
       "inline": true,
-      "value": 0
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "variable:Std::nuint.MAX",
@@ -4897,7 +5827,13 @@
       "type": "nuint",
       "static": true,
       "inline": true,
-      "value": 4294967295
+      "value": 4294967295,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
+      ]
     },
     {
       "id": "function:Std::absSByte",
@@ -4914,6 +5850,12 @@
           "name": "value",
           "overload": true,
           "type": "sbyte"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -4933,6 +5875,12 @@
           "overload": true,
           "type": "short"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -4951,6 +5899,12 @@
           "overload": true,
           "type": "int"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -4968,6 +5922,12 @@
           "name": "value",
           "overload": true,
           "type": "long"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -4992,6 +5952,12 @@
           "name": "right",
           "type": "byte"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5014,6 +5980,12 @@
           "id": "function:Std::maxByte/parameter:right",
           "name": "right",
           "type": "byte"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5038,6 +6010,12 @@
           "name": "right",
           "type": "sbyte"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5060,6 +6038,12 @@
           "id": "function:Std::maxSByte/parameter:right",
           "name": "right",
           "type": "sbyte"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5084,6 +6068,12 @@
           "name": "right",
           "type": "short"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5106,6 +6096,12 @@
           "id": "function:Std::maxShort/parameter:right",
           "name": "right",
           "type": "short"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5130,6 +6126,12 @@
           "name": "right",
           "type": "ushort"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5152,6 +6154,12 @@
           "id": "function:Std::maxUShort/parameter:right",
           "name": "right",
           "type": "ushort"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5176,6 +6184,12 @@
           "name": "right",
           "type": "int"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5198,6 +6212,12 @@
           "id": "function:Std::maxInt/parameter:right",
           "name": "right",
           "type": "int"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5222,6 +6242,12 @@
           "name": "right",
           "type": "uint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5244,6 +6270,12 @@
           "id": "function:Std::maxUInt/parameter:right",
           "name": "right",
           "type": "uint"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5268,6 +6300,12 @@
           "name": "right",
           "type": "long"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5290,6 +6328,12 @@
           "id": "function:Std::maxLong/parameter:right",
           "name": "right",
           "type": "long"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5314,6 +6358,12 @@
           "name": "right",
           "type": "ulong"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5336,6 +6386,12 @@
           "id": "function:Std::maxULong/parameter:right",
           "name": "right",
           "type": "ulong"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5360,6 +6416,12 @@
           "name": "right",
           "type": "nint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5382,6 +6444,12 @@
           "id": "function:Std::maxNInt/parameter:right",
           "name": "right",
           "type": "nint"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5406,6 +6474,12 @@
           "name": "right",
           "type": "nuint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5428,6 +6502,12 @@
           "id": "function:Std::maxNUInt/parameter:right",
           "name": "right",
           "type": "nuint"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5452,6 +6532,12 @@
           "name": "right",
           "type": "uchar"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5474,6 +6560,12 @@
           "id": "function:Std::maxUChar/parameter:right",
           "name": "right",
           "type": "uchar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5498,6 +6590,12 @@
           "name": "right",
           "type": "float"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5520,6 +6618,12 @@
           "id": "function:Std::maxFloat/parameter:right",
           "name": "right",
           "type": "float"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5544,6 +6648,12 @@
           "name": "right",
           "type": "double"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
+        }
       ]
     },
     {
@@ -5566,6 +6676,12 @@
           "id": "function:Std::maxDouble/parameter:right",
           "name": "right",
           "type": "double"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Core"
         }
       ]
     },
@@ -5591,6 +6707,12 @@
           "overload": true,
           "type": "int"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5614,6 +6736,12 @@
           "modifier": "out",
           "overload": true,
           "type": "uint"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -5639,6 +6767,12 @@
           "overload": true,
           "type": "long"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5662,6 +6796,12 @@
           "modifier": "out",
           "overload": true,
           "type": "ulong"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -5687,6 +6827,12 @@
           "overload": true,
           "type": "double"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5708,6 +6854,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5728,6 +6880,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -5756,6 +6914,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5777,6 +6941,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5797,6 +6967,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -5825,6 +7001,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5846,6 +7028,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -5866,6 +7054,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -5893,6 +7087,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -6050,6 +7250,12 @@
           "type": "IoError",
           "value": 20
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6064,6 +7270,12 @@
           "id": "newtype:Std::ByteReader/parameter:buffer",
           "name": "buffer",
           "type": "byte[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6080,6 +7292,12 @@
           "name": "buffer",
           "type": "byte[]"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6094,6 +7312,12 @@
           "id": "newtype:Std::CharReader/parameter:buffer",
           "name": "buffer",
           "type": "char[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6110,6 +7334,12 @@
           "name": "buffer",
           "type": "char[]"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6124,6 +7354,12 @@
           "id": "newtype:Std::WCharReader/parameter:buffer",
           "name": "buffer",
           "type": "wchar[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6140,6 +7376,12 @@
           "name": "buffer",
           "type": "wchar[]"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6155,6 +7397,12 @@
           "name": "buffer",
           "type": "achar[]"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6169,6 +7417,12 @@
           "id": "newtype:Std::ACharWriter/parameter:buffer",
           "name": "buffer",
           "type": "achar[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6186,6 +7440,12 @@
           "name": "this",
           "type": "ByteReader"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6201,6 +7461,12 @@
           "id": "function:Std::getWCharReader/parameter:this",
           "name": "this",
           "type": "ByteReader"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6218,6 +7484,12 @@
           "name": "this",
           "type": "ByteReader"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6233,6 +7505,12 @@
           "id": "function:Std::getCharWriter/parameter:this",
           "name": "this",
           "type": "ByteWriter"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6250,6 +7528,12 @@
           "name": "this",
           "type": "ByteWriter"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6265,6 +7549,12 @@
           "id": "function:Std::getACharWriter/parameter:this",
           "name": "this",
           "type": "ByteWriter"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6292,6 +7582,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6314,6 +7610,12 @@
           "name": "value",
           "overload": true,
           "type": "char"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6344,6 +7646,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6366,6 +7674,12 @@
           "name": "value",
           "overload": true,
           "type": "const char[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6396,6 +7710,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6410,6 +7730,12 @@
           "id": "function:Std::newLine/parameter:this",
           "name": "this",
           "type": "CharWriter"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6431,6 +7757,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6454,6 +7786,12 @@
           "name": "value",
           "overload": true,
           "type": "const char[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6484,6 +7822,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6506,6 +7850,12 @@
           "name": "value",
           "overload": true,
           "type": "bool"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6536,6 +7886,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6558,6 +7914,12 @@
           "name": "value",
           "overload": true,
           "type": "sbyte"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6582,6 +7944,12 @@
           "overload": true,
           "type": "byte"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6604,6 +7972,12 @@
           "name": "value",
           "overload": true,
           "type": "short"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6628,6 +8002,12 @@
           "overload": true,
           "type": "ushort"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6650,6 +8030,12 @@
           "name": "value",
           "overload": true,
           "type": "int"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6674,6 +8060,12 @@
           "overload": true,
           "type": "uint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6696,6 +8088,12 @@
           "name": "value",
           "overload": true,
           "type": "long"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6720,6 +8118,12 @@
           "overload": true,
           "type": "ulong"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6742,6 +8146,12 @@
           "name": "value",
           "overload": true,
           "type": "nint"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6766,6 +8176,12 @@
           "overload": true,
           "type": "nuint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6788,6 +8204,12 @@
           "name": "value",
           "overload": true,
           "type": "sbyte"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6812,6 +8234,12 @@
           "overload": true,
           "type": "byte"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6834,6 +8262,12 @@
           "name": "value",
           "overload": true,
           "type": "short"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6858,6 +8292,12 @@
           "overload": true,
           "type": "ushort"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6880,6 +8320,12 @@
           "name": "value",
           "overload": true,
           "type": "int"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6904,6 +8350,12 @@
           "overload": true,
           "type": "uint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6926,6 +8378,12 @@
           "name": "value",
           "overload": true,
           "type": "long"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -6950,6 +8408,12 @@
           "overload": true,
           "type": "ulong"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6973,6 +8437,12 @@
           "overload": true,
           "type": "nint"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -6995,6 +8465,12 @@
           "name": "value",
           "overload": true,
           "type": "nuint"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7025,6 +8501,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7053,6 +8535,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7083,6 +8571,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7111,6 +8605,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7141,6 +8641,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7169,6 +8675,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7199,6 +8711,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7227,6 +8745,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7257,6 +8781,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7285,6 +8815,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7315,6 +8851,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7343,6 +8885,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7373,6 +8921,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7401,6 +8955,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7431,6 +8991,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7459,6 +9025,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7489,6 +9061,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7517,6 +9095,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7547,6 +9131,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7576,6 +9166,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7598,6 +9194,12 @@
           "name": "value",
           "overload": true,
           "type": "float"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7628,6 +9230,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7650,6 +9258,12 @@
           "name": "value",
           "overload": true,
           "type": "double"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7680,6 +9294,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7700,6 +9320,12 @@
           "name": "error",
           "modifier": "thrown",
           "type": "IoError"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
         }
       ]
     },
@@ -7728,6 +9354,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7755,6 +9387,12 @@
           "modifier": "thrown",
           "type": "IoError"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
       ]
     },
     {
@@ -7780,6 +9418,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -7807,6 +9451,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -7832,6 +9482,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -7859,6 +9515,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -7884,6 +9546,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -7911,6 +9579,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -7936,6 +9610,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -7963,6 +9643,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -7988,6 +9674,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -8015,6 +9707,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8041,6 +9739,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8055,6 +9759,12 @@
           "id": "function:Std::countChars/parameter:this",
           "name": "this",
           "type": "const char[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -8085,6 +9795,12 @@
             }
           ]
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8114,6 +9830,12 @@
             }
           ]
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8128,6 +9850,12 @@
           "id": "function:Std::trim/parameter:this",
           "name": "this",
           "type": "const char[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -8144,6 +9872,12 @@
           "name": "this",
           "type": "const char[]"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8158,6 +9892,12 @@
           "id": "function:Std::trimEnd/parameter:this",
           "name": "this",
           "type": "const char[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -8180,6 +9920,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8200,6 +9946,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -8222,6 +9974,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8242,6 +10000,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -8269,6 +10033,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -8284,6 +10054,12 @@
           "id": "function:Std::getLength/parameter:this",
           "name": "this",
           "type": "string"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -8403,6 +10179,10 @@
         {
           "name": "summary",
           "content": "Day of the week in ISO order."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -8619,6 +10399,10 @@
                   "text": "INVALID"
                 }
               ]
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -8770,6 +10554,10 @@
             {
               "name": "remarks",
               "content": "This operation does not throw."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -8804,6 +10592,10 @@
             {
               "name": "remarks",
               "content": "This operation does not throw."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -8823,6 +10615,10 @@
             {
               "name": "summary",
               "content": "Returns the negated duration."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -8842,6 +10638,10 @@
             {
               "name": "summary",
               "content": "Returns the absolute duration."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         }
@@ -8854,6 +10654,10 @@
         {
           "name": "remarks",
           "content": "Whole-unit accessors truncate toward zero."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -8893,6 +10697,10 @@
         {
           "name": "remarks",
           "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -8985,6 +10793,10 @@
             {
               "name": "summary",
               "content": "Returns true when this offset is in the valid range."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9036,6 +10848,10 @@
         {
           "name": "remarks",
           "content": "Valid offsets are in the range \u0060-1080..\u002B1080\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -9081,6 +10897,10 @@
               "text": "isValid"
             }
           ]
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -9216,6 +11036,10 @@
                   "text": "INVALID"
                 }
               ]
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9282,6 +11106,10 @@
                   "text": "INVALID"
                 }
               ]
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9322,6 +11150,10 @@
                   "text": "INVALID"
                 }
               ]
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9362,6 +11194,10 @@
                   "text": "TimeSpan.INVALID"
                 }
               ]
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9416,6 +11252,10 @@
         {
           "name": "summary",
           "content": "UTC instant stored as milliseconds since the Unix epoch."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -9455,6 +11295,10 @@
         {
           "name": "remarks",
           "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Invalid input returns \u00600\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -9545,6 +11389,10 @@
             {
               "name": "summary",
               "content": "Returns true when this date has valid calendar fields."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9628,6 +11476,10 @@
             {
               "name": "remarks",
               "content": "Returns an invalid date when this date is invalid or the result is out of range."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9662,6 +11514,10 @@
             {
               "name": "remarks",
               "content": "Returns \u00600\u0060 when either date is invalid."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9698,6 +11554,10 @@
             {
               "name": "remarks",
               "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Field ranges are not checked during formatting."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         }
@@ -9710,6 +11570,10 @@
         {
           "name": "remarks",
           "content": "Valid dates use year \u00601..9999\u0060, month \u00601..12\u0060, and a valid day for the selected month."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -9807,6 +11671,10 @@
             {
               "name": "summary",
               "content": "Returns true when this time has valid hour, minute, and second fields."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -9873,6 +11741,10 @@
             {
               "name": "remarks",
               "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Field ranges are not checked during formatting."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         }
@@ -9885,6 +11757,10 @@
         {
           "name": "remarks",
           "content": "The fractional second is stored as \u0060fraction / 256\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10060,6 +11936,10 @@
             {
               "name": "summary",
               "content": "Returns true when both the date and time components are valid."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -10100,6 +11980,10 @@
                   "text": "Instant.INVALID"
                 }
               ]
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -10136,6 +12020,10 @@
             {
               "name": "remarks",
               "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Invalid input returns \u00600\u0060."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         }
@@ -10154,6 +12042,10 @@
               "text": "Instant"
             }
           ]
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10361,6 +12253,10 @@
             {
               "name": "summary",
               "content": "Returns true when the local date-time and offset components are valid."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -10390,6 +12286,10 @@
                   "text": "Instant.INVALID"
                 }
               ]
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         },
@@ -10426,6 +12326,10 @@
             {
               "name": "remarks",
               "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Invalid input returns \u00600\u0060."
+            },
+            {
+              "name": "category",
+              "content": "Date/Time"
             }
           ]
         }
@@ -10444,6 +12348,10 @@
               "text": "Instant"
             }
           ]
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10488,6 +12396,10 @@
         {
           "name": "returns",
           "content": "\u0060true\u0060 when parsing succeeds."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10532,6 +12444,10 @@
         {
           "name": "returns",
           "content": "\u0060true\u0060 when parsing succeeds."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10576,6 +12492,10 @@
         {
           "name": "returns",
           "content": "\u0060true\u0060 when parsing succeeds."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10620,6 +12540,10 @@
         {
           "name": "returns",
           "content": "\u0060true\u0060 when parsing succeeds."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10664,6 +12588,10 @@
         {
           "name": "returns",
           "content": "\u0060true\u0060 when parsing succeeds."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10704,6 +12632,10 @@
         {
           "name": "returns",
           "content": "\u0060true\u0060 when parsing succeeds."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10748,6 +12680,10 @@
         {
           "name": "returns",
           "content": "\u0060true\u0060 when parsing succeeds."
+        },
+        {
+          "name": "category",
+          "content": "Date/Time"
         }
       ]
     },
@@ -10771,6 +12707,10 @@
               "text": "stopTimer"
             }
           ]
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -10797,6 +12737,10 @@
         {
           "name": "summary",
           "content": "Suspends the current thread for approximately the requested duration."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -10839,6 +12783,10 @@
         {
           "name": "remarks",
           "content": "The completion callback is invoked by a platform timer thread after the delay. A caller that needs to resume on a specific thread should use an async resumer that marshals continuations to that thread."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -10894,6 +12842,10 @@
         {
           "name": "returns",
           "content": "A non-default handle when the timer starts successfully; otherwise \u0060default\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -10930,6 +12882,10 @@
         {
           "name": "remarks",
           "content": "Cancellation is cooperative. A callback that is already running may finish after this function returns."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -10971,6 +12927,10 @@
         {
           "name": "summary",
           "content": "Atomically stores a signed native integer and returns the previous value."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -11012,6 +12972,10 @@
         {
           "name": "summary",
           "content": "Atomically stores an unsigned native integer and returns the previous value."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -11057,6 +13021,10 @@
         {
           "name": "summary",
           "content": "Atomically stores a pointer and returns the previous value."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -11113,6 +13081,10 @@
         {
           "name": "returns",
           "content": "The value that was stored before the operation."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -11169,6 +13141,10 @@
         {
           "name": "returns",
           "content": "The value that was stored before the operation."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -11229,6 +13205,10 @@
         {
           "name": "returns",
           "content": "The value that was stored before the operation."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
         }
       ]
     },
@@ -11256,6 +13236,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11281,6 +13267,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11308,6 +13300,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11333,6 +13331,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11360,6 +13364,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11385,6 +13395,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11412,6 +13428,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11437,6 +13459,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11464,6 +13492,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11489,6 +13523,12 @@
           "name": "caseInsensitive",
           "type": "bool",
           "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11516,6 +13556,12 @@
           "type": "bool",
           "defaultValue": "false"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11530,6 +13576,12 @@
           "id": "function:Std::countChars/parameter:this",
           "name": "this",
           "type": "const wchar[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11560,6 +13612,12 @@
             }
           ]
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11589,6 +13647,12 @@
             }
           ]
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11603,6 +13667,12 @@
           "id": "function:Std::trim/parameter:this",
           "name": "this",
           "type": "const wchar[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11619,6 +13689,12 @@
           "name": "this",
           "type": "const wchar[]"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11633,6 +13709,12 @@
           "id": "function:Std::trimEnd/parameter:this",
           "name": "this",
           "type": "const wchar[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11655,6 +13737,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11675,6 +13763,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11697,6 +13791,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11717,6 +13817,12 @@
           "name": "allocator",
           "modifier": "within",
           "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     },
@@ -11744,6 +13850,12 @@
           "modifier": "within",
           "type": "Allocator*"
         }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
       ]
     },
     {
@@ -11759,6 +13871,12 @@
           "id": "function:Std::getLength/parameter:this",
           "name": "this",
           "type": "wstring"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
         }
       ]
     }

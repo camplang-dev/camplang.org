@@ -135,10 +135,49 @@ def clean_dir(path: Path) -> None:
     path.mkdir(parents=True)
 
 
-def copy_tree(source: Path, destination: Path) -> None:
-    if destination.exists():
-        shutil.rmtree(destination)
-    shutil.copytree(source, destination, ignore=shutil.ignore_patterns(".DS_Store", ".gitkeep"))
+def write_text_if_changed(path: Path, text: str) -> None:
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
+def copy_file_if_changed(source: Path, destination: Path) -> None:
+    if destination.exists() and source.read_bytes() == destination.read_bytes():
+        return
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+
+
+def sync_tree(source: Path, destination: Path, preserve_extra: set[str] | None = None) -> None:
+    preserve_extra = preserve_extra or set()
+    destination.mkdir(parents=True, exist_ok=True)
+    expected: set[Path] = set()
+
+    for source_path in source.rglob("*"):
+        if source_path.name in {".DS_Store", ".gitkeep"}:
+            continue
+        relative = source_path.relative_to(source)
+        expected.add(relative)
+        destination_path = destination / relative
+        if source_path.is_dir():
+            destination_path.mkdir(parents=True, exist_ok=True)
+        else:
+            copy_file_if_changed(source_path, destination_path)
+
+    for destination_path in sorted(destination.rglob("*"), reverse=True):
+        relative = destination_path.relative_to(destination)
+        if relative.parts and relative.parts[0] in preserve_extra:
+            continue
+        if relative in expected:
+            continue
+        if destination_path.is_dir():
+            try:
+                destination_path.rmdir()
+            except OSError:
+                pass
+        else:
+            destination_path.unlink()
 
 
 def copy_vendor_scripts() -> None:
@@ -148,7 +187,7 @@ def copy_vendor_scripts() -> None:
 
     js_dir = STAGING / "static" / "js"
     js_dir.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(swup_source, js_dir / "swup.umd.js")
+    copy_file_if_changed(swup_source, js_dir / "swup.umd.js")
 
 
 def title_from_markdown(text: str, fallback: str) -> str:
@@ -261,7 +300,7 @@ def write_section(
             "",
         ]
     )
-    (path / "_index.md").write_text("\n".join(lines) + content, encoding="utf-8")
+    write_text_if_changed(path / "_index.md", "\n".join(lines) + content)
 
 
 def copy_docs(source_dir: Path, destination_dir: Path, section_title: str, section_weight: int) -> None:
@@ -301,7 +340,7 @@ def copy_docs(source_dir: Path, destination_dir: Path, section_title: str, secti
             )
         front_matter_lines.extend(["+++", ""])
         front_matter = "\n".join(front_matter_lines)
-        destination.write_text(front_matter + text, encoding="utf-8")
+        write_text_if_changed(destination, front_matter + text)
 
 
 def docs_index_content() -> str:
@@ -356,15 +395,15 @@ def write_generated_docs() -> None:
 
 
 def main() -> None:
-    clean_dir(STAGING)
-    copy_tree(ROOT / "content", STAGING / "content")
-    copy_tree(ROOT / "tool" / "templates", STAGING / "templates")
-    copy_tree(ROOT / "tool" / "sass", STAGING / "sass")
-    copy_tree(ROOT / "tool" / "static", STAGING / "static")
+    STAGING.mkdir(parents=True, exist_ok=True)
+    sync_tree(ROOT / "content", STAGING / "content", preserve_extra={"docs"})
+    sync_tree(ROOT / "tool" / "templates", STAGING / "templates")
+    sync_tree(ROOT / "tool" / "sass", STAGING / "sass")
+    sync_tree(ROOT / "tool" / "static", STAGING / "static", preserve_extra={"CNAME", "pagefind"})
     copy_vendor_scripts()
-    shutil.copy2(ROOT / "tool" / "config.toml", STAGING / "config.toml")
+    copy_file_if_changed(ROOT / "tool" / "config.toml", STAGING / "config.toml")
     write_generated_docs()
-    (STAGING / "static" / "CNAME").write_text("camplang.org\n", encoding="utf-8")
+    write_text_if_changed(STAGING / "static" / "CNAME", "camplang.org\n")
 
 
 if __name__ == "__main__":
