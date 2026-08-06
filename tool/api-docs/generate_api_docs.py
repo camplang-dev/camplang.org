@@ -7,10 +7,11 @@ from pathlib import Path
 from typing import Any
 
 
-TYPE_KINDS = {"class", "interface", "struct", "newtype"}
+TYPE_KINDS = {"class", "staticClass", "interface", "struct", "newtype"}
 DECLARATION_KINDS = TYPE_KINDS | {"enum"}
 API_GROUPS = [
     ("class", "classes", "Classes"),
+    ("staticClass", "classes", "Classes"),
     ("struct", "structs", "Structs"),
     ("interface", "interfaces", "Interfaces"),
     ("enum", "enums", "Enums"),
@@ -211,7 +212,7 @@ class ApiReference:
             return
 
         groups = [
-            [d for d in types if d.get("kind") == "class"],
+            [d for d in types if d.get("kind") in {"class", "staticClass"}],
             [d for d in types if d.get("kind") == "struct"],
             [d for d in types if d.get("kind") == "interface"],
             enums,
@@ -269,7 +270,7 @@ class ApiReference:
         functions: list[dict[str, Any]],
     ) -> None:
         groups = [
-            ("Classes", [d for d in types if d.get("kind") == "class"], "class"),
+            ("Classes", [d for d in types if d.get("kind") in {"class", "staticClass"}], "class"),
             ("Structs", [d for d in types if d.get("kind") == "struct"], "struct"),
             ("Interfaces", [d for d in types if d.get("kind") == "interface"], "interface"),
             ("Enums", enums, "enum"),
@@ -488,7 +489,7 @@ class ApiReference:
             signature = type_list_signature(obj)
             rows.append(
                 '<div class="api-member-row">'
-                f'<div class="api-member-type">{esc(obj.get("kind") or "")}</div>'
+                f'<div class="api-member-type">{esc(declaration_kind_label(obj))}</div>'
                 '<div class="api-member-main">'
                 f'<div class="api-member-sig"><a href="{attr(self.object_url(obj))}">{signature}</a></div>'
                 f'{self.metadata(obj, compact=True)}'
@@ -534,7 +535,7 @@ class ApiReference:
             first = esc(lifecycle_kind(obj) or obj.get("returnType") or "void")
             signature = member_signature(obj, omit_receiver, full_receiver=options.get("extension", False) or options.get("fullReceiver", False))
         elif kind in DECLARATION_KINDS:
-            first = esc(kind)
+            first = esc(declaration_kind_label(obj))
             signature = declaration_signature(obj)
         elif kind == "field":
             first = esc(field_type_display(obj))
@@ -978,6 +979,10 @@ def declaration_key(obj: dict[str, Any]) -> str:
     return obj.get("id") or f"{obj.get('kind')}:{display_name(obj)}:{signature_plain(obj, False)}"
 
 
+def declaration_kind_label(obj: dict[str, Any]) -> str:
+    return "static class" if obj.get("kind") == "staticClass" else str(obj.get("kind") or "")
+
+
 def category_name(obj: dict[str, Any]) -> str:
     for item in obj.get("metadata") or []:
         if item.get("name") == "category" and item.get("content"):
@@ -998,6 +1003,8 @@ def public_children_of(obj: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def is_public_declaration(obj: dict[str, Any]) -> bool:
+    if obj.get("kind") == "staticClass" and obj.get("visibility") is None:
+        return True
     return obj.get("visibility") == "public"
 
 
@@ -1126,11 +1133,11 @@ def member_signature(obj: dict[str, Any], omit_receiver: bool, full_receiver: bo
 def declaration_signature(obj: dict[str, Any], escape: bool = True) -> str:
     kind = obj.get("kind")
     if not escape:
-        if kind in {"class", "interface", "struct", "enum"}:
+        if kind in {"class", "staticClass", "interface", "struct", "enum"}:
             parts: list[str] = []
             if obj.get("modifier"):
                 parts.append(obj["modifier"])
-            parts.extend([kind, (obj.get("name") or "") + type_parameters_plain(obj.get("typeParameters") or [], include_constraints=True)])
+            parts.extend([declaration_kind_label(obj), (obj.get("name") or "") + type_parameters_plain(obj.get("typeParameters") or [], include_constraints=True)])
             if obj.get("baseTypes"):
                 parts.append(": " + ", ".join(obj["baseTypes"]))
             return " ".join(parts)
@@ -1148,11 +1155,11 @@ def declaration_signature(obj: dict[str, Any], escape: bool = True) -> str:
             return text
         return display_name(obj)
 
-    if kind in {"class", "interface", "struct", "enum"}:
+    if kind in {"class", "staticClass", "interface", "struct", "enum"}:
         parts: list[str] = []
         if obj.get("modifier"):
             parts.append(esc(obj["modifier"]))
-        parts.extend([esc(kind), "<strong>" + esc(obj.get("name") or "") + declaration_type_parameters_display(obj) + "</strong>"])
+        parts.extend([esc(declaration_kind_label(obj)), "<strong>" + esc(obj.get("name") or "") + declaration_type_parameters_display(obj) + "</strong>"])
         if obj.get("baseTypes"):
             parts.append(": " + ", ".join(esc(item) for item in obj["baseTypes"]))
         return " ".join(parts)
@@ -1170,7 +1177,7 @@ def declaration_signature(obj: dict[str, Any], escape: bool = True) -> str:
 
 def type_list_signature(obj: dict[str, Any]) -> str:
     kind = obj.get("kind")
-    if kind in {"class", "interface", "struct", "enum"}:
+    if kind in {"class", "staticClass", "interface", "struct", "enum"}:
         parts = ["<strong>" + esc(obj.get("name") or "") + declaration_type_parameters_display(obj) + "</strong>"]
         if obj.get("baseTypes"):
             parts.append(": " + ", ".join(esc(item) for item in obj["baseTypes"]))

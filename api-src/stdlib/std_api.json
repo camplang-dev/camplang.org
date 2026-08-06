@@ -26,6 +26,10 @@
       ],
       "metadata": [
         {
+          "name": "symbol",
+          "content": "malloc"
+        },
+        {
           "name": "summary",
           "content": "Allocates a native heap block."
         },
@@ -55,6 +59,10 @@
       ],
       "metadata": [
         {
+          "name": "symbol",
+          "content": "realloc"
+        },
+        {
           "name": "summary",
           "content": "Resizes a native heap block."
         },
@@ -79,6 +87,10 @@
       ],
       "metadata": [
         {
+          "name": "symbol",
+          "content": "free"
+        },
+        {
           "name": "summary",
           "content": "Releases a native heap block."
         },
@@ -92,11 +104,13 @@
       "id": "interface:Std::Allocator",
       "kind": "interface",
       "name": "Allocator",
+      "symbol": "StdAllocator",
       "visibility": "public",
       "functions": [
         {
           "id": "interface:Std::Allocator/function:alloc",
           "name": "alloc",
+          "symbol": "StdAllocator_alloc",
           "returnType": "void*",
           "parameters": [
             {
@@ -109,6 +123,7 @@
         {
           "id": "interface:Std::Allocator/function:realloc",
           "name": "realloc",
+          "symbol": "StdAllocator_realloc",
           "returnType": "void*",
           "parameters": [
             {
@@ -126,6 +141,7 @@
         {
           "id": "interface:Std::Allocator/function:free",
           "name": "free",
+          "symbol": "StdAllocator_free",
           "returnType": "void",
           "parameters": [
             {
@@ -151,6 +167,7 @@
       "id": "variable:Std::HeapAllocator",
       "kind": "variable",
       "name": "HeapAllocator",
+      "symbol": "Std_HeapAllocator",
       "visibility": "public",
       "type": "Allocator* const",
       "metadata": [
@@ -168,7 +185,7 @@
       "id": "function:Std::clear",
       "kind": "function",
       "name": "clear",
-      "symbol": "Array_clear",
+      "symbol": "StdArray_clear",
       "visibility": "public",
       "returnType": "void",
       "typeParameters": [
@@ -207,7 +224,7 @@
       "id": "function:Std::copyArray",
       "kind": "function",
       "name": "copyArray",
-      "symbol": "Array_copyArray",
+      "symbol": "StdArray_copyArray",
       "visibility": "public",
       "returnType": "escaped T[]",
       "typeParameters": [
@@ -252,7 +269,7 @@
       "id": "function:Std::copyTo",
       "kind": "function",
       "name": "copyTo",
-      "symbol": "Array_copyTo",
+      "symbol": "StdArray_copyTo",
       "visibility": "public",
       "returnType": "void",
       "typeParameters": [
@@ -302,7 +319,7 @@
       "id": "function:Std::copyFrom",
       "kind": "function",
       "name": "copyFrom",
-      "symbol": "Array_copyFrom",
+      "symbol": "StdArray_copyFrom",
       "visibility": "public",
       "returnType": "void",
       "typeParameters": [
@@ -352,7 +369,7 @@
       "id": "function:Std::resize",
       "kind": "function",
       "name": "resize",
-      "symbol": "Array_resize",
+      "symbol": "StdArray_resize",
       "visibility": "public",
       "returnType": "void",
       "typeParameters": [
@@ -408,7 +425,7 @@
       "id": "function:Std::reverse",
       "kind": "function",
       "name": "reverse",
-      "symbol": "Array_reverse",
+      "symbol": "StdArray_reverse",
       "visibility": "public",
       "returnType": "void",
       "typeParameters": [
@@ -447,7 +464,7 @@
       "id": "function:Std::sort",
       "kind": "function",
       "name": "sort",
-      "symbol": "Array_sort",
+      "symbol": "StdArray_sort",
       "visibility": "public",
       "returnType": "void",
       "typeParameters": [
@@ -497,7 +514,7 @@
       "id": "function:Std::binarySearch",
       "kind": "function",
       "name": "binarySearch",
-      "symbol": "Array_binarySearch",
+      "symbol": "StdArray_binarySearch",
       "visibility": "public",
       "returnType": "nint",
       "typeParameters": [
@@ -569,7 +586,7 @@
       "id": "function:Std::findIndex",
       "kind": "function",
       "name": "findIndex",
-      "symbol": "Array_findIndex",
+      "symbol": "StdArray_findIndex",
       "visibility": "public",
       "returnType": "nint",
       "typeParameters": [
@@ -641,7 +658,7 @@
       "id": "function:Std::findLastIndex",
       "kind": "function",
       "name": "findLastIndex",
-      "symbol": "Array_findLastIndex",
+      "symbol": "StdArray_findLastIndex",
       "visibility": "public",
       "returnType": "nint",
       "typeParameters": [
@@ -713,6 +730,7 @@
       "id": "struct:Std::Assertion",
       "kind": "struct",
       "name": "Assertion",
+      "symbol": "StdAssertion",
       "visibility": "public",
       "fields": [
         {
@@ -972,7 +990,7 @@
       "id": "function:Std::indexOf",
       "kind": "function",
       "name": "indexOf",
-      "symbol": "ACharArray_indexOf",
+      "symbol": "StdACharArray_indexOf",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -1004,7 +1022,7 @@
       "id": "function:Std::indexOfChar",
       "kind": "function",
       "name": "indexOfChar",
-      "symbol": "ACharArray_indexOfChar",
+      "symbol": "StdACharArray_indexOfChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -1036,7 +1054,7 @@
       "id": "function:Std::indexOfAnyChar",
       "kind": "function",
       "name": "indexOfAnyChar",
-      "symbol": "ACharArray_indexOfAnyChar",
+      "symbol": "StdACharArray_indexOfAnyChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -1068,7 +1086,7 @@
       "id": "function:Std::lastIndexOf",
       "kind": "function",
       "name": "lastIndexOf",
-      "symbol": "ACharArray_lastIndexOf",
+      "symbol": "StdACharArray_lastIndexOf",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -1100,7 +1118,7 @@
       "id": "function:Std::lastIndexOfChar",
       "kind": "function",
       "name": "lastIndexOfChar",
-      "symbol": "ACharArray_lastIndexOfChar",
+      "symbol": "StdACharArray_lastIndexOfChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -1132,7 +1150,7 @@
       "id": "function:Std::lastIndexOfAnyChar",
       "kind": "function",
       "name": "lastIndexOfAnyChar",
-      "symbol": "ACharArray_lastIndexOfAnyChar",
+      "symbol": "StdACharArray_lastIndexOfAnyChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -1164,7 +1182,7 @@
       "id": "function:Std::startsWith",
       "kind": "function",
       "name": "startsWith",
-      "symbol": "ACharArray_startsWith",
+      "symbol": "StdACharArray_startsWith",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -1196,7 +1214,7 @@
       "id": "function:Std::startsWithChar",
       "kind": "function",
       "name": "startsWithChar",
-      "symbol": "ACharArray_startsWithChar",
+      "symbol": "StdACharArray_startsWithChar",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -1228,7 +1246,7 @@
       "id": "function:Std::endsWith",
       "kind": "function",
       "name": "endsWith",
-      "symbol": "ACharArray_endsWith",
+      "symbol": "StdACharArray_endsWith",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -1260,7 +1278,7 @@
       "id": "function:Std::endsWithChar",
       "kind": "function",
       "name": "endsWithChar",
-      "symbol": "ACharArray_endsWithChar",
+      "symbol": "StdACharArray_endsWithChar",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -1292,7 +1310,7 @@
       "id": "function:Std::compareTo",
       "kind": "function",
       "name": "compareTo",
-      "symbol": "ACharArray_compareTo",
+      "symbol": "StdACharArray_compareTo",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -1324,7 +1342,7 @@
       "id": "function:Std::trim",
       "kind": "function",
       "name": "trim",
-      "symbol": "ACharArray_trim",
+      "symbol": "StdACharArray_trim",
       "visibility": "public",
       "returnType": "scoped const achar[]",
       "parameters": [
@@ -1345,7 +1363,7 @@
       "id": "function:Std::trimStart",
       "kind": "function",
       "name": "trimStart",
-      "symbol": "ACharArray_trimStart",
+      "symbol": "StdACharArray_trimStart",
       "visibility": "public",
       "returnType": "scoped const achar[]",
       "parameters": [
@@ -1366,7 +1384,7 @@
       "id": "function:Std::trimEnd",
       "kind": "function",
       "name": "trimEnd",
-      "symbol": "ACharArray_trimEnd",
+      "symbol": "StdACharArray_trimEnd",
       "visibility": "public",
       "returnType": "scoped const achar[]",
       "parameters": [
@@ -1387,7 +1405,7 @@
       "id": "function:Std::stringCopy",
       "kind": "function",
       "name": "stringCopy",
-      "symbol": "ACharArray_stringCopy",
+      "symbol": "StdACharArray_stringCopy",
       "visibility": "public",
       "returnType": "astring",
       "parameters": [
@@ -1414,7 +1432,7 @@
       "id": "function:Std::uppercaseCopy",
       "kind": "function",
       "name": "uppercaseCopy",
-      "symbol": "ACharArray_uppercaseCopy",
+      "symbol": "StdACharArray_uppercaseCopy",
       "visibility": "public",
       "returnType": "astring",
       "parameters": [
@@ -1441,7 +1459,7 @@
       "id": "function:Std::lowercaseCopy",
       "kind": "function",
       "name": "lowercaseCopy",
-      "symbol": "ACharArray_lowercaseCopy",
+      "symbol": "StdACharArray_lowercaseCopy",
       "visibility": "public",
       "returnType": "astring",
       "parameters": [
@@ -1468,7 +1486,7 @@
       "id": "function:Std::concatCopy",
       "kind": "function",
       "name": "concatCopy",
-      "symbol": "AStringArray_concatCopy",
+      "symbol": "StdAStringArray_concatCopy",
       "visibility": "public",
       "returnType": "astring",
       "parameters": [
@@ -1495,7 +1513,7 @@
       "id": "function:Std::joinCopy",
       "kind": "function",
       "name": "joinCopy",
-      "symbol": "AStringArray_joinCopy",
+      "symbol": "StdAStringArray_joinCopy",
       "visibility": "public",
       "returnType": "astring",
       "parameters": [
@@ -1527,7 +1545,7 @@
       "id": "function:Std::getLength",
       "kind": "function",
       "name": "getLength",
-      "symbol": "AString_getLength",
+      "symbol": "StdAString_getLength",
       "visibility": "public",
       "returnType": "nuint",
       "propertyName": "Length",
@@ -1546,112 +1564,100 @@
       ]
     },
     {
-      "id": "class:Std::Console",
-      "kind": "class",
+      "id": "staticClass:Std::Console",
+      "kind": "staticClass",
       "name": "Console",
-      "visibility": "public",
+      "symbol": "StdConsole",
       "functions": [
         {
-          "id": "class:Std::Console/function:getReader",
+          "id": "staticClass:Std::Console/function:getReader",
           "name": "getReader",
+          "symbol": "StdConsole_getReader",
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharReader",
-          "propertyName": "Reader",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Returns a character reader for standard input."
-            }
-          ]
+          "propertyName": "Reader"
         },
         {
-          "id": "class:Std::Console/function:getWriter",
+          "id": "staticClass:Std::Console/function:getWriter",
           "name": "getWriter",
+          "symbol": "StdConsole_getWriter",
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharWriter",
-          "propertyName": "Writer",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Returns a character writer for standard output."
-            }
-          ]
+          "propertyName": "Writer"
         },
         {
-          "id": "class:Std::Console/function:getError",
+          "id": "staticClass:Std::Console/function:getError",
           "name": "getError",
+          "symbol": "StdConsole_getError",
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharWriter",
-          "propertyName": "Error",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Returns a character writer for standard error."
-            }
-          ]
+          "propertyName": "Error"
         },
         {
-          "id": "class:Std::Console/function:writeFd",
+          "id": "staticClass:Std::Console/function:writeFd",
           "name": "writeFd",
+          "symbol": "StdConsole_writeFd",
           "modifier": "static",
           "returnType": "bool",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeFd/parameter:context",
+              "id": "staticClass:Std::Console/function:writeFd/parameter:context",
               "name": "context",
               "type": "void*"
             },
             {
-              "id": "class:Std::Console/function:writeFd/parameter:written",
+              "id": "staticClass:Std::Console/function:writeFd/parameter:written",
               "name": "written",
               "type": "nuint*"
             },
             {
-              "id": "class:Std::Console/function:writeFd/parameter:buffer",
+              "id": "staticClass:Std::Console/function:writeFd/parameter:buffer",
               "name": "buffer",
               "type": "char*"
             },
             {
-              "id": "class:Std::Console/function:writeFd/parameter:buffer_length",
+              "id": "staticClass:Std::Console/function:writeFd/parameter:buffer_length",
               "name": "buffer_length",
               "type": "nuint"
             }
           ]
         },
         {
-          "id": "class:Std::Console/function:readFd",
+          "id": "staticClass:Std::Console/function:readFd",
           "name": "readFd",
+          "symbol": "StdConsole_readFd",
           "modifier": "static",
           "returnType": "bool",
           "parameters": [
             {
-              "id": "class:Std::Console/function:readFd/parameter:context",
+              "id": "staticClass:Std::Console/function:readFd/parameter:context",
               "name": "context",
               "type": "void*"
             },
             {
-              "id": "class:Std::Console/function:readFd/parameter:readCount",
+              "id": "staticClass:Std::Console/function:readFd/parameter:readCount",
               "name": "readCount",
               "type": "nuint*"
             },
             {
-              "id": "class:Std::Console/function:readFd/parameter:buffer",
+              "id": "staticClass:Std::Console/function:readFd/parameter:buffer",
               "name": "buffer",
               "type": "char*"
             },
             {
-              "id": "class:Std::Console/function:readFd/parameter:buffer_length",
+              "id": "staticClass:Std::Console/function:readFd/parameter:buffer_length",
               "name": "buffer_length",
               "type": "nuint"
             }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeChar",
+          "id": "staticClass:Std::Console/function:writeChar",
           "name": "write",
+          "symbol": "StdConsole_writeChar",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeChar",
@@ -1659,26 +1665,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeChar/parameter:value",
+              "id": "staticClass:Std::Console/function:writeChar/parameter:value",
               "name": "value",
               "overload": true,
               "type": "char"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a character to standard output."
-            },
-            {
-              "name": "overload",
-              "content": "Writes a value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeCharArray",
+          "id": "staticClass:Std::Console/function:writeCharArray",
           "name": "write",
+          "symbol": "StdConsole_writeCharArray",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeCharArray",
@@ -1686,22 +1683,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeCharArray/parameter:value",
+              "id": "staticClass:Std::Console/function:writeCharArray/parameter:value",
               "name": "value",
               "overload": true,
               "type": "const char[]"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes text to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeString",
+          "id": "staticClass:Std::Console/function:writeString",
           "name": "write",
+          "symbol": "StdConsole_writeString",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeString",
@@ -1709,22 +1701,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeString/parameter:value",
+              "id": "staticClass:Std::Console/function:writeString/parameter:value",
               "name": "value",
               "overload": true,
               "type": "string"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes text to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeBool",
+          "id": "staticClass:Std::Console/function:writeBool",
           "name": "write",
+          "symbol": "StdConsole_writeBool",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeBool",
@@ -1732,22 +1719,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeBool/parameter:value",
+              "id": "staticClass:Std::Console/function:writeBool/parameter:value",
               "name": "value",
               "overload": true,
               "type": "bool"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a boolean value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeByte",
+          "id": "staticClass:Std::Console/function:writeByte",
           "name": "write",
+          "symbol": "StdConsole_writeByte",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeByte",
@@ -1755,22 +1737,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeByte/parameter:value",
+              "id": "staticClass:Std::Console/function:writeByte/parameter:value",
               "name": "value",
               "overload": true,
               "type": "byte"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 8-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeSByte",
+          "id": "staticClass:Std::Console/function:writeSByte",
           "name": "write",
+          "symbol": "StdConsole_writeSByte",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeSByte",
@@ -1778,22 +1755,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeSByte/parameter:value",
+              "id": "staticClass:Std::Console/function:writeSByte/parameter:value",
               "name": "value",
               "overload": true,
               "type": "sbyte"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 8-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeUShort",
+          "id": "staticClass:Std::Console/function:writeUShort",
           "name": "write",
+          "symbol": "StdConsole_writeUShort",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeUShort",
@@ -1801,22 +1773,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeUShort/parameter:value",
+              "id": "staticClass:Std::Console/function:writeUShort/parameter:value",
               "name": "value",
               "overload": true,
               "type": "ushort"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 16-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeShort",
+          "id": "staticClass:Std::Console/function:writeShort",
           "name": "write",
+          "symbol": "StdConsole_writeShort",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeShort",
@@ -1824,22 +1791,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeShort/parameter:value",
+              "id": "staticClass:Std::Console/function:writeShort/parameter:value",
               "name": "value",
               "overload": true,
               "type": "short"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 16-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeUInt",
+          "id": "staticClass:Std::Console/function:writeUInt",
           "name": "write",
+          "symbol": "StdConsole_writeUInt",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeUInt",
@@ -1847,22 +1809,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeUInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeUInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "uint"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 32-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeInt",
+          "id": "staticClass:Std::Console/function:writeInt",
           "name": "write",
+          "symbol": "StdConsole_writeInt",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeInt",
@@ -1870,22 +1827,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "int"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 32-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeULong",
+          "id": "staticClass:Std::Console/function:writeULong",
           "name": "write",
+          "symbol": "StdConsole_writeULong",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeULong",
@@ -1893,22 +1845,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeULong/parameter:value",
+              "id": "staticClass:Std::Console/function:writeULong/parameter:value",
               "name": "value",
               "overload": true,
               "type": "ulong"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 64-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLong",
+          "id": "staticClass:Std::Console/function:writeLong",
           "name": "write",
+          "symbol": "StdConsole_writeLong",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeLong",
@@ -1916,22 +1863,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLong/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLong/parameter:value",
               "name": "value",
               "overload": true,
               "type": "long"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 64-bit integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeNUInt",
+          "id": "staticClass:Std::Console/function:writeNUInt",
           "name": "write",
+          "symbol": "StdConsole_writeNUInt",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeNUInt",
@@ -1939,22 +1881,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeNUInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeNUInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "nuint"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned native-size integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeNInt",
+          "id": "staticClass:Std::Console/function:writeNInt",
           "name": "write",
+          "symbol": "StdConsole_writeNInt",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeNInt",
@@ -1962,22 +1899,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeNInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeNInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "nint"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed native-size integer value to standard output."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineChar",
+          "id": "staticClass:Std::Console/function:writeLineChar",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineChar",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineChar",
@@ -1985,26 +1917,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineChar/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineChar/parameter:value",
               "name": "value",
               "overload": true,
               "type": "char"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a character to standard output followed by a newline."
-            },
-            {
-              "name": "overload",
-              "content": "Writes a value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineCharArray",
+          "id": "staticClass:Std::Console/function:writeLineCharArray",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineCharArray",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineCharArray",
@@ -2012,22 +1935,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineCharArray/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineCharArray/parameter:value",
               "name": "value",
               "overload": true,
               "type": "const char[]"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes text to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineString",
+          "id": "staticClass:Std::Console/function:writeLineString",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineString",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineString",
@@ -2035,22 +1953,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineString/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineString/parameter:value",
               "name": "value",
               "overload": true,
               "type": "string"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes text to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineBool",
+          "id": "staticClass:Std::Console/function:writeLineBool",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineBool",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineBool",
@@ -2058,22 +1971,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineBool/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineBool/parameter:value",
               "name": "value",
               "overload": true,
               "type": "bool"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a boolean value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineByte",
+          "id": "staticClass:Std::Console/function:writeLineByte",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineByte",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineByte",
@@ -2081,22 +1989,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineByte/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineByte/parameter:value",
               "name": "value",
               "overload": true,
               "type": "byte"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 8-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineSByte",
+          "id": "staticClass:Std::Console/function:writeLineSByte",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineSByte",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineSByte",
@@ -2104,22 +2007,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineSByte/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineSByte/parameter:value",
               "name": "value",
               "overload": true,
               "type": "sbyte"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 8-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineUShort",
+          "id": "staticClass:Std::Console/function:writeLineUShort",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineUShort",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineUShort",
@@ -2127,22 +2025,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineUShort/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineUShort/parameter:value",
               "name": "value",
               "overload": true,
               "type": "ushort"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 16-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineShort",
+          "id": "staticClass:Std::Console/function:writeLineShort",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineShort",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineShort",
@@ -2150,22 +2043,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineShort/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineShort/parameter:value",
               "name": "value",
               "overload": true,
               "type": "short"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 16-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineUInt",
+          "id": "staticClass:Std::Console/function:writeLineUInt",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineUInt",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineUInt",
@@ -2173,22 +2061,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineUInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineUInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "uint"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 32-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineInt",
+          "id": "staticClass:Std::Console/function:writeLineInt",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineInt",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineInt",
@@ -2196,22 +2079,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "int"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 32-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineULong",
+          "id": "staticClass:Std::Console/function:writeLineULong",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineULong",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineULong",
@@ -2219,22 +2097,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineULong/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineULong/parameter:value",
               "name": "value",
               "overload": true,
               "type": "ulong"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned 64-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineLong",
+          "id": "staticClass:Std::Console/function:writeLineLong",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineLong",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineLong",
@@ -2242,22 +2115,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineLong/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineLong/parameter:value",
               "name": "value",
               "overload": true,
               "type": "long"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed 64-bit integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineNUInt",
+          "id": "staticClass:Std::Console/function:writeLineNUInt",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineNUInt",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineNUInt",
@@ -2265,22 +2133,17 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineNUInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineNUInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "nuint"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes an unsigned native-size integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:writeLineNInt",
+          "id": "staticClass:Std::Console/function:writeLineNInt",
           "name": "writeLine",
+          "symbol": "StdConsole_writeLineNInt",
           "visibility": "public",
           "invokerName": "writeLine",
           "callableName": "writeLineNInt",
@@ -2288,63 +2151,42 @@
           "returnType": "void",
           "parameters": [
             {
-              "id": "class:Std::Console/function:writeLineNInt/parameter:value",
+              "id": "staticClass:Std::Console/function:writeLineNInt/parameter:value",
               "name": "value",
               "overload": true,
               "type": "nint"
             }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a signed native-size integer value to standard output followed by a newline."
-            }
           ]
         },
         {
-          "id": "class:Std::Console/function:newLine",
+          "id": "staticClass:Std::Console/function:newLine",
           "name": "newLine",
+          "symbol": "StdConsole_newLine",
           "visibility": "public",
           "modifier": "static",
-          "returnType": "void",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Writes a newline to standard output."
-            }
-          ]
+          "returnType": "void"
         },
         {
-          "id": "class:Std::Console/function:readChar",
+          "id": "staticClass:Std::Console/function:readChar",
           "name": "readChar",
+          "symbol": "StdConsole_readChar",
           "visibility": "public",
           "modifier": "static",
-          "returnType": "char",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Reads one character from standard input."
-            }
-          ]
+          "returnType": "char"
         },
         {
-          "id": "class:Std::Console/function:readLine",
+          "id": "staticClass:Std::Console/function:readLine",
           "name": "readLine",
+          "symbol": "StdConsole_readLine",
           "visibility": "public",
           "modifier": "static",
           "returnType": "escaped string",
           "parameters": [
             {
-              "id": "class:Std::Console/function:readLine/parameter:allocator",
+              "id": "staticClass:Std::Console/function:readLine/parameter:allocator",
               "name": "allocator",
               "modifier": "within",
               "type": "Allocator*"
-            }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Reads one line from standard input."
             }
           ]
         }
@@ -2368,27 +2210,28 @@
       "id": "enum:Std::FileAccess",
       "kind": "enum",
       "name": "FileAccess",
+      "symbol": "StdFileAccess",
       "visibility": "public",
       "underlyingType": "uint",
       "values": [
         {
           "id": "enum:Std::FileAccess/value:READ",
           "name": "READ",
-          "symbol": "FileAccess_READ",
+          "symbol": "StdFileAccess_READ",
           "type": "FileAccess",
           "value": 0
         },
         {
           "id": "enum:Std::FileAccess/value:WRITE",
           "name": "WRITE",
-          "symbol": "FileAccess_WRITE",
+          "symbol": "StdFileAccess_WRITE",
           "type": "FileAccess",
           "value": 1
         },
         {
           "id": "enum:Std::FileAccess/value:READ_WRITE",
           "name": "READ_WRITE",
-          "symbol": "FileAccess_READ_WRITE",
+          "symbol": "StdFileAccess_READ_WRITE",
           "type": "FileAccess",
           "value": 2
         }
@@ -2404,34 +2247,35 @@
       "id": "enum:Std::FileMode",
       "kind": "enum",
       "name": "FileMode",
+      "symbol": "StdFileMode",
       "visibility": "public",
       "underlyingType": "uint",
       "values": [
         {
           "id": "enum:Std::FileMode/value:OPEN_EXISTING",
           "name": "OPEN_EXISTING",
-          "symbol": "FileMode_OPEN_EXISTING",
+          "symbol": "StdFileMode_OPEN_EXISTING",
           "type": "FileMode",
           "value": 0
         },
         {
           "id": "enum:Std::FileMode/value:CREATE",
           "name": "CREATE",
-          "symbol": "FileMode_CREATE",
+          "symbol": "StdFileMode_CREATE",
           "type": "FileMode",
           "value": 1
         },
         {
           "id": "enum:Std::FileMode/value:CREATE_OR_TRUNCATE",
           "name": "CREATE_OR_TRUNCATE",
-          "symbol": "FileMode_CREATE_OR_TRUNCATE",
+          "symbol": "StdFileMode_CREATE_OR_TRUNCATE",
           "type": "FileMode",
           "value": 2
         },
         {
           "id": "enum:Std::FileMode/value:APPEND",
           "name": "APPEND",
-          "symbol": "FileMode_APPEND",
+          "symbol": "StdFileMode_APPEND",
           "type": "FileMode",
           "value": 3
         }
@@ -2447,6 +2291,7 @@
       "id": "struct:Std::FileOptions",
       "kind": "struct",
       "name": "FileOptions",
+      "symbol": "StdFileOptions",
       "visibility": "public",
       "fields": [
         {
@@ -2486,12 +2331,14 @@
       "id": "newtype:Std::FileHandle",
       "kind": "newtype",
       "name": "FileHandle",
+      "symbol": "StdFileHandle",
       "visibility": "public",
       "underlyingType": "nint",
       "functions": [
         {
           "id": "newtype:Std::FileHandle/function:close",
           "name": "close",
+          "symbol": "StdFileHandle_close",
           "visibility": "public",
           "returnType": "void",
           "metadata": [
@@ -2504,6 +2351,7 @@
         {
           "id": "newtype:Std::FileHandle/function:open",
           "name": "open",
+          "symbol": "StdFileHandle_open",
           "visibility": "public",
           "modifier": "static",
           "returnType": "FileHandle",
@@ -2540,6 +2388,7 @@
         {
           "id": "newtype:Std::FileHandle/function:getLength",
           "name": "getLength",
+          "symbol": "StdFileHandle_getLength",
           "visibility": "public",
           "returnType": "ulong",
           "propertyName": "Length",
@@ -2555,6 +2404,7 @@
         {
           "id": "newtype:Std::FileHandle/function:getPosition",
           "name": "getPosition",
+          "symbol": "StdFileHandle_getPosition",
           "visibility": "public",
           "returnType": "ulong",
           "propertyName": "Position",
@@ -2570,6 +2420,7 @@
         {
           "id": "newtype:Std::FileHandle/function:setPosition",
           "name": "setPosition",
+          "symbol": "StdFileHandle_setPosition",
           "visibility": "public",
           "returnType": "void",
           "propertyName": "Position",
@@ -2591,6 +2442,7 @@
         {
           "id": "newtype:Std::FileHandle/function:read",
           "name": "read",
+          "symbol": "StdFileHandle_read",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -2616,6 +2468,7 @@
         {
           "id": "newtype:Std::FileHandle/function:write",
           "name": "write",
+          "symbol": "StdFileHandle_write",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -2635,6 +2488,7 @@
         {
           "id": "newtype:Std::FileHandle/function:getByteReader",
           "name": "getByteReader",
+          "symbol": "StdFileHandle_getByteReader",
           "visibility": "public",
           "returnType": "ByteReader",
           "propertyName": "ByteReader"
@@ -2642,6 +2496,7 @@
         {
           "id": "newtype:Std::FileHandle/function:getCharReader",
           "name": "getCharReader",
+          "symbol": "StdFileHandle_getCharReader",
           "visibility": "public",
           "returnType": "CharReader",
           "propertyName": "CharReader"
@@ -2649,6 +2504,7 @@
         {
           "id": "newtype:Std::FileHandle/function:getByteWriter",
           "name": "getByteWriter",
+          "symbol": "StdFileHandle_getByteWriter",
           "visibility": "public",
           "returnType": "ByteWriter",
           "propertyName": "ByteWriter"
@@ -2656,6 +2512,7 @@
         {
           "id": "newtype:Std::FileHandle/function:getCharWriter",
           "name": "getCharWriter",
+          "symbol": "StdFileHandle_getCharWriter",
           "visibility": "public",
           "returnType": "CharWriter",
           "propertyName": "CharWriter"
@@ -2672,7 +2529,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "Char_toString",
+      "symbol": "StdChar_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2701,7 +2558,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "CharArray_toString",
+      "symbol": "StdCharArray_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2729,7 +2586,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "String_toString",
+      "symbol": "StdString_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2758,7 +2615,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "Bool_toString",
+      "symbol": "StdBool_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2787,7 +2644,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "Byte_toString",
+      "symbol": "StdByte_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2816,7 +2673,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "SByte_toString",
+      "symbol": "StdSByte_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2845,7 +2702,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "UShort_toString",
+      "symbol": "StdUShort_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2874,7 +2731,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "Short_toString",
+      "symbol": "StdShort_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2903,7 +2760,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "UInt_toString",
+      "symbol": "StdUInt_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2932,7 +2789,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "Int_toString",
+      "symbol": "StdInt_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2961,7 +2818,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "NUInt_toString",
+      "symbol": "StdNUInt_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -2990,7 +2847,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "NInt_toString",
+      "symbol": "StdNInt_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3019,7 +2876,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "ULong_toString",
+      "symbol": "StdULong_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3048,7 +2905,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "Long_toString",
+      "symbol": "StdLong_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3077,6 +2934,7 @@
       "id": "struct:Std::HashPolicy",
       "kind": "struct",
       "name": "HashPolicy",
+      "symbol": "StdHashPolicy",
       "visibility": "public",
       "typeParameters": [
         {
@@ -3112,7 +2970,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "SByte_hashcode",
+      "symbol": "StdSByte_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3138,7 +2996,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "SByte_hashEquals",
+      "symbol": "StdSByte_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3170,7 +3028,7 @@
       "id": "variable:Std::sbyte.HASH_POLICY",
       "kind": "variable",
       "name": "sbyte.HASH_POLICY",
-      "symbol": "SByte_HASH_POLICY",
+      "symbol": "StdSByte_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Csbyte\u003E",
       "static": true,
@@ -3189,7 +3047,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "UShort_hashcode",
+      "symbol": "StdUShort_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3215,7 +3073,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "UShort_hashEquals",
+      "symbol": "StdUShort_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3247,7 +3105,7 @@
       "id": "variable:Std::ushort.HASH_POLICY",
       "kind": "variable",
       "name": "ushort.HASH_POLICY",
-      "symbol": "UShort_HASH_POLICY",
+      "symbol": "StdUShort_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cushort\u003E",
       "static": true,
@@ -3266,7 +3124,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "Short_hashcode",
+      "symbol": "StdShort_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3292,7 +3150,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "Short_hashEquals",
+      "symbol": "StdShort_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3324,7 +3182,7 @@
       "id": "variable:Std::short.HASH_POLICY",
       "kind": "variable",
       "name": "short.HASH_POLICY",
-      "symbol": "Short_HASH_POLICY",
+      "symbol": "StdShort_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cshort\u003E",
       "static": true,
@@ -3343,7 +3201,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "UInt_hashcode",
+      "symbol": "StdUInt_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3369,7 +3227,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "UInt_hashEquals",
+      "symbol": "StdUInt_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3401,7 +3259,7 @@
       "id": "variable:Std::uint.HASH_POLICY",
       "kind": "variable",
       "name": "uint.HASH_POLICY",
-      "symbol": "UInt_HASH_POLICY",
+      "symbol": "StdUInt_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cuint\u003E",
       "static": true,
@@ -3420,7 +3278,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "Int_hashcode",
+      "symbol": "StdInt_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3446,7 +3304,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "Int_hashEquals",
+      "symbol": "StdInt_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3478,7 +3336,7 @@
       "id": "variable:Std::int.HASH_POLICY",
       "kind": "variable",
       "name": "int.HASH_POLICY",
-      "symbol": "Int_HASH_POLICY",
+      "symbol": "StdInt_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cint\u003E",
       "static": true,
@@ -3497,7 +3355,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "ULong_hashcode",
+      "symbol": "StdULong_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3523,7 +3381,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "ULong_hashEquals",
+      "symbol": "StdULong_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3555,7 +3413,7 @@
       "id": "variable:Std::ulong.HASH_POLICY",
       "kind": "variable",
       "name": "ulong.HASH_POLICY",
-      "symbol": "ULong_HASH_POLICY",
+      "symbol": "StdULong_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Culong\u003E",
       "static": true,
@@ -3574,7 +3432,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "Long_hashcode",
+      "symbol": "StdLong_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3600,7 +3458,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "Long_hashEquals",
+      "symbol": "StdLong_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3632,7 +3490,7 @@
       "id": "variable:Std::long.HASH_POLICY",
       "kind": "variable",
       "name": "long.HASH_POLICY",
-      "symbol": "Long_HASH_POLICY",
+      "symbol": "StdLong_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Clong\u003E",
       "static": true,
@@ -3651,7 +3509,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "NUInt_hashcode",
+      "symbol": "StdNUInt_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3677,7 +3535,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "NUInt_hashEquals",
+      "symbol": "StdNUInt_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3709,7 +3567,7 @@
       "id": "variable:Std::nuint.HASH_POLICY",
       "kind": "variable",
       "name": "nuint.HASH_POLICY",
-      "symbol": "NUInt_HASH_POLICY",
+      "symbol": "StdNUInt_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cnuint\u003E",
       "static": true,
@@ -3728,7 +3586,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "NInt_hashcode",
+      "symbol": "StdNInt_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3754,7 +3612,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "NInt_hashEquals",
+      "symbol": "StdNInt_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3786,7 +3644,7 @@
       "id": "variable:Std::nint.HASH_POLICY",
       "kind": "variable",
       "name": "nint.HASH_POLICY",
-      "symbol": "NInt_HASH_POLICY",
+      "symbol": "StdNInt_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cnint\u003E",
       "static": true,
@@ -3805,6 +3663,7 @@
       "id": "function:Std::hashcodePointer",
       "kind": "function",
       "name": "hashcodePointer",
+      "symbol": "Std_hashcodePointer",
       "visibility": "public",
       "returnType": "nuint",
       "typeParameters": [
@@ -3837,6 +3696,7 @@
       "id": "function:Std::hashEqualsPointer",
       "kind": "function",
       "name": "hashEqualsPointer",
+      "symbol": "Std_hashEqualsPointer",
       "visibility": "public",
       "returnType": "bool",
       "typeParameters": [
@@ -3875,6 +3735,7 @@
       "id": "function:Std::pointerHashPolicy",
       "kind": "function",
       "name": "pointerHashPolicy",
+      "symbol": "Std_pointerHashPolicy",
       "visibility": "public",
       "returnType": "HashPolicy\u003CT*\u003E",
       "typeParameters": [
@@ -3899,7 +3760,7 @@
       "id": "function:Std::hashcode",
       "kind": "function",
       "name": "hashcode",
-      "symbol": "String_hashcode",
+      "symbol": "StdString_hashcode",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3925,7 +3786,7 @@
       "id": "function:Std::hashcodeCaseInsensitive",
       "kind": "function",
       "name": "hashcodeCaseInsensitive",
-      "symbol": "String_hashcodeCaseInsensitive",
+      "symbol": "StdString_hashcodeCaseInsensitive",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -3951,7 +3812,7 @@
       "id": "function:Std::hashEquals",
       "kind": "function",
       "name": "hashEquals",
-      "symbol": "String_hashEquals",
+      "symbol": "StdString_hashEquals",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -3983,7 +3844,7 @@
       "id": "function:Std::hashEqualsCaseInsensitive",
       "kind": "function",
       "name": "hashEqualsCaseInsensitive",
-      "symbol": "String_hashEqualsCaseInsensitive",
+      "symbol": "StdString_hashEqualsCaseInsensitive",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -4015,7 +3876,7 @@
       "id": "variable:Std::string.HASH_POLICY",
       "kind": "variable",
       "name": "string.HASH_POLICY",
-      "symbol": "String_HASH_POLICY",
+      "symbol": "StdString_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cstring\u003E",
       "static": true,
@@ -4034,7 +3895,7 @@
       "id": "variable:Std::string.CASE_INSENSITIVE_HASH_POLICY",
       "kind": "variable",
       "name": "string.CASE_INSENSITIVE_HASH_POLICY",
-      "symbol": "String_CASE_INSENSITIVE_HASH_POLICY",
+      "symbol": "StdString_CASE_INSENSITIVE_HASH_POLICY",
       "visibility": "public",
       "type": "const HashPolicy\u003Cstring\u003E",
       "static": true,
@@ -4053,6 +3914,7 @@
       "id": "class:Std::HashMap",
       "kind": "class",
       "name": "HashMap",
+      "symbol": "StdHashMap",
       "visibility": "public",
       "typeParameters": [
         {
@@ -4137,6 +3999,7 @@
         {
           "id": "class:Std::HashMap/function:HashMap",
           "name": "HashMap",
+          "symbol": "StdHashMap_HashMap",
           "visibility": "public",
           "modifier": "constructor",
           "returnType": "HashMap",
@@ -4177,7 +4040,7 @@
         {
           "id": "class:Std::HashMap/function:~HashMap",
           "name": "~HashMap",
-          "symbol": "HashMap",
+          "symbol": "StdHashMap_HashMap",
           "visibility": "public",
           "modifier": "destructor",
           "returnType": "void",
@@ -4191,6 +4054,7 @@
         {
           "id": "class:Std::HashMap/function:setItem",
           "name": "setItem",
+          "symbol": "StdHashMap_setItem",
           "visibility": "public",
           "returnType": "void",
           "propertyName": "Item",
@@ -4222,6 +4086,7 @@
         {
           "id": "class:Std::HashMap/function:tryGet",
           "name": "tryGet",
+          "symbol": "StdHashMap_tryGet",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -4257,6 +4122,7 @@
         {
           "id": "class:Std::HashMap/function:getItem",
           "name": "getItem",
+          "symbol": "StdHashMap_getItem",
           "visibility": "public",
           "returnType": "V",
           "propertyName": "Item",
@@ -4290,6 +4156,7 @@
         {
           "id": "class:Std::HashMap/function:containsKey",
           "name": "containsKey",
+          "symbol": "StdHashMap_containsKey",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -4319,6 +4186,7 @@
         {
           "id": "class:Std::HashMap/function:remove",
           "name": "remove",
+          "symbol": "StdHashMap_remove",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -4339,6 +4207,7 @@
         {
           "id": "class:Std::HashMap/function:clear",
           "name": "clear",
+          "symbol": "StdHashMap_clear",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -4359,6 +4228,7 @@
         {
           "id": "class:Std::HashMap/function:getLength",
           "name": "getLength",
+          "symbol": "StdHashMap_getLength",
           "visibility": "public",
           "returnType": "nuint",
           "propertyName": "Length",
@@ -4372,6 +4242,7 @@
         {
           "id": "class:Std::HashMap/function:getCapacity",
           "name": "getCapacity",
+          "symbol": "StdHashMap_getCapacity",
           "visibility": "public",
           "returnType": "nuint",
           "propertyName": "Capacity",
@@ -4385,6 +4256,7 @@
         {
           "id": "class:Std::HashMap/function:findSlot",
           "name": "findSlot",
+          "symbol": "StdHashMap_findSlot",
           "returnType": "nint",
           "parameters": [
             {
@@ -4414,11 +4286,13 @@
         {
           "id": "class:Std::HashMap/function:allocateSlot",
           "name": "allocateSlot",
+          "symbol": "StdHashMap_allocateSlot",
           "returnType": "nuint"
         },
         {
           "id": "class:Std::HashMap/function:ensureCapacity",
           "name": "ensureCapacity",
+          "symbol": "StdHashMap_ensureCapacity",
           "returnType": "void",
           "parameters": [
             {
@@ -4431,6 +4305,7 @@
         {
           "id": "class:Std::HashMap/function:resizeSlots",
           "name": "resizeSlots",
+          "symbol": "StdHashMap_resizeSlots",
           "returnType": "void",
           "parameters": [
             {
@@ -4443,6 +4318,7 @@
         {
           "id": "class:Std::HashMap/function:resizeBuckets",
           "name": "resizeBuckets",
+          "symbol": "StdHashMap_resizeBuckets",
           "returnType": "void",
           "parameters": [
             {
@@ -4455,11 +4331,13 @@
         {
           "id": "class:Std::HashMap/function:rehash",
           "name": "rehash",
+          "symbol": "StdHashMap_rehash",
           "returnType": "void"
         },
         {
           "id": "class:Std::HashMap/function:clearBuckets",
           "name": "clearBuckets",
+          "symbol": "StdHashMap_clearBuckets",
           "returnType": "void"
         }
       ],
@@ -4482,6 +4360,7 @@
       "id": "class:Std::HashSet",
       "kind": "class",
       "name": "HashSet",
+      "symbol": "StdHashSet",
       "visibility": "public",
       "typeParameters": [
         {
@@ -4551,6 +4430,7 @@
         {
           "id": "class:Std::HashSet/function:HashSet",
           "name": "HashSet",
+          "symbol": "StdHashSet_HashSet",
           "visibility": "public",
           "modifier": "constructor",
           "returnType": "HashSet",
@@ -4584,7 +4464,7 @@
         {
           "id": "class:Std::HashSet/function:~HashSet",
           "name": "~HashSet",
-          "symbol": "HashSet",
+          "symbol": "StdHashSet_HashSet",
           "visibility": "public",
           "modifier": "destructor",
           "returnType": "void",
@@ -4598,6 +4478,7 @@
         {
           "id": "class:Std::HashSet/function:add",
           "name": "add",
+          "symbol": "StdHashSet_add",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -4618,6 +4499,7 @@
         {
           "id": "class:Std::HashSet/function:contains",
           "name": "contains",
+          "symbol": "StdHashSet_contains",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -4638,6 +4520,7 @@
         {
           "id": "class:Std::HashSet/function:remove",
           "name": "remove",
+          "symbol": "StdHashSet_remove",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -4658,6 +4541,7 @@
         {
           "id": "class:Std::HashSet/function:clear",
           "name": "clear",
+          "symbol": "StdHashSet_clear",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -4678,6 +4562,7 @@
         {
           "id": "class:Std::HashSet/function:getLength",
           "name": "getLength",
+          "symbol": "StdHashSet_getLength",
           "visibility": "public",
           "returnType": "nuint",
           "propertyName": "Length",
@@ -4691,6 +4576,7 @@
         {
           "id": "class:Std::HashSet/function:getCapacity",
           "name": "getCapacity",
+          "symbol": "StdHashSet_getCapacity",
           "visibility": "public",
           "returnType": "nuint",
           "propertyName": "Capacity",
@@ -4704,6 +4590,7 @@
         {
           "id": "class:Std::HashSet/function:copyArray",
           "name": "copyArray",
+          "symbol": "StdHashSet_copyArray",
           "visibility": "public",
           "returnType": "escaped K[]",
           "metadata": [
@@ -4716,6 +4603,7 @@
         {
           "id": "class:Std::HashSet/function:findSlot",
           "name": "findSlot",
+          "symbol": "StdHashSet_findSlot",
           "returnType": "nint",
           "parameters": [
             {
@@ -4734,11 +4622,13 @@
         {
           "id": "class:Std::HashSet/function:allocateSlot",
           "name": "allocateSlot",
+          "symbol": "StdHashSet_allocateSlot",
           "returnType": "nuint"
         },
         {
           "id": "class:Std::HashSet/function:ensureCapacity",
           "name": "ensureCapacity",
+          "symbol": "StdHashSet_ensureCapacity",
           "returnType": "void",
           "parameters": [
             {
@@ -4751,6 +4641,7 @@
         {
           "id": "class:Std::HashSet/function:resizeSlots",
           "name": "resizeSlots",
+          "symbol": "StdHashSet_resizeSlots",
           "returnType": "void",
           "parameters": [
             {
@@ -4763,6 +4654,7 @@
         {
           "id": "class:Std::HashSet/function:resizeBuckets",
           "name": "resizeBuckets",
+          "symbol": "StdHashSet_resizeBuckets",
           "returnType": "void",
           "parameters": [
             {
@@ -4775,11 +4667,13 @@
         {
           "id": "class:Std::HashSet/function:rehash",
           "name": "rehash",
+          "symbol": "StdHashSet_rehash",
           "returnType": "void"
         },
         {
           "id": "class:Std::HashSet/function:clearBuckets",
           "name": "clearBuckets",
+          "symbol": "StdHashSet_clearBuckets",
           "returnType": "void"
         }
       ],
@@ -4802,6 +4696,7 @@
       "id": "class:Std::List",
       "kind": "class",
       "name": "List",
+      "symbol": "StdList",
       "visibility": "public",
       "typeParameters": [
         {
@@ -4836,6 +4731,7 @@
         {
           "id": "class:Std::List/function:List",
           "name": "List",
+          "symbol": "StdList_List",
           "visibility": "public",
           "modifier": "constructor",
           "returnType": "List",
@@ -4864,7 +4760,7 @@
         {
           "id": "class:Std::List/function:~List",
           "name": "~List",
-          "symbol": "List",
+          "symbol": "StdList_List",
           "visibility": "public",
           "modifier": "destructor",
           "returnType": "void",
@@ -4878,6 +4774,7 @@
         {
           "id": "class:Std::List/function:getAddressOf",
           "name": "getAddressOf",
+          "symbol": "StdList_getAddressOf",
           "visibility": "public",
           "returnType": "T*",
           "propertyName": "AddressOf",
@@ -4910,6 +4807,7 @@
         {
           "id": "class:Std::List/function:add",
           "name": "add",
+          "symbol": "StdList_add",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -4951,6 +4849,7 @@
         {
           "id": "class:Std::List/function:setItem",
           "name": "setItem",
+          "symbol": "StdList_setItem",
           "visibility": "public",
           "returnType": "void",
           "propertyName": "Item",
@@ -4990,6 +4889,7 @@
         {
           "id": "class:Std::List/function:getItem",
           "name": "getItem",
+          "symbol": "StdList_getItem",
           "visibility": "public",
           "returnType": "T",
           "propertyName": "Item",
@@ -5022,6 +4922,7 @@
         {
           "id": "class:Std::List/function:remove",
           "name": "remove",
+          "symbol": "StdList_remove",
           "visibility": "public",
           "returnType": "nuint",
           "parameters": [
@@ -5054,6 +4955,7 @@
         {
           "id": "class:Std::List/function:removeRange",
           "name": "removeRange",
+          "symbol": "StdList_removeRange",
           "visibility": "public",
           "returnType": "nuint",
           "parameters": [
@@ -5089,6 +4991,7 @@
         {
           "id": "class:Std::List/function:clear",
           "name": "clear",
+          "symbol": "StdList_clear",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -5109,6 +5012,7 @@
         {
           "id": "class:Std::List/function:copyList",
           "name": "copyList",
+          "symbol": "StdList_copyList",
           "visibility": "public",
           "returnType": "escaped List\u003CT\u003E*",
           "parameters": [
@@ -5140,6 +5044,7 @@
         {
           "id": "class:Std::List/function:addRange",
           "name": "addRange",
+          "symbol": "StdList_addRange",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -5170,6 +5075,7 @@
         {
           "id": "class:Std::List/function:takeBuffer",
           "name": "takeBuffer",
+          "symbol": "StdList_takeBuffer",
           "visibility": "public",
           "returnType": "escaped T[]",
           "metadata": [
@@ -5182,6 +5088,7 @@
         {
           "id": "class:Std::List/function:copyArray",
           "name": "copyArray",
+          "symbol": "StdList_copyArray",
           "visibility": "public",
           "returnType": "escaped T[]",
           "parameters": [
@@ -5213,6 +5120,7 @@
         {
           "id": "class:Std::List/function:copyTo",
           "name": "copyTo",
+          "symbol": "StdList_copyTo",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -5254,6 +5162,7 @@
         {
           "id": "class:Std::List/function:findIndex",
           "name": "findIndex",
+          "symbol": "StdList_findIndex",
           "visibility": "public",
           "returnType": "nint",
           "parameters": [
@@ -5296,6 +5205,7 @@
         {
           "id": "class:Std::List/function:findLastIndex",
           "name": "findLastIndex",
+          "symbol": "StdList_findLastIndex",
           "visibility": "public",
           "returnType": "nint",
           "parameters": [
@@ -5338,6 +5248,7 @@
         {
           "id": "class:Std::List/function:binarySearch",
           "name": "binarySearch",
+          "symbol": "StdList_binarySearch",
           "visibility": "public",
           "returnType": "nint",
           "parameters": [
@@ -5380,6 +5291,7 @@
         {
           "id": "class:Std::List/function:sort",
           "name": "sort",
+          "symbol": "StdList_sort",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -5399,6 +5311,7 @@
         {
           "id": "class:Std::List/function:getLength",
           "name": "getLength",
+          "symbol": "StdList_getLength",
           "visibility": "public",
           "returnType": "nuint",
           "propertyName": "Length",
@@ -5412,6 +5325,7 @@
         {
           "id": "class:Std::List/function:getCapacity",
           "name": "getCapacity",
+          "symbol": "StdList_getCapacity",
           "visibility": "public",
           "returnType": "nuint",
           "propertyName": "Capacity",
@@ -5425,6 +5339,7 @@
         {
           "id": "class:Std::List/function:ensureCapacity",
           "name": "ensureCapacity",
+          "symbol": "StdList_ensureCapacity",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -5467,7 +5382,7 @@
       "id": "function:Std::getCharWriter",
       "kind": "function",
       "name": "getCharWriter",
-      "symbol": "List_getCharWriter",
+      "symbol": "StdList_getCharWriter",
       "visibility": "public",
       "returnType": "CharWriter",
       "propertyName": "CharWriter",
@@ -5499,7 +5414,7 @@
       "id": "variable:Std::byte.MIN",
       "kind": "variable",
       "name": "byte.MIN",
-      "symbol": "Byte_MIN",
+      "symbol": "StdByte_MIN",
       "visibility": "public",
       "type": "byte",
       "static": true,
@@ -5516,7 +5431,7 @@
       "id": "variable:Std::byte.MAX",
       "kind": "variable",
       "name": "byte.MAX",
-      "symbol": "Byte_MAX",
+      "symbol": "StdByte_MAX",
       "visibility": "public",
       "type": "byte",
       "static": true,
@@ -5533,7 +5448,7 @@
       "id": "variable:Std::sbyte.MIN",
       "kind": "variable",
       "name": "sbyte.MIN",
-      "symbol": "SByte_MIN",
+      "symbol": "StdSByte_MIN",
       "visibility": "public",
       "type": "sbyte",
       "static": true,
@@ -5550,7 +5465,7 @@
       "id": "variable:Std::sbyte.MAX",
       "kind": "variable",
       "name": "sbyte.MAX",
-      "symbol": "SByte_MAX",
+      "symbol": "StdSByte_MAX",
       "visibility": "public",
       "type": "sbyte",
       "static": true,
@@ -5567,7 +5482,7 @@
       "id": "variable:Std::short.MIN",
       "kind": "variable",
       "name": "short.MIN",
-      "symbol": "Short_MIN",
+      "symbol": "StdShort_MIN",
       "visibility": "public",
       "type": "short",
       "static": true,
@@ -5584,7 +5499,7 @@
       "id": "variable:Std::short.MAX",
       "kind": "variable",
       "name": "short.MAX",
-      "symbol": "Short_MAX",
+      "symbol": "StdShort_MAX",
       "visibility": "public",
       "type": "short",
       "static": true,
@@ -5601,7 +5516,7 @@
       "id": "variable:Std::ushort.MIN",
       "kind": "variable",
       "name": "ushort.MIN",
-      "symbol": "UShort_MIN",
+      "symbol": "StdUShort_MIN",
       "visibility": "public",
       "type": "ushort",
       "static": true,
@@ -5618,7 +5533,7 @@
       "id": "variable:Std::ushort.MAX",
       "kind": "variable",
       "name": "ushort.MAX",
-      "symbol": "UShort_MAX",
+      "symbol": "StdUShort_MAX",
       "visibility": "public",
       "type": "ushort",
       "static": true,
@@ -5635,7 +5550,7 @@
       "id": "variable:Std::int.MIN",
       "kind": "variable",
       "name": "int.MIN",
-      "symbol": "Int_MIN",
+      "symbol": "StdInt_MIN",
       "visibility": "public",
       "type": "int",
       "static": true,
@@ -5652,7 +5567,7 @@
       "id": "variable:Std::int.MAX",
       "kind": "variable",
       "name": "int.MAX",
-      "symbol": "Int_MAX",
+      "symbol": "StdInt_MAX",
       "visibility": "public",
       "type": "int",
       "static": true,
@@ -5669,7 +5584,7 @@
       "id": "variable:Std::uint.MIN",
       "kind": "variable",
       "name": "uint.MIN",
-      "symbol": "UInt_MIN",
+      "symbol": "StdUInt_MIN",
       "visibility": "public",
       "type": "uint",
       "static": true,
@@ -5686,7 +5601,7 @@
       "id": "variable:Std::uint.MAX",
       "kind": "variable",
       "name": "uint.MAX",
-      "symbol": "UInt_MAX",
+      "symbol": "StdUInt_MAX",
       "visibility": "public",
       "type": "uint",
       "static": true,
@@ -5703,7 +5618,7 @@
       "id": "variable:Std::long.MIN",
       "kind": "variable",
       "name": "long.MIN",
-      "symbol": "Long_MIN",
+      "symbol": "StdLong_MIN",
       "visibility": "public",
       "type": "long",
       "static": true,
@@ -5720,7 +5635,7 @@
       "id": "variable:Std::long.MAX",
       "kind": "variable",
       "name": "long.MAX",
-      "symbol": "Long_MAX",
+      "symbol": "StdLong_MAX",
       "visibility": "public",
       "type": "long",
       "static": true,
@@ -5737,7 +5652,7 @@
       "id": "variable:Std::ulong.MIN",
       "kind": "variable",
       "name": "ulong.MIN",
-      "symbol": "ULong_MIN",
+      "symbol": "StdULong_MIN",
       "visibility": "public",
       "type": "ulong",
       "static": true,
@@ -5754,7 +5669,7 @@
       "id": "variable:Std::ulong.MAX",
       "kind": "variable",
       "name": "ulong.MAX",
-      "symbol": "ULong_MAX",
+      "symbol": "StdULong_MAX",
       "visibility": "public",
       "type": "ulong",
       "static": true,
@@ -5771,7 +5686,7 @@
       "id": "variable:Std::nint.MIN",
       "kind": "variable",
       "name": "nint.MIN",
-      "symbol": "NInt_MIN",
+      "symbol": "StdNInt_MIN",
       "visibility": "public",
       "type": "nint",
       "static": true,
@@ -5788,7 +5703,7 @@
       "id": "variable:Std::nint.MAX",
       "kind": "variable",
       "name": "nint.MAX",
-      "symbol": "NInt_MAX",
+      "symbol": "StdNInt_MAX",
       "visibility": "public",
       "type": "nint",
       "static": true,
@@ -5805,7 +5720,7 @@
       "id": "variable:Std::nuint.MIN",
       "kind": "variable",
       "name": "nuint.MIN",
-      "symbol": "NUInt_MIN",
+      "symbol": "StdNUInt_MIN",
       "visibility": "public",
       "type": "nuint",
       "static": true,
@@ -5822,7 +5737,7 @@
       "id": "variable:Std::nuint.MAX",
       "kind": "variable",
       "name": "nuint.MAX",
-      "symbol": "NUInt_MAX",
+      "symbol": "StdNUInt_MAX",
       "visibility": "public",
       "type": "nuint",
       "static": true,
@@ -5839,7 +5754,7 @@
       "id": "function:Std::absSByte",
       "kind": "function",
       "name": "abs",
-      "symbol": "absSByte",
+      "symbol": "Std_absSByte",
       "visibility": "public",
       "invokerName": "abs",
       "callableName": "absSByte",
@@ -5863,7 +5778,7 @@
       "id": "function:Std::absShort",
       "kind": "function",
       "name": "abs",
-      "symbol": "absShort",
+      "symbol": "Std_absShort",
       "visibility": "public",
       "invokerName": "abs",
       "callableName": "absShort",
@@ -5887,7 +5802,7 @@
       "id": "function:Std::absInt",
       "kind": "function",
       "name": "abs",
-      "symbol": "absInt",
+      "symbol": "Std_absInt",
       "visibility": "public",
       "invokerName": "abs",
       "callableName": "absInt",
@@ -5911,7 +5826,7 @@
       "id": "function:Std::absLong",
       "kind": "function",
       "name": "abs",
-      "symbol": "absLong",
+      "symbol": "Std_absLong",
       "visibility": "public",
       "invokerName": "abs",
       "callableName": "absLong",
@@ -5935,7 +5850,7 @@
       "id": "function:Std::minByte",
       "kind": "function",
       "name": "min",
-      "symbol": "minByte",
+      "symbol": "Std_minByte",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minByte",
@@ -5964,7 +5879,7 @@
       "id": "function:Std::maxByte",
       "kind": "function",
       "name": "max",
-      "symbol": "maxByte",
+      "symbol": "Std_maxByte",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxByte",
@@ -5993,7 +5908,7 @@
       "id": "function:Std::minSByte",
       "kind": "function",
       "name": "min",
-      "symbol": "minSByte",
+      "symbol": "Std_minSByte",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minSByte",
@@ -6022,7 +5937,7 @@
       "id": "function:Std::maxSByte",
       "kind": "function",
       "name": "max",
-      "symbol": "maxSByte",
+      "symbol": "Std_maxSByte",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxSByte",
@@ -6051,7 +5966,7 @@
       "id": "function:Std::minShort",
       "kind": "function",
       "name": "min",
-      "symbol": "minShort",
+      "symbol": "Std_minShort",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minShort",
@@ -6080,7 +5995,7 @@
       "id": "function:Std::maxShort",
       "kind": "function",
       "name": "max",
-      "symbol": "maxShort",
+      "symbol": "Std_maxShort",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxShort",
@@ -6109,7 +6024,7 @@
       "id": "function:Std::minUShort",
       "kind": "function",
       "name": "min",
-      "symbol": "minUShort",
+      "symbol": "Std_minUShort",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minUShort",
@@ -6138,7 +6053,7 @@
       "id": "function:Std::maxUShort",
       "kind": "function",
       "name": "max",
-      "symbol": "maxUShort",
+      "symbol": "Std_maxUShort",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxUShort",
@@ -6167,7 +6082,7 @@
       "id": "function:Std::minInt",
       "kind": "function",
       "name": "min",
-      "symbol": "minInt",
+      "symbol": "Std_minInt",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minInt",
@@ -6196,7 +6111,7 @@
       "id": "function:Std::maxInt",
       "kind": "function",
       "name": "max",
-      "symbol": "maxInt",
+      "symbol": "Std_maxInt",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxInt",
@@ -6225,7 +6140,7 @@
       "id": "function:Std::minUInt",
       "kind": "function",
       "name": "min",
-      "symbol": "minUInt",
+      "symbol": "Std_minUInt",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minUInt",
@@ -6254,7 +6169,7 @@
       "id": "function:Std::maxUInt",
       "kind": "function",
       "name": "max",
-      "symbol": "maxUInt",
+      "symbol": "Std_maxUInt",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxUInt",
@@ -6283,7 +6198,7 @@
       "id": "function:Std::minLong",
       "kind": "function",
       "name": "min",
-      "symbol": "minLong",
+      "symbol": "Std_minLong",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minLong",
@@ -6312,7 +6227,7 @@
       "id": "function:Std::maxLong",
       "kind": "function",
       "name": "max",
-      "symbol": "maxLong",
+      "symbol": "Std_maxLong",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxLong",
@@ -6341,7 +6256,7 @@
       "id": "function:Std::minULong",
       "kind": "function",
       "name": "min",
-      "symbol": "minULong",
+      "symbol": "Std_minULong",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minULong",
@@ -6370,7 +6285,7 @@
       "id": "function:Std::maxULong",
       "kind": "function",
       "name": "max",
-      "symbol": "maxULong",
+      "symbol": "Std_maxULong",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxULong",
@@ -6399,7 +6314,7 @@
       "id": "function:Std::minNInt",
       "kind": "function",
       "name": "min",
-      "symbol": "minNInt",
+      "symbol": "Std_minNInt",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minNInt",
@@ -6428,7 +6343,7 @@
       "id": "function:Std::maxNInt",
       "kind": "function",
       "name": "max",
-      "symbol": "maxNInt",
+      "symbol": "Std_maxNInt",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxNInt",
@@ -6457,7 +6372,7 @@
       "id": "function:Std::minNUInt",
       "kind": "function",
       "name": "min",
-      "symbol": "minNUInt",
+      "symbol": "Std_minNUInt",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minNUInt",
@@ -6486,7 +6401,7 @@
       "id": "function:Std::maxNUInt",
       "kind": "function",
       "name": "max",
-      "symbol": "maxNUInt",
+      "symbol": "Std_maxNUInt",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxNUInt",
@@ -6515,7 +6430,7 @@
       "id": "function:Std::minUChar",
       "kind": "function",
       "name": "min",
-      "symbol": "minUChar",
+      "symbol": "Std_minUChar",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minUChar",
@@ -6544,7 +6459,7 @@
       "id": "function:Std::maxUChar",
       "kind": "function",
       "name": "max",
-      "symbol": "maxUChar",
+      "symbol": "Std_maxUChar",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxUChar",
@@ -6573,7 +6488,7 @@
       "id": "function:Std::minFloat",
       "kind": "function",
       "name": "min",
-      "symbol": "minFloat",
+      "symbol": "Std_minFloat",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minFloat",
@@ -6602,7 +6517,7 @@
       "id": "function:Std::maxFloat",
       "kind": "function",
       "name": "max",
-      "symbol": "maxFloat",
+      "symbol": "Std_maxFloat",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxFloat",
@@ -6631,7 +6546,7 @@
       "id": "function:Std::minDouble",
       "kind": "function",
       "name": "min",
-      "symbol": "minDouble",
+      "symbol": "Std_minDouble",
       "visibility": "public",
       "invokerName": "min",
       "callableName": "minDouble",
@@ -6660,7 +6575,7 @@
       "id": "function:Std::maxDouble",
       "kind": "function",
       "name": "max",
-      "symbol": "maxDouble",
+      "symbol": "Std_maxDouble",
       "visibility": "public",
       "invokerName": "max",
       "callableName": "maxDouble",
@@ -6689,7 +6604,7 @@
       "id": "function:Std::tryParseInt",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseInt",
+      "symbol": "StdCharArray_tryParseInt",
       "visibility": "public",
       "invokerName": "tryParse",
       "callableName": "tryParseInt",
@@ -6719,7 +6634,7 @@
       "id": "function:Std::tryParseUInt",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseUInt",
+      "symbol": "StdCharArray_tryParseUInt",
       "visibility": "public",
       "invokerName": "tryParse",
       "callableName": "tryParseUInt",
@@ -6749,7 +6664,7 @@
       "id": "function:Std::tryParseLong",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseLong",
+      "symbol": "StdCharArray_tryParseLong",
       "visibility": "public",
       "invokerName": "tryParse",
       "callableName": "tryParseLong",
@@ -6779,7 +6694,7 @@
       "id": "function:Std::tryParseULong",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseULong",
+      "symbol": "StdCharArray_tryParseULong",
       "visibility": "public",
       "invokerName": "tryParse",
       "callableName": "tryParseULong",
@@ -6809,7 +6724,7 @@
       "id": "function:Std::tryParseDouble",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseDouble",
+      "symbol": "StdCharArray_tryParseDouble",
       "visibility": "public",
       "invokerName": "tryParse",
       "callableName": "tryParseDouble",
@@ -6839,7 +6754,7 @@
       "id": "function:Std::copyString",
       "kind": "function",
       "name": "copyString",
-      "symbol": "CharArray_copyString",
+      "symbol": "StdCharArray_copyString",
       "visibility": "public",
       "returnType": "escaped string",
       "parameters": [
@@ -6866,7 +6781,7 @@
       "id": "function:Std::copyWString",
       "kind": "function",
       "name": "copyWString",
-      "symbol": "CharArray_copyWString",
+      "symbol": "StdCharArray_copyWString",
       "visibility": "public",
       "returnType": "escaped wstring",
       "parameters": [
@@ -6893,7 +6808,7 @@
       "id": "function:Std::copyAString",
       "kind": "function",
       "name": "copyAString",
-      "symbol": "CharArray_copyAString",
+      "symbol": "StdCharArray_copyAString",
       "visibility": "public",
       "returnType": "escaped astring",
       "parameters": [
@@ -6926,7 +6841,7 @@
       "id": "function:Std::copyString",
       "kind": "function",
       "name": "copyString",
-      "symbol": "WCharArray_copyString",
+      "symbol": "StdWCharArray_copyString",
       "visibility": "public",
       "returnType": "escaped string",
       "parameters": [
@@ -6953,7 +6868,7 @@
       "id": "function:Std::copyWString",
       "kind": "function",
       "name": "copyWString",
-      "symbol": "WCharArray_copyWString",
+      "symbol": "StdWCharArray_copyWString",
       "visibility": "public",
       "returnType": "escaped wstring",
       "parameters": [
@@ -6980,7 +6895,7 @@
       "id": "function:Std::copyAString",
       "kind": "function",
       "name": "copyAString",
-      "symbol": "WCharArray_copyAString",
+      "symbol": "StdWCharArray_copyAString",
       "visibility": "public",
       "returnType": "escaped astring",
       "parameters": [
@@ -7013,7 +6928,7 @@
       "id": "function:Std::copyString",
       "kind": "function",
       "name": "copyString",
-      "symbol": "ACharArray_copyString",
+      "symbol": "StdACharArray_copyString",
       "visibility": "public",
       "returnType": "escaped string",
       "parameters": [
@@ -7040,7 +6955,7 @@
       "id": "function:Std::copyWString",
       "kind": "function",
       "name": "copyWString",
-      "symbol": "ACharArray_copyWString",
+      "symbol": "StdACharArray_copyWString",
       "visibility": "public",
       "returnType": "escaped wstring",
       "parameters": [
@@ -7067,7 +6982,7 @@
       "id": "function:Std::copyAString",
       "kind": "function",
       "name": "copyAString",
-      "symbol": "ACharArray_copyAString",
+      "symbol": "StdACharArray_copyAString",
       "visibility": "public",
       "returnType": "escaped astring",
       "parameters": [
@@ -7100,153 +7015,154 @@
       "id": "enum:Std::IoError",
       "kind": "enum",
       "name": "IoError",
+      "symbol": "StdIoError",
       "visibility": "public",
       "underlyingType": "uint",
       "values": [
         {
           "id": "enum:Std::IoError/value:OK",
           "name": "OK",
-          "symbol": "IoError_OK",
+          "symbol": "StdIoError_OK",
           "type": "IoError",
           "value": 0
         },
         {
           "id": "enum:Std::IoError/value:UNKNOWN",
           "name": "UNKNOWN",
-          "symbol": "IoError_UNKNOWN",
+          "symbol": "StdIoError_UNKNOWN",
           "type": "IoError",
           "value": 1
         },
         {
           "id": "enum:Std::IoError/value:INVALID_ARGUMENT",
           "name": "INVALID_ARGUMENT",
-          "symbol": "IoError_INVALID_ARGUMENT",
+          "symbol": "StdIoError_INVALID_ARGUMENT",
           "type": "IoError",
           "value": 2
         },
         {
           "id": "enum:Std::IoError/value:NOT_SUPPORTED",
           "name": "NOT_SUPPORTED",
-          "symbol": "IoError_NOT_SUPPORTED",
+          "symbol": "StdIoError_NOT_SUPPORTED",
           "type": "IoError",
           "value": 3
         },
         {
           "id": "enum:Std::IoError/value:NOT_FOUND",
           "name": "NOT_FOUND",
-          "symbol": "IoError_NOT_FOUND",
+          "symbol": "StdIoError_NOT_FOUND",
           "type": "IoError",
           "value": 4
         },
         {
           "id": "enum:Std::IoError/value:ALREADY_EXISTS",
           "name": "ALREADY_EXISTS",
-          "symbol": "IoError_ALREADY_EXISTS",
+          "symbol": "StdIoError_ALREADY_EXISTS",
           "type": "IoError",
           "value": 5
         },
         {
           "id": "enum:Std::IoError/value:PERMISSION_DENIED",
           "name": "PERMISSION_DENIED",
-          "symbol": "IoError_PERMISSION_DENIED",
+          "symbol": "StdIoError_PERMISSION_DENIED",
           "type": "IoError",
           "value": 6
         },
         {
           "id": "enum:Std::IoError/value:BUSY",
           "name": "BUSY",
-          "symbol": "IoError_BUSY",
+          "symbol": "StdIoError_BUSY",
           "type": "IoError",
           "value": 7
         },
         {
           "id": "enum:Std::IoError/value:INTERRUPTED",
           "name": "INTERRUPTED",
-          "symbol": "IoError_INTERRUPTED",
+          "symbol": "StdIoError_INTERRUPTED",
           "type": "IoError",
           "value": 8
         },
         {
           "id": "enum:Std::IoError/value:WOULD_BLOCK",
           "name": "WOULD_BLOCK",
-          "symbol": "IoError_WOULD_BLOCK",
+          "symbol": "StdIoError_WOULD_BLOCK",
           "type": "IoError",
           "value": 9
         },
         {
           "id": "enum:Std::IoError/value:TOO_MANY_OPEN_FILES",
           "name": "TOO_MANY_OPEN_FILES",
-          "symbol": "IoError_TOO_MANY_OPEN_FILES",
+          "symbol": "StdIoError_TOO_MANY_OPEN_FILES",
           "type": "IoError",
           "value": 10
         },
         {
           "id": "enum:Std::IoError/value:PATH_TOO_LONG",
           "name": "PATH_TOO_LONG",
-          "symbol": "IoError_PATH_TOO_LONG",
+          "symbol": "StdIoError_PATH_TOO_LONG",
           "type": "IoError",
           "value": 11
         },
         {
           "id": "enum:Std::IoError/value:NO_SPACE",
           "name": "NO_SPACE",
-          "symbol": "IoError_NO_SPACE",
+          "symbol": "StdIoError_NO_SPACE",
           "type": "IoError",
           "value": 12
         },
         {
           "id": "enum:Std::IoError/value:READ_ONLY",
           "name": "READ_ONLY",
-          "symbol": "IoError_READ_ONLY",
+          "symbol": "StdIoError_READ_ONLY",
           "type": "IoError",
           "value": 13
         },
         {
           "id": "enum:Std::IoError/value:IS_DIRECTORY",
           "name": "IS_DIRECTORY",
-          "symbol": "IoError_IS_DIRECTORY",
+          "symbol": "StdIoError_IS_DIRECTORY",
           "type": "IoError",
           "value": 14
         },
         {
           "id": "enum:Std::IoError/value:NOT_DIRECTORY",
           "name": "NOT_DIRECTORY",
-          "symbol": "IoError_NOT_DIRECTORY",
+          "symbol": "StdIoError_NOT_DIRECTORY",
           "type": "IoError",
           "value": 15
         },
         {
           "id": "enum:Std::IoError/value:DIRECTORY_NOT_EMPTY",
           "name": "DIRECTORY_NOT_EMPTY",
-          "symbol": "IoError_DIRECTORY_NOT_EMPTY",
+          "symbol": "StdIoError_DIRECTORY_NOT_EMPTY",
           "type": "IoError",
           "value": 16
         },
         {
           "id": "enum:Std::IoError/value:BROKEN_PIPE",
           "name": "BROKEN_PIPE",
-          "symbol": "IoError_BROKEN_PIPE",
+          "symbol": "StdIoError_BROKEN_PIPE",
           "type": "IoError",
           "value": 17
         },
         {
           "id": "enum:Std::IoError/value:IO",
           "name": "IO",
-          "symbol": "IoError_IO",
+          "symbol": "StdIoError_IO",
           "type": "IoError",
           "value": 18
         },
         {
           "id": "enum:Std::IoError/value:NO_MEMORY",
           "name": "NO_MEMORY",
-          "symbol": "IoError_NO_MEMORY",
+          "symbol": "StdIoError_NO_MEMORY",
           "type": "IoError",
           "value": 19
         },
         {
           "id": "enum:Std::IoError/value:TIMEOUT",
           "name": "TIMEOUT",
-          "symbol": "IoError_TIMEOUT",
+          "symbol": "StdIoError_TIMEOUT",
           "type": "IoError",
           "value": 20
         }
@@ -7262,6 +7178,7 @@
       "id": "newtype:Std::ByteReader",
       "kind": "newtype",
       "name": "ByteReader",
+      "symbol": "StdByteReader",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7283,6 +7200,7 @@
       "id": "newtype:Std::ByteWriter",
       "kind": "newtype",
       "name": "ByteWriter",
+      "symbol": "StdByteWriter",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7304,6 +7222,7 @@
       "id": "newtype:Std::CharReader",
       "kind": "newtype",
       "name": "CharReader",
+      "symbol": "StdCharReader",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7325,6 +7244,7 @@
       "id": "newtype:Std::CharWriter",
       "kind": "newtype",
       "name": "CharWriter",
+      "symbol": "StdCharWriter",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7346,6 +7266,7 @@
       "id": "newtype:Std::WCharReader",
       "kind": "newtype",
       "name": "WCharReader",
+      "symbol": "StdWCharReader",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7367,6 +7288,7 @@
       "id": "newtype:Std::WCharWriter",
       "kind": "newtype",
       "name": "WCharWriter",
+      "symbol": "StdWCharWriter",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7388,6 +7310,7 @@
       "id": "newtype:Std::ACharReader",
       "kind": "newtype",
       "name": "ACharReader",
+      "symbol": "StdACharReader",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7409,6 +7332,7 @@
       "id": "newtype:Std::ACharWriter",
       "kind": "newtype",
       "name": "ACharWriter",
+      "symbol": "StdACharWriter",
       "visibility": "public",
       "callableType": "iter",
       "returnType": "nuint",
@@ -7430,7 +7354,7 @@
       "id": "function:Std::getCharReader",
       "kind": "function",
       "name": "getCharReader",
-      "symbol": "ByteReader_getCharReader",
+      "symbol": "StdByteReader_getCharReader",
       "visibility": "public",
       "returnType": "CharReader",
       "propertyName": "CharReader",
@@ -7452,7 +7376,7 @@
       "id": "function:Std::getWCharReader",
       "kind": "function",
       "name": "getWCharReader",
-      "symbol": "ByteReader_getWCharReader",
+      "symbol": "StdByteReader_getWCharReader",
       "visibility": "public",
       "returnType": "WCharReader",
       "propertyName": "WCharReader",
@@ -7474,7 +7398,7 @@
       "id": "function:Std::getACharReader",
       "kind": "function",
       "name": "getACharReader",
-      "symbol": "ByteReader_getACharReader",
+      "symbol": "StdByteReader_getACharReader",
       "visibility": "public",
       "returnType": "ACharReader",
       "propertyName": "ACharReader",
@@ -7496,7 +7420,7 @@
       "id": "function:Std::getCharWriter",
       "kind": "function",
       "name": "getCharWriter",
-      "symbol": "ByteWriter_getCharWriter",
+      "symbol": "StdByteWriter_getCharWriter",
       "visibility": "public",
       "returnType": "CharWriter",
       "propertyName": "CharWriter",
@@ -7518,7 +7442,7 @@
       "id": "function:Std::getWCharWriter",
       "kind": "function",
       "name": "getWCharWriter",
-      "symbol": "ByteWriter_getWCharWriter",
+      "symbol": "StdByteWriter_getWCharWriter",
       "visibility": "public",
       "returnType": "WCharWriter",
       "propertyName": "WCharWriter",
@@ -7540,7 +7464,7 @@
       "id": "function:Std::getACharWriter",
       "kind": "function",
       "name": "getACharWriter",
-      "symbol": "ByteWriter_getACharWriter",
+      "symbol": "StdByteWriter_getACharWriter",
       "visibility": "public",
       "returnType": "ACharWriter",
       "propertyName": "ACharWriter",
@@ -7562,7 +7486,7 @@
       "id": "function:Std::tryWriteAll",
       "kind": "function",
       "name": "tryWriteAll",
-      "symbol": "ByteWriter_tryWriteAll",
+      "symbol": "StdByteWriter_tryWriteAll",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -7594,7 +7518,7 @@
       "id": "function:Std::writeChar",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeChar",
+      "symbol": "StdCharWriter_writeChar",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeChar",
@@ -7623,7 +7547,7 @@
       "id": "function:Std::tryWriteChar",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteChar",
+      "symbol": "StdCharWriter_tryWriteChar",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteChar",
@@ -7658,7 +7582,7 @@
       "id": "function:Std::writeCharArray",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeCharArray",
+      "symbol": "StdCharWriter_writeCharArray",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeCharArray",
@@ -7687,7 +7611,7 @@
       "id": "function:Std::tryWriteCharArray",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteCharArray",
+      "symbol": "StdCharWriter_tryWriteCharArray",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteCharArray",
@@ -7722,7 +7646,7 @@
       "id": "function:Std::newLine",
       "kind": "function",
       "name": "newLine",
-      "symbol": "CharWriter_newLine",
+      "symbol": "StdCharWriter_newLine",
       "visibility": "public",
       "returnType": "void",
       "parameters": [
@@ -7743,7 +7667,7 @@
       "id": "function:Std::tryNewLine",
       "kind": "function",
       "name": "tryNewLine",
-      "symbol": "CharWriter_tryNewLine",
+      "symbol": "StdCharWriter_tryNewLine",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -7770,7 +7694,7 @@
       "id": "function:Std::writeLineCharArray",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineCharArray",
+      "symbol": "StdCharWriter_writeLineCharArray",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineCharArray",
@@ -7799,7 +7723,7 @@
       "id": "function:Std::tryWriteLineCharArray",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineCharArray",
+      "symbol": "StdCharWriter_tryWriteLineCharArray",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineCharArray",
@@ -7834,7 +7758,7 @@
       "id": "function:Std::writeBool",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeBool",
+      "symbol": "StdCharWriter_writeBool",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeBool",
@@ -7863,7 +7787,7 @@
       "id": "function:Std::tryWriteBool",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteBool",
+      "symbol": "StdCharWriter_tryWriteBool",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteBool",
@@ -7898,7 +7822,7 @@
       "id": "function:Std::writeSByte",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeSByte",
+      "symbol": "StdCharWriter_writeSByte",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeSByte",
@@ -7927,7 +7851,7 @@
       "id": "function:Std::writeByte",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeByte",
+      "symbol": "StdCharWriter_writeByte",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeByte",
@@ -7956,7 +7880,7 @@
       "id": "function:Std::writeShort",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeShort",
+      "symbol": "StdCharWriter_writeShort",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeShort",
@@ -7985,7 +7909,7 @@
       "id": "function:Std::writeUShort",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeUShort",
+      "symbol": "StdCharWriter_writeUShort",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeUShort",
@@ -8014,7 +7938,7 @@
       "id": "function:Std::writeInt",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeInt",
+      "symbol": "StdCharWriter_writeInt",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeInt",
@@ -8043,7 +7967,7 @@
       "id": "function:Std::writeUInt",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeUInt",
+      "symbol": "StdCharWriter_writeUInt",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeUInt",
@@ -8072,7 +7996,7 @@
       "id": "function:Std::writeLong",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeLong",
+      "symbol": "StdCharWriter_writeLong",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeLong",
@@ -8101,7 +8025,7 @@
       "id": "function:Std::writeULong",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeULong",
+      "symbol": "StdCharWriter_writeULong",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeULong",
@@ -8130,7 +8054,7 @@
       "id": "function:Std::writeNInt",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeNInt",
+      "symbol": "StdCharWriter_writeNInt",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeNInt",
@@ -8159,7 +8083,7 @@
       "id": "function:Std::writeNUInt",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeNUInt",
+      "symbol": "StdCharWriter_writeNUInt",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeNUInt",
@@ -8188,7 +8112,7 @@
       "id": "function:Std::writeLineSByte",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineSByte",
+      "symbol": "StdCharWriter_writeLineSByte",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineSByte",
@@ -8217,7 +8141,7 @@
       "id": "function:Std::writeLineByte",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineByte",
+      "symbol": "StdCharWriter_writeLineByte",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineByte",
@@ -8246,7 +8170,7 @@
       "id": "function:Std::writeLineShort",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineShort",
+      "symbol": "StdCharWriter_writeLineShort",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineShort",
@@ -8275,7 +8199,7 @@
       "id": "function:Std::writeLineUShort",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineUShort",
+      "symbol": "StdCharWriter_writeLineUShort",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineUShort",
@@ -8304,7 +8228,7 @@
       "id": "function:Std::writeLineInt",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineInt",
+      "symbol": "StdCharWriter_writeLineInt",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineInt",
@@ -8333,7 +8257,7 @@
       "id": "function:Std::writeLineUInt",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineUInt",
+      "symbol": "StdCharWriter_writeLineUInt",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineUInt",
@@ -8362,7 +8286,7 @@
       "id": "function:Std::writeLineLong",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineLong",
+      "symbol": "StdCharWriter_writeLineLong",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineLong",
@@ -8391,7 +8315,7 @@
       "id": "function:Std::writeLineULong",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineULong",
+      "symbol": "StdCharWriter_writeLineULong",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineULong",
@@ -8420,7 +8344,7 @@
       "id": "function:Std::writeLineNInt",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineNInt",
+      "symbol": "StdCharWriter_writeLineNInt",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineNInt",
@@ -8449,7 +8373,7 @@
       "id": "function:Std::writeLineNUInt",
       "kind": "function",
       "name": "writeLine",
-      "symbol": "CharWriter_writeLineNUInt",
+      "symbol": "StdCharWriter_writeLineNUInt",
       "visibility": "public",
       "invokerName": "writeLine",
       "callableName": "writeLineNUInt",
@@ -8478,7 +8402,7 @@
       "id": "function:Std::tryWriteSByte",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteSByte",
+      "symbol": "StdCharWriter_tryWriteSByte",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteSByte",
@@ -8513,7 +8437,7 @@
       "id": "function:Std::tryWriteByte",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteByte",
+      "symbol": "StdCharWriter_tryWriteByte",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteByte",
@@ -8548,7 +8472,7 @@
       "id": "function:Std::tryWriteShort",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteShort",
+      "symbol": "StdCharWriter_tryWriteShort",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteShort",
@@ -8583,7 +8507,7 @@
       "id": "function:Std::tryWriteUShort",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteUShort",
+      "symbol": "StdCharWriter_tryWriteUShort",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteUShort",
@@ -8618,7 +8542,7 @@
       "id": "function:Std::tryWriteInt",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteInt",
+      "symbol": "StdCharWriter_tryWriteInt",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteInt",
@@ -8653,7 +8577,7 @@
       "id": "function:Std::tryWriteUInt",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteUInt",
+      "symbol": "StdCharWriter_tryWriteUInt",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteUInt",
@@ -8688,7 +8612,7 @@
       "id": "function:Std::tryWriteLong",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteLong",
+      "symbol": "StdCharWriter_tryWriteLong",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteLong",
@@ -8723,7 +8647,7 @@
       "id": "function:Std::tryWriteULong",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteULong",
+      "symbol": "StdCharWriter_tryWriteULong",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteULong",
@@ -8758,7 +8682,7 @@
       "id": "function:Std::tryWriteNInt",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteNInt",
+      "symbol": "StdCharWriter_tryWriteNInt",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteNInt",
@@ -8793,7 +8717,7 @@
       "id": "function:Std::tryWriteNUInt",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteNUInt",
+      "symbol": "StdCharWriter_tryWriteNUInt",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteNUInt",
@@ -8828,7 +8752,7 @@
       "id": "function:Std::tryWriteLineSByte",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineSByte",
+      "symbol": "StdCharWriter_tryWriteLineSByte",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineSByte",
@@ -8863,7 +8787,7 @@
       "id": "function:Std::tryWriteLineByte",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineByte",
+      "symbol": "StdCharWriter_tryWriteLineByte",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineByte",
@@ -8898,7 +8822,7 @@
       "id": "function:Std::tryWriteLineShort",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineShort",
+      "symbol": "StdCharWriter_tryWriteLineShort",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineShort",
@@ -8933,7 +8857,7 @@
       "id": "function:Std::tryWriteLineUShort",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineUShort",
+      "symbol": "StdCharWriter_tryWriteLineUShort",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineUShort",
@@ -8968,7 +8892,7 @@
       "id": "function:Std::tryWriteLineInt",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineInt",
+      "symbol": "StdCharWriter_tryWriteLineInt",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineInt",
@@ -9003,7 +8927,7 @@
       "id": "function:Std::tryWriteLineUInt",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineUInt",
+      "symbol": "StdCharWriter_tryWriteLineUInt",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineUInt",
@@ -9038,7 +8962,7 @@
       "id": "function:Std::tryWriteLineLong",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineLong",
+      "symbol": "StdCharWriter_tryWriteLineLong",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineLong",
@@ -9073,7 +8997,7 @@
       "id": "function:Std::tryWriteLineULong",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineULong",
+      "symbol": "StdCharWriter_tryWriteLineULong",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineULong",
@@ -9108,7 +9032,7 @@
       "id": "function:Std::tryWriteLineNInt",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineNInt",
+      "symbol": "StdCharWriter_tryWriteLineNInt",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineNInt",
@@ -9143,7 +9067,7 @@
       "id": "function:Std::tryWriteLineNUInt",
       "kind": "function",
       "name": "tryWriteLine",
-      "symbol": "CharWriter_tryWriteLineNUInt",
+      "symbol": "StdCharWriter_tryWriteLineNUInt",
       "visibility": "public",
       "invokerName": "tryWriteLine",
       "callableName": "tryWriteLineNUInt",
@@ -9178,7 +9102,7 @@
       "id": "function:Std::writeFloat",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeFloat",
+      "symbol": "StdCharWriter_writeFloat",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeFloat",
@@ -9207,7 +9131,7 @@
       "id": "function:Std::tryWriteFloat",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteFloat",
+      "symbol": "StdCharWriter_tryWriteFloat",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteFloat",
@@ -9242,7 +9166,7 @@
       "id": "function:Std::writeDouble",
       "kind": "function",
       "name": "write",
-      "symbol": "CharWriter_writeDouble",
+      "symbol": "StdCharWriter_writeDouble",
       "visibility": "public",
       "invokerName": "write",
       "callableName": "writeDouble",
@@ -9271,7 +9195,7 @@
       "id": "function:Std::tryWriteDouble",
       "kind": "function",
       "name": "tryWrite",
-      "symbol": "CharWriter_tryWriteDouble",
+      "symbol": "StdCharWriter_tryWriteDouble",
       "visibility": "public",
       "invokerName": "tryWrite",
       "callableName": "tryWriteDouble",
@@ -9306,7 +9230,7 @@
       "id": "function:Std::readChar",
       "kind": "function",
       "name": "readChar",
-      "symbol": "CharReader_readChar",
+      "symbol": "StdCharReader_readChar",
       "visibility": "public",
       "returnType": "char",
       "parameters": [
@@ -9333,7 +9257,7 @@
       "id": "function:Std::readLine",
       "kind": "function",
       "name": "readLine",
-      "symbol": "CharReader_readLine",
+      "symbol": "StdCharReader_readLine",
       "visibility": "public",
       "returnType": "escaped string",
       "parameters": [
@@ -9366,7 +9290,7 @@
       "id": "function:Std::readToEnd",
       "kind": "function",
       "name": "readToEnd",
-      "symbol": "CharReader_readToEnd",
+      "symbol": "StdCharReader_readToEnd",
       "visibility": "public",
       "returnType": "escaped string",
       "parameters": [
@@ -9399,7 +9323,7 @@
       "id": "function:Std::indexOf",
       "kind": "function",
       "name": "indexOf",
-      "symbol": "CharArray_indexOf",
+      "symbol": "StdCharArray_indexOf",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -9431,7 +9355,7 @@
       "id": "function:Std::indexOfChar",
       "kind": "function",
       "name": "indexOfChar",
-      "symbol": "CharArray_indexOfChar",
+      "symbol": "StdCharArray_indexOfChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -9463,7 +9387,7 @@
       "id": "function:Std::indexOfAnyChar",
       "kind": "function",
       "name": "indexOfAnyChar",
-      "symbol": "CharArray_indexOfAnyChar",
+      "symbol": "StdCharArray_indexOfAnyChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -9495,7 +9419,7 @@
       "id": "function:Std::lastIndexOf",
       "kind": "function",
       "name": "lastIndexOf",
-      "symbol": "CharArray_lastIndexOf",
+      "symbol": "StdCharArray_lastIndexOf",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -9527,7 +9451,7 @@
       "id": "function:Std::lastIndexOfChar",
       "kind": "function",
       "name": "lastIndexOfChar",
-      "symbol": "CharArray_lastIndexOfChar",
+      "symbol": "StdCharArray_lastIndexOfChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -9559,7 +9483,7 @@
       "id": "function:Std::lastIndexOfAnyChar",
       "kind": "function",
       "name": "lastIndexOfAnyChar",
-      "symbol": "CharArray_lastIndexOfAnyChar",
+      "symbol": "StdCharArray_lastIndexOfAnyChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -9591,7 +9515,7 @@
       "id": "function:Std::startsWith",
       "kind": "function",
       "name": "startsWith",
-      "symbol": "CharArray_startsWith",
+      "symbol": "StdCharArray_startsWith",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -9623,7 +9547,7 @@
       "id": "function:Std::startsWithChar",
       "kind": "function",
       "name": "startsWithChar",
-      "symbol": "CharArray_startsWithChar",
+      "symbol": "StdCharArray_startsWithChar",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -9655,7 +9579,7 @@
       "id": "function:Std::endsWith",
       "kind": "function",
       "name": "endsWith",
-      "symbol": "CharArray_endsWith",
+      "symbol": "StdCharArray_endsWith",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -9687,7 +9611,7 @@
       "id": "function:Std::endsWithChar",
       "kind": "function",
       "name": "endsWithChar",
-      "symbol": "CharArray_endsWithChar",
+      "symbol": "StdCharArray_endsWithChar",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -9719,7 +9643,7 @@
       "id": "function:Std::compareTo",
       "kind": "function",
       "name": "compareTo",
-      "symbol": "CharArray_compareTo",
+      "symbol": "StdCharArray_compareTo",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -9751,7 +9675,7 @@
       "id": "function:Std::countChars",
       "kind": "function",
       "name": "countChars",
-      "symbol": "CharArray_countChars",
+      "symbol": "StdCharArray_countChars",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -9772,7 +9696,7 @@
       "id": "function:Std::getChar",
       "kind": "function",
       "name": "getChar",
-      "symbol": "CharArray_getChar",
+      "symbol": "StdCharArray_getChar",
       "visibility": "public",
       "returnType": "uchar",
       "propertyName": "Char",
@@ -9807,7 +9731,7 @@
       "id": "function:Std::getCharUnits",
       "kind": "function",
       "name": "getCharUnits",
-      "symbol": "CharArray_getCharUnits",
+      "symbol": "StdCharArray_getCharUnits",
       "visibility": "public",
       "returnType": "nuint",
       "propertyName": "CharUnits",
@@ -9842,7 +9766,7 @@
       "id": "function:Std::trim",
       "kind": "function",
       "name": "trim",
-      "symbol": "CharArray_trim",
+      "symbol": "StdCharArray_trim",
       "visibility": "public",
       "returnType": "scoped const char[]",
       "parameters": [
@@ -9863,7 +9787,7 @@
       "id": "function:Std::trimStart",
       "kind": "function",
       "name": "trimStart",
-      "symbol": "CharArray_trimStart",
+      "symbol": "StdCharArray_trimStart",
       "visibility": "public",
       "returnType": "scoped const char[]",
       "parameters": [
@@ -9884,7 +9808,7 @@
       "id": "function:Std::trimEnd",
       "kind": "function",
       "name": "trimEnd",
-      "symbol": "CharArray_trimEnd",
+      "symbol": "StdCharArray_trimEnd",
       "visibility": "public",
       "returnType": "scoped const char[]",
       "parameters": [
@@ -9905,7 +9829,7 @@
       "id": "function:Std::stringCopy",
       "kind": "function",
       "name": "stringCopy",
-      "symbol": "CharArray_stringCopy",
+      "symbol": "StdCharArray_stringCopy",
       "visibility": "public",
       "returnType": "string",
       "parameters": [
@@ -9932,7 +9856,7 @@
       "id": "function:Std::uppercaseCopy",
       "kind": "function",
       "name": "uppercaseCopy",
-      "symbol": "CharArray_uppercaseCopy",
+      "symbol": "StdCharArray_uppercaseCopy",
       "visibility": "public",
       "returnType": "string",
       "parameters": [
@@ -9959,7 +9883,7 @@
       "id": "function:Std::lowercaseCopy",
       "kind": "function",
       "name": "lowercaseCopy",
-      "symbol": "CharArray_lowercaseCopy",
+      "symbol": "StdCharArray_lowercaseCopy",
       "visibility": "public",
       "returnType": "string",
       "parameters": [
@@ -9986,7 +9910,7 @@
       "id": "function:Std::concatCopy",
       "kind": "function",
       "name": "concatCopy",
-      "symbol": "StringArray_concatCopy",
+      "symbol": "StdStringArray_concatCopy",
       "visibility": "public",
       "returnType": "string",
       "parameters": [
@@ -10013,7 +9937,7 @@
       "id": "function:Std::joinCopy",
       "kind": "function",
       "name": "joinCopy",
-      "symbol": "StringArray_joinCopy",
+      "symbol": "StdStringArray_joinCopy",
       "visibility": "public",
       "returnType": "string",
       "parameters": [
@@ -10045,7 +9969,7 @@
       "id": "function:Std::getLength",
       "kind": "function",
       "name": "getLength",
-      "symbol": "String_getLength",
+      "symbol": "StdString_getLength",
       "visibility": "public",
       "returnType": "nuint",
       "propertyName": "Length",
@@ -10067,13 +9991,14 @@
       "id": "enum:Std::Weekday",
       "kind": "enum",
       "name": "Weekday",
+      "symbol": "StdWeekday",
       "visibility": "public",
       "underlyingType": "uint",
       "values": [
         {
           "id": "enum:Std::Weekday/value:INVALID",
           "name": "INVALID",
-          "symbol": "Weekday_INVALID",
+          "symbol": "StdWeekday_INVALID",
           "type": "Weekday",
           "value": 0,
           "metadata": [
@@ -10086,7 +10011,7 @@
         {
           "id": "enum:Std::Weekday/value:MONDAY",
           "name": "MONDAY",
-          "symbol": "Weekday_MONDAY",
+          "symbol": "StdWeekday_MONDAY",
           "type": "Weekday",
           "value": 1,
           "metadata": [
@@ -10099,7 +10024,7 @@
         {
           "id": "enum:Std::Weekday/value:TUESDAY",
           "name": "TUESDAY",
-          "symbol": "Weekday_TUESDAY",
+          "symbol": "StdWeekday_TUESDAY",
           "type": "Weekday",
           "value": 2,
           "metadata": [
@@ -10112,7 +10037,7 @@
         {
           "id": "enum:Std::Weekday/value:WEDNESDAY",
           "name": "WEDNESDAY",
-          "symbol": "Weekday_WEDNESDAY",
+          "symbol": "StdWeekday_WEDNESDAY",
           "type": "Weekday",
           "value": 3,
           "metadata": [
@@ -10125,7 +10050,7 @@
         {
           "id": "enum:Std::Weekday/value:THURSDAY",
           "name": "THURSDAY",
-          "symbol": "Weekday_THURSDAY",
+          "symbol": "StdWeekday_THURSDAY",
           "type": "Weekday",
           "value": 4,
           "metadata": [
@@ -10138,7 +10063,7 @@
         {
           "id": "enum:Std::Weekday/value:FRIDAY",
           "name": "FRIDAY",
-          "symbol": "Weekday_FRIDAY",
+          "symbol": "StdWeekday_FRIDAY",
           "type": "Weekday",
           "value": 5,
           "metadata": [
@@ -10151,7 +10076,7 @@
         {
           "id": "enum:Std::Weekday/value:SATURDAY",
           "name": "SATURDAY",
-          "symbol": "Weekday_SATURDAY",
+          "symbol": "StdWeekday_SATURDAY",
           "type": "Weekday",
           "value": 6,
           "metadata": [
@@ -10164,7 +10089,7 @@
         {
           "id": "enum:Std::Weekday/value:SUNDAY",
           "name": "SUNDAY",
-          "symbol": "Weekday_SUNDAY",
+          "symbol": "StdWeekday_SUNDAY",
           "type": "Weekday",
           "value": 7,
           "metadata": [
@@ -10190,13 +10115,14 @@
       "id": "newtype:Std::TimeSpan",
       "kind": "newtype",
       "name": "TimeSpan",
+      "symbol": "StdTimeSpan",
       "visibility": "public",
       "underlyingType": "long",
       "fields": [
         {
           "id": "newtype:Std::TimeSpan/field:INVALID",
           "name": "INVALID",
-          "symbol": "TimeSpan_INVALID",
+          "symbol": "StdTimeSpan_INVALID",
           "type": "const TimeSpan",
           "static": true,
           "metadata": [
@@ -10209,7 +10135,7 @@
         {
           "id": "newtype:Std::TimeSpan/field:ZERO",
           "name": "ZERO",
-          "symbol": "TimeSpan_ZERO",
+          "symbol": "StdTimeSpan_ZERO",
           "type": "const TimeSpan",
           "static": true,
           "metadata": [
@@ -10222,7 +10148,7 @@
         {
           "id": "newtype:Std::TimeSpan/field:MIN",
           "name": "MIN",
-          "symbol": "TimeSpan_MIN",
+          "symbol": "StdTimeSpan_MIN",
           "type": "const TimeSpan",
           "static": true,
           "metadata": [
@@ -10235,7 +10161,7 @@
         {
           "id": "newtype:Std::TimeSpan/field:MAX",
           "name": "MAX",
-          "symbol": "TimeSpan_MAX",
+          "symbol": "StdTimeSpan_MAX",
           "type": "const TimeSpan",
           "static": true,
           "metadata": [
@@ -10250,6 +10176,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:fromMs",
           "name": "fromMs",
+          "symbol": "StdTimeSpan_fromMs",
           "visibility": "public",
           "modifier": "static",
           "returnType": "TimeSpan",
@@ -10276,6 +10203,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:fromSeconds",
           "name": "fromSeconds",
+          "symbol": "StdTimeSpan_fromSeconds",
           "visibility": "public",
           "modifier": "static",
           "returnType": "TimeSpan",
@@ -10302,6 +10230,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:fromMinutes",
           "name": "fromMinutes",
+          "symbol": "StdTimeSpan_fromMinutes",
           "visibility": "public",
           "modifier": "static",
           "returnType": "TimeSpan",
@@ -10328,6 +10257,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:fromHours",
           "name": "fromHours",
+          "symbol": "StdTimeSpan_fromHours",
           "visibility": "public",
           "modifier": "static",
           "returnType": "TimeSpan",
@@ -10354,6 +10284,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:fromDays",
           "name": "fromDays",
+          "symbol": "StdTimeSpan_fromDays",
           "visibility": "public",
           "modifier": "static",
           "returnType": "TimeSpan",
@@ -10380,6 +10311,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:isValid",
           "name": "isValid",
+          "symbol": "StdTimeSpan_isValid",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -10409,6 +10341,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getMs",
           "name": "getMs",
+          "symbol": "StdTimeSpan_getMs",
           "visibility": "public",
           "returnType": "long",
           "propertyName": "Ms",
@@ -10422,6 +10355,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getSeconds",
           "name": "getSeconds",
+          "symbol": "StdTimeSpan_getSeconds",
           "visibility": "public",
           "returnType": "long",
           "propertyName": "Seconds",
@@ -10435,6 +10369,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getMinutes",
           "name": "getMinutes",
+          "symbol": "StdTimeSpan_getMinutes",
           "visibility": "public",
           "returnType": "long",
           "propertyName": "Minutes",
@@ -10448,6 +10383,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getHours",
           "name": "getHours",
+          "symbol": "StdTimeSpan_getHours",
           "visibility": "public",
           "returnType": "long",
           "propertyName": "Hours",
@@ -10461,6 +10397,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getDays",
           "name": "getDays",
+          "symbol": "StdTimeSpan_getDays",
           "visibility": "public",
           "returnType": "long",
           "propertyName": "Days",
@@ -10474,6 +10411,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getTotalSeconds",
           "name": "getTotalSeconds",
+          "symbol": "StdTimeSpan_getTotalSeconds",
           "visibility": "public",
           "returnType": "double",
           "propertyName": "TotalSeconds",
@@ -10487,6 +10425,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getTotalMinutes",
           "name": "getTotalMinutes",
+          "symbol": "StdTimeSpan_getTotalMinutes",
           "visibility": "public",
           "returnType": "double",
           "propertyName": "TotalMinutes",
@@ -10500,6 +10439,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getTotalHours",
           "name": "getTotalHours",
+          "symbol": "StdTimeSpan_getTotalHours",
           "visibility": "public",
           "returnType": "double",
           "propertyName": "TotalHours",
@@ -10513,6 +10453,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:getTotalDays",
           "name": "getTotalDays",
+          "symbol": "StdTimeSpan_getTotalDays",
           "visibility": "public",
           "returnType": "double",
           "propertyName": "TotalDays",
@@ -10526,6 +10467,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:add",
           "name": "add",
+          "symbol": "StdTimeSpan_add",
           "visibility": "public",
           "returnType": "TimeSpan",
           "parameters": [
@@ -10564,6 +10506,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:subtract",
           "name": "subtract",
+          "symbol": "StdTimeSpan_subtract",
           "visibility": "public",
           "returnType": "TimeSpan",
           "parameters": [
@@ -10602,6 +10545,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:negate",
           "name": "negate",
+          "symbol": "StdTimeSpan_negate",
           "visibility": "public",
           "returnType": "TimeSpan",
           "parameters": [
@@ -10625,6 +10569,7 @@
         {
           "id": "newtype:Std::TimeSpan/function:abs",
           "name": "abs",
+          "symbol": "StdTimeSpan_abs",
           "visibility": "public",
           "returnType": "TimeSpan",
           "parameters": [
@@ -10665,7 +10610,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "TimeSpan_toString",
+      "symbol": "StdTimeSpan_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -10708,13 +10653,14 @@
       "id": "newtype:Std::UtcOffset",
       "kind": "newtype",
       "name": "UtcOffset",
+      "symbol": "StdUtcOffset",
       "visibility": "public",
       "underlyingType": "short",
       "fields": [
         {
           "id": "newtype:Std::UtcOffset/field:INVALID",
           "name": "INVALID",
-          "symbol": "UtcOffset_INVALID",
+          "symbol": "StdUtcOffset_INVALID",
           "type": "const UtcOffset",
           "static": true,
           "metadata": [
@@ -10727,7 +10673,7 @@
         {
           "id": "newtype:Std::UtcOffset/field:UTC",
           "name": "UTC",
-          "symbol": "UtcOffset_UTC",
+          "symbol": "StdUtcOffset_UTC",
           "type": "const UtcOffset",
           "static": true,
           "metadata": [
@@ -10742,6 +10688,7 @@
         {
           "id": "newtype:Std::UtcOffset/function:fromHours",
           "name": "fromHours",
+          "symbol": "StdUtcOffset_fromHours",
           "visibility": "public",
           "modifier": "static",
           "returnType": "UtcOffset",
@@ -10780,6 +10727,7 @@
         {
           "id": "newtype:Std::UtcOffset/function:isValid",
           "name": "isValid",
+          "symbol": "StdUtcOffset_isValid",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -10803,6 +10751,7 @@
         {
           "id": "newtype:Std::UtcOffset/function:getHours",
           "name": "getHours",
+          "symbol": "StdUtcOffset_getHours",
           "visibility": "public",
           "returnType": "short",
           "propertyName": "Hours",
@@ -10816,6 +10765,7 @@
         {
           "id": "newtype:Std::UtcOffset/function:getMinutes",
           "name": "getMinutes",
+          "symbol": "StdUtcOffset_getMinutes",
           "visibility": "public",
           "returnType": "byte",
           "propertyName": "Minutes",
@@ -10829,6 +10779,7 @@
         {
           "id": "newtype:Std::UtcOffset/function:getTotalMinutes",
           "name": "getTotalMinutes",
+          "symbol": "StdUtcOffset_getTotalMinutes",
           "visibility": "public",
           "returnType": "short",
           "propertyName": "TotalMinutes",
@@ -10859,7 +10810,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "UtcOffset_toString",
+      "symbol": "StdUtcOffset_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -10908,13 +10859,14 @@
       "id": "newtype:Std::Instant",
       "kind": "newtype",
       "name": "Instant",
+      "symbol": "StdInstant",
       "visibility": "public",
       "underlyingType": "long",
       "fields": [
         {
           "id": "newtype:Std::Instant/field:INVALID",
           "name": "INVALID",
-          "symbol": "Instant_INVALID",
+          "symbol": "StdInstant_INVALID",
           "type": "const Instant",
           "static": true,
           "metadata": [
@@ -10927,7 +10879,7 @@
         {
           "id": "newtype:Std::Instant/field:UNIX_EPOCH",
           "name": "UNIX_EPOCH",
-          "symbol": "Instant_UNIX_EPOCH",
+          "symbol": "StdInstant_UNIX_EPOCH",
           "type": "const Instant",
           "static": true,
           "metadata": [
@@ -10942,6 +10894,7 @@
         {
           "id": "newtype:Std::Instant/function:utcNow",
           "name": "utcNow",
+          "symbol": "StdInstant_utcNow",
           "visibility": "public",
           "modifier": "static",
           "returnType": "Instant",
@@ -10965,6 +10918,7 @@
         {
           "id": "newtype:Std::Instant/function:fromUnixSeconds",
           "name": "fromUnixSeconds",
+          "symbol": "StdInstant_fromUnixSeconds",
           "visibility": "public",
           "modifier": "static",
           "returnType": "Instant",
@@ -10991,6 +10945,7 @@
         {
           "id": "newtype:Std::Instant/function:fromUnixMs",
           "name": "fromUnixMs",
+          "symbol": "StdInstant_fromUnixMs",
           "visibility": "public",
           "modifier": "static",
           "returnType": "Instant",
@@ -11017,6 +10972,7 @@
         {
           "id": "newtype:Std::Instant/function:isValid",
           "name": "isValid",
+          "symbol": "StdInstant_isValid",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -11046,6 +11002,7 @@
         {
           "id": "newtype:Std::Instant/function:getUnixSeconds",
           "name": "getUnixSeconds",
+          "symbol": "StdInstant_getUnixSeconds",
           "visibility": "public",
           "returnType": "long",
           "propertyName": "UnixSeconds",
@@ -11059,6 +11016,7 @@
         {
           "id": "newtype:Std::Instant/function:getUnixMs",
           "name": "getUnixMs",
+          "symbol": "StdInstant_getUnixMs",
           "visibility": "public",
           "returnType": "long",
           "propertyName": "UnixMs",
@@ -11072,6 +11030,7 @@
         {
           "id": "newtype:Std::Instant/function:add",
           "name": "add",
+          "symbol": "StdInstant_add",
           "visibility": "public",
           "returnType": "Instant",
           "parameters": [
@@ -11116,6 +11075,7 @@
         {
           "id": "newtype:Std::Instant/function:subtract",
           "name": "subtract",
+          "symbol": "StdInstant_subtract",
           "visibility": "public",
           "returnType": "Instant",
           "parameters": [
@@ -11160,6 +11120,7 @@
         {
           "id": "newtype:Std::Instant/function:since",
           "name": "since",
+          "symbol": "StdInstant_since",
           "visibility": "public",
           "returnType": "TimeSpan",
           "parameters": [
@@ -11204,6 +11165,7 @@
         {
           "id": "newtype:Std::Instant/function:getUtcDateTime",
           "name": "getUtcDateTime",
+          "symbol": "StdInstant_getUtcDateTime",
           "visibility": "public",
           "returnType": "DateTime",
           "propertyName": "UtcDateTime",
@@ -11217,6 +11179,7 @@
         {
           "id": "newtype:Std::Instant/function:getOffsetDateTime",
           "name": "getOffsetDateTime",
+          "symbol": "StdInstant_getOffsetDateTime",
           "visibility": "public",
           "returnType": "OffsetDateTime",
           "propertyName": "OffsetDateTime",
@@ -11263,7 +11226,7 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
-      "symbol": "Instant_toString",
+      "symbol": "StdInstant_toString",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -11306,6 +11269,7 @@
       "id": "struct:Std::Date",
       "kind": "struct",
       "name": "Date",
+      "symbol": "StdDate",
       "visibility": "public",
       "fields": [
         {
@@ -11344,7 +11308,7 @@
         {
           "id": "struct:Std::Date/field:INVALID",
           "name": "INVALID",
-          "symbol": "Date_INVALID",
+          "symbol": "StdDate_INVALID",
           "type": "const Date",
           "static": true,
           "metadata": [
@@ -11359,6 +11323,7 @@
         {
           "id": "struct:Std::Date/function:today",
           "name": "today",
+          "symbol": "StdDate_today",
           "visibility": "public",
           "modifier": "static",
           "returnType": "Date",
@@ -11376,6 +11341,7 @@
         {
           "id": "struct:Std::Date/function:isValid",
           "name": "isValid",
+          "symbol": "StdDate_isValid",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -11399,6 +11365,7 @@
         {
           "id": "struct:Std::Date/function:getLeapYear",
           "name": "getLeapYear",
+          "symbol": "StdDate_getLeapYear",
           "visibility": "public",
           "returnType": "bool",
           "propertyName": "LeapYear",
@@ -11412,6 +11379,7 @@
         {
           "id": "struct:Std::Date/function:getDaysInMonth",
           "name": "getDaysInMonth",
+          "symbol": "StdDate_getDaysInMonth",
           "visibility": "public",
           "returnType": "byte",
           "propertyName": "DaysInMonth",
@@ -11425,6 +11393,7 @@
         {
           "id": "struct:Std::Date/function:getWeekday",
           "name": "getWeekday",
+          "symbol": "StdDate_getWeekday",
           "visibility": "public",
           "returnType": "Weekday",
           "propertyName": "Weekday",
@@ -11448,6 +11417,7 @@
         {
           "id": "struct:Std::Date/function:addDays",
           "name": "addDays",
+          "symbol": "StdDate_addDays",
           "visibility": "public",
           "returnType": "Date",
           "parameters": [
@@ -11486,6 +11456,7 @@
         {
           "id": "struct:Std::Date/function:daysUntil",
           "name": "daysUntil",
+          "symbol": "StdDate_daysUntil",
           "visibility": "public",
           "returnType": "int",
           "parameters": [
@@ -11524,6 +11495,7 @@
         {
           "id": "struct:Std::Date/function:toString",
           "name": "toString",
+          "symbol": "StdDate_toString",
           "visibility": "public",
           "returnType": "nuint",
           "parameters": [
@@ -11581,6 +11553,7 @@
       "id": "struct:Std::TimeOfDay",
       "kind": "struct",
       "name": "TimeOfDay",
+      "symbol": "StdTimeOfDay",
       "visibility": "public",
       "fields": [
         {
@@ -11630,7 +11603,7 @@
         {
           "id": "struct:Std::TimeOfDay/field:INVALID",
           "name": "INVALID",
-          "symbol": "TimeOfDay_INVALID",
+          "symbol": "StdTimeOfDay_INVALID",
           "type": "const TimeOfDay",
           "static": true,
           "metadata": [
@@ -11643,7 +11616,7 @@
         {
           "id": "struct:Std::TimeOfDay/field:MIDNIGHT",
           "name": "MIDNIGHT",
-          "symbol": "TimeOfDay_MIDNIGHT",
+          "symbol": "StdTimeOfDay_MIDNIGHT",
           "type": "const TimeOfDay",
           "static": true,
           "metadata": [
@@ -11658,6 +11631,7 @@
         {
           "id": "struct:Std::TimeOfDay/function:isValid",
           "name": "isValid",
+          "symbol": "StdTimeOfDay_isValid",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -11681,6 +11655,7 @@
         {
           "id": "struct:Std::TimeOfDay/function:getMs",
           "name": "getMs",
+          "symbol": "StdTimeOfDay_getMs",
           "visibility": "public",
           "returnType": "ushort",
           "propertyName": "Ms",
@@ -11698,6 +11673,7 @@
         {
           "id": "struct:Std::TimeOfDay/function:getSinceMidnight",
           "name": "getSinceMidnight",
+          "symbol": "StdTimeOfDay_getSinceMidnight",
           "visibility": "public",
           "returnType": "TimeSpan",
           "propertyName": "SinceMidnight",
@@ -11711,6 +11687,7 @@
         {
           "id": "struct:Std::TimeOfDay/function:toString",
           "name": "toString",
+          "symbol": "StdTimeOfDay_toString",
           "visibility": "public",
           "returnType": "nuint",
           "parameters": [
@@ -11768,6 +11745,7 @@
       "id": "struct:Std::DateTime",
       "kind": "struct",
       "name": "DateTime",
+      "symbol": "StdDateTime",
       "visibility": "public",
       "fields": [
         {
@@ -11795,7 +11773,7 @@
         {
           "id": "struct:Std::DateTime/field:INVALID",
           "name": "INVALID",
-          "symbol": "DateTime_INVALID",
+          "symbol": "StdDateTime_INVALID",
           "type": "const DateTime",
           "static": true,
           "metadata": [
@@ -11810,6 +11788,7 @@
         {
           "id": "struct:Std::DateTime/function:DateTime",
           "name": "DateTime",
+          "symbol": "StdDateTime_DateTime",
           "visibility": "public",
           "modifier": "constructor",
           "returnType": "DateTime",
@@ -11906,6 +11885,7 @@
         {
           "id": "struct:Std::DateTime/function:now",
           "name": "now",
+          "symbol": "StdDateTime_now",
           "visibility": "public",
           "modifier": "static",
           "returnType": "DateTime",
@@ -11923,6 +11903,7 @@
         {
           "id": "struct:Std::DateTime/function:isValid",
           "name": "isValid",
+          "symbol": "StdDateTime_isValid",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -11946,6 +11927,7 @@
         {
           "id": "struct:Std::DateTime/function:toInstant",
           "name": "toInstant",
+          "symbol": "StdDateTime_toInstant",
           "visibility": "public",
           "returnType": "Instant",
           "parameters": [
@@ -11990,6 +11972,7 @@
         {
           "id": "struct:Std::DateTime/function:toString",
           "name": "toString",
+          "symbol": "StdDateTime_toString",
           "visibility": "public",
           "returnType": "nuint",
           "parameters": [
@@ -12053,6 +12036,7 @@
       "id": "struct:Std::OffsetDateTime",
       "kind": "struct",
       "name": "OffsetDateTime",
+      "symbol": "StdOffsetDateTime",
       "visibility": "public",
       "fields": [
         {
@@ -12080,7 +12064,7 @@
         {
           "id": "struct:Std::OffsetDateTime/field:INVALID",
           "name": "INVALID",
-          "symbol": "OffsetDateTime_INVALID",
+          "symbol": "StdOffsetDateTime_INVALID",
           "type": "const OffsetDateTime",
           "static": true,
           "metadata": [
@@ -12095,6 +12079,7 @@
         {
           "id": "struct:Std::OffsetDateTime/function:OffsetDateTime",
           "name": "OffsetDateTime",
+          "symbol": "StdOffsetDateTime_OffsetDateTime",
           "visibility": "public",
           "modifier": "constructor",
           "returnType": "OffsetDateTime",
@@ -12206,6 +12191,7 @@
         {
           "id": "struct:Std::OffsetDateTime/function:localNow",
           "name": "localNow",
+          "symbol": "StdOffsetDateTime_localNow",
           "visibility": "public",
           "modifier": "static",
           "returnType": "OffsetDateTime",
@@ -12223,6 +12209,7 @@
         {
           "id": "struct:Std::OffsetDateTime/function:utcNow",
           "name": "utcNow",
+          "symbol": "StdOffsetDateTime_utcNow",
           "visibility": "public",
           "modifier": "static",
           "returnType": "OffsetDateTime",
@@ -12240,6 +12227,7 @@
         {
           "id": "struct:Std::OffsetDateTime/function:isValid",
           "name": "isValid",
+          "symbol": "StdOffsetDateTime_isValid",
           "visibility": "public",
           "returnType": "bool",
           "parameters": [
@@ -12263,6 +12251,7 @@
         {
           "id": "struct:Std::OffsetDateTime/function:toInstant",
           "name": "toInstant",
+          "symbol": "StdOffsetDateTime_toInstant",
           "visibility": "public",
           "returnType": "Instant",
           "parameters": [
@@ -12296,6 +12285,7 @@
         {
           "id": "struct:Std::OffsetDateTime/function:toString",
           "name": "toString",
+          "symbol": "StdOffsetDateTime_toString",
           "visibility": "public",
           "returnType": "nuint",
           "parameters": [
@@ -12356,22 +12346,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseDate",
+      "id": "function:Std::tryParseStdDate",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseDate",
+      "symbol": "StdCharArray_tryParseStdDate",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseDate",
+      "callableName": "tryParseStdDate",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseDate/parameter:this",
+          "id": "function:Std::tryParseStdDate/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseDate/parameter:value",
+          "id": "function:Std::tryParseStdDate/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -12404,22 +12394,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseTimeOfDay",
+      "id": "function:Std::tryParseStdTimeOfDay",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseTimeOfDay",
+      "symbol": "StdCharArray_tryParseStdTimeOfDay",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseTimeOfDay",
+      "callableName": "tryParseStdTimeOfDay",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseTimeOfDay/parameter:this",
+          "id": "function:Std::tryParseStdTimeOfDay/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseTimeOfDay/parameter:value",
+          "id": "function:Std::tryParseStdTimeOfDay/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -12452,22 +12442,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseDateTime",
+      "id": "function:Std::tryParseStdDateTime",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseDateTime",
+      "symbol": "StdCharArray_tryParseStdDateTime",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseDateTime",
+      "callableName": "tryParseStdDateTime",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseDateTime/parameter:this",
+          "id": "function:Std::tryParseStdDateTime/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseDateTime/parameter:value",
+          "id": "function:Std::tryParseStdDateTime/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -12500,22 +12490,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseOffsetDateTime",
+      "id": "function:Std::tryParseStdOffsetDateTime",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseOffsetDateTime",
+      "symbol": "StdCharArray_tryParseStdOffsetDateTime",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseOffsetDateTime",
+      "callableName": "tryParseStdOffsetDateTime",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseOffsetDateTime/parameter:this",
+          "id": "function:Std::tryParseStdOffsetDateTime/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseOffsetDateTime/parameter:value",
+          "id": "function:Std::tryParseStdOffsetDateTime/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -12548,22 +12538,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseInstant",
+      "id": "function:Std::tryParseStdInstant",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseInstant",
+      "symbol": "StdCharArray_tryParseStdInstant",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseInstant",
+      "callableName": "tryParseStdInstant",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseInstant/parameter:this",
+          "id": "function:Std::tryParseStdInstant/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseInstant/parameter:value",
+          "id": "function:Std::tryParseStdInstant/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -12596,22 +12586,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseTimeSpan",
+      "id": "function:Std::tryParseStdTimeSpan",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseTimeSpan",
+      "symbol": "StdCharArray_tryParseStdTimeSpan",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseTimeSpan",
+      "callableName": "tryParseStdTimeSpan",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseTimeSpan/parameter:this",
+          "id": "function:Std::tryParseStdTimeSpan/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseTimeSpan/parameter:value",
+          "id": "function:Std::tryParseStdTimeSpan/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -12640,22 +12630,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseUtcOffset",
+      "id": "function:Std::tryParseStdUtcOffset",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "CharArray_tryParseUtcOffset",
+      "symbol": "StdCharArray_tryParseStdUtcOffset",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseUtcOffset",
+      "callableName": "tryParseStdUtcOffset",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseUtcOffset/parameter:this",
+          "id": "function:Std::tryParseStdUtcOffset/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseUtcOffset/parameter:value",
+          "id": "function:Std::tryParseStdUtcOffset/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -12691,6 +12681,7 @@
       "id": "newtype:Std::TimerHandle",
       "kind": "newtype",
       "name": "TimerHandle",
+      "symbol": "StdTimerHandle",
       "visibility": "public",
       "underlyingType": "nint",
       "metadata": [
@@ -12718,6 +12709,7 @@
       "id": "function:Std::sleep",
       "kind": "function",
       "name": "sleep",
+      "symbol": "Std_sleep",
       "visibility": "public",
       "returnType": "void",
       "parameters": [
@@ -12748,6 +12740,7 @@
       "id": "function:Std::sleepAsync",
       "kind": "function",
       "name": "sleepAsync",
+      "symbol": "Std_sleepAsync",
       "visibility": "public",
       "async": true,
       "returnType": "void",
@@ -12794,6 +12787,7 @@
       "id": "function:Std::startTimer",
       "kind": "function",
       "name": "startTimer",
+      "symbol": "Std_startTimer",
       "visibility": "public",
       "returnType": "TimerHandle",
       "parameters": [
@@ -12853,6 +12847,7 @@
       "id": "function:Std::stopTimer",
       "kind": "function",
       "name": "stopTimer",
+      "symbol": "Std_stopTimer",
       "visibility": "public",
       "returnType": "void",
       "parameters": [
@@ -12925,6 +12920,10 @@
       ],
       "metadata": [
         {
+          "name": "symbol",
+          "content": "atomicExchangeNInt"
+        },
+        {
           "name": "summary",
           "content": "Atomically stores a signed native integer and returns the previous value."
         },
@@ -12969,6 +12968,10 @@
         }
       ],
       "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicExchangeNUInt"
+        },
         {
           "name": "summary",
           "content": "Atomically stores an unsigned native integer and returns the previous value."
@@ -13075,6 +13078,10 @@
       ],
       "metadata": [
         {
+          "name": "symbol",
+          "content": "atomicCompareExchangeNInt"
+        },
+        {
           "name": "summary",
           "content": "Atomically stores a signed native integer when the current value matches \u0060expected\u0060."
         },
@@ -13134,6 +13141,10 @@
         }
       ],
       "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicCompareExchangeNUInt"
+        },
         {
           "name": "summary",
           "content": "Atomically stores an unsigned native integer when the current value matches \u0060expected\u0060."
@@ -13216,7 +13227,7 @@
       "id": "function:Std::indexOf",
       "kind": "function",
       "name": "indexOf",
-      "symbol": "WCharArray_indexOf",
+      "symbol": "StdWCharArray_indexOf",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -13248,7 +13259,7 @@
       "id": "function:Std::indexOfChar",
       "kind": "function",
       "name": "indexOfChar",
-      "symbol": "WCharArray_indexOfChar",
+      "symbol": "StdWCharArray_indexOfChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -13280,7 +13291,7 @@
       "id": "function:Std::indexOfAnyChar",
       "kind": "function",
       "name": "indexOfAnyChar",
-      "symbol": "WCharArray_indexOfAnyChar",
+      "symbol": "StdWCharArray_indexOfAnyChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -13312,7 +13323,7 @@
       "id": "function:Std::lastIndexOf",
       "kind": "function",
       "name": "lastIndexOf",
-      "symbol": "WCharArray_lastIndexOf",
+      "symbol": "StdWCharArray_lastIndexOf",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -13344,7 +13355,7 @@
       "id": "function:Std::lastIndexOfChar",
       "kind": "function",
       "name": "lastIndexOfChar",
-      "symbol": "WCharArray_lastIndexOfChar",
+      "symbol": "StdWCharArray_lastIndexOfChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -13376,7 +13387,7 @@
       "id": "function:Std::lastIndexOfAnyChar",
       "kind": "function",
       "name": "lastIndexOfAnyChar",
-      "symbol": "WCharArray_lastIndexOfAnyChar",
+      "symbol": "StdWCharArray_lastIndexOfAnyChar",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -13408,7 +13419,7 @@
       "id": "function:Std::startsWith",
       "kind": "function",
       "name": "startsWith",
-      "symbol": "WCharArray_startsWith",
+      "symbol": "StdWCharArray_startsWith",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -13440,7 +13451,7 @@
       "id": "function:Std::startsWithChar",
       "kind": "function",
       "name": "startsWithChar",
-      "symbol": "WCharArray_startsWithChar",
+      "symbol": "StdWCharArray_startsWithChar",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -13472,7 +13483,7 @@
       "id": "function:Std::endsWith",
       "kind": "function",
       "name": "endsWith",
-      "symbol": "WCharArray_endsWith",
+      "symbol": "StdWCharArray_endsWith",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -13504,7 +13515,7 @@
       "id": "function:Std::endsWithChar",
       "kind": "function",
       "name": "endsWithChar",
-      "symbol": "WCharArray_endsWithChar",
+      "symbol": "StdWCharArray_endsWithChar",
       "visibility": "public",
       "returnType": "bool",
       "parameters": [
@@ -13536,7 +13547,7 @@
       "id": "function:Std::compareTo",
       "kind": "function",
       "name": "compareTo",
-      "symbol": "WCharArray_compareTo",
+      "symbol": "StdWCharArray_compareTo",
       "visibility": "public",
       "returnType": "nint",
       "parameters": [
@@ -13568,7 +13579,7 @@
       "id": "function:Std::countChars",
       "kind": "function",
       "name": "countChars",
-      "symbol": "WCharArray_countChars",
+      "symbol": "StdWCharArray_countChars",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
@@ -13589,7 +13600,7 @@
       "id": "function:Std::getChar",
       "kind": "function",
       "name": "getChar",
-      "symbol": "WCharArray_getChar",
+      "symbol": "StdWCharArray_getChar",
       "visibility": "public",
       "returnType": "uchar",
       "propertyName": "Char",
@@ -13624,7 +13635,7 @@
       "id": "function:Std::getCharUnits",
       "kind": "function",
       "name": "getCharUnits",
-      "symbol": "WCharArray_getCharUnits",
+      "symbol": "StdWCharArray_getCharUnits",
       "visibility": "public",
       "returnType": "nuint",
       "propertyName": "CharUnits",
@@ -13659,7 +13670,7 @@
       "id": "function:Std::trim",
       "kind": "function",
       "name": "trim",
-      "symbol": "WCharArray_trim",
+      "symbol": "StdWCharArray_trim",
       "visibility": "public",
       "returnType": "scoped const wchar[]",
       "parameters": [
@@ -13680,7 +13691,7 @@
       "id": "function:Std::trimStart",
       "kind": "function",
       "name": "trimStart",
-      "symbol": "WCharArray_trimStart",
+      "symbol": "StdWCharArray_trimStart",
       "visibility": "public",
       "returnType": "scoped const wchar[]",
       "parameters": [
@@ -13701,7 +13712,7 @@
       "id": "function:Std::trimEnd",
       "kind": "function",
       "name": "trimEnd",
-      "symbol": "WCharArray_trimEnd",
+      "symbol": "StdWCharArray_trimEnd",
       "visibility": "public",
       "returnType": "scoped const wchar[]",
       "parameters": [
@@ -13722,7 +13733,7 @@
       "id": "function:Std::stringCopy",
       "kind": "function",
       "name": "stringCopy",
-      "symbol": "WCharArray_stringCopy",
+      "symbol": "StdWCharArray_stringCopy",
       "visibility": "public",
       "returnType": "wstring",
       "parameters": [
@@ -13749,7 +13760,7 @@
       "id": "function:Std::uppercaseCopy",
       "kind": "function",
       "name": "uppercaseCopy",
-      "symbol": "WCharArray_uppercaseCopy",
+      "symbol": "StdWCharArray_uppercaseCopy",
       "visibility": "public",
       "returnType": "wstring",
       "parameters": [
@@ -13776,7 +13787,7 @@
       "id": "function:Std::lowercaseCopy",
       "kind": "function",
       "name": "lowercaseCopy",
-      "symbol": "WCharArray_lowercaseCopy",
+      "symbol": "StdWCharArray_lowercaseCopy",
       "visibility": "public",
       "returnType": "wstring",
       "parameters": [
@@ -13803,7 +13814,7 @@
       "id": "function:Std::concatCopy",
       "kind": "function",
       "name": "concatCopy",
-      "symbol": "WStringArray_concatCopy",
+      "symbol": "StdWStringArray_concatCopy",
       "visibility": "public",
       "returnType": "wstring",
       "parameters": [
@@ -13830,7 +13841,7 @@
       "id": "function:Std::joinCopy",
       "kind": "function",
       "name": "joinCopy",
-      "symbol": "WStringArray_joinCopy",
+      "symbol": "StdWStringArray_joinCopy",
       "visibility": "public",
       "returnType": "wstring",
       "parameters": [
@@ -13862,7 +13873,7 @@
       "id": "function:Std::getLength",
       "kind": "function",
       "name": "getLength",
-      "symbol": "WString_getLength",
+      "symbol": "StdWString_getLength",
       "visibility": "public",
       "returnType": "nuint",
       "propertyName": "Length",
