@@ -1576,7 +1576,13 @@
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharReader",
-          "propertyName": "Reader"
+          "propertyName": "Reader",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a character reader for standard input."
+            }
+          ]
         },
         {
           "id": "staticClass:Std::Console/function:getWriter",
@@ -1585,7 +1591,13 @@
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharWriter",
-          "propertyName": "Writer"
+          "propertyName": "Writer",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a character writer for standard output."
+            }
+          ]
         },
         {
           "id": "staticClass:Std::Console/function:getError",
@@ -1594,7 +1606,13 @@
           "visibility": "public",
           "modifier": "static",
           "returnType": "CharWriter",
-          "propertyName": "Error"
+          "propertyName": "Error",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a character writer for standard error."
+            }
+          ]
         },
         {
           "id": "staticClass:Std::Console/function:writeFd",
@@ -1670,6 +1688,16 @@
               "overload": true,
               "type": "char"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a character to standard output."
+            },
+            {
+              "name": "overload",
+              "content": "Writes a value to standard output."
+            }
           ]
         },
         {
@@ -1687,6 +1715,12 @@
               "name": "value",
               "overload": true,
               "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output."
             }
           ]
         },
@@ -1706,6 +1740,12 @@
               "overload": true,
               "type": "string"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output."
+            }
           ]
         },
         {
@@ -1723,6 +1763,12 @@
               "name": "value",
               "overload": true,
               "type": "bool"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a boolean value to standard output."
             }
           ]
         },
@@ -1742,6 +1788,12 @@
               "overload": true,
               "type": "byte"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 8-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1759,6 +1811,12 @@
               "name": "value",
               "overload": true,
               "type": "sbyte"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 8-bit integer value to standard output."
             }
           ]
         },
@@ -1778,6 +1836,12 @@
               "overload": true,
               "type": "ushort"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 16-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1795,6 +1859,12 @@
               "name": "value",
               "overload": true,
               "type": "short"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 16-bit integer value to standard output."
             }
           ]
         },
@@ -1814,6 +1884,12 @@
               "overload": true,
               "type": "uint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 32-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1831,6 +1907,12 @@
               "name": "value",
               "overload": true,
               "type": "int"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 32-bit integer value to standard output."
             }
           ]
         },
@@ -1850,6 +1932,12 @@
               "overload": true,
               "type": "ulong"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 64-bit integer value to standard output."
+            }
           ]
         },
         {
@@ -1867,6 +1955,12 @@
               "name": "value",
               "overload": true,
               "type": "long"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 64-bit integer value to standard output."
             }
           ]
         },
@@ -1886,6 +1980,12 @@
               "overload": true,
               "type": "nuint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned native-size integer value to standard output."
+            }
           ]
         },
         {
@@ -1903,6 +2003,12 @@
               "name": "value",
               "overload": true,
               "type": "nint"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed native-size integer value to standard output."
             }
           ]
         },
@@ -1922,6 +2028,16 @@
               "overload": true,
               "type": "char"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a character to standard output followed by a newline."
+            },
+            {
+              "name": "overload",
+              "content": "Writes a value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1939,6 +2055,12 @@
               "name": "value",
               "overload": true,
               "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output followed by a newline."
             }
           ]
         },
@@ -1958,6 +2080,12 @@
               "overload": true,
               "type": "string"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes text to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -1975,6 +2103,12 @@
               "name": "value",
               "overload": true,
               "type": "bool"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a boolean value to standard output followed by a newline."
             }
           ]
         },
@@ -1994,6 +2128,12 @@
               "overload": true,
               "type": "byte"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 8-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -2011,6 +2151,12 @@
               "name": "value",
               "overload": true,
               "type": "sbyte"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 8-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -2030,6 +2176,12 @@
               "overload": true,
               "type": "ushort"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 16-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -2047,6 +2199,12 @@
               "name": "value",
               "overload": true,
               "type": "short"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 16-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -2066,6 +2224,12 @@
               "overload": true,
               "type": "uint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 32-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -2083,6 +2247,12 @@
               "name": "value",
               "overload": true,
               "type": "int"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 32-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -2102,6 +2272,12 @@
               "overload": true,
               "type": "ulong"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned 64-bit integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -2119,6 +2295,12 @@
               "name": "value",
               "overload": true,
               "type": "long"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed 64-bit integer value to standard output followed by a newline."
             }
           ]
         },
@@ -2138,6 +2320,12 @@
               "overload": true,
               "type": "nuint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes an unsigned native-size integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -2156,6 +2344,12 @@
               "overload": true,
               "type": "nint"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a signed native-size integer value to standard output followed by a newline."
+            }
           ]
         },
         {
@@ -2164,7 +2358,13 @@
           "symbol": "StdConsole_newLine",
           "visibility": "public",
           "modifier": "static",
-          "returnType": "void"
+          "returnType": "void",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes a newline to standard output."
+            }
+          ]
         },
         {
           "id": "staticClass:Std::Console/function:readChar",
@@ -2172,7 +2372,13 @@
           "symbol": "StdConsole_readChar",
           "visibility": "public",
           "modifier": "static",
-          "returnType": "char"
+          "returnType": "char",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Reads one character from standard input."
+            }
+          ]
         },
         {
           "id": "staticClass:Std::Console/function:readLine",
@@ -2188,6 +2394,12 @@
               "modifier": "within",
               "type": "Allocator*"
             }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Reads one line from standard input."
+            }
           ]
         }
       ],
@@ -2199,6 +2411,284 @@
         {
           "name": "example",
           "content": "\u0060\u0060\u0060camp\nauto name = Console.readLine();\nConsole.writeLine($\u0022Hello, {name}\u0022);\n\u0060\u0060\u0060"
+        },
+        {
+          "name": "category",
+          "content": "I/O"
+        }
+      ]
+    },
+    {
+      "id": "staticClass:Std::Env",
+      "kind": "staticClass",
+      "name": "Env",
+      "symbol": "StdEnv",
+      "functions": [
+        {
+          "id": "staticClass:Std::Env/function:getCurrentDirectory",
+          "name": "getCurrentDirectory",
+          "symbol": "StdEnv_getCurrentDirectory",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Env/function:getCurrentDirectory/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Gets the current working directory as UTF-8 text."
+            },
+            {
+              "name": "remarks",
+              "content": "Unsupported or unavailable current-directory access produces an empty result instead of throwing."
+            },
+            {
+              "name": "example",
+              "content": "\u0060\u0060\u0060camp\nauto cwd = Env.getCurrentDirectory();\n\u0060\u0060\u0060"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Env/function:setCurrentDirectory",
+          "name": "setCurrentDirectory",
+          "symbol": "StdEnv_setCurrentDirectory",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "propertyName": "CurrentDirectory",
+          "propertyValueParam": "path",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+              "name": "path",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "The new current directory as a null-terminated UTF-8 string."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::Env/function:setCurrentDirectory/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Changes the current working directory."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the directory cannot be selected."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Env/function:getExecutablePath",
+          "name": "getExecutablePath",
+          "symbol": "StdEnv_getExecutablePath",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Env/function:getExecutablePath/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Gets the executable path as UTF-8 text when the host exposes it."
+            },
+            {
+              "name": "remarks",
+              "content": "Unsupported or unavailable executable-path access produces an empty result instead of throwing."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Env/function:getVariable",
+          "name": "getVariable",
+          "symbol": "StdEnv_getVariable",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Env/function:getVariable/parameter:name",
+              "name": "name",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "The variable name. Empty names and names containing \u0060=\u0060 are invalid."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::Env/function:getVariable/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Gets the value of an environment variable as UTF-8 text."
+            },
+            {
+              "name": "remarks",
+              "content": "Missing variables and defined-empty variables both produce a empty text result. Use \u0060hasVariable\u0060 to distinguish those cases."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Env/function:setVariable",
+          "name": "setVariable",
+          "symbol": "StdEnv_setVariable",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "propertyName": "Variable",
+          "propertyIndexParams": [
+            "name"
+          ],
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Env/function:setVariable/parameter:name",
+              "name": "name",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "The variable name. Empty names and names containing \u0060=\u0060 are invalid."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::Env/function:setVariable/parameter:value",
+              "name": "value",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "The new variable value. An empty string defines an empty variable."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::Env/function:setVariable/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Sets or replaces an environment variable."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the variable cannot be set."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Env/function:removeVariable",
+          "name": "removeVariable",
+          "symbol": "StdEnv_removeVariable",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Env/function:removeVariable/parameter:name",
+              "name": "name",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "The variable name. Empty names and names containing \u0060=\u0060 are invalid."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::Env/function:removeVariable/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Removes an environment variable."
+            },
+            {
+              "name": "returns",
+              "content": "\u0060true\u0060 when the variable existed before removal, or \u0060false\u0060 when it was already missing."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the remove request itself is invalid or fails."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Env/function:hasVariable",
+          "name": "hasVariable",
+          "symbol": "StdEnv_hasVariable",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Env/function:hasVariable/parameter:name",
+              "name": "name",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "The variable name. Empty names and names containing \u0060=\u0060 are invalid."
+                }
+              ]
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when an environment variable is defined."
+            },
+            {
+              "name": "remarks",
+              "content": "Defined-empty variables return \u0060true\u0060 here even though \u0060getVariable\u0060 returns zero-length text for them."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Provides access to process environment information."
         },
         {
           "name": "category",
@@ -2288,39 +2778,97 @@
       ]
     },
     {
-      "id": "struct:Std::FileOptions",
-      "kind": "struct",
+      "id": "enum:Std::FileOptions",
+      "kind": "enum",
       "name": "FileOptions",
       "symbol": "StdFileOptions",
       "visibility": "public",
-      "fields": [
+      "underlyingType": "int",
+      "values": [
         {
-          "id": "struct:Std::FileOptions/field:sequential",
-          "name": "sequential",
-          "type": "bool"
+          "id": "enum:Std::FileOptions/value:NONE",
+          "name": "NONE",
+          "symbol": "StdFileOptions_NONE",
+          "type": "FileOptions",
+          "value": 0,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "No additional file-open options."
+            }
+          ]
         },
         {
-          "id": "struct:Std::FileOptions/field:randomAccess",
-          "name": "randomAccess",
-          "type": "bool"
+          "id": "enum:Std::FileOptions/value:SEQUENTIAL",
+          "name": "SEQUENTIAL",
+          "symbol": "StdFileOptions_SEQUENTIAL",
+          "type": "FileOptions",
+          "value": 1,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Hint that the file will be read or written sequentially."
+            }
+          ]
         },
         {
-          "id": "struct:Std::FileOptions/field:writeThrough",
-          "name": "writeThrough",
-          "type": "bool"
+          "id": "enum:Std::FileOptions/value:RANDOM_ACCESS",
+          "name": "RANDOM_ACCESS",
+          "symbol": "StdFileOptions_RANDOM_ACCESS",
+          "type": "FileOptions",
+          "value": 2,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Hint that the file will be accessed in a non-sequential pattern."
+            }
+          ]
         },
         {
-          "id": "struct:Std::FileOptions/field:allowSharedRead",
-          "name": "allowSharedRead",
-          "type": "bool"
+          "id": "enum:Std::FileOptions/value:WRITE_THROUGH",
+          "name": "WRITE_THROUGH",
+          "symbol": "StdFileOptions_WRITE_THROUGH",
+          "type": "FileOptions",
+          "value": 4,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Request writes to pass through intermediate caches where supported."
+            }
+          ]
         },
         {
-          "id": "struct:Std::FileOptions/field:allowSharedWrite",
-          "name": "allowSharedWrite",
-          "type": "bool"
+          "id": "enum:Std::FileOptions/value:SHARE_READ",
+          "name": "SHARE_READ",
+          "symbol": "StdFileOptions_SHARE_READ",
+          "type": "FileOptions",
+          "value": 8,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Allow other handles to read the file while this handle is open."
+            }
+          ]
+        },
+        {
+          "id": "enum:Std::FileOptions/value:SHARE_WRITE",
+          "name": "SHARE_WRITE",
+          "symbol": "StdFileOptions_SHARE_WRITE",
+          "type": "FileOptions",
+          "value": 16,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Allow other handles to write the file while this handle is open."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Options that adjust native file-open behavior.\n\nCombine values with bitwise operators when more than one behavior is needed."
+        },
         {
           "name": "category",
           "content": "I/O"
@@ -2519,6 +3067,394 @@
         }
       ],
       "metadata": [
+        {
+          "name": "category",
+          "content": "I/O"
+        }
+      ]
+    },
+    {
+      "id": "staticClass:Std::FileSystem",
+      "kind": "staticClass",
+      "name": "FileSystem",
+      "symbol": "StdFileSystem",
+      "functions": [
+        {
+          "id": "staticClass:Std::FileSystem/function:createDirectory",
+          "name": "createDirectory",
+          "symbol": "StdFileSystem_createDirectory",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:createDirectory/parameter:path",
+              "name": "path",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Directory path to create."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:createDirectory/parameter:recursive",
+              "name": "recursive",
+              "type": "bool",
+              "defaultValue": "false",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "When true, missing parent directories are created."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:createDirectory/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Creates a directory."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the directory cannot be created."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:deleteDirectory",
+          "name": "deleteDirectory",
+          "symbol": "StdFileSystem_deleteDirectory",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:deleteDirectory/parameter:path",
+              "name": "path",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Directory path to delete."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:deleteDirectory/parameter:recursive",
+              "name": "recursive",
+              "type": "bool",
+              "defaultValue": "false",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "When true, contained files and directories are removed first."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:deleteDirectory/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Deletes a directory."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the directory cannot be deleted. Recursive deletion deletes symlink or reparse-point entries themselves rather than following them as directories."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:deleteFile",
+          "name": "deleteFile",
+          "symbol": "StdFileSystem_deleteFile",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:deleteFile/parameter:path",
+              "name": "path",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "File path to delete."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:deleteFile/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Deletes a file."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the file cannot be deleted."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:copyFile",
+          "name": "copyFile",
+          "symbol": "StdFileSystem_copyFile",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:copyFile/parameter:source",
+              "name": "source",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Existing source file path."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:copyFile/parameter:dest",
+              "name": "dest",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Destination file path."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:copyFile/parameter:overwrite",
+              "name": "overwrite",
+              "type": "bool",
+              "defaultValue": "false",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "When true, an existing destination file may be replaced."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:copyFile/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Copies a file."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the file cannot be copied."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:moveFile",
+          "name": "moveFile",
+          "symbol": "StdFileSystem_moveFile",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:moveFile/parameter:source",
+              "name": "source",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Existing source file path."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:moveFile/parameter:dest",
+              "name": "dest",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Destination file path."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:moveFile/parameter:overwrite",
+              "name": "overwrite",
+              "type": "bool",
+              "defaultValue": "false",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "When true, an existing destination file may be replaced."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:moveFile/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Moves or renames a file."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the file cannot be moved."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:exists",
+          "name": "exists",
+          "symbol": "StdFileSystem_exists",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:exists/parameter:path",
+              "name": "path",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Path to probe."
+                }
+              ]
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when a filesystem entry exists at %s.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            },
+            {
+              "name": "remarks",
+              "content": "This is a convenience probe. It returns false for missing paths and for errors that prevent reliable probing."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:isDirectory",
+          "name": "isDirectory",
+          "symbol": "StdFileSystem_isDirectory",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:isDirectory/parameter:path",
+              "name": "path",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Path to probe."
+                }
+              ]
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when %s exists and is a directory.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            },
+            {
+              "name": "remarks",
+              "content": "This is a convenience probe. It returns false for files, missing paths, and errors that prevent reliable probing."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:getSize",
+          "name": "getSize",
+          "symbol": "StdFileSystem_getSize",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "ulong",
+          "propertyName": "Size",
+          "propertyIndexParams": [
+            "file"
+          ],
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:getSize/parameter:file",
+              "name": "file",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "File path to query."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:getSize/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "IoError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Gets a file size in bytes."
+            },
+            {
+              "name": "remarks",
+              "content": "Throws \u0060IoError\u0060 when the file size cannot be queried."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Provides common host filesystem operations."
+        },
         {
           "name": "category",
           "content": "I/O"
@@ -6751,6 +7687,294 @@
       ]
     },
     {
+      "id": "staticClass:Std::Path",
+      "kind": "staticClass",
+      "name": "Path",
+      "symbol": "StdPath",
+      "functions": [
+        {
+          "id": "staticClass:Std::Path/function:getDirectorySeparator",
+          "name": "getDirectorySeparator",
+          "symbol": "StdPath_getDirectorySeparator",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "char",
+          "propertyName": "DirectorySeparator",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns the preferred directory separator for the active target."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:getPathSeparator",
+          "name": "getPathSeparator",
+          "symbol": "StdPath_getPathSeparator",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "char",
+          "propertyName": "PathSeparator",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns the separator used between entries in a path-list environment variable."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:isDirectorySeparator",
+          "name": "isDirectorySeparator",
+          "symbol": "StdPath_isDirectorySeparator",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:isDirectorySeparator/parameter:value",
+              "name": "value",
+              "type": "char"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when %s is a directory separator for the active target.",
+              "symbols": [
+                {
+                  "ref": "function:Std::binarySearch/parameter:value",
+                  "text": "value"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:isRooted",
+          "name": "isRooted",
+          "symbol": "StdPath_isRooted",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:isRooted/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when %s has a root component for the active target syntax.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            },
+            {
+              "name": "remarks",
+              "content": "A rooted path is not necessarily fully qualified. On Windows, \u0060\\foo\u0060 and \u0060C:foo\u0060 are rooted but depend on current drive state."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:isFullyQualified",
+          "name": "isFullyQualified",
+          "symbol": "StdPath_isFullyQualified",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:isFullyQualified/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when %s is absolute without depending on current directory state.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            },
+            {
+              "name": "remarks",
+              "content": "On Windows, \u0060C:\\foo\u0060 and \u0060\\\\server\\share\u0060 are fully qualified, but \u0060C:foo\u0060 and \u0060\\foo\u0060 are only rooted."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:fileNameSpan",
+          "name": "fileNameSpan",
+          "symbol": "StdPath_fileNameSpan",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "scoped constof(path) char[]",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:fileNameSpan/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a view of the final path component in %s.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            },
+            {
+              "name": "returns",
+              "content": "A span into %s. A path ending in a directory separator has an empty file-name span.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:directoryNameSpan",
+          "name": "directoryNameSpan",
+          "symbol": "StdPath_directoryNameSpan",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "scoped constof(path) char[]",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:directoryNameSpan/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a view of the directory portion of %s.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            },
+            {
+              "name": "returns",
+              "content": "A span into %s. The result does not include a trailing separator except when the directory portion is the root.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:extensionSpan",
+          "name": "extensionSpan",
+          "symbol": "StdPath_extensionSpan",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "scoped constof(path) char[]",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:extensionSpan/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns a view of the extension of the final file-name segment in %s.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
+                  "text": "path"
+                }
+              ]
+            },
+            {
+              "name": "returns",
+              "content": "The extension including the leading \u0060.\u0060, or an empty span when the final segment has no extension."
+            },
+            {
+              "name": "remarks",
+              "content": "Leading dots alone do not create an extension: \u0060.bashrc\u0060 and \u0060....jpg\u0060 return an empty span, while \u0060.profile.old\u0060 returns \u0060.old\u0060."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:lastSeparatorAfterRoot",
+          "name": "lastSeparatorAfterRoot",
+          "symbol": "StdPath_lastSeparatorAfterRoot",
+          "modifier": "static",
+          "returnType": "nint",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:lastSeparatorAfterRoot/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:rootLength",
+          "name": "rootLength",
+          "symbol": "StdPath_rootLength",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:rootLength/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::Path/function:isUncRooted",
+          "name": "isUncRooted",
+          "symbol": "StdPath_isUncRooted",
+          "modifier": "static",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "staticClass:Std::Path/function:isUncRooted/parameter:path",
+              "name": "path",
+              "type": "const char[]"
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Provides lexical helpers for working with platform path text."
+        },
+        {
+          "name": "category",
+          "content": "I/O"
+        }
+      ]
+    },
+    {
       "id": "function:Std::copyString",
       "kind": "function",
       "name": "copyString",
@@ -10625,23 +11849,13 @@
           "name": "buffer",
           "modifier": "prep",
           "type": "char[]",
-          "defaultValue": "default",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Destination buffer."
-            }
-          ]
+          "defaultValue": "default"
         }
       ],
       "metadata": [
         {
           "name": "summary",
           "content": "Formats a duration as \u0060H:MM:SS\u0060 with optional milliseconds."
-        },
-        {
-          "name": "remarks",
-          "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count."
         },
         {
           "name": "category",
@@ -10825,13 +12039,7 @@
           "name": "buffer",
           "modifier": "prep",
           "type": "char[]",
-          "defaultValue": "default",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Destination buffer."
-            }
-          ]
+          "defaultValue": "default"
         }
       ],
       "metadata": [
@@ -10841,7 +12049,7 @@
         },
         {
           "name": "remarks",
-          "content": "Formatting always computes from the stored value, even when %s would return false. It writes into the caller-provided buffer when space is available and returns the required character count.",
+          "content": "Formatting always computes from the stored value, even when %s would return false.",
           "symbols": [
             {
               "ref": "newtype:Std::TimeSpan/function:isValid",
@@ -11241,13 +12449,7 @@
           "name": "buffer",
           "modifier": "prep",
           "type": "char[]",
-          "defaultValue": "default",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Destination buffer."
-            }
-          ]
+          "defaultValue": "default"
         }
       ],
       "metadata": [
@@ -11257,7 +12459,7 @@
         },
         {
           "name": "remarks",
-          "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Invalid input returns \u00600\u0060."
+          "content": "Invalid input returns an empty result."
         },
         {
           "name": "category",
@@ -11509,13 +12711,7 @@
               "name": "buffer",
               "modifier": "prep",
               "type": "char[]",
-              "defaultValue": "default",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "Destination buffer."
-                }
-              ]
+              "defaultValue": "default"
             }
           ],
           "metadata": [
@@ -11525,7 +12721,7 @@
             },
             {
               "name": "remarks",
-              "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Field ranges are not checked during formatting."
+              "content": "Field ranges are not checked during formatting."
             },
             {
               "name": "category",
@@ -11701,13 +12897,7 @@
               "name": "buffer",
               "modifier": "prep",
               "type": "char[]",
-              "defaultValue": "default",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "Destination buffer."
-                }
-              ]
+              "defaultValue": "default"
             }
           ],
           "metadata": [
@@ -11717,7 +12907,7 @@
             },
             {
               "name": "remarks",
-              "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Field ranges are not checked during formatting."
+              "content": "Field ranges are not checked during formatting."
             },
             {
               "name": "category",
@@ -11986,13 +13176,7 @@
               "name": "buffer",
               "modifier": "prep",
               "type": "char[]",
-              "defaultValue": "default",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "Destination buffer."
-                }
-              ]
+              "defaultValue": "default"
             }
           ],
           "metadata": [
@@ -12002,7 +13186,7 @@
             },
             {
               "name": "remarks",
-              "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Invalid input returns \u00600\u0060."
+              "content": "Invalid input returns an empty result."
             },
             {
               "name": "category",
@@ -12299,13 +13483,7 @@
               "name": "buffer",
               "modifier": "prep",
               "type": "char[]",
-              "defaultValue": "default",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "Destination buffer."
-                }
-              ]
+              "defaultValue": "default"
             }
           ],
           "metadata": [
@@ -12315,7 +13493,7 @@
             },
             {
               "name": "remarks",
-              "content": "Formatting writes into the caller-provided buffer when space is available and returns the required character count. Invalid input returns \u00600\u0060."
+              "content": "Invalid input returns an empty result."
             },
             {
               "name": "category",

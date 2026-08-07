@@ -161,7 +161,7 @@ class ApiReference:
         self.page_weights: dict[str, int] = {}
         self.type_names: set[str] = set()
         self.written_paths: set[Path] = set()
-        self.top_level_function_group_counts: dict[tuple[str, str], int] = {}
+        self.top_level_function_group_counts: dict[tuple[str, str, str], int] = {}
         self.constant_group_counts: dict[tuple[str, str], int] = {}
 
     def write(self, metadata: dict[str, Any] | None = None) -> None:
@@ -225,11 +225,11 @@ class ApiReference:
                 self.page_weights[declaration_key(obj)] = index
 
     def assign_overload_group_counts(self, variables: list[dict[str, Any]], functions: list[dict[str, Any]]) -> None:
-        function_counts: dict[tuple[str, str], int] = {}
+        function_counts: dict[tuple[str, str, str], int] = {}
         for fn in functions:
             if self.grouped_sidebar and not self.is_external_extension_function(fn) and receiver_type(fn):
                 continue
-            key = (category_name(fn), fn.get("name") or "")
+            key = top_level_function_group_key(fn, full_receiver=self.grouped_sidebar)
             function_counts[key] = function_counts.get(key, 0) + 1
         self.top_level_function_group_counts = function_counts
 
@@ -429,7 +429,7 @@ class ApiReference:
 
     def write_top_level_overload_group_detail(self, item: tuple[str, dict[str, Any], bool, dict[str, Any]]) -> None:
         _, group, _, _ = item
-        title = group.get("name") or "Overloads"
+        title = group_display_name(group)
         body = [
             f"<h1>{esc(title)}</h1>",
             "",
@@ -532,7 +532,7 @@ class ApiReference:
             first = esc(obj.get("type") or "(multiple types)")
             signature = f"<strong>{esc(obj.get('name') or '')}</strong>"
         elif kind == "function":
-            first = esc(lifecycle_kind(obj) or obj.get("returnType") or "void")
+            first = esc(lifecycle_kind(obj) or docs_return_type(obj))
             signature = member_signature(obj, omit_receiver, full_receiver=options.get("extension", False) or options.get("fullReceiver", False))
         elif kind in DECLARATION_KINDS:
             first = esc(declaration_kind_label(obj))
@@ -577,7 +577,7 @@ class ApiReference:
 
     def parameters(self, parameters: list[dict[str, Any]], omit_receiver: bool = False, show_title: bool = True, full_receiver: bool = False) -> str:
         rows: list[str] = []
-        for param in parameters:
+        for param in visible_parameters(parameters):
             if omit_receiver and (param.get("name") == "this" or param.get("kind") == "receiver"):
                 continue
             rows.append(
@@ -712,13 +712,13 @@ class ApiReference:
         return display_name(owner)
 
     def top_level_function_backlink_url(self, fn: dict[str, Any]) -> str:
-        if self.top_level_function_group_counts.get((category_name(fn), fn.get("name") or ""), 0) > 1:
+        if self.top_level_function_group_counts.get(top_level_function_group_key(fn, full_receiver=self.grouped_sidebar), 0) > 1:
             return self.top_level_overload_group_url(fn)
         return self.category_prefix(fn)
 
     def top_level_function_backlink_text(self, fn: dict[str, Any]) -> str:
-        if self.top_level_function_group_counts.get((category_name(fn), fn.get("name") or ""), 0) > 1:
-            return f"{fn.get('name') or 'function'} overloads"
+        if self.top_level_function_group_counts.get(top_level_function_group_key(fn, full_receiver=self.grouped_sidebar), 0) > 1:
+            return f"{group_display_name(fn)} overloads"
         return category_name(fn)
 
     def constant_backlink_url(self, variable: dict[str, Any]) -> str:
@@ -735,7 +735,7 @@ class ApiReference:
 
     def detail_signature(self, kind: str, obj: dict[str, Any], omit_receiver: bool, full_receiver: bool = False, member_name: str | None = None, escape: bool = True) -> str:
         if kind == "function":
-            text = (obj.get("returnType") or "void") + " " + signature_plain(obj, omit_receiver, full_receiver=full_receiver)
+            text = docs_return_type(obj) + " " + signature_plain(obj, omit_receiver, full_receiver=full_receiver)
             return esc(text) if escape else text
         if kind == "field":
             text = (field_type_display(obj) + " " + obj.get("name", "")).strip()
@@ -754,7 +754,7 @@ class ApiReference:
 
     def index_signature(self, obj: dict[str, Any]) -> str:
         if obj.get("kind") == "function":
-            return f"{esc(obj.get('returnType') or 'void')} <strong>{esc(obj.get('name') or '')}</strong>{declaration_type_parameters_display(obj)}({params_display(obj, False, full_receiver=True)})"
+            return f"{esc(docs_return_type(obj))} <strong>{esc(obj.get('name') or '')}</strong>{declaration_type_parameters_display(obj)}({params_display(obj, False, full_receiver=True)})"
         return declaration_signature(obj)
 
     def object_url(self, obj: dict[str, Any]) -> str:
@@ -781,7 +781,7 @@ class ApiReference:
 
     def top_level_overload_group_url(self, group: dict[str, Any]) -> str:
         prefix = self.category_prefix(group) if self.grouped_sidebar else self.prefix()
-        return prefix + "function-" + slug(group.get("name") or "overloads") + "-overloads/"
+        return prefix + "function-" + slug(group_display_name(group)) + "-overloads/"
 
     def constant_detail_url(self, variable: dict[str, Any]) -> str:
         return self.category_prefix(variable) + slug(variable.get("name") or "constant") + "/" if self.grouped_sidebar else self.prefix() + "constants/" + slug(variable.get("name") or "constant") + "/"
@@ -799,7 +799,7 @@ class ApiReference:
         return (self.output_dir / category_slug(category_name(fn)) if self.grouped_sidebar else self.output_dir) / f"function-{slug(signature_plain(fn, False, full_receiver=self.grouped_sidebar))}.md"
 
     def top_level_overload_group_path(self, group: dict[str, Any]) -> Path:
-        return (self.output_dir / category_slug(category_name(group)) if self.grouped_sidebar else self.output_dir) / f"function-{slug(group.get('name') or 'overloads')}-overloads.md"
+        return (self.output_dir / category_slug(category_name(group)) if self.grouped_sidebar else self.output_dir) / f"function-{slug(group_display_name(group))}-overloads.md"
 
     def constant_detail_path(self, variable: dict[str, Any]) -> Path:
         return self.output_dir / category_slug(category_name(variable)) / f"{slug(variable.get('name') or 'constant')}.md" if self.grouped_sidebar else self.output_dir / "constants" / f"{slug(variable.get('name') or 'constant')}.md"
@@ -1019,7 +1019,7 @@ def is_public_member(obj: dict[str, Any], owner: dict[str, Any] | None) -> bool:
 def signature_plain(obj: dict[str, Any], omit_receiver: bool = False, full_receiver: bool = False) -> str:
     if obj.get("kind") == "newtype":
         if obj.get("callableType"):
-            return f"newtype {obj.get('callableType')} {obj.get('returnType') or 'void'} {declaration_display_name(obj)}({params_plain(obj, omit_receiver, full_receiver=full_receiver)})"
+            return f"newtype {obj.get('callableType')} {docs_return_type(obj)} {declaration_display_name(obj)}({params_plain(obj, omit_receiver, full_receiver=full_receiver)})"
         if obj.get("underlyingType"):
             return f"newtype {declaration_display_name(obj)}: {obj.get('underlyingType')}"
         return f"newtype {declaration_display_name(obj)}"
@@ -1027,7 +1027,25 @@ def signature_plain(obj: dict[str, Any], omit_receiver: bool = False, full_recei
 
 
 def params_plain(obj: dict[str, Any], omit_receiver: bool, full_receiver: bool = False) -> str:
-    return ", ".join(filter(None, (param_plain(p, omit_receiver, full_receiver=full_receiver) for p in obj.get("parameters") or [])))
+    return ", ".join(filter(None, (param_plain(p, omit_receiver, full_receiver=full_receiver) for p in visible_parameters(obj.get("parameters") or []))))
+
+
+def visible_parameters(parameters: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [param for param in parameters if not is_prep_parameter(param)]
+
+
+def is_prep_parameter(param: dict[str, Any]) -> bool:
+    return param.get("modifier") == "prep"
+
+
+def prep_parameter(obj: dict[str, Any]) -> dict[str, Any] | None:
+    return next((param for param in obj.get("parameters") or [] if is_prep_parameter(param)), None)
+
+
+def docs_return_type(obj: dict[str, Any]) -> str:
+    if prep := prep_parameter(obj):
+        return "prep " + str(prep.get("type") or "")
+    return str(obj.get("returnType") or "void")
 
 
 def is_receiver_parameter(param: dict[str, Any]) -> bool:
@@ -1103,7 +1121,7 @@ def default_value_display(param: dict[str, Any]) -> str:
 
 
 def params_display(obj: dict[str, Any], omit_receiver: bool, full_receiver: bool = False) -> str:
-    return ", ".join(esc(text) for text in (param_plain(p, omit_receiver, full_receiver=full_receiver) for p in obj.get("parameters") or []) if text)
+    return ", ".join(esc(text) for text in (param_plain(p, omit_receiver, full_receiver=full_receiver) for p in visible_parameters(obj.get("parameters") or [])) if text)
 
 
 def type_parameters_display(obj: dict[str, Any]) -> str:
@@ -1143,11 +1161,11 @@ def declaration_signature(obj: dict[str, Any], escape: bool = True) -> str:
             return " ".join(parts)
         if kind == "newtype":
             if obj.get("callableType"):
-                return f"newtype {obj.get('callableType')} {obj.get('returnType') or 'void'} {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}({params_plain(obj, False)})"
+                return f"newtype {obj.get('callableType')} {docs_return_type(obj)} {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}({params_plain(obj, False)})"
             if obj.get("underlyingType"):
                 return f"newtype {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}: {obj.get('underlyingType')}"
         if kind == "function":
-            return f"{obj.get('returnType') or 'void'} {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}({params_plain(obj, False)})"
+            return f"{docs_return_type(obj)} {obj.get('name') or ''}{type_parameters_plain(obj.get('typeParameters') or [], include_constraints=True)}({params_plain(obj, False)})"
         if kind == "variable":
             text = f"{inline_constant_type(obj)} {obj.get('name') or ''}"
             if "value" in obj:
@@ -1165,11 +1183,11 @@ def declaration_signature(obj: dict[str, Any], escape: bool = True) -> str:
         return " ".join(parts)
     if kind == "newtype":
         if obj.get("callableType"):
-            return f"newtype {esc(obj.get('callableType'))} {esc(obj.get('returnType') or 'void')} <strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>({params_display(obj, False)})"
+            return f"newtype {esc(obj.get('callableType'))} {esc(docs_return_type(obj))} <strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>({params_display(obj, False)})"
         if obj.get("underlyingType"):
             return f"newtype <strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>: {esc(obj.get('underlyingType'))}"
     if kind == "function":
-        return f"{esc(obj.get('returnType') or 'void')} <strong>{esc(obj.get('name') or '')}</strong>{declaration_type_parameters_display(obj)}({params_display(obj, False)})"
+        return f"{esc(docs_return_type(obj))} <strong>{esc(obj.get('name') or '')}</strong>{declaration_type_parameters_display(obj)}({params_display(obj, False)})"
     if kind == "variable":
         return f"{esc(inline_constant_type(obj))} <strong>{esc(obj.get('name') or '')}</strong>{constant_value_display(obj)}"
     return "<strong>" + esc(display_name(obj)) + "</strong>"
@@ -1184,7 +1202,7 @@ def type_list_signature(obj: dict[str, Any]) -> str:
         return " ".join(parts)
     if kind == "newtype":
         if obj.get("callableType"):
-            return f"{esc(obj.get('callableType'))} {esc(obj.get('returnType') or 'void')} <strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>({params_display(obj, False)})"
+            return f"{esc(obj.get('callableType'))} {esc(docs_return_type(obj))} <strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>({params_display(obj, False)})"
         if obj.get("underlyingType"):
             return f"<strong>{esc(obj.get('name') or '')}{declaration_type_parameters_display(obj)}</strong>: {esc(obj.get('underlyingType'))}"
     return "<strong>" + esc(display_name(obj)) + "</strong>"
@@ -1268,6 +1286,24 @@ def receiver_param(fn: dict[str, Any]) -> dict[str, Any] | None:
 def receiver_type(fn: dict[str, Any]) -> str | None:
     param = receiver_param(fn)
     return param.get("type") if param else None
+
+
+def function_receiver_group_label(fn: dict[str, Any]) -> str:
+    return normalize_receiver_label(receiver_type(fn)) or ""
+
+
+def top_level_function_group_key(fn: dict[str, Any], full_receiver: bool) -> tuple[str, str, str]:
+    return (
+        category_name(fn),
+        fn.get("name") or "",
+        function_receiver_group_label(fn) if full_receiver else "",
+    )
+
+
+def group_display_name(group: dict[str, Any]) -> str:
+    name = group.get("name") or "function"
+    receiver = group.get("receiver") or function_receiver_group_label(group)
+    return f"{receiver}.{name}" if receiver else name
 
 
 def normalize_receiver_base(value: str | None) -> str | None:
@@ -1358,8 +1394,8 @@ def member_sort_key(item: tuple[str, dict[str, Any], bool, dict[str, Any]]) -> t
 
 def collapse_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[str, Any]]]) -> list[tuple[str, dict[str, Any], bool, dict[str, Any]]]:
     result: list[tuple[str, dict[str, Any], bool, dict[str, Any]]] = []
-    groups: dict[tuple[str, str, bool, bool], list[tuple[str, dict[str, Any], bool, dict[str, Any]]]] = {}
-    group_order: list[tuple[str, str, bool, bool]] = []
+    groups: dict[tuple[str, str, bool, bool, str], list[tuple[str, dict[str, Any], bool, dict[str, Any]]]] = {}
+    group_order: list[tuple[str, str, bool, bool, str]] = []
 
     for item in items:
         kind, obj, omit_receiver, options = item
@@ -1372,6 +1408,7 @@ def collapse_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[st
             obj.get("modifier") or "",
             omit_receiver,
             options.get("extension", False),
+            function_receiver_group_label(obj) if options.get("extension", False) or options.get("fullReceiver", False) else "",
         )
         if key not in groups:
             group_order.append(key)
@@ -1384,7 +1421,7 @@ def collapse_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[st
             continue
 
         first = group[0][1]
-        return_types = {item[1].get("returnType") or "void" for item in group}
+        return_types = {docs_return_type(item[1]) for item in group}
         result.append((
             "overload-group",
             {
@@ -1393,6 +1430,8 @@ def collapse_overload_items(items: list[tuple[str, dict[str, Any], bool, dict[st
                 "returnType": next(iter(return_types)) if len(return_types) == 1 else "(multiple types)",
                 "modifier": first.get("modifier"),
                 "static": first.get("static"),
+                "category": category_name(first),
+                "receiver": key[4],
                 "overloadGroup": True,
                 "overloads": [
                     {
