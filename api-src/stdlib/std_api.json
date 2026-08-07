@@ -216,7 +216,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -261,7 +261,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -311,7 +311,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -361,7 +361,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -417,7 +417,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -456,7 +456,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -506,7 +506,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -578,7 +578,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -650,7 +650,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -722,7 +722,7 @@
         },
         {
           "name": "category",
-          "content": "Collections"
+          "content": "Arrays"
         }
       ]
     },
@@ -3494,6 +3494,93 @@
       "id": "function:Std::toString",
       "kind": "function",
       "name": "toString",
+      "symbol": "StdAChar_toString",
+      "visibility": "public",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::toString/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "achar"
+        },
+        {
+          "id": "function:Std::toString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::toString",
+      "kind": "function",
+      "name": "toString",
+      "symbol": "StdWChar_toString",
+      "visibility": "public",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::toString/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "wchar"
+        },
+        {
+          "id": "function:Std::toString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::toString",
+      "kind": "function",
+      "name": "toString",
+      "symbol": "StdUChar_toString",
+      "visibility": "public",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::toString/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "uchar"
+        },
+        {
+          "id": "function:Std::toString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Text"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::toString",
+      "kind": "function",
+      "name": "toString",
       "symbol": "StdCharArray_toString",
       "visibility": "public",
       "returnType": "nuint",
@@ -4588,6 +4675,314 @@
         {
           "name": "summary",
           "content": "Standard hash policy for \u0060nint\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashcode",
+      "kind": "function",
+      "name": "hashcode",
+      "symbol": "StdAChar_hashcode",
+      "visibility": "public",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::hashcode/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "achar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns a hash code for an \u0060achar\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashEquals",
+      "kind": "function",
+      "name": "hashEquals",
+      "symbol": "StdAChar_hashEquals",
+      "visibility": "public",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Std::hashEquals/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "achar"
+        },
+        {
+          "id": "function:Std::hashEquals/parameter:other",
+          "name": "other",
+          "modifier": "in",
+          "type": "achar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when two \u0060achar\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::achar.HASH_POLICY",
+      "kind": "variable",
+      "name": "achar.HASH_POLICY",
+      "symbol": "StdAChar_HASH_POLICY",
+      "visibility": "public",
+      "type": "const HashPolicy\u003Cachar\u003E",
+      "static": true,
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Standard hash policy for \u0060achar\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashcode",
+      "kind": "function",
+      "name": "hashcode",
+      "symbol": "StdChar_hashcode",
+      "visibility": "public",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::hashcode/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "char"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns a hash code for a \u0060char\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashEquals",
+      "kind": "function",
+      "name": "hashEquals",
+      "symbol": "StdChar_hashEquals",
+      "visibility": "public",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Std::hashEquals/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "char"
+        },
+        {
+          "id": "function:Std::hashEquals/parameter:other",
+          "name": "other",
+          "modifier": "in",
+          "type": "char"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when two \u0060char\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::char.HASH_POLICY",
+      "kind": "variable",
+      "name": "char.HASH_POLICY",
+      "symbol": "StdChar_HASH_POLICY",
+      "visibility": "public",
+      "type": "const HashPolicy\u003Cchar\u003E",
+      "static": true,
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Standard hash policy for \u0060char\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashcode",
+      "kind": "function",
+      "name": "hashcode",
+      "symbol": "StdWChar_hashcode",
+      "visibility": "public",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::hashcode/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "wchar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns a hash code for a \u0060wchar\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashEquals",
+      "kind": "function",
+      "name": "hashEquals",
+      "symbol": "StdWChar_hashEquals",
+      "visibility": "public",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Std::hashEquals/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "wchar"
+        },
+        {
+          "id": "function:Std::hashEquals/parameter:other",
+          "name": "other",
+          "modifier": "in",
+          "type": "wchar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when two \u0060wchar\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::wchar.HASH_POLICY",
+      "kind": "variable",
+      "name": "wchar.HASH_POLICY",
+      "symbol": "StdWChar_HASH_POLICY",
+      "visibility": "public",
+      "type": "const HashPolicy\u003Cwchar\u003E",
+      "static": true,
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Standard hash policy for \u0060wchar\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashcode",
+      "kind": "function",
+      "name": "hashcode",
+      "symbol": "StdUChar_hashcode",
+      "visibility": "public",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::hashcode/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "uchar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns a hash code for a \u0060uchar\u0060."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::hashEquals",
+      "kind": "function",
+      "name": "hashEquals",
+      "symbol": "StdUChar_hashEquals",
+      "visibility": "public",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Std::hashEquals/parameter:this",
+          "name": "this",
+          "modifier": "in",
+          "type": "uchar"
+        },
+        {
+          "id": "function:Std::hashEquals/parameter:other",
+          "name": "other",
+          "modifier": "in",
+          "type": "uchar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when two \u0060uchar\u0060 keys are equal."
+        },
+        {
+          "name": "category",
+          "content": "Collections"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::uchar.HASH_POLICY",
+      "kind": "variable",
+      "name": "uchar.HASH_POLICY",
+      "symbol": "StdUChar_HASH_POLICY",
+      "visibility": "public",
+      "type": "const HashPolicy\u003Cuchar\u003E",
+      "static": true,
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Standard hash policy for \u0060uchar\u0060."
         },
         {
           "name": "category",
@@ -6359,7 +6754,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6376,7 +6771,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6393,7 +6788,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6410,7 +6805,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6427,7 +6822,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6444,7 +6839,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6461,7 +6856,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6478,7 +6873,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6495,7 +6890,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6512,7 +6907,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6529,7 +6924,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6546,7 +6941,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6563,7 +6958,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6580,7 +6975,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6597,7 +6992,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6614,7 +7009,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6631,7 +7026,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6648,7 +7043,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6665,7 +7060,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6682,7 +7077,143 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::achar.MIN",
+      "kind": "variable",
+      "name": "achar.MIN",
+      "symbol": "StdAChar_MIN",
+      "visibility": "public",
+      "type": "achar",
+      "static": true,
+      "inline": true,
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::achar.MAX",
+      "kind": "variable",
+      "name": "achar.MAX",
+      "symbol": "StdAChar_MAX",
+      "visibility": "public",
+      "type": "achar",
+      "static": true,
+      "inline": true,
+      "value": 127,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::char.MIN",
+      "kind": "variable",
+      "name": "char.MIN",
+      "symbol": "StdChar_MIN",
+      "visibility": "public",
+      "type": "char",
+      "static": true,
+      "inline": true,
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::char.MAX",
+      "kind": "variable",
+      "name": "char.MAX",
+      "symbol": "StdChar_MAX",
+      "visibility": "public",
+      "type": "char",
+      "static": true,
+      "inline": true,
+      "value": 127,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::wchar.MIN",
+      "kind": "variable",
+      "name": "wchar.MIN",
+      "symbol": "StdWChar_MIN",
+      "visibility": "public",
+      "type": "wchar",
+      "static": true,
+      "inline": true,
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::wchar.MAX",
+      "kind": "variable",
+      "name": "wchar.MAX",
+      "symbol": "StdWChar_MAX",
+      "visibility": "public",
+      "type": "wchar",
+      "static": true,
+      "inline": true,
+      "value": 65535,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::uchar.MIN",
+      "kind": "variable",
+      "name": "uchar.MIN",
+      "symbol": "StdUChar_MIN",
+      "visibility": "public",
+      "type": "uchar",
+      "static": true,
+      "inline": true,
+      "value": 0,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "variable:Std::uchar.MAX",
+      "kind": "variable",
+      "name": "uchar.MAX",
+      "symbol": "StdUChar_MAX",
+      "visibility": "public",
+      "type": "uchar",
+      "static": true,
+      "inline": true,
+      "value": 1114111,
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
         }
       ]
     },
@@ -6706,7 +7237,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6730,7 +7261,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6754,7 +7285,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6778,7 +7309,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6807,7 +7338,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6836,7 +7367,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6865,7 +7396,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6894,7 +7425,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6923,7 +7454,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6952,7 +7483,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -6981,7 +7512,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7010,7 +7541,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7039,7 +7570,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7068,7 +7599,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7097,7 +7628,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7126,7 +7657,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7155,7 +7686,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7184,7 +7715,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7213,7 +7744,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7242,7 +7773,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7271,7 +7802,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7300,7 +7831,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7329,7 +7860,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7358,7 +7889,181 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::minAChar",
+      "kind": "function",
+      "name": "min",
+      "symbol": "Std_minAChar",
+      "visibility": "public",
+      "invokerName": "min",
+      "callableName": "minAChar",
+      "returnType": "achar",
+      "parameters": [
+        {
+          "id": "function:Std::minAChar/parameter:left",
+          "name": "left",
+          "overload": true,
+          "type": "achar"
+        },
+        {
+          "id": "function:Std::minAChar/parameter:right",
+          "name": "right",
+          "type": "achar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::maxAChar",
+      "kind": "function",
+      "name": "max",
+      "symbol": "Std_maxAChar",
+      "visibility": "public",
+      "invokerName": "max",
+      "callableName": "maxAChar",
+      "returnType": "achar",
+      "parameters": [
+        {
+          "id": "function:Std::maxAChar/parameter:left",
+          "name": "left",
+          "overload": true,
+          "type": "achar"
+        },
+        {
+          "id": "function:Std::maxAChar/parameter:right",
+          "name": "right",
+          "type": "achar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::minChar",
+      "kind": "function",
+      "name": "min",
+      "symbol": "Std_minChar",
+      "visibility": "public",
+      "invokerName": "min",
+      "callableName": "minChar",
+      "returnType": "char",
+      "parameters": [
+        {
+          "id": "function:Std::minChar/parameter:left",
+          "name": "left",
+          "overload": true,
+          "type": "char"
+        },
+        {
+          "id": "function:Std::minChar/parameter:right",
+          "name": "right",
+          "type": "char"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::maxChar",
+      "kind": "function",
+      "name": "max",
+      "symbol": "Std_maxChar",
+      "visibility": "public",
+      "invokerName": "max",
+      "callableName": "maxChar",
+      "returnType": "char",
+      "parameters": [
+        {
+          "id": "function:Std::maxChar/parameter:left",
+          "name": "left",
+          "overload": true,
+          "type": "char"
+        },
+        {
+          "id": "function:Std::maxChar/parameter:right",
+          "name": "right",
+          "type": "char"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::minWChar",
+      "kind": "function",
+      "name": "min",
+      "symbol": "Std_minWChar",
+      "visibility": "public",
+      "invokerName": "min",
+      "callableName": "minWChar",
+      "returnType": "wchar",
+      "parameters": [
+        {
+          "id": "function:Std::minWChar/parameter:left",
+          "name": "left",
+          "overload": true,
+          "type": "wchar"
+        },
+        {
+          "id": "function:Std::minWChar/parameter:right",
+          "name": "right",
+          "type": "wchar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::maxWChar",
+      "kind": "function",
+      "name": "max",
+      "symbol": "Std_maxWChar",
+      "visibility": "public",
+      "invokerName": "max",
+      "callableName": "maxWChar",
+      "returnType": "wchar",
+      "parameters": [
+        {
+          "id": "function:Std::maxWChar/parameter:left",
+          "name": "left",
+          "overload": true,
+          "type": "wchar"
+        },
+        {
+          "id": "function:Std::maxWChar/parameter:right",
+          "name": "right",
+          "type": "wchar"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "category",
+          "content": "Primitives"
         }
       ]
     },
@@ -7387,7 +8092,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7416,7 +8121,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7445,7 +8150,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7474,7 +8179,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7503,7 +8208,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },
@@ -7532,7 +8237,7 @@
       "metadata": [
         {
           "name": "category",
-          "content": "Core"
+          "content": "Primitives"
         }
       ]
     },

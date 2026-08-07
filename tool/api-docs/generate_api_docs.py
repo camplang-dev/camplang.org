@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 
-TYPE_KINDS = {"class", "staticClass", "interface", "struct", "newtype"}
+TYPE_KINDS = {"class", "staticClass", "interface", "struct", "newtype", "pseudoType"}
 DECLARATION_KINDS = TYPE_KINDS | {"enum"}
 API_GROUPS = [
     ("class", "classes", "Classes"),
@@ -126,6 +126,40 @@ CAMP_TOKEN_RE = re.compile(
     re.DOTALL,
 )
 
+PRIMITIVE_TYPES = [
+    ("bool", "Boolean value."),
+    ("byte", "Unsigned 8-bit integer."),
+    ("sbyte", "Signed 8-bit integer."),
+    ("short", "Signed 16-bit integer."),
+    ("ushort", "Unsigned 16-bit integer."),
+    ("int", "Signed 32-bit integer."),
+    ("uint", "Unsigned 32-bit integer."),
+    ("long", "Signed 64-bit integer."),
+    ("ulong", "Unsigned 64-bit integer."),
+    ("nint", "Pointer-sized signed integer."),
+    ("nuint", "Pointer-sized unsigned integer."),
+    ("float", "32-bit floating-point value."),
+    ("double", "64-bit floating-point value."),
+]
+CHAR_PRIMITIVE_TYPES = [
+    ("achar", "Narrow character code unit."),
+    ("char", "UTF-8 character code unit."),
+    ("wchar", "Wide character code unit."),
+    ("uchar", "Unicode scalar value."),
+]
+PRIMITIVE_TYPE_NAMES = {name for name, _ in [*PRIMITIVE_TYPES, *CHAR_PRIMITIVE_TYPES]}
+STRING_TYPES = [
+    ("string", "Null-terminated UTF-8 string."),
+    ("astring", "Null-terminated narrow string."),
+    ("wstring", "Null-terminated wide string."),
+]
+STRING_TYPE_NAMES = {name for name, _ in STRING_TYPES}
+CHAR_ARRAY_STRING_OWNERS = {
+    "char": "string",
+    "achar": "astring",
+    "wchar": "wstring",
+}
+
 
 def generate_api_docs(api_src: Path, docs_root: Path) -> None:
     version = read_text(api_src / "campc-version.txt", "unknown").strip() or "unknown"
@@ -163,6 +197,7 @@ class ApiReference:
         self.written_paths: set[Path] = set()
         self.top_level_function_group_counts: dict[tuple[str, str, str], int] = {}
         self.constant_group_counts: dict[tuple[str, str], int] = {}
+        self.types_by_name: dict[str, dict[str, Any]] = {}
 
     def write(self, metadata: dict[str, Any] | None = None) -> None:
         metadata = metadata or read_metadata(self.metadata_path)
@@ -170,9 +205,11 @@ class ApiReference:
 
         self.written_paths = set()
         self.write_section(self.output_dir, self.title, weight=self.weight)
-        self.type_names = {d.get("name") for d in declarations if d.get("kind") in TYPE_KINDS and d.get("name")}
+        pseudo_types = pseudo_type_declarations(declarations)
+        self.type_names = {d.get("name") for d in [*declarations, *pseudo_types] if d.get("kind") in TYPE_KINDS and d.get("name")}
+        self.types_by_name = {d["name"]: d for d in [*declarations, *pseudo_types] if d.get("kind") in TYPE_KINDS and d.get("name")}
 
-        types = sorted_declarations([d for d in declarations if d.get("kind") in TYPE_KINDS])
+        types = sorted_declarations([*[d for d in declarations if d.get("kind") in TYPE_KINDS], *pseudo_types])
         enums = sorted_declarations([d for d in declarations if d.get("kind") == "enum"])
         variables = sorted_declarations([d for d in declarations if d.get("kind") == "variable"])
         functions = sorted_declarations([d for d in declarations if d.get("kind") == "function"])
@@ -195,7 +232,14 @@ class ApiReference:
 
         for fn in functions:
             if fn.get("id"):
-                self.detail_urls[fn["id"]] = self.top_level_detail_url(fn)
+                owner = self.extension_function_owner(fn)
+                self.detail_urls[fn["id"]] = self.member_detail_url(owner, fn) if owner is not None else self.top_level_detail_url(fn)
+
+        for variable in variables:
+            if variable.get("id"):
+                owner = self.extension_variable_owner_type(variable)
+                if owner is not None:
+                    self.detail_urls[variable["id"]] = self.member_detail_url(owner, variable)
 
         for obj in types:
             self.write_type_page(obj, functions, variables)
@@ -227,7 +271,7 @@ class ApiReference:
     def assign_overload_group_counts(self, variables: list[dict[str, Any]], functions: list[dict[str, Any]]) -> None:
         function_counts: dict[tuple[str, str, str], int] = {}
         for fn in functions:
-            if self.grouped_sidebar and not self.is_external_extension_function(fn) and receiver_type(fn):
+            if self.grouped_sidebar and self.extension_function_owner(fn) is not None:
                 continue
             key = top_level_function_group_key(fn, full_receiver=self.grouped_sidebar)
             function_counts[key] = function_counts.get(key, 0) + 1
@@ -235,8 +279,10 @@ class ApiReference:
 
         constant_counts: dict[tuple[str, str], int] = {}
         for variable in variables:
+            if self.extension_variable_owner_type(variable) is not None:
+                continue
             owner = extension_variable_owner_name(variable)
-            if owner is None or owner in self.type_names:
+            if owner is None:
                 continue
             key = (category_name(variable), extension_variable_name(variable))
             constant_counts[key] = constant_counts.get(key, 0) + 1
@@ -250,13 +296,16 @@ class ApiReference:
         variables: list[dict[str, Any]],
         functions: list[dict[str, Any]],
     ) -> None:
-        for index, category in enumerate(self.categories(declarations), start=1):
+        category_functions_all = [fn for fn in functions if self.extension_function_owner(fn) is None]
+        category_variables_all = [variable for variable in variables if self.extension_variable_owner_type(variable) is None]
+        category_sources = [*types, *enums, *category_variables_all, *category_functions_all]
+        for index, category in enumerate(self.categories(category_sources), start=1):
             category_root = self.output_dir / category_slug(category)
-            category_declarations = [item for item in declarations if category_name(item) == category]
+            category_declarations = [item for item in category_sources if category_name(item) == category]
             category_types = [item for item in types if category_name(item) == category]
             category_enums = [item for item in enums if category_name(item) == category]
-            category_variables = [item for item in variables if category_name(item) == category]
-            category_functions = [item for item in functions if category_name(item) == category]
+            category_variables = [item for item in category_variables_all if category_name(item) == category]
+            category_functions = [item for item in category_functions_all if category_name(item) == category]
             content = self.category_overview(category, category_declarations, category_types, category_enums, category_variables, category_functions)
             self.write_section(category_root, category, weight=index, content=content)
 
@@ -319,12 +368,10 @@ class ApiReference:
             "</div>",
         ]
         type_items = sorted_declarations([*types, *enums])
-        extension_functions = [item for item in functions if self.is_external_extension_function(item)]
-        extension_variables = [item for item in variables if self.is_external_extension_variable(item)]
-        category_functions = [*extension_functions, *[item for item in functions if not receiver_type(item)]]
-        category_variables = [*extension_variables, *[item for item in variables if not self.extension_variable_owner(item)]]
+        category_functions = functions
+        category_variables = variables
         if type_items:
-            body.append(f'<section class="api-index-group"><h2>Types</h2>{self.type_rows(type_items)}</section>')
+            body.append(f'<section class="api-index-group"><h2>Types</h2>{self.type_rows(type_items, one_column=category in {"Primitives", "Strings"})}</section>')
         if category_functions:
             body.append(f'<section class="api-index-group"><h2>Functions</h2>{self.declaration_rows(category_functions, "function")}</section>')
         if category_variables:
@@ -334,14 +381,14 @@ class ApiReference:
 
     def write_type_page(self, obj: dict[str, Any], all_functions: list[dict[str, Any]], all_variables: list[dict[str, Any]]) -> None:
         name = display_name(obj)
-        extensions = [fn for fn in all_functions if is_public_member(fn, None) and self.extension_owner_name(receiver_type(fn)) == obj.get("name")]
-        extension_variables = [variable for variable in all_variables if is_public_member(variable, None) and self.extension_variable_owner(variable) == obj.get("name")]
+        extensions = [fn for fn in all_functions if is_public_member(fn, None) and self.extension_function_owner(fn) is obj]
+        extension_variables = [variable for variable in all_variables if is_public_member(variable, None) and self.extension_variable_owner_type(variable) is obj]
         lifecycle_members, fields, instance_members, static_members = split_members(obj, extensions, extension_variables)
         body = [
             f"<h1>{esc(name)}</h1>",
             "",
             f'<p class="api-backlink"><a href="{attr(self.category_prefix(obj))}">Back to {esc(category_name(obj))}</a></p>' if self.grouped_sidebar else "",
-            self.declaration_block(declaration_signature(obj, escape=False)),
+            "" if obj.get("kind") == "pseudoType" else self.declaration_block(declaration_signature(obj, escape=False)),
             self.metadata(obj),
         ]
         if obj.get("kind") == "newtype" and obj.get("callableType") and obj.get("parameters"):
@@ -375,7 +422,7 @@ class ApiReference:
         self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar)
 
     def write_functions_page(self, functions: list[dict[str, Any]]) -> None:
-        free = functions if self.grouped_sidebar else [fn for fn in functions if not receiver_type(fn)]
+        free = [fn for fn in functions if self.extension_function_owner(fn) is None] if self.grouped_sidebar else [fn for fn in functions if not receiver_type(fn)]
         if not self.grouped_sidebar:
             body = ["<h1>Functions</h1>", "", self.declaration_rows(free, "function"), self.footer()]
             self.write_page(self.output_dir / "functions.md", "Functions", 9000, "\n".join(body), nav_hidden=True)
@@ -386,6 +433,7 @@ class ApiReference:
                 self.write_top_level_overload_group_detail(item)
 
     def write_constants_page(self, variables: list[dict[str, Any]]) -> None:
+        variables = [variable for variable in variables if self.extension_variable_owner_type(variable) is None] if self.grouped_sidebar else variables
         if not self.grouped_sidebar:
             body = ["<h1>Constants</h1>", "", self.declaration_rows(variables, "variable"), self.footer()]
             self.write_page(self.output_dir / "constants.md", "Constants", 9001, "\n".join(body), nav_hidden=True)
@@ -483,10 +531,20 @@ class ApiReference:
         rows = [self.row(None, item) for item in row_items]
         return '<div class="api-member-list api-declaration-list">' + "\n".join(rows) + "</div>"
 
-    def type_rows(self, items: list[dict[str, Any]]) -> str:
+    def type_rows(self, items: list[dict[str, Any]], one_column: bool = False) -> str:
         rows = []
         for obj in sorted_declarations(items):
             signature = type_list_signature(obj)
+            if one_column and obj.get("kind") == "pseudoType":
+                rows.append(
+                    '<div class="api-member-row api-member-row--single">'
+                    '<div class="api-member-main">'
+                    f'<div class="api-member-sig"><a href="{attr(self.object_url(obj))}">{signature}</a></div>'
+                    f'{self.metadata(obj, compact=True)}'
+                    '</div>'
+                    '</div>'
+                )
+                continue
             rows.append(
                 '<div class="api-member-row">'
                 f'<div class="api-member-type">{esc(declaration_kind_label(obj))}</div>'
@@ -511,6 +569,16 @@ class ApiReference:
 
     def extension_owner_name(self, value: str | None) -> str | None:
         return normalize_receiver_base(value)
+
+    def extension_function_owner(self, fn: dict[str, Any]) -> dict[str, Any] | None:
+        return self.logical_type_owner(receiver_type(fn))
+
+    def extension_variable_owner_type(self, variable: dict[str, Any]) -> dict[str, Any] | None:
+        return self.logical_type_owner(self.extension_variable_owner(variable))
+
+    def logical_type_owner(self, value: str | None) -> dict[str, Any] | None:
+        owner_name = logical_type_owner_name(value, self.type_names)
+        return self.types_by_name.get(owner_name) if owner_name else None
 
     def extension_receiver_label(self, value: str | None) -> str | None:
         return normalize_receiver_label(value)
@@ -869,6 +937,49 @@ def read_text(path: Path, fallback: str) -> str:
     return path.read_text(encoding="utf-8") if path.exists() else fallback
 
 
+def pseudo_type_declarations(metadata_declarations: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+    declarations: list[dict[str, Any]] = []
+    for name, summary in PRIMITIVE_TYPES:
+        declarations.append(pseudo_type_declaration(name, "Primitives", summary))
+    char_extension_owners = char_primitive_extension_owners(metadata_declarations if metadata_declarations is not None else [])
+    for name, summary in CHAR_PRIMITIVE_TYPES:
+        if name in char_extension_owners:
+            declarations.append(pseudo_type_declaration(name, "Primitives", summary))
+    for name, summary in STRING_TYPES:
+        declarations.append(pseudo_type_declaration(name, "Strings", summary))
+    return declarations
+
+
+def pseudo_type_declaration(name: str, category: str, summary: str) -> dict[str, Any]:
+    return {
+        "id": f"pseudoType:{name}",
+        "kind": "pseudoType",
+        "name": name,
+        "category": category,
+        "metadata": [{"name": "summary", "content": summary}],
+    }
+
+
+def char_primitive_extension_owners(declarations: list[dict[str, Any]]) -> set[str]:
+    owners: set[str] = set()
+    char_names = {name for name, _ in CHAR_PRIMITIVE_TYPES}
+    for declaration in declarations:
+        if declaration.get("kind") == "function":
+            parsed = parse_receiver_type(receiver_type(declaration))
+            if parsed is None:
+                continue
+            base, is_array, is_const = parsed
+            if is_array and is_const and base in CHAR_ARRAY_STRING_OWNERS:
+                continue
+            if base in char_names:
+                owners.add(base)
+        elif declaration.get("kind") == "variable":
+            owner = extension_variable_owner_name(declaration)
+            if owner in char_names:
+                owners.add(owner)
+    return owners
+
+
 def write_text_if_changed(path: Path, text: str) -> None:
     if path.exists() and path.read_text(encoding="utf-8") == text:
         return
@@ -980,14 +1091,18 @@ def declaration_key(obj: dict[str, Any]) -> str:
 
 
 def declaration_kind_label(obj: dict[str, Any]) -> str:
+    if obj.get("kind") == "pseudoType":
+        return "type"
     return "static class" if obj.get("kind") == "staticClass" else str(obj.get("kind") or "")
 
 
 def category_name(obj: dict[str, Any]) -> str:
+    if obj.get("category"):
+        return str(obj["category"])
     for item in obj.get("metadata") or []:
         if item.get("name") == "category" and item.get("content"):
             return str(item["content"])
-    return "Uncategorized"
+    return "Other"
 
 
 def category_slug(name: str) -> str:
@@ -1304,6 +1419,65 @@ def group_display_name(group: dict[str, Any]) -> str:
     name = group.get("name") or "function"
     receiver = group.get("receiver") or function_receiver_group_label(group)
     return f"{receiver}.{name}" if receiver else name
+
+
+def logical_type_owner_name(value: str | None, type_names: set[str]) -> str | None:
+    parsed = parse_receiver_type(value)
+    if parsed is None:
+        return None
+    base, is_array, is_const = parsed
+    if base in STRING_TYPE_NAMES:
+        return base
+    if is_array and is_const and base in CHAR_ARRAY_STRING_OWNERS:
+        return CHAR_ARRAY_STRING_OWNERS[base]
+    if base in PRIMITIVE_TYPE_NAMES:
+        return base
+    if base in type_names:
+        return base
+    if is_generic_receiver_base(base):
+        return None
+    return None
+
+
+def parse_receiver_type(value: str | None) -> tuple[str, bool, bool] | None:
+    if not value:
+        return None
+    text = value.strip()
+    is_const = False
+    changed = True
+    while changed:
+        changed = False
+        for qualifier in ["const ", "volatile ", "escaped ", "scoped ", "unscoped ", "in "]:
+            if text.startswith(qualifier):
+                if qualifier == "const ":
+                    is_const = True
+                text = text[len(qualifier) :].strip()
+                changed = True
+        new_text = re.sub(r"^(scoped|unscoped)\([^)]*\)\s+", "", text).strip()
+        if new_text != text:
+            text = new_text
+            changed = True
+
+    while True:
+        new_text = re.sub(r"\s*\*\s*$", "", text).strip()
+        if new_text == text:
+            break
+        text = new_text
+
+    is_array = False
+    while True:
+        new_text = re.sub(r"\s*(\[\]|\[[^\]]+\])\s*$", "", text).strip()
+        if new_text == text:
+            break
+        is_array = True
+        text = new_text
+
+    base = text.split("<", 1)[0].strip() if "<" in text else text.strip()
+    return (base, is_array, is_const) if base else None
+
+
+def is_generic_receiver_base(value: str) -> bool:
+    return bool(re.fullmatch(r"[A-Z][A-Za-z0-9_]*", value))
 
 
 def normalize_receiver_base(value: str | None) -> str | None:
