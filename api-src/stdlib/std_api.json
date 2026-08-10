@@ -987,31 +987,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOf",
+      "id": "function:Std::indexOfACharArray",
       "kind": "function",
       "name": "indexOf",
-      "symbol": "StdACharArray_indexOf",
+      "symbol": "StdACharArray_indexOfACharArray",
       "visibility": "public",
+      "invokerName": "indexOf",
+      "callableName": "indexOfACharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOf/parameter:this",
+          "id": "function:Std::indexOfACharArray/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::indexOf/parameter:match",
+          "id": "function:Std::indexOfACharArray/parameter:match",
           "name": "match",
-          "type": "const achar[]"
+          "overload": true,
+          "type": "const achar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOf/parameter:caseInsensitive",
+          "id": "function:Std::indexOfACharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first matching ASCII span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1019,31 +1038,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOfChar",
+      "id": "function:Std::indexOfAChar",
       "kind": "function",
-      "name": "indexOfChar",
-      "symbol": "StdACharArray_indexOfChar",
+      "name": "indexOf",
+      "symbol": "StdACharArray_indexOfAChar",
       "visibility": "public",
+      "invokerName": "indexOf",
+      "callableName": "indexOfAChar",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOfChar/parameter:this",
+          "id": "function:Std::indexOfAChar/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::indexOfChar/parameter:match",
+          "id": "function:Std::indexOfAChar/parameter:match",
           "name": "match",
-          "type": "achar"
+          "overload": true,
+          "type": "achar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Character to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOfChar/parameter:caseInsensitive",
+          "id": "function:Std::indexOfAChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first matching ASCII character."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1051,31 +1089,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOfAnyChar",
+      "id": "function:Std::indexOfAnyACharArray",
       "kind": "function",
-      "name": "indexOfAnyChar",
-      "symbol": "StdACharArray_indexOfAnyChar",
+      "name": "indexOfAny",
+      "symbol": "StdACharArray_indexOfAnyACharArray",
       "visibility": "public",
+      "invokerName": "indexOfAny",
+      "callableName": "indexOfAnyACharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOfAnyChar/parameter:this",
+          "id": "function:Std::indexOfAnyACharArray/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::indexOfAnyChar/parameter:matches",
-          "name": "matches",
-          "type": "const achar[]"
+          "id": "function:Std::indexOfAnyACharArray/parameter:match",
+          "name": "match",
+          "overload": true,
+          "type": "const achar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Characters to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOfAnyChar/parameter:caseInsensitive",
+          "id": "function:Std::indexOfAnyACharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first character contained in a set."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1083,31 +1140,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOf",
+      "id": "function:Std::lastIndexOfACharArray",
       "kind": "function",
       "name": "lastIndexOf",
-      "symbol": "StdACharArray_lastIndexOf",
+      "symbol": "StdACharArray_lastIndexOfACharArray",
       "visibility": "public",
+      "invokerName": "lastIndexOf",
+      "callableName": "lastIndexOfACharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOf/parameter:this",
+          "id": "function:Std::lastIndexOfACharArray/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::lastIndexOf/parameter:match",
+          "id": "function:Std::lastIndexOfACharArray/parameter:match",
           "name": "match",
-          "type": "const achar[]"
+          "overload": true,
+          "type": "const achar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOf/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfACharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last matching ASCII span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1115,31 +1191,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOfChar",
+      "id": "function:Std::lastIndexOfAChar",
       "kind": "function",
-      "name": "lastIndexOfChar",
-      "symbol": "StdACharArray_lastIndexOfChar",
+      "name": "lastIndexOf",
+      "symbol": "StdACharArray_lastIndexOfAChar",
       "visibility": "public",
+      "invokerName": "lastIndexOf",
+      "callableName": "lastIndexOfAChar",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOfChar/parameter:this",
+          "id": "function:Std::lastIndexOfAChar/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::lastIndexOfChar/parameter:match",
+          "id": "function:Std::lastIndexOfAChar/parameter:match",
           "name": "match",
-          "type": "achar"
+          "overload": true,
+          "type": "achar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Character to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOfChar/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfAChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last matching ASCII character."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1147,31 +1242,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOfAnyChar",
+      "id": "function:Std::lastIndexOfAnyACharArray",
       "kind": "function",
-      "name": "lastIndexOfAnyChar",
-      "symbol": "StdACharArray_lastIndexOfAnyChar",
+      "name": "lastIndexOfAny",
+      "symbol": "StdACharArray_lastIndexOfAnyACharArray",
       "visibility": "public",
+      "invokerName": "lastIndexOfAny",
+      "callableName": "lastIndexOfAnyACharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:this",
+          "id": "function:Std::lastIndexOfAnyACharArray/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:matches",
-          "name": "matches",
-          "type": "const achar[]"
+          "id": "function:Std::lastIndexOfAnyACharArray/parameter:match",
+          "name": "match",
+          "overload": true,
+          "type": "const achar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Characters to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfAnyACharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last character contained in a set."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1179,31 +1293,50 @@
       ]
     },
     {
-      "id": "function:Std::startsWith",
+      "id": "function:Std::startsWithACharArray",
       "kind": "function",
       "name": "startsWith",
-      "symbol": "StdACharArray_startsWith",
+      "symbol": "StdACharArray_startsWithACharArray",
       "visibility": "public",
+      "invokerName": "startsWith",
+      "callableName": "startsWithACharArray",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::startsWith/parameter:this",
+          "id": "function:Std::startsWithACharArray/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::startsWith/parameter:match",
+          "id": "function:Std::startsWithACharArray/parameter:match",
           "name": "match",
-          "type": "const achar[]"
+          "overload": true,
+          "type": "const achar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Prefix to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::startsWith/parameter:caseInsensitive",
+          "id": "function:Std::startsWithACharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text starts with an ASCII span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1211,31 +1344,50 @@
       ]
     },
     {
-      "id": "function:Std::startsWithChar",
+      "id": "function:Std::startsWithAChar",
       "kind": "function",
-      "name": "startsWithChar",
-      "symbol": "StdACharArray_startsWithChar",
+      "name": "startsWith",
+      "symbol": "StdACharArray_startsWithAChar",
       "visibility": "public",
+      "invokerName": "startsWith",
+      "callableName": "startsWithAChar",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::startsWithChar/parameter:this",
+          "id": "function:Std::startsWithAChar/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::startsWithChar/parameter:match",
+          "id": "function:Std::startsWithAChar/parameter:match",
           "name": "match",
-          "type": "achar"
+          "overload": true,
+          "type": "achar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Prefix character to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::startsWithChar/parameter:caseInsensitive",
+          "id": "function:Std::startsWithAChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text starts with an ASCII character."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1243,31 +1395,50 @@
       ]
     },
     {
-      "id": "function:Std::endsWith",
+      "id": "function:Std::endsWithACharArray",
       "kind": "function",
       "name": "endsWith",
-      "symbol": "StdACharArray_endsWith",
+      "symbol": "StdACharArray_endsWithACharArray",
       "visibility": "public",
+      "invokerName": "endsWith",
+      "callableName": "endsWithACharArray",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::endsWith/parameter:this",
+          "id": "function:Std::endsWithACharArray/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::endsWith/parameter:match",
+          "id": "function:Std::endsWithACharArray/parameter:match",
           "name": "match",
-          "type": "const achar[]"
+          "overload": true,
+          "type": "const achar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Suffix to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::endsWith/parameter:caseInsensitive",
+          "id": "function:Std::endsWithACharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text ends with an ASCII span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1275,31 +1446,50 @@
       ]
     },
     {
-      "id": "function:Std::endsWithChar",
+      "id": "function:Std::endsWithAChar",
       "kind": "function",
-      "name": "endsWithChar",
-      "symbol": "StdACharArray_endsWithChar",
+      "name": "endsWith",
+      "symbol": "StdACharArray_endsWithAChar",
       "visibility": "public",
+      "invokerName": "endsWith",
+      "callableName": "endsWithAChar",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::endsWithChar/parameter:this",
+          "id": "function:Std::endsWithAChar/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::endsWithChar/parameter:match",
+          "id": "function:Std::endsWithAChar/parameter:match",
           "name": "match",
-          "type": "achar"
+          "overload": true,
+          "type": "achar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Suffix character to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::endsWithChar/parameter:caseInsensitive",
+          "id": "function:Std::endsWithAChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text ends with an ASCII character."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1322,16 +1512,36 @@
         {
           "id": "function:Std::compareTo/parameter:other",
           "name": "other",
-          "type": "const achar[]"
+          "type": "const achar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to compare with."
+            }
+          ]
         },
         {
           "id": "function:Std::compareTo/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses ASCII case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Compares two ASCII spans."
+        },
+        {
+          "name": "returns",
+          "content": "\u0060-1\u0060, \u00600\u0060, or \u00601\u0060 for less-than, equal, or greater-than."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1354,6 +1564,10 @@
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Returns a view with leading and trailing ASCII whitespace removed."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
@@ -1374,6 +1588,10 @@
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns a view with leading ASCII whitespace removed."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1396,32 +1614,41 @@
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Returns a view with trailing ASCII whitespace removed."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::stringCopy",
+      "id": "function:Std::toUppercase",
       "kind": "function",
-      "name": "stringCopy",
-      "symbol": "StdACharArray_stringCopy",
+      "name": "toUppercase",
+      "symbol": "StdACharArray_toUppercase",
       "visibility": "public",
-      "returnType": "astring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::stringCopy/parameter:this",
+          "id": "function:Std::toUppercase/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::stringCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toUppercase/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "achar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies the text to uppercase ASCII text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -1429,112 +1656,75 @@
       ]
     },
     {
-      "id": "function:Std::uppercaseCopy",
+      "id": "function:Std::toLowercase",
       "kind": "function",
-      "name": "uppercaseCopy",
-      "symbol": "StdACharArray_uppercaseCopy",
+      "name": "toLowercase",
+      "symbol": "StdACharArray_toLowercase",
       "visibility": "public",
-      "returnType": "astring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::uppercaseCopy/parameter:this",
+          "id": "function:Std::toLowercase/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::uppercaseCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toLowercase/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "achar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
         {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::lowercaseCopy",
-      "kind": "function",
-      "name": "lowercaseCopy",
-      "symbol": "StdACharArray_lowercaseCopy",
-      "visibility": "public",
-      "returnType": "astring",
-      "parameters": [
-        {
-          "id": "function:Std::lowercaseCopy/parameter:this",
-          "name": "this",
-          "type": "const achar[]"
+          "name": "summary",
+          "content": "Copies the text to lowercase ASCII text."
         },
         {
-          "id": "function:Std::lowercaseCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::concatCopy",
+      "id": "function:Std::join",
       "kind": "function",
-      "name": "concatCopy",
-      "symbol": "StdAStringArray_concatCopy",
+      "name": "join",
+      "symbol": "StdAStringArray_join",
       "visibility": "public",
-      "returnType": "astring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::concatCopy/parameter:this",
+          "id": "function:Std::join/parameter:this",
           "name": "this",
           "type": "astring[]"
         },
         {
-          "id": "function:Std::concatCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::joinCopy",
-      "kind": "function",
-      "name": "joinCopy",
-      "symbol": "StdAStringArray_joinCopy",
-      "visibility": "public",
-      "returnType": "astring",
-      "parameters": [
-        {
-          "id": "function:Std::joinCopy/parameter:this",
-          "name": "this",
-          "type": "astring[]"
-        },
-        {
-          "id": "function:Std::joinCopy/parameter:separator",
+          "id": "function:Std::join/parameter:separator",
           "name": "separator",
-          "type": "const achar[]"
+          "type": "const achar[]",
+          "defaultValue": "default",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text written between values. The default writes no separator."
+            }
+          ]
         },
         {
-          "id": "function:Std::joinCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::join/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "achar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Joins ASCII strings with an optional separator."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -3600,34 +3790,9 @@
       ],
       "metadata": [
         {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::toString",
-      "kind": "function",
-      "name": "toString",
-      "symbol": "StdString_toString",
-      "visibility": "public",
-      "returnType": "nuint",
-      "parameters": [
-        {
-          "id": "function:Std::toString/parameter:this",
-          "name": "this",
-          "modifier": "in",
-          "type": "string"
+          "name": "summary",
+          "content": "Copies UTF-8 text."
         },
-        {
-          "id": "function:Std::toString/parameter:buffer",
-          "name": "buffer",
-          "modifier": "prep",
-          "type": "char[]",
-          "defaultValue": "default"
-        }
-      ],
-      "metadata": [
         {
           "name": "category",
           "content": "Text"
@@ -8680,26 +8845,31 @@
       ]
     },
     {
-      "id": "function:Std::copyString",
+      "id": "function:Std::toWString",
       "kind": "function",
-      "name": "copyString",
-      "symbol": "StdCharArray_copyString",
+      "name": "toWString",
+      "symbol": "StdCharArray_toWString",
       "visibility": "public",
-      "returnType": "escaped string",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyString/parameter:this",
+          "id": "function:Std::toWString/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::copyString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toWString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "wchar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Converts UTF-8 text to UTF-16 text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -8707,59 +8877,43 @@
       ]
     },
     {
-      "id": "function:Std::copyWString",
+      "id": "function:Std::toAString",
       "kind": "function",
-      "name": "copyWString",
-      "symbol": "StdCharArray_copyWString",
+      "name": "toAString",
+      "symbol": "StdCharArray_toAString",
       "visibility": "public",
-      "returnType": "escaped wstring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyWString/parameter:this",
+          "id": "function:Std::toAString/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::copyWString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::copyAString",
-      "kind": "function",
-      "name": "copyAString",
-      "symbol": "StdCharArray_copyAString",
-      "visibility": "public",
-      "returnType": "escaped astring",
-      "parameters": [
-        {
-          "id": "function:Std::copyAString/parameter:this",
-          "name": "this",
-          "type": "const char[]"
-        },
-        {
-          "id": "function:Std::copyAString/parameter:unrepresentable",
+          "id": "function:Std::toAString/parameter:unrepresentable",
           "name": "unrepresentable",
           "type": "achar",
-          "defaultValue": "\u0027?\u0027"
+          "defaultValue": "\u0027?\u0027",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Replacement for scalar values outside ASCII."
+            }
+          ]
         },
         {
-          "id": "function:Std::copyAString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toAString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "achar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Converts UTF-8 text to ASCII text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -8767,26 +8921,31 @@
       ]
     },
     {
-      "id": "function:Std::copyString",
+      "id": "function:Std::toString",
       "kind": "function",
-      "name": "copyString",
-      "symbol": "StdWCharArray_copyString",
+      "name": "toString",
+      "symbol": "StdWCharArray_toString",
       "visibility": "public",
-      "returnType": "escaped string",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyString/parameter:this",
+          "id": "function:Std::toString/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::copyString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Converts UTF-16 text to UTF-8 text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -8794,26 +8953,31 @@
       ]
     },
     {
-      "id": "function:Std::copyWString",
+      "id": "function:Std::toWString",
       "kind": "function",
-      "name": "copyWString",
-      "symbol": "StdWCharArray_copyWString",
+      "name": "toWString",
+      "symbol": "StdWCharArray_toWString",
       "visibility": "public",
-      "returnType": "escaped wstring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyWString/parameter:this",
+          "id": "function:Std::toWString/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::copyWString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toWString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "wchar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies UTF-16 text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -8821,32 +8985,43 @@
       ]
     },
     {
-      "id": "function:Std::copyAString",
+      "id": "function:Std::toAString",
       "kind": "function",
-      "name": "copyAString",
-      "symbol": "StdWCharArray_copyAString",
+      "name": "toAString",
+      "symbol": "StdWCharArray_toAString",
       "visibility": "public",
-      "returnType": "escaped astring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyAString/parameter:this",
+          "id": "function:Std::toAString/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::copyAString/parameter:unrepresentable",
+          "id": "function:Std::toAString/parameter:unrepresentable",
           "name": "unrepresentable",
           "type": "achar",
-          "defaultValue": "\u0027?\u0027"
+          "defaultValue": "\u0027?\u0027",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Replacement for scalar values outside ASCII."
+            }
+          ]
         },
         {
-          "id": "function:Std::copyAString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toAString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "achar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Converts UTF-16 text to ASCII text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -8854,26 +9029,31 @@
       ]
     },
     {
-      "id": "function:Std::copyString",
+      "id": "function:Std::toString",
       "kind": "function",
-      "name": "copyString",
-      "symbol": "StdACharArray_copyString",
+      "name": "toString",
+      "symbol": "StdACharArray_toString",
       "visibility": "public",
-      "returnType": "escaped string",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyString/parameter:this",
+          "id": "function:Std::toString/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::copyString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Converts ASCII text to UTF-8 text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -8881,26 +9061,31 @@
       ]
     },
     {
-      "id": "function:Std::copyWString",
+      "id": "function:Std::toWString",
       "kind": "function",
-      "name": "copyWString",
-      "symbol": "StdACharArray_copyWString",
+      "name": "toWString",
+      "symbol": "StdACharArray_toWString",
       "visibility": "public",
-      "returnType": "escaped wstring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyWString/parameter:this",
+          "id": "function:Std::toWString/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::copyWString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toWString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "wchar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Converts ASCII text to UTF-16 text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -8908,32 +9093,31 @@
       ]
     },
     {
-      "id": "function:Std::copyAString",
+      "id": "function:Std::toAString",
       "kind": "function",
-      "name": "copyAString",
-      "symbol": "StdACharArray_copyAString",
+      "name": "toAString",
+      "symbol": "StdACharArray_toAString",
       "visibility": "public",
-      "returnType": "escaped astring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::copyAString/parameter:this",
+          "id": "function:Std::toAString/parameter:this",
           "name": "this",
           "type": "const achar[]"
         },
         {
-          "id": "function:Std::copyAString/parameter:unrepresentable",
-          "name": "unrepresentable",
-          "type": "achar",
-          "defaultValue": "\u0027?\u0027"
-        },
-        {
-          "id": "function:Std::copyAString/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toAString/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "achar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies ASCII text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11249,31 +11433,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOf",
+      "id": "function:Std::indexOfCharArray",
       "kind": "function",
       "name": "indexOf",
-      "symbol": "StdCharArray_indexOf",
+      "symbol": "StdCharArray_indexOfCharArray",
       "visibility": "public",
+      "invokerName": "indexOf",
+      "callableName": "indexOfCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOf/parameter:this",
+          "id": "function:Std::indexOfCharArray/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::indexOf/parameter:match",
+          "id": "function:Std::indexOfCharArray/parameter:match",
           "name": "match",
-          "type": "const char[]"
+          "overload": true,
+          "type": "const char[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOf/parameter:caseInsensitive",
+          "id": "function:Std::indexOfCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first matching text span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11281,31 +11484,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOfChar",
+      "id": "function:Std::indexOfUChar",
       "kind": "function",
-      "name": "indexOfChar",
-      "symbol": "StdCharArray_indexOfChar",
+      "name": "indexOf",
+      "symbol": "StdCharArray_indexOfUChar",
       "visibility": "public",
+      "invokerName": "indexOf",
+      "callableName": "indexOfUChar",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOfChar/parameter:this",
+          "id": "function:Std::indexOfUChar/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::indexOfChar/parameter:match",
+          "id": "function:Std::indexOfUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar value to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOfChar/parameter:caseInsensitive",
+          "id": "function:Std::indexOfUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first matching Unicode scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11313,31 +11535,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOfAnyChar",
+      "id": "function:Std::indexOfAnyUCharArray",
       "kind": "function",
-      "name": "indexOfAnyChar",
-      "symbol": "StdCharArray_indexOfAnyChar",
+      "name": "indexOfAny",
+      "symbol": "StdCharArray_indexOfAnyUCharArray",
       "visibility": "public",
+      "invokerName": "indexOfAny",
+      "callableName": "indexOfAnyUCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOfAnyChar/parameter:this",
+          "id": "function:Std::indexOfAnyUCharArray/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::indexOfAnyChar/parameter:matches",
-          "name": "matches",
-          "type": "const uchar[]"
+          "id": "function:Std::indexOfAnyUCharArray/parameter:match",
+          "name": "match",
+          "overload": true,
+          "type": "const uchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar values to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOfAnyChar/parameter:caseInsensitive",
+          "id": "function:Std::indexOfAnyUCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first scalar value contained in a set."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11345,31 +11586,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOf",
+      "id": "function:Std::lastIndexOfCharArray",
       "kind": "function",
       "name": "lastIndexOf",
-      "symbol": "StdCharArray_lastIndexOf",
+      "symbol": "StdCharArray_lastIndexOfCharArray",
       "visibility": "public",
+      "invokerName": "lastIndexOf",
+      "callableName": "lastIndexOfCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOf/parameter:this",
+          "id": "function:Std::lastIndexOfCharArray/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::lastIndexOf/parameter:match",
+          "id": "function:Std::lastIndexOfCharArray/parameter:match",
           "name": "match",
-          "type": "const char[]"
+          "overload": true,
+          "type": "const char[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOf/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last matching text span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11377,31 +11637,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOfChar",
+      "id": "function:Std::lastIndexOfUChar",
       "kind": "function",
-      "name": "lastIndexOfChar",
-      "symbol": "StdCharArray_lastIndexOfChar",
+      "name": "lastIndexOf",
+      "symbol": "StdCharArray_lastIndexOfUChar",
       "visibility": "public",
+      "invokerName": "lastIndexOf",
+      "callableName": "lastIndexOfUChar",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOfChar/parameter:this",
+          "id": "function:Std::lastIndexOfUChar/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::lastIndexOfChar/parameter:match",
+          "id": "function:Std::lastIndexOfUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar value to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOfChar/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last matching Unicode scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11409,31 +11688,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOfAnyChar",
+      "id": "function:Std::lastIndexOfAnyUCharArray",
       "kind": "function",
-      "name": "lastIndexOfAnyChar",
-      "symbol": "StdCharArray_lastIndexOfAnyChar",
+      "name": "lastIndexOfAny",
+      "symbol": "StdCharArray_lastIndexOfAnyUCharArray",
       "visibility": "public",
+      "invokerName": "lastIndexOfAny",
+      "callableName": "lastIndexOfAnyUCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:this",
+          "id": "function:Std::lastIndexOfAnyUCharArray/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:matches",
-          "name": "matches",
-          "type": "const uchar[]"
+          "id": "function:Std::lastIndexOfAnyUCharArray/parameter:match",
+          "name": "match",
+          "overload": true,
+          "type": "const uchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar values to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfAnyUCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last scalar value contained in a set."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11441,31 +11739,50 @@
       ]
     },
     {
-      "id": "function:Std::startsWith",
+      "id": "function:Std::startsWithCharArray",
       "kind": "function",
       "name": "startsWith",
-      "symbol": "StdCharArray_startsWith",
+      "symbol": "StdCharArray_startsWithCharArray",
       "visibility": "public",
+      "invokerName": "startsWith",
+      "callableName": "startsWithCharArray",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::startsWith/parameter:this",
+          "id": "function:Std::startsWithCharArray/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::startsWith/parameter:match",
+          "id": "function:Std::startsWithCharArray/parameter:match",
           "name": "match",
-          "type": "const char[]"
+          "overload": true,
+          "type": "const char[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Prefix to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::startsWith/parameter:caseInsensitive",
+          "id": "function:Std::startsWithCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text starts with a span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11473,31 +11790,50 @@
       ]
     },
     {
-      "id": "function:Std::startsWithChar",
+      "id": "function:Std::startsWithUChar",
       "kind": "function",
-      "name": "startsWithChar",
-      "symbol": "StdCharArray_startsWithChar",
+      "name": "startsWith",
+      "symbol": "StdCharArray_startsWithUChar",
       "visibility": "public",
+      "invokerName": "startsWith",
+      "callableName": "startsWithUChar",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::startsWithChar/parameter:this",
+          "id": "function:Std::startsWithUChar/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::startsWithChar/parameter:match",
+          "id": "function:Std::startsWithUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Prefix scalar to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::startsWithChar/parameter:caseInsensitive",
+          "id": "function:Std::startsWithUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text starts with a scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11505,31 +11841,50 @@
       ]
     },
     {
-      "id": "function:Std::endsWith",
+      "id": "function:Std::endsWithCharArray",
       "kind": "function",
       "name": "endsWith",
-      "symbol": "StdCharArray_endsWith",
+      "symbol": "StdCharArray_endsWithCharArray",
       "visibility": "public",
+      "invokerName": "endsWith",
+      "callableName": "endsWithCharArray",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::endsWith/parameter:this",
+          "id": "function:Std::endsWithCharArray/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::endsWith/parameter:match",
+          "id": "function:Std::endsWithCharArray/parameter:match",
           "name": "match",
-          "type": "const char[]"
+          "overload": true,
+          "type": "const char[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Suffix to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::endsWith/parameter:caseInsensitive",
+          "id": "function:Std::endsWithCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text ends with a span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11537,31 +11892,50 @@
       ]
     },
     {
-      "id": "function:Std::endsWithChar",
+      "id": "function:Std::endsWithUChar",
       "kind": "function",
-      "name": "endsWithChar",
-      "symbol": "StdCharArray_endsWithChar",
+      "name": "endsWith",
+      "symbol": "StdCharArray_endsWithUChar",
       "visibility": "public",
+      "invokerName": "endsWith",
+      "callableName": "endsWithUChar",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::endsWithChar/parameter:this",
+          "id": "function:Std::endsWithUChar/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::endsWithChar/parameter:match",
+          "id": "function:Std::endsWithUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Suffix scalar to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::endsWithChar/parameter:caseInsensitive",
+          "id": "function:Std::endsWithUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text ends with a scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11584,16 +11958,36 @@
         {
           "id": "function:Std::compareTo/parameter:other",
           "name": "other",
-          "type": "const char[]"
+          "type": "const char[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to compare with."
+            }
+          ]
         },
         {
           "id": "function:Std::compareTo/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-8 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Compares two text spans."
+        },
+        {
+          "name": "returns",
+          "content": "\u0060-1\u0060, \u00600\u0060, or \u00601\u0060 for less-than, equal, or greater-than."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11601,55 +11995,67 @@
       ]
     },
     {
-      "id": "function:Std::countChars",
+      "id": "function:Std::countUChars",
       "kind": "function",
-      "name": "countChars",
-      "symbol": "StdCharArray_countChars",
+      "name": "countUChars",
+      "symbol": "StdCharArray_countUChars",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::countChars/parameter:this",
+          "id": "function:Std::countUChars/parameter:this",
           "name": "this",
           "type": "const char[]"
         }
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Counts Unicode scalar values in UTF-8 text."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::getChar",
+      "id": "function:Std::getUChar",
       "kind": "function",
-      "name": "getChar",
-      "symbol": "StdCharArray_getChar",
+      "name": "getUChar",
+      "symbol": "StdCharArray_getUChar",
       "visibility": "public",
       "returnType": "uchar",
-      "propertyName": "Char",
+      "propertyName": "UChar",
       "propertyIndexParams": [
         "unit"
       ],
       "parameters": [
         {
-          "id": "function:Std::getChar/parameter:this",
+          "id": "function:Std::getUChar/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::getChar/parameter:unit",
+          "id": "function:Std::getUChar/parameter:unit",
           "name": "unit",
           "type": "nuint",
           "metadata": [
             {
               "name": "index"
+            },
+            {
+              "name": "summary",
+              "content": "UTF-8 code-unit index."
             }
           ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Gets the Unicode scalar value at a UTF-8 code-unit index."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11657,34 +12063,42 @@
       ]
     },
     {
-      "id": "function:Std::getCharUnits",
+      "id": "function:Std::getUCharUnits",
       "kind": "function",
-      "name": "getCharUnits",
-      "symbol": "StdCharArray_getCharUnits",
+      "name": "getUCharUnits",
+      "symbol": "StdCharArray_getUCharUnits",
       "visibility": "public",
       "returnType": "nuint",
-      "propertyName": "CharUnits",
+      "propertyName": "UCharUnits",
       "propertyIndexParams": [
         "unit"
       ],
       "parameters": [
         {
-          "id": "function:Std::getCharUnits/parameter:this",
+          "id": "function:Std::getUCharUnits/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::getCharUnits/parameter:unit",
+          "id": "function:Std::getUCharUnits/parameter:unit",
           "name": "unit",
           "type": "nuint",
           "metadata": [
             {
               "name": "index"
+            },
+            {
+              "name": "summary",
+              "content": "UTF-8 code-unit index."
             }
           ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Gets the number of UTF-8 code units used by the scalar at an index."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11707,6 +12121,10 @@
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Returns a view with leading and trailing ASCII whitespace removed."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
@@ -11727,6 +12145,10 @@
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns a view with leading ASCII whitespace removed."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11749,32 +12171,41 @@
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Returns a view with trailing ASCII whitespace removed."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::stringCopy",
+      "id": "function:Std::toUppercase",
       "kind": "function",
-      "name": "stringCopy",
-      "symbol": "StdCharArray_stringCopy",
+      "name": "toUppercase",
+      "symbol": "StdCharArray_toUppercase",
       "visibility": "public",
-      "returnType": "string",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::stringCopy/parameter:this",
+          "id": "function:Std::toUppercase/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::stringCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toUppercase/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies the text to uppercase UTF-8 text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -11782,112 +12213,75 @@
       ]
     },
     {
-      "id": "function:Std::uppercaseCopy",
+      "id": "function:Std::toLowercase",
       "kind": "function",
-      "name": "uppercaseCopy",
-      "symbol": "StdCharArray_uppercaseCopy",
+      "name": "toLowercase",
+      "symbol": "StdCharArray_toLowercase",
       "visibility": "public",
-      "returnType": "string",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::uppercaseCopy/parameter:this",
+          "id": "function:Std::toLowercase/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::uppercaseCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toLowercase/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
         {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::lowercaseCopy",
-      "kind": "function",
-      "name": "lowercaseCopy",
-      "symbol": "StdCharArray_lowercaseCopy",
-      "visibility": "public",
-      "returnType": "string",
-      "parameters": [
-        {
-          "id": "function:Std::lowercaseCopy/parameter:this",
-          "name": "this",
-          "type": "const char[]"
+          "name": "summary",
+          "content": "Copies the text to lowercase UTF-8 text."
         },
         {
-          "id": "function:Std::lowercaseCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::concatCopy",
+      "id": "function:Std::join",
       "kind": "function",
-      "name": "concatCopy",
-      "symbol": "StdStringArray_concatCopy",
+      "name": "join",
+      "symbol": "StdStringArray_join",
       "visibility": "public",
-      "returnType": "string",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::concatCopy/parameter:this",
+          "id": "function:Std::join/parameter:this",
           "name": "this",
           "type": "string[]"
         },
         {
-          "id": "function:Std::concatCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::joinCopy",
-      "kind": "function",
-      "name": "joinCopy",
-      "symbol": "StdStringArray_joinCopy",
-      "visibility": "public",
-      "returnType": "string",
-      "parameters": [
-        {
-          "id": "function:Std::joinCopy/parameter:this",
-          "name": "this",
-          "type": "string[]"
-        },
-        {
-          "id": "function:Std::joinCopy/parameter:separator",
+          "id": "function:Std::join/parameter:separator",
           "name": "separator",
-          "type": "const char[]"
+          "type": "const char[]",
+          "defaultValue": "default",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text written between values. The default writes no separator."
+            }
+          ]
         },
         {
-          "id": "function:Std::joinCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::join/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "char[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Joins UTF-8 strings with an optional separator."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -14229,22 +14623,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseStdDate",
+      "id": "function:Std::tryParseDate",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "StdCharArray_tryParseStdDate",
+      "symbol": "StdCharArray_tryParseDate",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseStdDate",
+      "callableName": "tryParseDate",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseStdDate/parameter:this",
+          "id": "function:Std::tryParseDate/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseStdDate/parameter:value",
+          "id": "function:Std::tryParseDate/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -14277,22 +14671,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseStdTimeOfDay",
+      "id": "function:Std::tryParseTimeOfDay",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "StdCharArray_tryParseStdTimeOfDay",
+      "symbol": "StdCharArray_tryParseTimeOfDay",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseStdTimeOfDay",
+      "callableName": "tryParseTimeOfDay",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseStdTimeOfDay/parameter:this",
+          "id": "function:Std::tryParseTimeOfDay/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseStdTimeOfDay/parameter:value",
+          "id": "function:Std::tryParseTimeOfDay/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -14325,22 +14719,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseStdDateTime",
+      "id": "function:Std::tryParseDateTime",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "StdCharArray_tryParseStdDateTime",
+      "symbol": "StdCharArray_tryParseDateTime",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseStdDateTime",
+      "callableName": "tryParseDateTime",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseStdDateTime/parameter:this",
+          "id": "function:Std::tryParseDateTime/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseStdDateTime/parameter:value",
+          "id": "function:Std::tryParseDateTime/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -14373,22 +14767,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseStdOffsetDateTime",
+      "id": "function:Std::tryParseOffsetDateTime",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "StdCharArray_tryParseStdOffsetDateTime",
+      "symbol": "StdCharArray_tryParseOffsetDateTime",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseStdOffsetDateTime",
+      "callableName": "tryParseOffsetDateTime",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseStdOffsetDateTime/parameter:this",
+          "id": "function:Std::tryParseOffsetDateTime/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseStdOffsetDateTime/parameter:value",
+          "id": "function:Std::tryParseOffsetDateTime/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -14421,22 +14815,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseStdInstant",
+      "id": "function:Std::tryParseInstant",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "StdCharArray_tryParseStdInstant",
+      "symbol": "StdCharArray_tryParseInstant",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseStdInstant",
+      "callableName": "tryParseInstant",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseStdInstant/parameter:this",
+          "id": "function:Std::tryParseInstant/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseStdInstant/parameter:value",
+          "id": "function:Std::tryParseInstant/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -14469,22 +14863,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseStdTimeSpan",
+      "id": "function:Std::tryParseTimeSpan",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "StdCharArray_tryParseStdTimeSpan",
+      "symbol": "StdCharArray_tryParseTimeSpan",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseStdTimeSpan",
+      "callableName": "tryParseTimeSpan",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseStdTimeSpan/parameter:this",
+          "id": "function:Std::tryParseTimeSpan/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseStdTimeSpan/parameter:value",
+          "id": "function:Std::tryParseTimeSpan/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -14513,22 +14907,22 @@
       ]
     },
     {
-      "id": "function:Std::tryParseStdUtcOffset",
+      "id": "function:Std::tryParseUtcOffset",
       "kind": "function",
       "name": "tryParse",
-      "symbol": "StdCharArray_tryParseStdUtcOffset",
+      "symbol": "StdCharArray_tryParseUtcOffset",
       "visibility": "public",
       "invokerName": "tryParse",
-      "callableName": "tryParseStdUtcOffset",
+      "callableName": "tryParseUtcOffset",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::tryParseStdUtcOffset/parameter:this",
+          "id": "function:Std::tryParseUtcOffset/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Std::tryParseStdUtcOffset/parameter:value",
+          "id": "function:Std::tryParseUtcOffset/parameter:value",
           "name": "value",
           "modifier": "out",
           "overload": true,
@@ -15107,31 +15501,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOf",
+      "id": "function:Std::indexOfWCharArray",
       "kind": "function",
       "name": "indexOf",
-      "symbol": "StdWCharArray_indexOf",
+      "symbol": "StdWCharArray_indexOfWCharArray",
       "visibility": "public",
+      "invokerName": "indexOf",
+      "callableName": "indexOfWCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOf/parameter:this",
+          "id": "function:Std::indexOfWCharArray/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::indexOf/parameter:match",
+          "id": "function:Std::indexOfWCharArray/parameter:match",
           "name": "match",
-          "type": "const wchar[]"
+          "overload": true,
+          "type": "const wchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOf/parameter:caseInsensitive",
+          "id": "function:Std::indexOfWCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first matching UTF-16 span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15139,31 +15552,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOfChar",
+      "id": "function:Std::indexOfUChar",
       "kind": "function",
-      "name": "indexOfChar",
-      "symbol": "StdWCharArray_indexOfChar",
+      "name": "indexOf",
+      "symbol": "StdWCharArray_indexOfUChar",
       "visibility": "public",
+      "invokerName": "indexOf",
+      "callableName": "indexOfUChar",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOfChar/parameter:this",
+          "id": "function:Std::indexOfUChar/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::indexOfChar/parameter:match",
+          "id": "function:Std::indexOfUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar value to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOfChar/parameter:caseInsensitive",
+          "id": "function:Std::indexOfUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first matching Unicode scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15171,31 +15603,50 @@
       ]
     },
     {
-      "id": "function:Std::indexOfAnyChar",
+      "id": "function:Std::indexOfAnyUCharArray",
       "kind": "function",
-      "name": "indexOfAnyChar",
-      "symbol": "StdWCharArray_indexOfAnyChar",
+      "name": "indexOfAny",
+      "symbol": "StdWCharArray_indexOfAnyUCharArray",
       "visibility": "public",
+      "invokerName": "indexOfAny",
+      "callableName": "indexOfAnyUCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::indexOfAnyChar/parameter:this",
+          "id": "function:Std::indexOfAnyUCharArray/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::indexOfAnyChar/parameter:matches",
-          "name": "matches",
-          "type": "const uchar[]"
+          "id": "function:Std::indexOfAnyUCharArray/parameter:match",
+          "name": "match",
+          "overload": true,
+          "type": "const uchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar values to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::indexOfAnyChar/parameter:caseInsensitive",
+          "id": "function:Std::indexOfAnyUCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the first scalar value contained in a set."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15203,31 +15654,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOf",
+      "id": "function:Std::lastIndexOfWCharArray",
       "kind": "function",
       "name": "lastIndexOf",
-      "symbol": "StdWCharArray_lastIndexOf",
+      "symbol": "StdWCharArray_lastIndexOfWCharArray",
       "visibility": "public",
+      "invokerName": "lastIndexOf",
+      "callableName": "lastIndexOfWCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOf/parameter:this",
+          "id": "function:Std::lastIndexOfWCharArray/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::lastIndexOf/parameter:match",
+          "id": "function:Std::lastIndexOfWCharArray/parameter:match",
           "name": "match",
-          "type": "const wchar[]"
+          "overload": true,
+          "type": "const wchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOf/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfWCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last matching UTF-16 span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15235,31 +15705,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOfChar",
+      "id": "function:Std::lastIndexOfUChar",
       "kind": "function",
-      "name": "lastIndexOfChar",
-      "symbol": "StdWCharArray_lastIndexOfChar",
+      "name": "lastIndexOf",
+      "symbol": "StdWCharArray_lastIndexOfUChar",
       "visibility": "public",
+      "invokerName": "lastIndexOf",
+      "callableName": "lastIndexOfUChar",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOfChar/parameter:this",
+          "id": "function:Std::lastIndexOfUChar/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::lastIndexOfChar/parameter:match",
+          "id": "function:Std::lastIndexOfUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar value to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOfChar/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last matching Unicode scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15267,31 +15756,50 @@
       ]
     },
     {
-      "id": "function:Std::lastIndexOfAnyChar",
+      "id": "function:Std::lastIndexOfAnyUCharArray",
       "kind": "function",
-      "name": "lastIndexOfAnyChar",
-      "symbol": "StdWCharArray_lastIndexOfAnyChar",
+      "name": "lastIndexOfAny",
+      "symbol": "StdWCharArray_lastIndexOfAnyUCharArray",
       "visibility": "public",
+      "invokerName": "lastIndexOfAny",
+      "callableName": "lastIndexOfAnyUCharArray",
       "returnType": "nint",
       "parameters": [
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:this",
+          "id": "function:Std::lastIndexOfAnyUCharArray/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:matches",
-          "name": "matches",
-          "type": "const uchar[]"
+          "id": "function:Std::lastIndexOfAnyUCharArray/parameter:match",
+          "name": "match",
+          "overload": true,
+          "type": "const uchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Scalar values to find."
+            }
+          ]
         },
         {
-          "id": "function:Std::lastIndexOfAnyChar/parameter:caseInsensitive",
+          "id": "function:Std::lastIndexOfAnyUCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Finds the last scalar value contained in a set."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15299,31 +15807,50 @@
       ]
     },
     {
-      "id": "function:Std::startsWith",
+      "id": "function:Std::startsWithWCharArray",
       "kind": "function",
       "name": "startsWith",
-      "symbol": "StdWCharArray_startsWith",
+      "symbol": "StdWCharArray_startsWithWCharArray",
       "visibility": "public",
+      "invokerName": "startsWith",
+      "callableName": "startsWithWCharArray",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::startsWith/parameter:this",
+          "id": "function:Std::startsWithWCharArray/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::startsWith/parameter:match",
+          "id": "function:Std::startsWithWCharArray/parameter:match",
           "name": "match",
-          "type": "const wchar[]"
+          "overload": true,
+          "type": "const wchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Prefix to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::startsWith/parameter:caseInsensitive",
+          "id": "function:Std::startsWithWCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text starts with a UTF-16 span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15331,31 +15858,50 @@
       ]
     },
     {
-      "id": "function:Std::startsWithChar",
+      "id": "function:Std::startsWithUChar",
       "kind": "function",
-      "name": "startsWithChar",
-      "symbol": "StdWCharArray_startsWithChar",
+      "name": "startsWith",
+      "symbol": "StdWCharArray_startsWithUChar",
       "visibility": "public",
+      "invokerName": "startsWith",
+      "callableName": "startsWithUChar",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::startsWithChar/parameter:this",
+          "id": "function:Std::startsWithUChar/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::startsWithChar/parameter:match",
+          "id": "function:Std::startsWithUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Prefix scalar to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::startsWithChar/parameter:caseInsensitive",
+          "id": "function:Std::startsWithUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text starts with a scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15363,31 +15909,50 @@
       ]
     },
     {
-      "id": "function:Std::endsWith",
+      "id": "function:Std::endsWithWCharArray",
       "kind": "function",
       "name": "endsWith",
-      "symbol": "StdWCharArray_endsWith",
+      "symbol": "StdWCharArray_endsWithWCharArray",
       "visibility": "public",
+      "invokerName": "endsWith",
+      "callableName": "endsWithWCharArray",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::endsWith/parameter:this",
+          "id": "function:Std::endsWithWCharArray/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::endsWith/parameter:match",
+          "id": "function:Std::endsWithWCharArray/parameter:match",
           "name": "match",
-          "type": "const wchar[]"
+          "overload": true,
+          "type": "const wchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Suffix to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::endsWith/parameter:caseInsensitive",
+          "id": "function:Std::endsWithWCharArray/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text ends with a UTF-16 span."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15395,31 +15960,50 @@
       ]
     },
     {
-      "id": "function:Std::endsWithChar",
+      "id": "function:Std::endsWithUChar",
       "kind": "function",
-      "name": "endsWithChar",
-      "symbol": "StdWCharArray_endsWithChar",
+      "name": "endsWith",
+      "symbol": "StdWCharArray_endsWithUChar",
       "visibility": "public",
+      "invokerName": "endsWith",
+      "callableName": "endsWithUChar",
       "returnType": "bool",
       "parameters": [
         {
-          "id": "function:Std::endsWithChar/parameter:this",
+          "id": "function:Std::endsWithUChar/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::endsWithChar/parameter:match",
+          "id": "function:Std::endsWithUChar/parameter:match",
           "name": "match",
-          "type": "uchar"
+          "overload": true,
+          "type": "uchar",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Suffix scalar to test."
+            }
+          ]
         },
         {
-          "id": "function:Std::endsWithChar/parameter:caseInsensitive",
+          "id": "function:Std::endsWithUChar/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true when the text ends with a scalar value."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15442,16 +16026,36 @@
         {
           "id": "function:Std::compareTo/parameter:other",
           "name": "other",
-          "type": "const wchar[]"
+          "type": "const wchar[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text to compare with."
+            }
+          ]
         },
         {
           "id": "function:Std::compareTo/parameter:caseInsensitive",
           "name": "caseInsensitive",
           "type": "bool",
-          "defaultValue": "false"
+          "defaultValue": "false",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Uses the UTF-16 helper\u0027s case-insensitive comparison."
+            }
+          ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Compares two UTF-16 spans."
+        },
+        {
+          "name": "returns",
+          "content": "\u0060-1\u0060, \u00600\u0060, or \u00601\u0060 for less-than, equal, or greater-than."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15459,55 +16063,67 @@
       ]
     },
     {
-      "id": "function:Std::countChars",
+      "id": "function:Std::countUChars",
       "kind": "function",
-      "name": "countChars",
-      "symbol": "StdWCharArray_countChars",
+      "name": "countUChars",
+      "symbol": "StdWCharArray_countUChars",
       "visibility": "public",
       "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::countChars/parameter:this",
+          "id": "function:Std::countUChars/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         }
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Counts Unicode scalar values in UTF-16 text."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::getChar",
+      "id": "function:Std::getUChar",
       "kind": "function",
-      "name": "getChar",
-      "symbol": "StdWCharArray_getChar",
+      "name": "getUChar",
+      "symbol": "StdWCharArray_getUChar",
       "visibility": "public",
       "returnType": "uchar",
-      "propertyName": "Char",
+      "propertyName": "UChar",
       "propertyIndexParams": [
         "unit"
       ],
       "parameters": [
         {
-          "id": "function:Std::getChar/parameter:this",
+          "id": "function:Std::getUChar/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::getChar/parameter:unit",
+          "id": "function:Std::getUChar/parameter:unit",
           "name": "unit",
           "type": "nuint",
           "metadata": [
             {
               "name": "index"
+            },
+            {
+              "name": "summary",
+              "content": "UTF-16 code-unit index."
             }
           ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Gets the Unicode scalar value at a UTF-16 code-unit index."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15515,34 +16131,42 @@
       ]
     },
     {
-      "id": "function:Std::getCharUnits",
+      "id": "function:Std::getUCharUnits",
       "kind": "function",
-      "name": "getCharUnits",
-      "symbol": "StdWCharArray_getCharUnits",
+      "name": "getUCharUnits",
+      "symbol": "StdWCharArray_getUCharUnits",
       "visibility": "public",
       "returnType": "nuint",
-      "propertyName": "CharUnits",
+      "propertyName": "UCharUnits",
       "propertyIndexParams": [
         "unit"
       ],
       "parameters": [
         {
-          "id": "function:Std::getCharUnits/parameter:this",
+          "id": "function:Std::getUCharUnits/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::getCharUnits/parameter:unit",
+          "id": "function:Std::getUCharUnits/parameter:unit",
           "name": "unit",
           "type": "nuint",
           "metadata": [
             {
               "name": "index"
+            },
+            {
+              "name": "summary",
+              "content": "UTF-16 code-unit index."
             }
           ]
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Gets the number of UTF-16 code units used by the scalar at an index."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15565,6 +16189,10 @@
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Returns a view with leading and trailing ASCII whitespace removed."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
@@ -15585,6 +16213,10 @@
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns a view with leading ASCII whitespace removed."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15607,32 +16239,41 @@
       ],
       "metadata": [
         {
+          "name": "summary",
+          "content": "Returns a view with trailing ASCII whitespace removed."
+        },
+        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::stringCopy",
+      "id": "function:Std::toUppercase",
       "kind": "function",
-      "name": "stringCopy",
-      "symbol": "StdWCharArray_stringCopy",
+      "name": "toUppercase",
+      "symbol": "StdWCharArray_toUppercase",
       "visibility": "public",
-      "returnType": "wstring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::stringCopy/parameter:this",
+          "id": "function:Std::toUppercase/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::stringCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toUppercase/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "wchar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Copies the text to uppercase UTF-16 text."
+        },
         {
           "name": "category",
           "content": "Text"
@@ -15640,112 +16281,75 @@
       ]
     },
     {
-      "id": "function:Std::uppercaseCopy",
+      "id": "function:Std::toLowercase",
       "kind": "function",
-      "name": "uppercaseCopy",
-      "symbol": "StdWCharArray_uppercaseCopy",
+      "name": "toLowercase",
+      "symbol": "StdWCharArray_toLowercase",
       "visibility": "public",
-      "returnType": "wstring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::uppercaseCopy/parameter:this",
+          "id": "function:Std::toLowercase/parameter:this",
           "name": "this",
           "type": "const wchar[]"
         },
         {
-          "id": "function:Std::uppercaseCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::toLowercase/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "wchar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
         {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::lowercaseCopy",
-      "kind": "function",
-      "name": "lowercaseCopy",
-      "symbol": "StdWCharArray_lowercaseCopy",
-      "visibility": "public",
-      "returnType": "wstring",
-      "parameters": [
-        {
-          "id": "function:Std::lowercaseCopy/parameter:this",
-          "name": "this",
-          "type": "const wchar[]"
+          "name": "summary",
+          "content": "Copies the text to lowercase UTF-16 text."
         },
         {
-          "id": "function:Std::lowercaseCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
           "name": "category",
           "content": "Text"
         }
       ]
     },
     {
-      "id": "function:Std::concatCopy",
+      "id": "function:Std::join",
       "kind": "function",
-      "name": "concatCopy",
-      "symbol": "StdWStringArray_concatCopy",
+      "name": "join",
+      "symbol": "StdWStringArray_join",
       "visibility": "public",
-      "returnType": "wstring",
+      "returnType": "nuint",
       "parameters": [
         {
-          "id": "function:Std::concatCopy/parameter:this",
+          "id": "function:Std::join/parameter:this",
           "name": "this",
           "type": "wstring[]"
         },
         {
-          "id": "function:Std::concatCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
-          "name": "category",
-          "content": "Text"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::joinCopy",
-      "kind": "function",
-      "name": "joinCopy",
-      "symbol": "StdWStringArray_joinCopy",
-      "visibility": "public",
-      "returnType": "wstring",
-      "parameters": [
-        {
-          "id": "function:Std::joinCopy/parameter:this",
-          "name": "this",
-          "type": "wstring[]"
-        },
-        {
-          "id": "function:Std::joinCopy/parameter:separator",
+          "id": "function:Std::join/parameter:separator",
           "name": "separator",
-          "type": "const wchar[]"
+          "type": "const wchar[]",
+          "defaultValue": "default",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Text written between values. The default writes no separator."
+            }
+          ]
         },
         {
-          "id": "function:Std::joinCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
+          "id": "function:Std::join/parameter:buffer",
+          "name": "buffer",
+          "modifier": "prep",
+          "type": "wchar[]",
+          "defaultValue": "default"
         }
       ],
       "metadata": [
+        {
+          "name": "summary",
+          "content": "Joins UTF-16 strings with an optional separator."
+        },
         {
           "name": "category",
           "content": "Text"
