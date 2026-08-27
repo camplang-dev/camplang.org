@@ -1,0 +1,840 @@
+{
+  "format": "camp.metadata",
+  "version": 1,
+  "module": {
+    "name": "Ext::ArgParser",
+    "namespace": "Ext::ArgParser"
+  },
+  "view": {
+    "visibility": "public",
+    "level": "source",
+    "generated": false
+  },
+  "declarations": [
+    {
+      "id": "enum:Ext::ArgParser::ArgSyntax",
+      "kind": "enum",
+      "name": "ArgSyntax",
+      "symbol": "ExtArgParserArgSyntax",
+      "visibility": "public",
+      "underlyingType": "uint",
+      "values": [
+        {
+          "id": "enum:Ext::ArgParser::ArgSyntax/value:AUTO",
+          "name": "AUTO",
+          "symbol": "ExtArgParserArgSyntax_AUTO",
+          "type": "ArgSyntax",
+          "value": 0,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Selects WINDOWS syntax on Windows targets and GNU syntax on other targets."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgSyntax/value:GNU",
+          "name": "GNU",
+          "symbol": "ExtArgParserArgSyntax_GNU",
+          "type": "ArgSyntax",
+          "value": 1,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Accepts GNU-style options such as \u0060-v\u0060, \u0060--verbose\u0060, and \u0060--name=value\u0060."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgSyntax/value:WINDOWS",
+          "name": "WINDOWS",
+          "symbol": "ExtArgParserArgSyntax_WINDOWS",
+          "type": "ArgSyntax",
+          "value": 2,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Accepts Windows-style options such as \u0060/v\u0060, \u0060/verbose\u0060, and \u0060/name:value\u0060."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Selects which command-line option spelling the parser accepts."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::ArgParser::ArgParseStatus",
+      "kind": "enum",
+      "name": "ArgParseStatus",
+      "symbol": "ExtArgParserArgParseStatus",
+      "visibility": "public",
+      "underlyingType": "uint",
+      "values": [
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:OK",
+          "name": "OK",
+          "symbol": "ExtArgParserArgParseStatus_OK",
+          "type": "ArgParseStatus",
+          "value": 0,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Parsing completed normally."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:HELP_REQUESTED",
+          "name": "HELP_REQUESTED",
+          "symbol": "ExtArgParserArgParseStatus_HELP_REQUESTED",
+          "type": "ArgParseStatus",
+          "value": 1,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Help was requested and written to the configured output writer."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:UNKNOWN_OPTION",
+          "name": "UNKNOWN_OPTION",
+          "symbol": "ExtArgParserArgParseStatus_UNKNOWN_OPTION",
+          "type": "ArgParseStatus",
+          "value": 2,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "An option-like argument did not match any declared option."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:UNKNOWN_MODE",
+          "name": "UNKNOWN_MODE",
+          "symbol": "ExtArgParserArgParseStatus_UNKNOWN_MODE",
+          "type": "ArgParseStatus",
+          "value": 3,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "An argument did not match a declared mode or operand before a mode was selected."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:MISSING_VALUE",
+          "name": "MISSING_VALUE",
+          "symbol": "ExtArgParserArgParseStatus_MISSING_VALUE",
+          "type": "ArgParseStatus",
+          "value": 4,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "An option that requires a value was supplied without one."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:UNEXPECTED_VALUE",
+          "name": "UNEXPECTED_VALUE",
+          "symbol": "ExtArgParserArgParseStatus_UNEXPECTED_VALUE",
+          "type": "ArgParseStatus",
+          "value": 5,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "A value was supplied to an option that does not accept one."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:INVALID_VALUE",
+          "name": "INVALID_VALUE",
+          "symbol": "ExtArgParserArgParseStatus_INVALID_VALUE",
+          "type": "ArgParseStatus",
+          "value": 6,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "A supplied value could not be parsed as the requested type."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:MISSING_REQUIRED_OPTION",
+          "name": "MISSING_REQUIRED_OPTION",
+          "symbol": "ExtArgParserArgParseStatus_MISSING_REQUIRED_OPTION",
+          "type": "ArgParseStatus",
+          "value": 7,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "A required option was not matched."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:MISSING_REQUIRED_OPERAND",
+          "name": "MISSING_REQUIRED_OPERAND",
+          "symbol": "ExtArgParserArgParseStatus_MISSING_REQUIRED_OPERAND",
+          "type": "ArgParseStatus",
+          "value": 8,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "A required operand was not matched."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:TOO_MANY_OPERANDS",
+          "name": "TOO_MANY_OPERANDS",
+          "symbol": "ExtArgParserArgParseStatus_TOO_MANY_OPERANDS",
+          "type": "ArgParseStatus",
+          "value": 9,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "More operands were supplied than the declared operand surface accepts."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:DUPLICATE_OPTION",
+          "name": "DUPLICATE_OPTION",
+          "symbol": "ExtArgParserArgParseStatus_DUPLICATE_OPTION",
+          "type": "ArgParseStatus",
+          "value": 10,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "A non-multiple option or operand was matched more than once."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:CONFIGURATION_ERROR",
+          "name": "CONFIGURATION_ERROR",
+          "symbol": "ExtArgParserArgParseStatus_CONFIGURATION_ERROR",
+          "type": "ArgParseStatus",
+          "value": 11,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The parser declaration surface is invalid."
+            }
+          ]
+        },
+        {
+          "id": "enum:Ext::ArgParser::ArgParseStatus/value:CUSTOM_FAILURE",
+          "name": "CUSTOM_FAILURE",
+          "symbol": "ExtArgParserArgParseStatus_CUSTOM_FAILURE",
+          "type": "ArgParseStatus",
+          "value": 12,
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Parsing was terminated by a user-defined failure."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Describes the final parser status."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::ArgParser::ArgParseConfig",
+      "kind": "struct",
+      "name": "ArgParseConfig",
+      "symbol": "ExtArgParserArgParseConfig",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::ArgParser::ArgParseConfig/field:programName",
+          "name": "programName",
+          "type": "string",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Program name shown in generated help."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgParseConfig/field:description",
+          "name": "description",
+          "type": "string",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Short program description shown before generated option help."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgParseConfig/field:syntax",
+          "name": "syntax",
+          "type": "ArgSyntax",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Option spelling accepted by the parser."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgParseConfig/field:disableAutoHelp",
+          "name": "disableAutoHelp",
+          "type": "bool",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Disables automatic \u0060--help\u0060, \u0060-h\u0060, or \u0060/?\u0060 handling when true."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgParseConfig/field:output",
+          "name": "output",
+          "type": "CharWriter",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writer used for generated help. Defaults to standard output when omitted."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgParseConfig/field:errorOutput",
+          "name": "errorOutput",
+          "type": "CharWriter",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writer used for parse errors. Defaults to standard error when omitted."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Configures parser behavior and diagnostic output."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::ArgParser::ArgOption",
+      "kind": "struct",
+      "name": "ArgOption",
+      "symbol": "ExtArgParserArgOption",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:modes",
+          "name": "modes",
+          "type": "string[]",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Modes in which this option or operand applies. Leave empty to apply everywhere."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:syntax",
+          "name": "syntax",
+          "type": "ArgSyntax",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Syntax in which this option applies. AUTO means the parser\u0027s active syntax."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:flag",
+          "name": "flag",
+          "type": "escaped string",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Short flag name without a prefix, such as \u0060\u0022v\u0022\u0060 for \u0060-v\u0060 or \u0060/v\u0060."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:longFlag",
+          "name": "longFlag",
+          "type": "escaped string",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Long flag name without a prefix, such as \u0060\u0022verbose\u0022\u0060 for \u0060--verbose\u0060 or \u0060/verbose\u0060."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:name",
+          "name": "name",
+          "type": "escaped string",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Display name for the option value or operand in generated help."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:description",
+          "name": "description",
+          "type": "escaped string",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Description shown in generated help."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:required",
+          "name": "required",
+          "type": "bool",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Requires this option or operand to be matched before parsing succeeds."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:hidden",
+          "name": "hidden",
+          "type": "bool",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Omits this option or operand from generated help."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:multiple",
+          "name": "multiple",
+          "type": "bool",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Allows repeated matches for text, unsigned integer, and operand declarations."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:noPrefix",
+          "name": "noPrefix",
+          "type": "bool",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Allows bool long options to accept \u0060--no-name\u0060 in GNU syntax."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgOption/field:endOfFlags",
+          "name": "endOfFlags",
+          "type": "bool",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Treats following arguments as operands after this declaration matches."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Describes one option, operand, mode-local option, or end-of-flags marker."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::ArgParser::ArgParseResult",
+      "kind": "struct",
+      "name": "ArgParseResult",
+      "symbol": "ExtArgParserArgParseResult",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::ArgParser::ArgParseResult/field:status",
+          "name": "status",
+          "type": "ArgParseStatus",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Final parse status. OK means parsing succeeded and the application should continue."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgParseResult/field:exitCode",
+          "name": "exitCode",
+          "type": "int",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Suggested process exit code when status is not OK."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Reports the parse result after temporary parser state has been released."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::ArgParser::ArgStep",
+      "kind": "struct",
+      "name": "ArgStep",
+      "symbol": "ExtArgParserArgStep",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::ArgParser::ArgStep/field:context",
+          "name": "context",
+          "type": "void*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Parser-owned context. User code should treat this as opaque."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::ArgParser::ArgStep/field:complete",
+          "name": "complete",
+          "type": "bool",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "True only during the final completion callback."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Represents one parser callback step.\n\nUse the extension methods on ArgStep to match the current argument, declare modes and options, insert additional arguments, or fail the parse."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::parseArgs",
+      "kind": "function",
+      "name": "parseArgs",
+      "symbol": "ExtArgParser_parseArgs",
+      "visibility": "public",
+      "returnType": "ArgParseResult",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::parseArgs/parameter:args",
+          "name": "args",
+          "type": "string[]"
+        },
+        {
+          "id": "function:Ext::ArgParser::parseArgs/parameter:config",
+          "name": "config",
+          "type": "const ArgParseConfig*"
+        },
+        {
+          "id": "function:Ext::ArgParser::parseArgs/parameter:body",
+          "name": "body",
+          "type": "delegate void(ArgStep* step)"
+        },
+        {
+          "id": "function:Ext::ArgParser::parseArgs/parameter:allocator",
+          "name": "allocator",
+          "modifier": "within",
+          "type": "Allocator*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Parses command-line arguments using an immediate callback surface.\n\nThe parser calls \u0060body\u0060 once for each argument. The callback should call \u0060mode\u0060 and \u0060match\u0060 methods on the provided ArgStep to declare and match the current argument. After input is exhausted, the parser calls the callback one final time with \u0060step.complete\u0060 set so required options and operands can be validated from the same declarations.\n\n\u0060config\u0060 may be null, in which case the parser uses AUTO syntax, automatic help, standard output for help, and standard error for diagnostics."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::getComplete",
+      "kind": "function",
+      "name": "getComplete",
+      "symbol": "ExtArgParserArgStep_getComplete",
+      "visibility": "public",
+      "returnType": "bool",
+      "propertyName": "Complete",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::getComplete/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Returns true during the parser\u0027s final completion step.\n\nMost applications do not need to call this directly; it is useful when a parser callback wants to run its own final validation after all arguments and inserted arguments have been processed."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::matchBool",
+      "kind": "function",
+      "name": "match",
+      "symbol": "ExtArgParserArgStep_matchBool",
+      "visibility": "public",
+      "invokerName": "match",
+      "callableName": "matchBool",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::matchBool/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchBool/parameter:option",
+          "name": "option",
+          "type": "const ArgOption*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchBool/parameter:value",
+          "name": "value",
+          "modifier": "out",
+          "overload": true,
+          "type": "bool"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Attempts to match the current argument as a bool option.\n\nBool options accept a present/absent value. In GNU syntax, a \u0060noPrefix\u0060 option also accepts \u0060--no-name\u0060 for false. Bool options may be matched more than once; each match calls the callback normally with the current value."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::matchCharArray",
+      "kind": "function",
+      "name": "match",
+      "symbol": "ExtArgParserArgStep_matchCharArray",
+      "visibility": "public",
+      "invokerName": "match",
+      "callableName": "matchCharArray",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::matchCharArray/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchCharArray/parameter:option",
+          "name": "option",
+          "type": "const ArgOption*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchCharArray/parameter:value",
+          "name": "value",
+          "modifier": "out",
+          "overload": true,
+          "type": "const char[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Attempts to match the current argument as a text option or operand.\n\nFor options, the value may be attached to the option token or supplied by the next argument. For operands, leave both \u0060flag\u0060 and \u0060longFlag\u0060 null in the ArgOption. The returned slice points into the argument storage supplied to parseArgs or insertArgs."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::matchUInt",
+      "kind": "function",
+      "name": "match",
+      "symbol": "ExtArgParserArgStep_matchUInt",
+      "visibility": "public",
+      "invokerName": "match",
+      "callableName": "matchUInt",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::matchUInt/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchUInt/parameter:option",
+          "name": "option",
+          "type": "const ArgOption*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchUInt/parameter:value",
+          "name": "value",
+          "modifier": "out",
+          "overload": true,
+          "type": "uint"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Attempts to match the current argument as an unsigned integer option or operand.\n\nParsing fails with INVALID_VALUE if the matched text is not a valid uint. Repeated matches require \u0060multiple = true\u0060."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::matchStringArray",
+      "kind": "function",
+      "name": "match",
+      "symbol": "ExtArgParserArgStep_matchStringArray",
+      "visibility": "public",
+      "invokerName": "match",
+      "callableName": "matchStringArray",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::matchStringArray/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchStringArray/parameter:option",
+          "name": "option",
+          "type": "const ArgOption*"
+        },
+        {
+          "id": "function:Ext::ArgParser::matchStringArray/parameter:value",
+          "name": "value",
+          "modifier": "out",
+          "overload": true,
+          "type": "string[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Attempts to capture the remaining arguments.\n\nThis overload consumes the current match and returns every remaining argument in one array. It can be used with \u0060endOfFlags\u0060 for \u0060--\u0060-style forwarding, or with any other flag that should capture the rest of the command line. The returned array is owned by the parser and remains valid only until the current callback returns."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::mode",
+      "kind": "function",
+      "name": "mode",
+      "symbol": "ExtArgParserArgStep_mode",
+      "visibility": "public",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::mode/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        },
+        {
+          "id": "function:Ext::ArgParser::mode/parameter:name",
+          "name": "name",
+          "type": "unscoped string"
+        },
+        {
+          "id": "function:Ext::ArgParser::mode/parameter:description",
+          "name": "description",
+          "type": "unscoped string"
+        },
+        {
+          "id": "function:Ext::ArgParser::mode/parameter:hidden",
+          "name": "hidden",
+          "type": "bool",
+          "defaultValue": "false"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Attempts to match a subcommand mode.\n\nA mode is a first positional command such as \u0060build\u0060 or \u0060test\u0060. Options and operands can opt into specific modes through ArgOption.modes."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::insertArgs",
+      "kind": "function",
+      "name": "insertArgs",
+      "symbol": "ExtArgParserArgStep_insertArgs",
+      "visibility": "public",
+      "returnType": "void",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::insertArgs/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        },
+        {
+          "id": "function:Ext::ArgParser::insertArgs/parameter:args",
+          "name": "args",
+          "type": "string[]"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Inserts arguments at the current parse position and parses them immediately.\n\nThis is intended for response-file style expansion. Inserted arguments are parsed before the parser resumes the original argument stream. When called during completion, inserted arguments are parsed immediately without causing an additional completion callback."
+        }
+      ]
+    },
+    {
+      "id": "function:Ext::ArgParser::fail",
+      "kind": "function",
+      "name": "fail",
+      "symbol": "ExtArgParserArgStep_fail",
+      "visibility": "public",
+      "returnType": "void",
+      "parameters": [
+        {
+          "id": "function:Ext::ArgParser::fail/parameter:this",
+          "name": "this",
+          "type": "ArgStep*"
+        },
+        {
+          "id": "function:Ext::ArgParser::fail/parameter:message",
+          "name": "message",
+          "type": "const char[]"
+        },
+        {
+          "id": "function:Ext::ArgParser::fail/parameter:exitCode",
+          "name": "exitCode",
+          "type": "int",
+          "defaultValue": "2"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Terminates parsing with a custom failure.\n\nThe message is written to the configured error writer and parsing stops immediately with CUSTOM_FAILURE and the supplied exit code."
+        }
+      ]
+    }
+  ]
+}

@@ -1754,6 +1754,345 @@
       ]
     },
     {
+      "id": "function:Std::atomicExchangeNInt",
+      "kind": "function",
+      "name": "atomicExchange",
+      "symbol": "atomicExchangeNInt",
+      "visibility": "public",
+      "invokerName": "atomicExchange",
+      "callableName": "atomicExchangeNInt",
+      "returnType": "nint",
+      "parameters": [
+        {
+          "id": "function:Std::atomicExchangeNInt/parameter:dest",
+          "name": "dest",
+          "overload": true,
+          "type": "nint*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The storage location to update."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicExchangeNInt/parameter:value",
+          "name": "value",
+          "type": "nint",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value to store."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicExchangeNInt"
+        },
+        {
+          "name": "summary",
+          "content": "Atomically stores a signed native integer and returns the previous value."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::atomicExchangeNUInt",
+      "kind": "function",
+      "name": "atomicExchange",
+      "symbol": "atomicExchangeNUInt",
+      "visibility": "public",
+      "invokerName": "atomicExchange",
+      "callableName": "atomicExchangeNUInt",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::atomicExchangeNUInt/parameter:dest",
+          "name": "dest",
+          "overload": true,
+          "type": "nuint*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The storage location to update."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicExchangeNUInt/parameter:value",
+          "name": "value",
+          "type": "nuint",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value to store."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicExchangeNUInt"
+        },
+        {
+          "name": "summary",
+          "content": "Atomically stores an unsigned native integer and returns the previous value."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::atomicExchangeVoid",
+      "kind": "function",
+      "name": "atomicExchange",
+      "symbol": "atomicExchangePtr",
+      "visibility": "public",
+      "invokerName": "atomicExchange",
+      "callableName": "atomicExchangeVoid",
+      "returnType": "void*",
+      "parameters": [
+        {
+          "id": "function:Std::atomicExchangeVoid/parameter:dest",
+          "name": "dest",
+          "overload": true,
+          "type": "void**",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The storage location to update."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicExchangeVoid/parameter:value",
+          "name": "value",
+          "type": "void*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value to store."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicExchangePtr"
+        },
+        {
+          "name": "summary",
+          "content": "Atomically stores a pointer and returns the previous value."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::atomicCompareExchangeNInt",
+      "kind": "function",
+      "name": "atomicCompareExchange",
+      "symbol": "atomicCompareExchangeNInt",
+      "visibility": "public",
+      "invokerName": "atomicCompareExchange",
+      "callableName": "atomicCompareExchangeNInt",
+      "returnType": "nint",
+      "parameters": [
+        {
+          "id": "function:Std::atomicCompareExchangeNInt/parameter:dest",
+          "name": "dest",
+          "overload": true,
+          "type": "nint*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The storage location to update."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicCompareExchangeNInt/parameter:expected",
+          "name": "expected",
+          "type": "nint",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value that must currently be stored for the exchange to occur."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicCompareExchangeNInt/parameter:value",
+          "name": "value",
+          "type": "nint",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value to store when \u0060expected\u0060 matches."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicCompareExchangeNInt"
+        },
+        {
+          "name": "summary",
+          "content": "Atomically stores a signed native integer when the current value matches \u0060expected\u0060."
+        },
+        {
+          "name": "returns",
+          "content": "The value that was stored before the operation."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::atomicCompareExchangeNUInt",
+      "kind": "function",
+      "name": "atomicCompareExchange",
+      "symbol": "atomicCompareExchangeNUInt",
+      "visibility": "public",
+      "invokerName": "atomicCompareExchange",
+      "callableName": "atomicCompareExchangeNUInt",
+      "returnType": "nuint",
+      "parameters": [
+        {
+          "id": "function:Std::atomicCompareExchangeNUInt/parameter:dest",
+          "name": "dest",
+          "overload": true,
+          "type": "nuint*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The storage location to update."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicCompareExchangeNUInt/parameter:expected",
+          "name": "expected",
+          "type": "nuint",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value that must currently be stored for the exchange to occur."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicCompareExchangeNUInt/parameter:value",
+          "name": "value",
+          "type": "nuint",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value to store when \u0060expected\u0060 matches."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicCompareExchangeNUInt"
+        },
+        {
+          "name": "summary",
+          "content": "Atomically stores an unsigned native integer when the current value matches \u0060expected\u0060."
+        },
+        {
+          "name": "returns",
+          "content": "The value that was stored before the operation."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
+        }
+      ]
+    },
+    {
+      "id": "function:Std::atomicCompareExchangeVoid",
+      "kind": "function",
+      "name": "atomicCompareExchange",
+      "symbol": "atomicCompareExchangePtr",
+      "visibility": "public",
+      "invokerName": "atomicCompareExchange",
+      "callableName": "atomicCompareExchangeVoid",
+      "returnType": "void*",
+      "parameters": [
+        {
+          "id": "function:Std::atomicCompareExchangeVoid/parameter:dest",
+          "name": "dest",
+          "overload": true,
+          "type": "void**",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The storage location to update."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicCompareExchangeVoid/parameter:expected",
+          "name": "expected",
+          "type": "void*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value that must currently be stored for the exchange to occur."
+            }
+          ]
+        },
+        {
+          "id": "function:Std::atomicCompareExchangeVoid/parameter:value",
+          "name": "value",
+          "type": "void*",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "The value to store when \u0060expected\u0060 matches."
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "symbol",
+          "content": "atomicCompareExchangePtr"
+        },
+        {
+          "name": "summary",
+          "content": "Atomically stores a pointer when the current value matches \u0060expected\u0060."
+        },
+        {
+          "name": "returns",
+          "content": "The value that was stored before the operation."
+        },
+        {
+          "name": "category",
+          "content": "Synchronization"
+        }
+      ]
+    },
+    {
       "id": "staticClass:Std::Console",
       "kind": "staticClass",
       "name": "Console",
@@ -2650,6 +2989,7 @@
           "name": "setCurrentDirectory",
           "symbol": "StdEnv_setCurrentDirectory",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "void",
           "propertyName": "CurrentDirectory",
@@ -2658,29 +2998,15 @@
             {
               "id": "staticClass:Std::Env/function:setCurrentDirectory/parameter:path",
               "name": "path",
-              "type": "string",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "The new current directory as a null-terminated UTF-8 string."
-                }
-              ]
+              "require": "SUPPORTS_FILES",
+              "type": "string"
             },
             {
               "id": "staticClass:Std::Env/function:setCurrentDirectory/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
-            }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Changes the current working directory."
-            },
-            {
-              "name": "remarks",
-              "content": "Throws \u0060IoError\u0060 when the directory cannot be selected."
             }
           ]
         },
@@ -2754,6 +3080,7 @@
           "name": "setVariable",
           "symbol": "StdEnv_setVariable",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "void",
           "propertyName": "Variable",
@@ -2765,40 +3092,21 @@
             {
               "id": "staticClass:Std::Env/function:setVariable/parameter:name",
               "name": "name",
-              "type": "string",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "The variable name. Empty names and names containing \u0060=\u0060 are invalid."
-                }
-              ]
+              "require": "SUPPORTS_FILES",
+              "type": "string"
             },
             {
               "id": "staticClass:Std::Env/function:setVariable/parameter:value",
               "name": "value",
-              "type": "string",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "The new variable value. An empty string defines an empty variable."
-                }
-              ]
+              "require": "SUPPORTS_FILES",
+              "type": "string"
             },
             {
               "id": "staticClass:Std::Env/function:setVariable/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
-            }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Sets or replaces an environment variable."
-            },
-            {
-              "name": "remarks",
-              "content": "Throws \u0060IoError\u0060 when the variable cannot be set."
             }
           ]
         },
@@ -2807,39 +3115,22 @@
           "name": "removeVariable",
           "symbol": "StdEnv_removeVariable",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "bool",
           "parameters": [
             {
               "id": "staticClass:Std::Env/function:removeVariable/parameter:name",
               "name": "name",
-              "type": "string",
-              "metadata": [
-                {
-                  "name": "summary",
-                  "content": "The variable name. Empty names and names containing \u0060=\u0060 are invalid."
-                }
-              ]
+              "require": "SUPPORTS_FILES",
+              "type": "string"
             },
             {
               "id": "staticClass:Std::Env/function:removeVariable/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
-            }
-          ],
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "Removes an environment variable."
-            },
-            {
-              "name": "returns",
-              "content": "\u0060true\u0060 when the variable existed before removal, or \u0060false\u0060 when it was already missing."
-            },
-            {
-              "name": "remarks",
-              "content": "Throws \u0060IoError\u0060 when the remove request itself is invalid or fails."
             }
           ]
         },
@@ -2892,6 +3183,7 @@
       "name": "FileAccess",
       "symbol": "StdFileAccess",
       "visibility": "public",
+      "require": "SUPPORTS_FILES",
       "underlyingType": "uint",
       "values": [
         {
@@ -2929,6 +3221,7 @@
       "name": "FileMode",
       "symbol": "StdFileMode",
       "visibility": "public",
+      "require": "SUPPORTS_FILES",
       "underlyingType": "uint",
       "values": [
         {
@@ -2973,6 +3266,7 @@
       "name": "FileOptions",
       "symbol": "StdFileOptions",
       "visibility": "public",
+      "require": "SUPPORTS_FILES",
       "underlyingType": "int",
       "values": [
         {
@@ -3071,6 +3365,7 @@
       "name": "FileHandle",
       "symbol": "StdFileHandle",
       "visibility": "public",
+      "require": "SUPPORTS_FILES",
       "underlyingType": "nint",
       "functions": [
         {
@@ -3078,6 +3373,7 @@
           "name": "close",
           "symbol": "StdFileHandle_close",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "void",
           "metadata": [
             {
@@ -3091,33 +3387,39 @@
           "name": "open",
           "symbol": "StdFileHandle_open",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "FileHandle",
           "parameters": [
             {
               "id": "newtype:Std::FileHandle/function:open/parameter:path",
               "name": "path",
+              "require": "SUPPORTS_FILES",
               "type": "string"
             },
             {
               "id": "newtype:Std::FileHandle/function:open/parameter:access",
               "name": "access",
+              "require": "SUPPORTS_FILES",
               "type": "FileAccess"
             },
             {
               "id": "newtype:Std::FileHandle/function:open/parameter:mode",
               "name": "mode",
+              "require": "SUPPORTS_FILES",
               "type": "FileMode"
             },
             {
               "id": "newtype:Std::FileHandle/function:open/parameter:options",
               "name": "options",
+              "require": "SUPPORTS_FILES",
               "type": "FileOptions",
               "defaultValue": "default"
             },
             {
               "id": "newtype:Std::FileHandle/function:open/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3128,12 +3430,14 @@
           "name": "getLength",
           "symbol": "StdFileHandle_getLength",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "ulong",
           "propertyName": "Length",
           "parameters": [
             {
               "id": "newtype:Std::FileHandle/function:getLength/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3144,12 +3448,14 @@
           "name": "getPosition",
           "symbol": "StdFileHandle_getPosition",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "ulong",
           "propertyName": "Position",
           "parameters": [
             {
               "id": "newtype:Std::FileHandle/function:getPosition/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3160,6 +3466,7 @@
           "name": "setPosition",
           "symbol": "StdFileHandle_setPosition",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "void",
           "propertyName": "Position",
           "propertyValueParam": "value",
@@ -3167,11 +3474,13 @@
             {
               "id": "newtype:Std::FileHandle/function:setPosition/parameter:value",
               "name": "value",
+              "require": "SUPPORTS_FILES",
               "type": "ulong"
             },
             {
               "id": "newtype:Std::FileHandle/function:setPosition/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3182,22 +3491,26 @@
           "name": "read",
           "symbol": "StdFileHandle_read",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "void",
           "parameters": [
             {
               "id": "newtype:Std::FileHandle/function:read/parameter:buffer",
               "name": "buffer",
+              "require": "SUPPORTS_FILES",
               "type": "byte[]"
             },
             {
               "id": "newtype:Std::FileHandle/function:read/parameter:readCount",
               "name": "readCount",
+              "require": "SUPPORTS_FILES",
               "modifier": "out",
               "type": "nuint"
             },
             {
               "id": "newtype:Std::FileHandle/function:read/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3208,16 +3521,19 @@
           "name": "write",
           "symbol": "StdFileHandle_write",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "void",
           "parameters": [
             {
               "id": "newtype:Std::FileHandle/function:write/parameter:buffer",
               "name": "buffer",
+              "require": "SUPPORTS_FILES",
               "type": "const byte[]"
             },
             {
               "id": "newtype:Std::FileHandle/function:write/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3228,6 +3544,7 @@
           "name": "getByteReader",
           "symbol": "StdFileHandle_getByteReader",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "ByteReader",
           "propertyName": "ByteReader"
         },
@@ -3236,6 +3553,7 @@
           "name": "getCharReader",
           "symbol": "StdFileHandle_getCharReader",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "CharReader",
           "propertyName": "CharReader"
         },
@@ -3244,6 +3562,7 @@
           "name": "getByteWriter",
           "symbol": "StdFileHandle_getByteWriter",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "ByteWriter",
           "propertyName": "ByteWriter"
         },
@@ -3252,6 +3571,7 @@
           "name": "getCharWriter",
           "symbol": "StdFileHandle_getCharWriter",
           "visibility": "public",
+          "require": "SUPPORTS_FILES",
           "returnType": "CharWriter",
           "propertyName": "CharWriter"
         }
@@ -3268,18 +3588,21 @@
       "kind": "staticClass",
       "name": "FileSystem",
       "symbol": "StdFileSystem",
+      "require": "SUPPORTS_FILES",
       "functions": [
         {
           "id": "staticClass:Std::FileSystem/function:createDirectory",
           "name": "createDirectory",
           "symbol": "StdFileSystem_createDirectory",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "void",
           "parameters": [
             {
               "id": "staticClass:Std::FileSystem/function:createDirectory/parameter:path",
               "name": "path",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3291,6 +3614,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:createDirectory/parameter:recursive",
               "name": "recursive",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "bool",
               "defaultValue": "false",
               "metadata": [
@@ -3303,6 +3627,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:createDirectory/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3323,12 +3648,14 @@
           "name": "deleteDirectory",
           "symbol": "StdFileSystem_deleteDirectory",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "void",
           "parameters": [
             {
               "id": "staticClass:Std::FileSystem/function:deleteDirectory/parameter:path",
               "name": "path",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3340,6 +3667,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:deleteDirectory/parameter:recursive",
               "name": "recursive",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "bool",
               "defaultValue": "false",
               "metadata": [
@@ -3352,6 +3680,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:deleteDirectory/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3372,12 +3701,14 @@
           "name": "deleteFile",
           "symbol": "StdFileSystem_deleteFile",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "void",
           "parameters": [
             {
               "id": "staticClass:Std::FileSystem/function:deleteFile/parameter:path",
               "name": "path",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3389,6 +3720,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:deleteFile/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3409,12 +3741,14 @@
           "name": "copyFile",
           "symbol": "StdFileSystem_copyFile",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "void",
           "parameters": [
             {
               "id": "staticClass:Std::FileSystem/function:copyFile/parameter:source",
               "name": "source",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3426,6 +3760,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:copyFile/parameter:dest",
               "name": "dest",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3437,6 +3772,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:copyFile/parameter:overwrite",
               "name": "overwrite",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "bool",
               "defaultValue": "false",
               "metadata": [
@@ -3449,6 +3785,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:copyFile/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3469,12 +3806,14 @@
           "name": "moveFile",
           "symbol": "StdFileSystem_moveFile",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "void",
           "parameters": [
             {
               "id": "staticClass:Std::FileSystem/function:moveFile/parameter:source",
               "name": "source",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3486,6 +3825,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:moveFile/parameter:dest",
               "name": "dest",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3497,6 +3837,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:moveFile/parameter:overwrite",
               "name": "overwrite",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "bool",
               "defaultValue": "false",
               "metadata": [
@@ -3509,6 +3850,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:moveFile/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3529,12 +3871,14 @@
           "name": "exists",
           "symbol": "StdFileSystem_exists",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "bool",
           "parameters": [
             {
               "id": "staticClass:Std::FileSystem/function:exists/parameter:path",
               "name": "path",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3566,12 +3910,14 @@
           "name": "isDirectory",
           "symbol": "StdFileSystem_isDirectory",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "bool",
           "parameters": [
             {
               "id": "staticClass:Std::FileSystem/function:isDirectory/parameter:path",
               "name": "path",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3603,6 +3949,7 @@
           "name": "getSize",
           "symbol": "StdFileSystem_getSize",
           "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
           "modifier": "static",
           "returnType": "ulong",
           "propertyName": "Size",
@@ -3613,6 +3960,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:getSize/parameter:file",
               "name": "file",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "type": "string",
               "metadata": [
                 {
@@ -3624,6 +3972,7 @@
             {
               "id": "staticClass:Std::FileSystem/function:getSize/parameter:error",
               "name": "error",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
               "modifier": "thrown",
               "type": "IoError"
             }
@@ -3641,10 +3990,6 @@
         }
       ],
       "metadata": [
-        {
-          "name": "summary",
-          "content": "Provides common host filesystem operations."
-        },
         {
           "name": "category",
           "content": "I/O"
@@ -14960,6 +15305,7 @@
       "name": "TimerHandle",
       "symbol": "StdTimerHandle",
       "visibility": "public",
+      "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
       "underlyingType": "nint",
       "metadata": [
         {
@@ -14988,11 +15334,13 @@
       "name": "sleep",
       "symbol": "Std_sleep",
       "visibility": "public",
+      "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
       "returnType": "void",
       "parameters": [
         {
           "id": "function:Std::sleep/parameter:timeoutMs",
           "name": "timeoutMs",
+          "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
           "type": "nuint",
           "metadata": [
             {
@@ -15019,12 +15367,14 @@
       "name": "sleepAsync",
       "symbol": "Std_sleepAsync",
       "visibility": "public",
+      "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
       "async": true,
       "returnType": "void",
       "parameters": [
         {
           "id": "function:Std::sleepAsync/parameter:timeoutMs",
           "name": "timeoutMs",
+          "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
           "type": "nuint",
           "metadata": [
             {
@@ -15036,6 +15386,7 @@
         {
           "id": "function:Std::sleepAsync/parameter:complete",
           "name": "complete",
+          "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
           "type": "escaped once void()",
           "metadata": [
             {
@@ -15066,11 +15417,13 @@
       "name": "startTimer",
       "symbol": "Std_startTimer",
       "visibility": "public",
+      "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
       "returnType": "TimerHandle",
       "parameters": [
         {
           "id": "function:Std::startTimer/parameter:intervalMs",
           "name": "intervalMs",
+          "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
           "type": "nuint",
           "metadata": [
             {
@@ -15082,6 +15435,7 @@
         {
           "id": "function:Std::startTimer/parameter:callback",
           "name": "callback",
+          "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
           "type": "escaped delegate void(TimerHandle handle)",
           "metadata": [
             {
@@ -15126,11 +15480,13 @@
       "name": "stopTimer",
       "symbol": "Std_stopTimer",
       "visibility": "public",
+      "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
       "returnType": "void",
       "parameters": [
         {
           "id": "function:Std::stopTimer/parameter:handle",
           "name": "handle",
+          "require": "SUPPORTS_TIMERS \u0026\u0026 (SUBSYSTEM_POSIX || OS_WIN32)",
           "type": "TimerHandle",
           "metadata": [
             {
@@ -15154,345 +15510,6 @@
         {
           "name": "remarks",
           "content": "Cancellation is cooperative. A callback that is already running may finish after this function returns."
-        },
-        {
-          "name": "category",
-          "content": "Synchronization"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::atomicExchangeNInt",
-      "kind": "function",
-      "name": "atomicExchange",
-      "symbol": "atomicExchangeNInt",
-      "visibility": "public",
-      "invokerName": "atomicExchange",
-      "callableName": "atomicExchangeNInt",
-      "returnType": "nint",
-      "parameters": [
-        {
-          "id": "function:Std::atomicExchangeNInt/parameter:dest",
-          "name": "dest",
-          "overload": true,
-          "type": "nint*",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The storage location to update."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicExchangeNInt/parameter:value",
-          "name": "value",
-          "type": "nint",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value to store."
-            }
-          ]
-        }
-      ],
-      "metadata": [
-        {
-          "name": "symbol",
-          "content": "atomicExchangeNInt"
-        },
-        {
-          "name": "summary",
-          "content": "Atomically stores a signed native integer and returns the previous value."
-        },
-        {
-          "name": "category",
-          "content": "Synchronization"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::atomicExchangeNUInt",
-      "kind": "function",
-      "name": "atomicExchange",
-      "symbol": "atomicExchangeNUInt",
-      "visibility": "public",
-      "invokerName": "atomicExchange",
-      "callableName": "atomicExchangeNUInt",
-      "returnType": "nuint",
-      "parameters": [
-        {
-          "id": "function:Std::atomicExchangeNUInt/parameter:dest",
-          "name": "dest",
-          "overload": true,
-          "type": "nuint*",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The storage location to update."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicExchangeNUInt/parameter:value",
-          "name": "value",
-          "type": "nuint",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value to store."
-            }
-          ]
-        }
-      ],
-      "metadata": [
-        {
-          "name": "symbol",
-          "content": "atomicExchangeNUInt"
-        },
-        {
-          "name": "summary",
-          "content": "Atomically stores an unsigned native integer and returns the previous value."
-        },
-        {
-          "name": "category",
-          "content": "Synchronization"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::atomicExchangeVoid",
-      "kind": "function",
-      "name": "atomicExchange",
-      "symbol": "atomicExchangePtr",
-      "visibility": "public",
-      "invokerName": "atomicExchange",
-      "callableName": "atomicExchangeVoid",
-      "returnType": "void*",
-      "parameters": [
-        {
-          "id": "function:Std::atomicExchangeVoid/parameter:dest",
-          "name": "dest",
-          "overload": true,
-          "type": "void**",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The storage location to update."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicExchangeVoid/parameter:value",
-          "name": "value",
-          "type": "void*",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value to store."
-            }
-          ]
-        }
-      ],
-      "metadata": [
-        {
-          "name": "symbol",
-          "content": "atomicExchangePtr"
-        },
-        {
-          "name": "summary",
-          "content": "Atomically stores a pointer and returns the previous value."
-        },
-        {
-          "name": "category",
-          "content": "Synchronization"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::atomicCompareExchangeNInt",
-      "kind": "function",
-      "name": "atomicCompareExchange",
-      "symbol": "atomicCompareExchangeNInt",
-      "visibility": "public",
-      "invokerName": "atomicCompareExchange",
-      "callableName": "atomicCompareExchangeNInt",
-      "returnType": "nint",
-      "parameters": [
-        {
-          "id": "function:Std::atomicCompareExchangeNInt/parameter:dest",
-          "name": "dest",
-          "overload": true,
-          "type": "nint*",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The storage location to update."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicCompareExchangeNInt/parameter:expected",
-          "name": "expected",
-          "type": "nint",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value that must currently be stored for the exchange to occur."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicCompareExchangeNInt/parameter:value",
-          "name": "value",
-          "type": "nint",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value to store when \u0060expected\u0060 matches."
-            }
-          ]
-        }
-      ],
-      "metadata": [
-        {
-          "name": "symbol",
-          "content": "atomicCompareExchangeNInt"
-        },
-        {
-          "name": "summary",
-          "content": "Atomically stores a signed native integer when the current value matches \u0060expected\u0060."
-        },
-        {
-          "name": "returns",
-          "content": "The value that was stored before the operation."
-        },
-        {
-          "name": "category",
-          "content": "Synchronization"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::atomicCompareExchangeNUInt",
-      "kind": "function",
-      "name": "atomicCompareExchange",
-      "symbol": "atomicCompareExchangeNUInt",
-      "visibility": "public",
-      "invokerName": "atomicCompareExchange",
-      "callableName": "atomicCompareExchangeNUInt",
-      "returnType": "nuint",
-      "parameters": [
-        {
-          "id": "function:Std::atomicCompareExchangeNUInt/parameter:dest",
-          "name": "dest",
-          "overload": true,
-          "type": "nuint*",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The storage location to update."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicCompareExchangeNUInt/parameter:expected",
-          "name": "expected",
-          "type": "nuint",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value that must currently be stored for the exchange to occur."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicCompareExchangeNUInt/parameter:value",
-          "name": "value",
-          "type": "nuint",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value to store when \u0060expected\u0060 matches."
-            }
-          ]
-        }
-      ],
-      "metadata": [
-        {
-          "name": "symbol",
-          "content": "atomicCompareExchangeNUInt"
-        },
-        {
-          "name": "summary",
-          "content": "Atomically stores an unsigned native integer when the current value matches \u0060expected\u0060."
-        },
-        {
-          "name": "returns",
-          "content": "The value that was stored before the operation."
-        },
-        {
-          "name": "category",
-          "content": "Synchronization"
-        }
-      ]
-    },
-    {
-      "id": "function:Std::atomicCompareExchangeVoid",
-      "kind": "function",
-      "name": "atomicCompareExchange",
-      "symbol": "atomicCompareExchangePtr",
-      "visibility": "public",
-      "invokerName": "atomicCompareExchange",
-      "callableName": "atomicCompareExchangeVoid",
-      "returnType": "void*",
-      "parameters": [
-        {
-          "id": "function:Std::atomicCompareExchangeVoid/parameter:dest",
-          "name": "dest",
-          "overload": true,
-          "type": "void**",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The storage location to update."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicCompareExchangeVoid/parameter:expected",
-          "name": "expected",
-          "type": "void*",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value that must currently be stored for the exchange to occur."
-            }
-          ]
-        },
-        {
-          "id": "function:Std::atomicCompareExchangeVoid/parameter:value",
-          "name": "value",
-          "type": "void*",
-          "metadata": [
-            {
-              "name": "summary",
-              "content": "The value to store when \u0060expected\u0060 matches."
-            }
-          ]
-        }
-      ],
-      "metadata": [
-        {
-          "name": "symbol",
-          "content": "atomicCompareExchangePtr"
-        },
-        {
-          "name": "summary",
-          "content": "Atomically stores a pointer when the current value matches \u0060expected\u0060."
-        },
-        {
-          "name": "returns",
-          "content": "The value that was stored before the operation."
         },
         {
           "name": "category",

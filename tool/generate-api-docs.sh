@@ -47,14 +47,17 @@ generate_metadata "$OUTPUT_ROOT/stdlib/std_api.json" \
 	--metadata public \
 	--nostdlib
 
-if [ "${CAMP_GENERATE_PACKAGE_API_DOCS:-}" = "1" ]; then
-	PACKAGE_ROOT="${CAMP_PACKAGE_ROOT:-$WORKSPACE/pkg.camplang.org}"
-	if [ -d "$PACKAGE_ROOT/ext-json/src" ]; then
-		mkdir -p "$OUTPUT_ROOT/packages/ext-json"
-		generate_metadata "$OUTPUT_ROOT/packages/ext-json/ext_json_api.json" \
-			"$PACKAGE_ROOT/ext-json/src/"*.camp \
-			--metadata public
-	fi
+PACKAGE_ROOT="${CAMP_PACKAGE_ROOT:-$WORKSPACE/pkg.camplang.org}"
+if [ -d "$PACKAGE_ROOT" ]; then
+	for package in ext-json ext-argparser ext-ansiterm; do
+		if [ -d "$PACKAGE_ROOT/$package/src" ]; then
+			metadata_name="${package//-/_}_api.json"
+			mkdir -p "$OUTPUT_ROOT/packages/$package"
+			generate_metadata "$OUTPUT_ROOT/packages/$package/$metadata_name" \
+				"$PACKAGE_ROOT/$package/src/"*.camp \
+				--metadata public
+		fi
+	done
 fi
 
 echo "generated API metadata in $OUTPUT_ROOT"

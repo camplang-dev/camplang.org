@@ -159,6 +159,12 @@ CHAR_ARRAY_STRING_OWNERS = {
     "achar": "astring",
     "wchar": "wstring",
 }
+PACKAGE_APIS = [
+    ("ext-json", "Ext JSON", "ext_json_api.json"),
+    ("ext-argparser", "Ext ArgParser", "ext_argparser_api.json"),
+    ("ext-ansiterm", "Ext AnsiTerm", "ext_ansiterm_api.json"),
+]
+PACKAGE_DEVELOPMENT_NOTE = "This package is under development and is not ready for general use yet."
 
 
 def generate_api_docs(api_src: Path, docs_root: Path) -> None:
@@ -169,19 +175,75 @@ def generate_api_docs(api_src: Path, docs_root: Path) -> None:
     else:
         write_placeholder(docs_root / "stdlib", "Standard Library API", 3, "The standard library API reference has not been generated yet.")
 
-    packages_root = docs_root / "packages"
+    write_package_api_docs(api_src, docs_root / "packages", version)
+
+
+def write_package_api_docs(api_src: Path, packages_root: Path, version: str) -> None:
+    package_sources = []
+    for slug_name, title, metadata_name in PACKAGE_APIS:
+        metadata_path = api_src / "packages" / slug_name / metadata_name
+        if metadata_path.exists():
+            package_sources.append((slug_name, title, metadata_path))
+
     write_section(packages_root, "Package APIs", weight=4)
-    write_page(
-        packages_root / "overview.md",
-        "Package APIs",
-        1,
-        "# Package APIs\n\nPackage API references are not available yet.\n",
-        nav_title="Overview",
-    )
+    if not package_sources:
+        write_page(
+            packages_root / "overview.md",
+            "Package APIs",
+            1,
+            "# Package APIs\n\nPackage API references are not available yet.\n",
+            nav_title="Overview",
+        )
+        return
+
+    body = [
+        "# Package APIs",
+        "",
+        "These package API references are generated from packages in `pkg.camplang.org`.",
+        "",
+        '<div class="link-list">',
+    ]
+    for slug_name, title, _ in package_sources:
+        body.extend(
+            [
+                f'    <a href="/docs/packages/{attr(slug_name)}/overview/">',
+                f"        <span>{esc(title)}</span>",
+                f"        <small>{esc(PACKAGE_DEVELOPMENT_NOTE)}</small>",
+                "    </a>",
+            ]
+        )
+    body.append("</div>")
+    write_page(packages_root / "overview.md", "Package APIs", 1, "\n".join(body), nav_title="Overview")
+
+    for index, (slug_name, title, metadata_path) in enumerate(package_sources, start=2):
+        ApiReference(
+            metadata_path,
+            packages_root / slug_name,
+            title,
+            f"packages/{slug_name}",
+            index,
+            version,
+            grouped_sidebar=False,
+            include_builtin_pseudo_types=False,
+            hide_declaration_nav=True,
+            overview_note=PACKAGE_DEVELOPMENT_NOTE,
+        ).write()
 
 
 class ApiReference:
-    def __init__(self, metadata_path: Path, output_dir: Path, title: str, url_slug: str, weight: int, campc_version: str, grouped_sidebar: bool = False) -> None:
+    def __init__(
+        self,
+        metadata_path: Path,
+        output_dir: Path,
+        title: str,
+        url_slug: str,
+        weight: int,
+        campc_version: str,
+        grouped_sidebar: bool = False,
+        include_builtin_pseudo_types: bool = True,
+        hide_declaration_nav: bool = False,
+        overview_note: str | None = None,
+    ) -> None:
         self.metadata_path = metadata_path
         self.output_dir = output_dir
         self.title = title
@@ -189,6 +251,9 @@ class ApiReference:
         self.weight = weight
         self.campc_version = campc_version
         self.grouped_sidebar = grouped_sidebar
+        self.include_builtin_pseudo_types = include_builtin_pseudo_types
+        self.hide_declaration_nav = hide_declaration_nav
+        self.overview_note = overview_note
         self.id_to_url: dict[str, str] = {}
         self.name_to_url: dict[str, str] = {}
         self.detail_urls: dict[str, str] = {}
@@ -205,7 +270,7 @@ class ApiReference:
 
         self.written_paths = set()
         self.write_section(self.output_dir, self.title, weight=self.weight)
-        pseudo_types = pseudo_type_declarations(declarations)
+        pseudo_types = pseudo_type_declarations(declarations, include_builtin=self.include_builtin_pseudo_types)
         self.type_names = {d.get("name") for d in [*declarations, *pseudo_types] if d.get("kind") in TYPE_KINDS and d.get("name")}
         self.types_by_name = {d["name"]: d for d in [*declarations, *pseudo_types] if d.get("kind") in TYPE_KINDS and d.get("name")}
 
@@ -218,6 +283,8 @@ class ApiReference:
 
         if self.grouped_sidebar:
             self.write_category_sections(declarations, types, enums, variables, functions)
+        else:
+            self.write_overview(module_display_name(metadata), declarations, types, enums, variables, functions)
 
         for obj in [*types, *enums]:
             url = self.object_url(obj)
@@ -333,8 +400,10 @@ class ApiReference:
             '<div class="api-lede">',
             f"<p>Source-level API metadata for <strong>{esc(module_name)}</strong>.</p>",
             f"<p>{len(declarations)} declarations generated with <code>campc {esc(self.campc_version)}</code>.</p>",
-            "</div>",
         ]
+        if self.overview_note:
+            body.append(f"<p><strong>Development status:</strong> {esc(self.overview_note)}</p>")
+        body.append("</div>")
         for title, items, kind in groups:
             if not items:
                 continue
@@ -387,7 +456,7 @@ class ApiReference:
         body = [
             f"<h1>{esc(name)}</h1>",
             "",
-            f'<p class="api-backlink"><a href="{attr(self.category_prefix(obj))}">Back to {esc(category_name(obj))}</a></p>' if self.grouped_sidebar else "",
+            f'<p class="api-backlink"><a href="{attr(self.category_prefix(obj))}">Back to {esc(category_name(obj))}</a></p>' if self.grouped_sidebar else f'<p class="api-backlink"><a href="{attr(self.prefix())}overview/">Back to {esc(self.title)}</a></p>',
             "" if obj.get("kind") == "pseudoType" else self.declaration_block(declaration_signature(obj, escape=False)),
             self.metadata(obj),
         ]
@@ -400,7 +469,7 @@ class ApiReference:
         if not lifecycle_members and not fields and not instance_members and not static_members:
             body.append('<p class="api-empty">No members.</p>')
         body.append(self.footer())
-        self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar)
+        self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar or self.hide_declaration_nav)
         for member in [*lifecycle_members, *fields, *instance_members, *static_members]:
             self.write_member_detail(obj, member)
         for member in [*collapse_overload_items(instance_members), *collapse_overload_items(static_members)]:
@@ -413,13 +482,13 @@ class ApiReference:
         body = [
             f"<h1>{esc(name)}</h1>",
             "",
-            f'<p class="api-backlink"><a href="{attr(self.category_prefix(obj))}">Back to {esc(category_name(obj))}</a></p>' if self.grouped_sidebar else "",
+            f'<p class="api-backlink"><a href="{attr(self.category_prefix(obj))}">Back to {esc(category_name(obj))}</a></p>' if self.grouped_sidebar else f'<p class="api-backlink"><a href="{attr(self.prefix())}overview/">Back to {esc(self.title)}</a></p>',
             self.declaration_block(declaration_signature(obj, escape=False)),
             self.metadata(obj),
             self.member_section("Values", obj, values, preserve_order=True),
             self.footer(),
         ]
-        self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar)
+        self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar or self.hide_declaration_nav)
 
     def write_functions_page(self, functions: list[dict[str, Any]]) -> None:
         free = [fn for fn in functions if self.extension_function_owner(fn) is None] if self.grouped_sidebar else [fn for fn in functions if not receiver_type(fn)]
@@ -937,16 +1006,27 @@ def read_text(path: Path, fallback: str) -> str:
     return path.read_text(encoding="utf-8") if path.exists() else fallback
 
 
-def pseudo_type_declarations(metadata_declarations: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+def module_display_name(metadata: dict[str, Any]) -> str:
+    module = metadata.get("module")
+    if isinstance(module, dict):
+        return str(module.get("name") or module.get("namespace") or "module")
+    return str(module or "module")
+
+
+def pseudo_type_declarations(metadata_declarations: list[dict[str, Any]] | None = None, include_builtin: bool = True) -> list[dict[str, Any]]:
     declarations: list[dict[str, Any]] = []
+    source_declarations = metadata_declarations if metadata_declarations is not None else []
+    primitive_extension_owners = primitive_extension_owner_names(source_declarations)
+    string_extension_owners = string_extension_owner_names(source_declarations)
     for name, summary in PRIMITIVE_TYPES:
-        declarations.append(pseudo_type_declaration(name, "Primitives", summary))
-    char_extension_owners = char_primitive_extension_owners(metadata_declarations if metadata_declarations is not None else [])
+        if include_builtin or name in primitive_extension_owners:
+            declarations.append(pseudo_type_declaration(name, "Primitives", summary))
     for name, summary in CHAR_PRIMITIVE_TYPES:
-        if name in char_extension_owners:
+        if name in primitive_extension_owners:
             declarations.append(pseudo_type_declaration(name, "Primitives", summary))
     for name, summary in STRING_TYPES:
-        declarations.append(pseudo_type_declaration(name, "Strings", summary))
+        if include_builtin or name in string_extension_owners:
+            declarations.append(pseudo_type_declaration(name, "Strings", summary))
     return declarations
 
 
@@ -960,9 +1040,8 @@ def pseudo_type_declaration(name: str, category: str, summary: str) -> dict[str,
     }
 
 
-def char_primitive_extension_owners(declarations: list[dict[str, Any]]) -> set[str]:
+def primitive_extension_owner_names(declarations: list[dict[str, Any]]) -> set[str]:
     owners: set[str] = set()
-    char_names = {name for name, _ in CHAR_PRIMITIVE_TYPES}
     for declaration in declarations:
         if declaration.get("kind") == "function":
             parsed = parse_receiver_type(receiver_type(declaration))
@@ -971,11 +1050,30 @@ def char_primitive_extension_owners(declarations: list[dict[str, Any]]) -> set[s
             base, is_array, is_const = parsed
             if is_array and is_const and base in CHAR_ARRAY_STRING_OWNERS:
                 continue
-            if base in char_names:
+            if base in PRIMITIVE_TYPE_NAMES:
                 owners.add(base)
         elif declaration.get("kind") == "variable":
             owner = extension_variable_owner_name(declaration)
-            if owner in char_names:
+            if owner in PRIMITIVE_TYPE_NAMES:
+                owners.add(owner)
+    return owners
+
+
+def string_extension_owner_names(declarations: list[dict[str, Any]]) -> set[str]:
+    owners: set[str] = set()
+    for declaration in declarations:
+        if declaration.get("kind") == "function":
+            parsed = parse_receiver_type(receiver_type(declaration))
+            if parsed is None:
+                continue
+            base, is_array, is_const = parsed
+            if base in STRING_TYPE_NAMES:
+                owners.add(base)
+            elif is_array and is_const and base in CHAR_ARRAY_STRING_OWNERS:
+                owners.add(CHAR_ARRAY_STRING_OWNERS[base])
+        elif declaration.get("kind") == "variable":
+            owner = extension_variable_owner_name(declaration)
+            if owner in STRING_TYPE_NAMES:
                 owners.add(owner)
     return owners
 

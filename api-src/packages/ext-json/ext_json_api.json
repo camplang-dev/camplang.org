@@ -15,62 +15,63 @@
       "id": "enum:Ext::Json::JsonType",
       "kind": "enum",
       "name": "JsonType",
+      "symbol": "ExtJsonJsonType",
       "visibility": "public",
       "underlyingType": "uint",
       "values": [
         {
           "id": "enum:Ext::Json::JsonType/value:NONE",
           "name": "NONE",
-          "symbol": "JsonType_NONE",
+          "symbol": "ExtJsonJsonType_NONE",
           "type": "JsonType",
           "value": 0
         },
         {
           "id": "enum:Ext::Json::JsonType/value:NULL",
           "name": "NULL",
-          "symbol": "JsonType_NULL",
+          "symbol": "ExtJsonJsonType_NULL",
           "type": "JsonType",
           "value": 1
         },
         {
           "id": "enum:Ext::Json::JsonType/value:BOOL",
           "name": "BOOL",
-          "symbol": "JsonType_BOOL",
+          "symbol": "ExtJsonJsonType_BOOL",
           "type": "JsonType",
           "value": 2
         },
         {
           "id": "enum:Ext::Json::JsonType/value:NUMBER",
           "name": "NUMBER",
-          "symbol": "JsonType_NUMBER",
+          "symbol": "ExtJsonJsonType_NUMBER",
           "type": "JsonType",
           "value": 3
         },
         {
           "id": "enum:Ext::Json::JsonType/value:STRING",
           "name": "STRING",
-          "symbol": "JsonType_STRING",
+          "symbol": "ExtJsonJsonType_STRING",
           "type": "JsonType",
           "value": 4
         },
         {
           "id": "enum:Ext::Json::JsonType/value:ARRAY",
           "name": "ARRAY",
-          "symbol": "JsonType_ARRAY",
+          "symbol": "ExtJsonJsonType_ARRAY",
           "type": "JsonType",
           "value": 5
         },
         {
           "id": "enum:Ext::Json::JsonType/value:OBJECT",
           "name": "OBJECT",
-          "symbol": "JsonType_OBJECT",
+          "symbol": "ExtJsonJsonType_OBJECT",
           "type": "JsonType",
           "value": 6
         },
         {
           "id": "enum:Ext::Json::JsonType/value:ERROR",
           "name": "ERROR",
-          "symbol": "JsonType_ERROR",
+          "symbol": "ExtJsonJsonType_ERROR",
           "type": "JsonType",
           "value": 7
         }
@@ -86,55 +87,56 @@
       "id": "enum:Ext::Json::JsonFormat",
       "kind": "enum",
       "name": "JsonFormat",
+      "symbol": "ExtJsonJsonFormat",
       "visibility": "public",
       "underlyingType": "byte",
       "values": [
         {
           "id": "enum:Ext::Json::JsonFormat/value:COMPACT",
           "name": "COMPACT",
-          "symbol": "JsonFormat_COMPACT",
+          "symbol": "ExtJsonJsonFormat_COMPACT",
           "type": "JsonFormat",
           "value": 0
         },
         {
           "id": "enum:Ext::Json::JsonFormat/value:SPACES_1",
           "name": "SPACES_1",
-          "symbol": "JsonFormat_SPACES_1",
+          "symbol": "ExtJsonJsonFormat_SPACES_1",
           "type": "JsonFormat",
           "value": 1
         },
         {
           "id": "enum:Ext::Json::JsonFormat/value:SPACES_2",
           "name": "SPACES_2",
-          "symbol": "JsonFormat_SPACES_2",
+          "symbol": "ExtJsonJsonFormat_SPACES_2",
           "type": "JsonFormat",
           "value": 2
         },
         {
           "id": "enum:Ext::Json::JsonFormat/value:SPACES_3",
           "name": "SPACES_3",
-          "symbol": "JsonFormat_SPACES_3",
+          "symbol": "ExtJsonJsonFormat_SPACES_3",
           "type": "JsonFormat",
           "value": 3
         },
         {
           "id": "enum:Ext::Json::JsonFormat/value:SPACES_4",
           "name": "SPACES_4",
-          "symbol": "JsonFormat_SPACES_4",
+          "symbol": "ExtJsonJsonFormat_SPACES_4",
           "type": "JsonFormat",
           "value": 4
         },
         {
           "id": "enum:Ext::Json::JsonFormat/value:TABS",
           "name": "TABS",
-          "symbol": "JsonFormat_TABS",
+          "symbol": "ExtJsonJsonFormat_TABS",
           "type": "JsonFormat",
           "value": 16
         },
         {
           "id": "enum:Ext::Json::JsonFormat/value:CRLF",
           "name": "CRLF",
-          "symbol": "JsonFormat_CRLF",
+          "symbol": "ExtJsonJsonFormat_CRLF",
           "type": "JsonFormat",
           "value": 32
         }
@@ -150,6 +152,7 @@
       "id": "struct:Ext::Json::JsonView",
       "kind": "struct",
       "name": "JsonView",
+      "symbol": "ExtJsonJsonView",
       "visibility": "public",
       "fields": [
         {
@@ -162,6 +165,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:span",
           "name": "span",
+          "symbol": "ExtJsonJsonView_span",
           "visibility": "public",
           "returnType": "const char[]",
           "metadata": [
@@ -174,6 +178,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:getType",
           "name": "getType",
+          "symbol": "ExtJsonJsonView_getType",
           "visibility": "public",
           "returnType": "JsonType",
           "propertyName": "Type",
@@ -187,6 +192,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:isNull",
           "name": "isNull",
+          "symbol": "ExtJsonJsonView_isNull",
           "visibility": "public",
           "returnType": "bool",
           "metadata": [
@@ -199,6 +205,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:isTrue",
           "name": "isTrue",
+          "symbol": "ExtJsonJsonView_isTrue",
           "visibility": "public",
           "returnType": "bool",
           "metadata": [
@@ -211,6 +218,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:isFalse",
           "name": "isFalse",
+          "symbol": "ExtJsonJsonView_isFalse",
           "visibility": "public",
           "returnType": "bool",
           "metadata": [
@@ -223,6 +231,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:asDouble",
           "name": "asDouble",
+          "symbol": "ExtJsonJsonView_asDouble",
           "visibility": "public",
           "returnType": "double",
           "metadata": [
@@ -235,6 +244,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:asBool",
           "name": "asBool",
+          "symbol": "ExtJsonJsonView_asBool",
           "visibility": "public",
           "returnType": "bool",
           "metadata": [
@@ -247,6 +257,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:asInt",
           "name": "asInt",
+          "symbol": "ExtJsonJsonView_asInt",
           "visibility": "public",
           "returnType": "int",
           "metadata": [
@@ -259,6 +270,7 @@
         {
           "id": "struct:Ext::Json::JsonView/function:asStringEscaped",
           "name": "asStringEscaped",
+          "symbol": "ExtJsonJsonView_asStringEscaped",
           "visibility": "public",
           "returnType": "const char[]",
           "metadata": [
@@ -280,7 +292,7 @@
       "id": "function:Ext::Json::elements",
       "kind": "function",
       "name": "elements",
-      "symbol": "JsonView_elements",
+      "symbol": "ExtJsonJsonView_elements",
       "visibility": "public",
       "iterator": "struct",
       "returnType": "iter JsonView",
@@ -302,7 +314,7 @@
       "id": "function:Ext::Json::properties",
       "kind": "function",
       "name": "properties",
-      "symbol": "JsonView_properties",
+      "symbol": "ExtJsonJsonView_properties",
       "visibility": "public",
       "iterator": "struct",
       "returnType": "iter JsonProperty",
@@ -324,6 +336,7 @@
       "id": "struct:Ext::Json::JsonProperty",
       "kind": "struct",
       "name": "JsonProperty",
+      "symbol": "ExtJsonJsonProperty",
       "visibility": "public",
       "fields": [
         {
@@ -336,6 +349,7 @@
         {
           "id": "struct:Ext::Json::JsonProperty/function:span",
           "name": "span",
+          "symbol": "ExtJsonJsonProperty_span",
           "visibility": "public",
           "returnType": "const char[]",
           "metadata": [
@@ -348,6 +362,7 @@
         {
           "id": "struct:Ext::Json::JsonProperty/function:getNameEscaped",
           "name": "getNameEscaped",
+          "symbol": "ExtJsonJsonProperty_getNameEscaped",
           "visibility": "public",
           "returnType": "const char[]",
           "propertyName": "NameEscaped",
@@ -361,6 +376,7 @@
         {
           "id": "struct:Ext::Json::JsonProperty/function:getValue",
           "name": "getValue",
+          "symbol": "ExtJsonJsonProperty_getValue",
           "visibility": "public",
           "returnType": "JsonView",
           "propertyName": "Value",
@@ -383,6 +399,7 @@
       "id": "struct:Ext::Json::JsonWriter",
       "kind": "struct",
       "name": "JsonWriter",
+      "symbol": "ExtJsonJsonWriter",
       "visibility": "public",
       "modifier": "fixed",
       "fields": [
@@ -412,6 +429,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:JsonWriter",
           "name": "JsonWriter",
+          "symbol": "ExtJsonJsonWriter_JsonWriter",
           "visibility": "public",
           "modifier": "constructor",
           "returnType": "JsonWriter",
@@ -438,6 +456,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeNull",
           "name": "writeNull",
+          "symbol": "ExtJsonJsonWriter_writeNull",
           "visibility": "public",
           "returnType": "void",
           "metadata": [
@@ -450,6 +469,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeInt",
           "name": "write",
+          "symbol": "ExtJsonJsonWriter_writeInt",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeInt",
@@ -472,6 +492,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeBool",
           "name": "write",
+          "symbol": "ExtJsonJsonWriter_writeBool",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeBool",
@@ -494,6 +515,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeDouble",
           "name": "write",
+          "symbol": "ExtJsonJsonWriter_writeDouble",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeDouble",
@@ -516,6 +538,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeCharArray",
           "name": "write",
+          "symbol": "ExtJsonJsonWriter_writeCharArray",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeCharArray",
@@ -538,6 +561,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeString",
           "name": "write",
+          "symbol": "ExtJsonJsonWriter_writeString",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeString",
@@ -560,6 +584,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeEscaped",
           "name": "writeEscaped",
+          "symbol": "ExtJsonJsonWriter_writeEscaped",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -579,6 +604,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeArrayStart",
           "name": "writeArrayStart",
+          "symbol": "ExtJsonJsonWriter_writeArrayStart",
           "visibility": "public",
           "returnType": "void",
           "metadata": [
@@ -591,6 +617,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeArrayEnd",
           "name": "writeArrayEnd",
+          "symbol": "ExtJsonJsonWriter_writeArrayEnd",
           "visibility": "public",
           "returnType": "void",
           "metadata": [
@@ -603,6 +630,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeObjectStart",
           "name": "writeObjectStart",
+          "symbol": "ExtJsonJsonWriter_writeObjectStart",
           "visibility": "public",
           "returnType": "void",
           "metadata": [
@@ -615,6 +643,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeObjectEnd",
           "name": "writeObjectEnd",
+          "symbol": "ExtJsonJsonWriter_writeObjectEnd",
           "visibility": "public",
           "returnType": "void",
           "metadata": [
@@ -627,6 +656,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeName",
           "name": "writeName",
+          "symbol": "ExtJsonJsonWriter_writeName",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -646,6 +676,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeNameEscaped",
           "name": "writeNameEscaped",
+          "symbol": "ExtJsonJsonWriter_writeNameEscaped",
           "visibility": "public",
           "returnType": "void",
           "parameters": [
@@ -665,11 +696,13 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:writePropertySeparator",
           "name": "writePropertySeparator",
+          "symbol": "ExtJsonJsonWriter_writePropertySeparator",
           "returnType": "void"
         },
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeJsonView",
           "name": "write",
+          "symbol": "ExtJsonJsonWriter_writeJsonView",
           "visibility": "public",
           "invokerName": "write",
           "callableName": "writeJsonView",
@@ -692,16 +725,19 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:beforeValue",
           "name": "beforeValue",
+          "symbol": "ExtJsonJsonWriter_beforeValue",
           "returnType": "void"
         },
         {
           "id": "struct:Ext::Json::JsonWriter/function:afterValue",
           "name": "afterValue",
+          "symbol": "ExtJsonJsonWriter_afterValue",
           "returnType": "void"
         },
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeRaw",
           "name": "writeRaw",
+          "symbol": "ExtJsonJsonWriter_writeRaw",
           "returnType": "void",
           "parameters": [
             {
@@ -714,6 +750,7 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:push",
           "name": "push",
+          "symbol": "ExtJsonJsonWriter_push",
           "returnType": "void",
           "parameters": [
             {
@@ -726,16 +763,19 @@
         {
           "id": "struct:Ext::Json::JsonWriter/function:isCompact",
           "name": "isCompact",
+          "symbol": "ExtJsonJsonWriter_isCompact",
           "returnType": "bool"
         },
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeNewLine",
           "name": "writeNewLine",
+          "symbol": "ExtJsonJsonWriter_writeNewLine",
           "returnType": "void"
         },
         {
           "id": "struct:Ext::Json::JsonWriter/function:writeIndent",
           "name": "writeIndent",
+          "symbol": "ExtJsonJsonWriter_writeIndent",
           "returnType": "void",
           "parameters": [
             {
@@ -754,49 +794,22 @@
       ]
     },
     {
-      "id": "function:Ext::Json::unescapedCopy",
+      "id": "function:Ext::Json::unescapeJsonString",
       "kind": "function",
-      "name": "unescapedCopy",
-      "symbol": "CharArray_unescapedCopy",
-      "visibility": "public",
-      "returnType": "escaped string",
-      "parameters": [
-        {
-          "id": "function:Ext::Json::unescapedCopy/parameter:this",
-          "name": "this",
-          "type": "const char[]"
-        },
-        {
-          "id": "function:Ext::Json::unescapedCopy/parameter:allocator",
-          "name": "allocator",
-          "modifier": "within",
-          "type": "Allocator*"
-        }
-      ],
-      "metadata": [
-        {
-          "name": "summary",
-          "content": "Copies the unescaped form of this JSON string body."
-        }
-      ]
-    },
-    {
-      "id": "function:Ext::Json::unescapedFormat",
-      "kind": "function",
-      "name": "unescapedFormat",
-      "symbol": "CharArray_unescapedFormat",
+      "name": "unescapeJsonString",
+      "symbol": "ExtJsonCharArray_unescapeJsonString",
       "visibility": "public",
       "returnType": "nuint",
-      "ascription": "CharFormatter",
       "parameters": [
         {
-          "id": "function:Ext::Json::unescapedFormat/parameter:this",
+          "id": "function:Ext::Json::unescapeJsonString/parameter:this",
           "name": "this",
           "type": "const char[]"
         },
         {
-          "id": "function:Ext::Json::unescapedFormat/parameter:buffer",
+          "id": "function:Ext::Json::unescapeJsonString/parameter:buffer",
           "name": "buffer",
+          "modifier": "prep",
           "type": "char[]",
           "defaultValue": "default"
         }
@@ -804,7 +817,7 @@
       "metadata": [
         {
           "name": "summary",
-          "content": "Formats the unescaped form of this JSON string body."
+          "content": "Decodes JSON escape sequences in a JSON string body."
         }
       ]
     }

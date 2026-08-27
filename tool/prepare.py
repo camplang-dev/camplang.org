@@ -365,7 +365,7 @@ standard library, or package surface in front of you.
     </a>
     <a href="/docs/packages/overview/">
         <span>Package APIs</span>
-        <small>Package API references will appear here when they are available.</small>
+        <small>Browse generated API references for packages hosted in pkg.camplang.org.</small>
     </a>
 </div>
 """

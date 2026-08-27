@@ -1,0 +1,4581 @@
+{
+  "format": "camp.metadata",
+  "version": 1,
+  "module": {
+    "name": "Ext::AnsiTerm",
+    "namespace": "Ext::AnsiTerm"
+  },
+  "view": {
+    "visibility": "public",
+    "level": "source",
+    "generated": false
+  },
+  "declarations": [
+    {
+      "id": "staticClass:Ext::AnsiTerm::AnsiStrings",
+      "kind": "staticClass",
+      "name": "AnsiStrings",
+      "symbol": "ExtAnsiTermAnsiStrings",
+      "fields": [
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:RESET_COLOR",
+          "name": "RESET_COLOR",
+          "symbol": "ExtAnsiTermAnsiStrings_RESET_COLOR",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[39;49;59m",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:RESET_ALL_ATTRIBUTES",
+          "name": "RESET_ALL_ATTRIBUTES",
+          "symbol": "ExtAnsiTermAnsiStrings_RESET_ALL_ATTRIBUTES",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[0m",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:RESET_STYLE",
+          "name": "RESET_STYLE",
+          "symbol": "ExtAnsiTermAnsiStrings_RESET_STYLE",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[0m",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:ENTER_ALTERNATE_SCREEN",
+          "name": "ENTER_ALTERNATE_SCREEN",
+          "symbol": "ExtAnsiTermAnsiStrings_ENTER_ALTERNATE_SCREEN",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?1049h",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:LEAVE_ALTERNATE_SCREEN",
+          "name": "LEAVE_ALTERNATE_SCREEN",
+          "symbol": "ExtAnsiTermAnsiStrings_LEAVE_ALTERNATE_SCREEN",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?1049l",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:HIDE_CURSOR",
+          "name": "HIDE_CURSOR",
+          "symbol": "ExtAnsiTermAnsiStrings_HIDE_CURSOR",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?25l",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:SHOW_CURSOR",
+          "name": "SHOW_CURSOR",
+          "symbol": "ExtAnsiTermAnsiStrings_SHOW_CURSOR",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?25h",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:SAVE_CURSOR_POSITION",
+          "name": "SAVE_CURSOR_POSITION",
+          "symbol": "ExtAnsiTermAnsiStrings_SAVE_CURSOR_POSITION",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B7",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:RESTORE_CURSOR_POSITION",
+          "name": "RESTORE_CURSOR_POSITION",
+          "symbol": "ExtAnsiTermAnsiStrings_RESTORE_CURSOR_POSITION",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B8",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:ENABLE_LINE_WRAP",
+          "name": "ENABLE_LINE_WRAP",
+          "symbol": "ExtAnsiTermAnsiStrings_ENABLE_LINE_WRAP",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?7h",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:DISABLE_LINE_WRAP",
+          "name": "DISABLE_LINE_WRAP",
+          "symbol": "ExtAnsiTermAnsiStrings_DISABLE_LINE_WRAP",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?7l",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:BEGIN_SYNCHRONIZED_UPDATE",
+          "name": "BEGIN_SYNCHRONIZED_UPDATE",
+          "symbol": "ExtAnsiTermAnsiStrings_BEGIN_SYNCHRONIZED_UPDATE",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?2026h",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:END_SYNCHRONIZED_UPDATE",
+          "name": "END_SYNCHRONIZED_UPDATE",
+          "symbol": "ExtAnsiTermAnsiStrings_END_SYNCHRONIZED_UPDATE",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[?2026l",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:REQUEST_CURSOR_POSITION",
+          "name": "REQUEST_CURSOR_POSITION",
+          "symbol": "ExtAnsiTermAnsiStrings_REQUEST_CURSOR_POSITION",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[6n",
+          "static": true
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/field:RESET_SCROLL_REGION",
+          "name": "RESET_SCROLL_REGION",
+          "symbol": "ExtAnsiTermAnsiStrings_RESET_SCROLL_REGION",
+          "type": "string",
+          "inline": true,
+          "value": "\u001B[r",
+          "static": true
+        }
+      ],
+      "functions": [
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundColor",
+          "name": "foreground",
+          "symbol": "ExtAnsiTermAnsiStrings_foregroundColor",
+          "visibility": "public",
+          "invokerName": "foreground",
+          "callableName": "foregroundColor",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundColor/parameter:color",
+              "name": "color",
+              "overload": true,
+              "type": "Color"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundColor/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR foreground color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundRgb",
+          "name": "foregroundRgb",
+          "symbol": "ExtAnsiTermAnsiStrings_foregroundRgb",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundRgb/parameter:color",
+              "name": "color",
+              "type": "RgbColor"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundRgb/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR foreground RGB color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundIndex",
+          "name": "foregroundIndex",
+          "symbol": "ExtAnsiTermAnsiStrings_foregroundIndex",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundIndex/parameter:index",
+              "name": "index",
+              "type": "byte"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:foregroundIndex/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR foreground indexed color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundColor",
+          "name": "background",
+          "symbol": "ExtAnsiTermAnsiStrings_backgroundColor",
+          "visibility": "public",
+          "invokerName": "background",
+          "callableName": "backgroundColor",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundColor/parameter:color",
+              "name": "color",
+              "overload": true,
+              "type": "Color"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundColor/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR background color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundRgb",
+          "name": "backgroundRgb",
+          "symbol": "ExtAnsiTermAnsiStrings_backgroundRgb",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundRgb/parameter:color",
+              "name": "color",
+              "type": "RgbColor"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundRgb/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR background RGB color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundIndex",
+          "name": "backgroundIndex",
+          "symbol": "ExtAnsiTermAnsiStrings_backgroundIndex",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundIndex/parameter:index",
+              "name": "index",
+              "type": "byte"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:backgroundIndex/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR background indexed color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineColor",
+          "name": "underline",
+          "symbol": "ExtAnsiTermAnsiStrings_underlineColor",
+          "visibility": "public",
+          "invokerName": "underline",
+          "callableName": "underlineColor",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineColor/parameter:color",
+              "name": "color",
+              "overload": true,
+              "type": "Color"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineColor/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR underline color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineRgb",
+          "name": "underlineRgb",
+          "symbol": "ExtAnsiTermAnsiStrings_underlineRgb",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineRgb/parameter:color",
+              "name": "color",
+              "type": "RgbColor"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineRgb/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR underline RGB color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineIndex",
+          "name": "underlineIndex",
+          "symbol": "ExtAnsiTermAnsiStrings_underlineIndex",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineIndex/parameter:index",
+              "name": "index",
+              "type": "byte"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlineIndex/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds an SGR underline indexed color command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:bold",
+          "name": "bold",
+          "symbol": "ExtAnsiTermAnsiStrings_bold",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:bold/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:bold/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:dim",
+          "name": "dim",
+          "symbol": "ExtAnsiTermAnsiStrings_dim",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:dim/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:dim/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:italic",
+          "name": "italic",
+          "symbol": "ExtAnsiTermAnsiStrings_italic",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:italic/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:italic/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlined",
+          "name": "underlined",
+          "symbol": "ExtAnsiTermAnsiStrings_underlined",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlined/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underlined/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:doubleUnderlined",
+          "name": "doubleUnderlined",
+          "symbol": "ExtAnsiTermAnsiStrings_doubleUnderlined",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:doubleUnderlined/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:doubleUnderlined/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:undercurled",
+          "name": "undercurled",
+          "symbol": "ExtAnsiTermAnsiStrings_undercurled",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:undercurled/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:undercurled/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underdotted",
+          "name": "underdotted",
+          "symbol": "ExtAnsiTermAnsiStrings_underdotted",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underdotted/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underdotted/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underdashed",
+          "name": "underdashed",
+          "symbol": "ExtAnsiTermAnsiStrings_underdashed",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underdashed/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:underdashed/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:slowBlink",
+          "name": "slowBlink",
+          "symbol": "ExtAnsiTermAnsiStrings_slowBlink",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:slowBlink/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:slowBlink/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:rapidBlink",
+          "name": "rapidBlink",
+          "symbol": "ExtAnsiTermAnsiStrings_rapidBlink",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:rapidBlink/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:rapidBlink/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:reverse",
+          "name": "reverse",
+          "symbol": "ExtAnsiTermAnsiStrings_reverse",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:reverse/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:reverse/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:hidden",
+          "name": "hidden",
+          "symbol": "ExtAnsiTermAnsiStrings_hidden",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:hidden/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:hidden/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:crossedOut",
+          "name": "crossedOut",
+          "symbol": "ExtAnsiTermAnsiStrings_crossedOut",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:crossedOut/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:crossedOut/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:framed",
+          "name": "framed",
+          "symbol": "ExtAnsiTermAnsiStrings_framed",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:framed/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:framed/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:encircled",
+          "name": "encircled",
+          "symbol": "ExtAnsiTermAnsiStrings_encircled",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:encircled/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:encircled/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:overlined",
+          "name": "overlined",
+          "symbol": "ExtAnsiTermAnsiStrings_overlined",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:overlined/parameter:value",
+              "name": "value",
+              "type": "bool",
+              "defaultValue": "true"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:overlined/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveTo",
+          "name": "moveTo",
+          "symbol": "ExtAnsiTermAnsiStrings_moveTo",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveTo/parameter:column",
+              "name": "column",
+              "type": "ushort"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveTo/parameter:row",
+              "name": "row",
+              "type": "ushort"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveTo/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Builds a cursor-position command."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveUp",
+          "name": "moveUp",
+          "symbol": "ExtAnsiTermAnsiStrings_moveUp",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveUp/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveUp/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveDown",
+          "name": "moveDown",
+          "symbol": "ExtAnsiTermAnsiStrings_moveDown",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveDown/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveDown/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveRight",
+          "name": "moveRight",
+          "symbol": "ExtAnsiTermAnsiStrings_moveRight",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveRight/parameter:columns",
+              "name": "columns",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveRight/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveLeft",
+          "name": "moveLeft",
+          "symbol": "ExtAnsiTermAnsiStrings_moveLeft",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveLeft/parameter:columns",
+              "name": "columns",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveLeft/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToNextLine",
+          "name": "moveToNextLine",
+          "symbol": "ExtAnsiTermAnsiStrings_moveToNextLine",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToNextLine/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToNextLine/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToPreviousLine",
+          "name": "moveToPreviousLine",
+          "symbol": "ExtAnsiTermAnsiStrings_moveToPreviousLine",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToPreviousLine/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToPreviousLine/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToColumn",
+          "name": "moveToColumn",
+          "symbol": "ExtAnsiTermAnsiStrings_moveToColumn",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToColumn/parameter:column",
+              "name": "column",
+              "type": "ushort"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToColumn/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToRow",
+          "name": "moveToRow",
+          "symbol": "ExtAnsiTermAnsiStrings_moveToRow",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToRow/parameter:row",
+              "name": "row",
+              "type": "ushort"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:moveToRow/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:scrollUp",
+          "name": "scrollUp",
+          "symbol": "ExtAnsiTermAnsiStrings_scrollUp",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:scrollUp/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:scrollUp/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:scrollDown",
+          "name": "scrollDown",
+          "symbol": "ExtAnsiTermAnsiStrings_scrollDown",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:scrollDown/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:scrollDown/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setScrollRegion",
+          "name": "setScrollRegion",
+          "symbol": "ExtAnsiTermAnsiStrings_setScrollRegion",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setScrollRegion/parameter:top",
+              "name": "top",
+              "type": "ushort"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setScrollRegion/parameter:bottom",
+              "name": "bottom",
+              "type": "ushort"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setScrollRegion/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:insertLines",
+          "name": "insertLines",
+          "symbol": "ExtAnsiTermAnsiStrings_insertLines",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:insertLines/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:insertLines/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:deleteLines",
+          "name": "deleteLines",
+          "symbol": "ExtAnsiTermAnsiStrings_deleteLines",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:deleteLines/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:deleteLines/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setCursorStyle",
+          "name": "setCursorStyle",
+          "symbol": "ExtAnsiTermAnsiStrings_setCursorStyle",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setCursorStyle/parameter:style",
+              "name": "style",
+              "type": "CursorStyle"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setCursorStyle/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:cursorStyle",
+          "name": "cursorStyle",
+          "symbol": "ExtAnsiTermAnsiStrings_cursorStyle",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:cursorStyle/parameter:style",
+              "name": "style",
+              "type": "CursorStyle"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:cursorStyle/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:clear",
+          "name": "clear",
+          "symbol": "ExtAnsiTermAnsiStrings_clear",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:clear/parameter:clearType",
+              "name": "clearType",
+              "type": "ClearType",
+              "defaultValue": "ALL"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:clear/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:eraseLine",
+          "name": "eraseLine",
+          "symbol": "ExtAnsiTermAnsiStrings_eraseLine",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:eraseLine/parameter:clearType",
+              "name": "clearType",
+              "type": "ClearType",
+              "defaultValue": "CURRENT_LINE"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:eraseLine/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setTitle",
+          "name": "setTitle",
+          "symbol": "ExtAnsiTermAnsiStrings_setTitle",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setTitle/parameter:title",
+              "name": "title",
+              "type": "const char[]"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:setTitle/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:pushKeyboardEnhancementFlags",
+          "name": "pushKeyboardEnhancementFlags",
+          "symbol": "ExtAnsiTermAnsiStrings_pushKeyboardEnhancementFlags",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:pushKeyboardEnhancementFlags/parameter:flags",
+              "name": "flags",
+              "type": "KeyboardEnhancementFlags"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:pushKeyboardEnhancementFlags/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:copyToClipboard",
+          "name": "copyToClipboard",
+          "symbol": "ExtAnsiTermAnsiStrings_copyToClipboard",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:copyToClipboard/parameter:text",
+              "name": "text",
+              "type": "const char[]"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:copyToClipboard/parameter:selection",
+              "name": "selection",
+              "type": "ClipboardSelection",
+              "defaultValue": "CLIPBOARD"
+            },
+            {
+              "id": "staticClass:Ext::AnsiTerm::AnsiStrings/function:copyToClipboard/parameter:buffer",
+              "name": "buffer",
+              "modifier": "prep",
+              "type": "char[]",
+              "defaultValue": "default"
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "ANSI escape sequence constants and prepared builders."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::Color",
+      "kind": "enum",
+      "name": "Color",
+      "symbol": "ExtAnsiTermColor",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:BLACK",
+          "name": "BLACK",
+          "symbol": "ExtAnsiTermColor_BLACK",
+          "type": "Color",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:DARK_GREY",
+          "name": "DARK_GREY",
+          "symbol": "ExtAnsiTermColor_DARK_GREY",
+          "type": "Color",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:RED",
+          "name": "RED",
+          "symbol": "ExtAnsiTermColor_RED",
+          "type": "Color",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:DARK_RED",
+          "name": "DARK_RED",
+          "symbol": "ExtAnsiTermColor_DARK_RED",
+          "type": "Color",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:GREEN",
+          "name": "GREEN",
+          "symbol": "ExtAnsiTermColor_GREEN",
+          "type": "Color",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:DARK_GREEN",
+          "name": "DARK_GREEN",
+          "symbol": "ExtAnsiTermColor_DARK_GREEN",
+          "type": "Color",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:YELLOW",
+          "name": "YELLOW",
+          "symbol": "ExtAnsiTermColor_YELLOW",
+          "type": "Color",
+          "value": 6
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:DARK_YELLOW",
+          "name": "DARK_YELLOW",
+          "symbol": "ExtAnsiTermColor_DARK_YELLOW",
+          "type": "Color",
+          "value": 7
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:BLUE",
+          "name": "BLUE",
+          "symbol": "ExtAnsiTermColor_BLUE",
+          "type": "Color",
+          "value": 8
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:DARK_BLUE",
+          "name": "DARK_BLUE",
+          "symbol": "ExtAnsiTermColor_DARK_BLUE",
+          "type": "Color",
+          "value": 9
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:MAGENTA",
+          "name": "MAGENTA",
+          "symbol": "ExtAnsiTermColor_MAGENTA",
+          "type": "Color",
+          "value": 10
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:DARK_MAGENTA",
+          "name": "DARK_MAGENTA",
+          "symbol": "ExtAnsiTermColor_DARK_MAGENTA",
+          "type": "Color",
+          "value": 11
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:CYAN",
+          "name": "CYAN",
+          "symbol": "ExtAnsiTermColor_CYAN",
+          "type": "Color",
+          "value": 12
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:DARK_CYAN",
+          "name": "DARK_CYAN",
+          "symbol": "ExtAnsiTermColor_DARK_CYAN",
+          "type": "Color",
+          "value": 13
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:WHITE",
+          "name": "WHITE",
+          "symbol": "ExtAnsiTermColor_WHITE",
+          "type": "Color",
+          "value": 14
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::Color/value:GREY",
+          "name": "GREY",
+          "symbol": "ExtAnsiTermColor_GREY",
+          "type": "Color",
+          "value": 15
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Standard 16-color terminal palette."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::RgbColor",
+      "kind": "struct",
+      "name": "RgbColor",
+      "symbol": "ExtAnsiTermRgbColor",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::RgbColor/field:red",
+          "name": "red",
+          "type": "byte"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::RgbColor/field:green",
+          "name": "green",
+          "type": "byte"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::RgbColor/field:blue",
+          "name": "blue",
+          "type": "byte"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "RGB terminal color."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::TerminalError",
+      "kind": "enum",
+      "name": "TerminalError",
+      "symbol": "ExtAnsiTermTerminalError",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::TerminalError/value:UNKNOWN",
+          "name": "UNKNOWN",
+          "symbol": "ExtAnsiTermTerminalError_UNKNOWN",
+          "type": "TerminalError",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::TerminalError/value:UNSUPPORTED",
+          "name": "UNSUPPORTED",
+          "symbol": "ExtAnsiTermTerminalError_UNSUPPORTED",
+          "type": "TerminalError",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::TerminalError/value:NOT_TTY",
+          "name": "NOT_TTY",
+          "symbol": "ExtAnsiTermTerminalError_NOT_TTY",
+          "type": "TerminalError",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::TerminalError/value:IO_ERROR",
+          "name": "IO_ERROR",
+          "symbol": "ExtAnsiTermTerminalError_IO_ERROR",
+          "type": "TerminalError",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::TerminalError/value:PARSE_ERROR",
+          "name": "PARSE_ERROR",
+          "symbol": "ExtAnsiTermTerminalError_PARSE_ERROR",
+          "type": "TerminalError",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::TerminalError/value:INTERRUPTED",
+          "name": "INTERRUPTED",
+          "symbol": "ExtAnsiTermTerminalError_INTERRUPTED",
+          "type": "TerminalError",
+          "value": 5
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Identifies the general kind of terminal failure."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::Position",
+      "kind": "struct",
+      "name": "Position",
+      "symbol": "ExtAnsiTermPosition",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::Position/field:column",
+          "name": "column",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Position/field:row",
+          "name": "row",
+          "type": "ushort"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "A zero-based terminal cursor position."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::CursorStyle",
+      "kind": "enum",
+      "name": "CursorStyle",
+      "symbol": "ExtAnsiTermCursorStyle",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::CursorStyle/value:DEFAULT_USER_SHAPE",
+          "name": "DEFAULT_USER_SHAPE",
+          "symbol": "ExtAnsiTermCursorStyle_DEFAULT_USER_SHAPE",
+          "type": "CursorStyle",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::CursorStyle/value:BLINKING_BLOCK",
+          "name": "BLINKING_BLOCK",
+          "symbol": "ExtAnsiTermCursorStyle_BLINKING_BLOCK",
+          "type": "CursorStyle",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::CursorStyle/value:STEADY_BLOCK",
+          "name": "STEADY_BLOCK",
+          "symbol": "ExtAnsiTermCursorStyle_STEADY_BLOCK",
+          "type": "CursorStyle",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::CursorStyle/value:BLINKING_UNDERSCORE",
+          "name": "BLINKING_UNDERSCORE",
+          "symbol": "ExtAnsiTermCursorStyle_BLINKING_UNDERSCORE",
+          "type": "CursorStyle",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::CursorStyle/value:STEADY_UNDERSCORE",
+          "name": "STEADY_UNDERSCORE",
+          "symbol": "ExtAnsiTermCursorStyle_STEADY_UNDERSCORE",
+          "type": "CursorStyle",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::CursorStyle/value:BLINKING_BAR",
+          "name": "BLINKING_BAR",
+          "symbol": "ExtAnsiTermCursorStyle_BLINKING_BAR",
+          "type": "CursorStyle",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::CursorStyle/value:STEADY_BAR",
+          "name": "STEADY_BAR",
+          "symbol": "ExtAnsiTermCursorStyle_STEADY_BAR",
+          "type": "CursorStyle",
+          "value": 6
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Terminal cursor style."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::EventKind",
+      "kind": "enum",
+      "name": "EventKind",
+      "symbol": "ExtAnsiTermEventKind",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:NONE",
+          "name": "NONE",
+          "symbol": "ExtAnsiTermEventKind_NONE",
+          "type": "EventKind",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:FOCUS_GAINED_EVENT",
+          "name": "FOCUS_GAINED_EVENT",
+          "symbol": "ExtAnsiTermEventKind_FOCUS_GAINED_EVENT",
+          "type": "EventKind",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:FOCUS_LOST_EVENT",
+          "name": "FOCUS_LOST_EVENT",
+          "symbol": "ExtAnsiTermEventKind_FOCUS_LOST_EVENT",
+          "type": "EventKind",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:KEY_EVENT",
+          "name": "KEY_EVENT",
+          "symbol": "ExtAnsiTermEventKind_KEY_EVENT",
+          "type": "EventKind",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:MOUSE_EVENT",
+          "name": "MOUSE_EVENT",
+          "symbol": "ExtAnsiTermEventKind_MOUSE_EVENT",
+          "type": "EventKind",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:PASTE_EVENT",
+          "name": "PASTE_EVENT",
+          "symbol": "ExtAnsiTermEventKind_PASTE_EVENT",
+          "type": "EventKind",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:RESIZE_EVENT",
+          "name": "RESIZE_EVENT",
+          "symbol": "ExtAnsiTermEventKind_RESIZE_EVENT",
+          "type": "EventKind",
+          "value": 6
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:CURSOR_POSITION_EVENT",
+          "name": "CURSOR_POSITION_EVENT",
+          "symbol": "ExtAnsiTermEventKind_CURSOR_POSITION_EVENT",
+          "type": "EventKind",
+          "value": 7
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:KEYBOARD_ENHANCEMENT_EVENT",
+          "name": "KEYBOARD_ENHANCEMENT_EVENT",
+          "symbol": "ExtAnsiTermEventKind_KEYBOARD_ENHANCEMENT_EVENT",
+          "type": "EventKind",
+          "value": 8
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::EventKind/value:DEVICE_ATTRIBUTES_EVENT",
+          "name": "DEVICE_ATTRIBUTES_EVENT",
+          "symbol": "ExtAnsiTermEventKind_DEVICE_ATTRIBUTES_EVENT",
+          "type": "EventKind",
+          "value": 9
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Identifies the kind of terminal event."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::KeyEventKind",
+      "kind": "enum",
+      "name": "KeyEventKind",
+      "symbol": "ExtAnsiTermKeyEventKind",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::KeyEventKind/value:PRESS",
+          "name": "PRESS",
+          "symbol": "ExtAnsiTermKeyEventKind_PRESS",
+          "type": "KeyEventKind",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyEventKind/value:REPEAT",
+          "name": "REPEAT",
+          "symbol": "ExtAnsiTermKeyEventKind_REPEAT",
+          "type": "KeyEventKind",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyEventKind/value:RELEASE",
+          "name": "RELEASE",
+          "symbol": "ExtAnsiTermKeyEventKind_RELEASE",
+          "type": "KeyEventKind",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::KeyCode",
+      "kind": "enum",
+      "name": "KeyCode",
+      "symbol": "ExtAnsiTermKeyCode",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:UNKNOWN",
+          "name": "UNKNOWN",
+          "symbol": "ExtAnsiTermKeyCode_UNKNOWN",
+          "type": "KeyCode",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:BACKSPACE",
+          "name": "BACKSPACE",
+          "symbol": "ExtAnsiTermKeyCode_BACKSPACE",
+          "type": "KeyCode",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:ENTER",
+          "name": "ENTER",
+          "symbol": "ExtAnsiTermKeyCode_ENTER",
+          "type": "KeyCode",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:LEFT",
+          "name": "LEFT",
+          "symbol": "ExtAnsiTermKeyCode_LEFT",
+          "type": "KeyCode",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:RIGHT",
+          "name": "RIGHT",
+          "symbol": "ExtAnsiTermKeyCode_RIGHT",
+          "type": "KeyCode",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:UP",
+          "name": "UP",
+          "symbol": "ExtAnsiTermKeyCode_UP",
+          "type": "KeyCode",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:DOWN",
+          "name": "DOWN",
+          "symbol": "ExtAnsiTermKeyCode_DOWN",
+          "type": "KeyCode",
+          "value": 6
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:HOME",
+          "name": "HOME",
+          "symbol": "ExtAnsiTermKeyCode_HOME",
+          "type": "KeyCode",
+          "value": 7
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:END",
+          "name": "END",
+          "symbol": "ExtAnsiTermKeyCode_END",
+          "type": "KeyCode",
+          "value": 8
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:PAGE_UP",
+          "name": "PAGE_UP",
+          "symbol": "ExtAnsiTermKeyCode_PAGE_UP",
+          "type": "KeyCode",
+          "value": 9
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:PAGE_DOWN",
+          "name": "PAGE_DOWN",
+          "symbol": "ExtAnsiTermKeyCode_PAGE_DOWN",
+          "type": "KeyCode",
+          "value": 10
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:TAB",
+          "name": "TAB",
+          "symbol": "ExtAnsiTermKeyCode_TAB",
+          "type": "KeyCode",
+          "value": 11
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:BACK_TAB",
+          "name": "BACK_TAB",
+          "symbol": "ExtAnsiTermKeyCode_BACK_TAB",
+          "type": "KeyCode",
+          "value": 12
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:DELETE",
+          "name": "DELETE",
+          "symbol": "ExtAnsiTermKeyCode_DELETE",
+          "type": "KeyCode",
+          "value": 13
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:INSERT",
+          "name": "INSERT",
+          "symbol": "ExtAnsiTermKeyCode_INSERT",
+          "type": "KeyCode",
+          "value": 14
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:FUNCTION",
+          "name": "FUNCTION",
+          "symbol": "ExtAnsiTermKeyCode_FUNCTION",
+          "type": "KeyCode",
+          "value": 15
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:CHARACTER",
+          "name": "CHARACTER",
+          "symbol": "ExtAnsiTermKeyCode_CHARACTER",
+          "type": "KeyCode",
+          "value": 16
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:NULL_KEY",
+          "name": "NULL_KEY",
+          "symbol": "ExtAnsiTermKeyCode_NULL_KEY",
+          "type": "KeyCode",
+          "value": 17
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:ESC",
+          "name": "ESC",
+          "symbol": "ExtAnsiTermKeyCode_ESC",
+          "type": "KeyCode",
+          "value": 18
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:CAPS_LOCK",
+          "name": "CAPS_LOCK",
+          "symbol": "ExtAnsiTermKeyCode_CAPS_LOCK",
+          "type": "KeyCode",
+          "value": 19
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:SCROLL_LOCK",
+          "name": "SCROLL_LOCK",
+          "symbol": "ExtAnsiTermKeyCode_SCROLL_LOCK",
+          "type": "KeyCode",
+          "value": 20
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:NUM_LOCK",
+          "name": "NUM_LOCK",
+          "symbol": "ExtAnsiTermKeyCode_NUM_LOCK",
+          "type": "KeyCode",
+          "value": 21
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:PRINT_SCREEN",
+          "name": "PRINT_SCREEN",
+          "symbol": "ExtAnsiTermKeyCode_PRINT_SCREEN",
+          "type": "KeyCode",
+          "value": 22
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:PAUSE",
+          "name": "PAUSE",
+          "symbol": "ExtAnsiTermKeyCode_PAUSE",
+          "type": "KeyCode",
+          "value": 23
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:MENU",
+          "name": "MENU",
+          "symbol": "ExtAnsiTermKeyCode_MENU",
+          "type": "KeyCode",
+          "value": 24
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:KEYPAD_BEGIN",
+          "name": "KEYPAD_BEGIN",
+          "symbol": "ExtAnsiTermKeyCode_KEYPAD_BEGIN",
+          "type": "KeyCode",
+          "value": 25
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:MEDIA",
+          "name": "MEDIA",
+          "symbol": "ExtAnsiTermKeyCode_MEDIA",
+          "type": "KeyCode",
+          "value": 26
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyCode/value:MODIFIER",
+          "name": "MODIFIER",
+          "symbol": "ExtAnsiTermKeyCode_MODIFIER",
+          "type": "KeyCode",
+          "value": 27
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::MediaKeyCode",
+      "kind": "enum",
+      "name": "MediaKeyCode",
+      "symbol": "ExtAnsiTermMediaKeyCode",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:NONE",
+          "name": "NONE",
+          "symbol": "ExtAnsiTermMediaKeyCode_NONE",
+          "type": "MediaKeyCode",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:PLAY",
+          "name": "PLAY",
+          "symbol": "ExtAnsiTermMediaKeyCode_PLAY",
+          "type": "MediaKeyCode",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:PAUSE",
+          "name": "PAUSE",
+          "symbol": "ExtAnsiTermMediaKeyCode_PAUSE",
+          "type": "MediaKeyCode",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:PLAY_PAUSE",
+          "name": "PLAY_PAUSE",
+          "symbol": "ExtAnsiTermMediaKeyCode_PLAY_PAUSE",
+          "type": "MediaKeyCode",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:REVERSE",
+          "name": "REVERSE",
+          "symbol": "ExtAnsiTermMediaKeyCode_REVERSE",
+          "type": "MediaKeyCode",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:STOP",
+          "name": "STOP",
+          "symbol": "ExtAnsiTermMediaKeyCode_STOP",
+          "type": "MediaKeyCode",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:FAST_FORWARD",
+          "name": "FAST_FORWARD",
+          "symbol": "ExtAnsiTermMediaKeyCode_FAST_FORWARD",
+          "type": "MediaKeyCode",
+          "value": 6
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:REWIND",
+          "name": "REWIND",
+          "symbol": "ExtAnsiTermMediaKeyCode_REWIND",
+          "type": "MediaKeyCode",
+          "value": 7
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:TRACK_NEXT",
+          "name": "TRACK_NEXT",
+          "symbol": "ExtAnsiTermMediaKeyCode_TRACK_NEXT",
+          "type": "MediaKeyCode",
+          "value": 8
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:TRACK_PREVIOUS",
+          "name": "TRACK_PREVIOUS",
+          "symbol": "ExtAnsiTermMediaKeyCode_TRACK_PREVIOUS",
+          "type": "MediaKeyCode",
+          "value": 9
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:RECORD",
+          "name": "RECORD",
+          "symbol": "ExtAnsiTermMediaKeyCode_RECORD",
+          "type": "MediaKeyCode",
+          "value": 10
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:LOWER_VOLUME",
+          "name": "LOWER_VOLUME",
+          "symbol": "ExtAnsiTermMediaKeyCode_LOWER_VOLUME",
+          "type": "MediaKeyCode",
+          "value": 11
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:RAISE_VOLUME",
+          "name": "RAISE_VOLUME",
+          "symbol": "ExtAnsiTermMediaKeyCode_RAISE_VOLUME",
+          "type": "MediaKeyCode",
+          "value": 12
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MediaKeyCode/value:MUTE_VOLUME",
+          "name": "MUTE_VOLUME",
+          "symbol": "ExtAnsiTermMediaKeyCode_MUTE_VOLUME",
+          "type": "MediaKeyCode",
+          "value": 13
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::ModifierKeyCode",
+      "kind": "enum",
+      "name": "ModifierKeyCode",
+      "symbol": "ExtAnsiTermModifierKeyCode",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:NONE",
+          "name": "NONE",
+          "symbol": "ExtAnsiTermModifierKeyCode_NONE",
+          "type": "ModifierKeyCode",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:LEFT_SHIFT",
+          "name": "LEFT_SHIFT",
+          "symbol": "ExtAnsiTermModifierKeyCode_LEFT_SHIFT",
+          "type": "ModifierKeyCode",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:LEFT_CONTROL",
+          "name": "LEFT_CONTROL",
+          "symbol": "ExtAnsiTermModifierKeyCode_LEFT_CONTROL",
+          "type": "ModifierKeyCode",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:LEFT_ALT",
+          "name": "LEFT_ALT",
+          "symbol": "ExtAnsiTermModifierKeyCode_LEFT_ALT",
+          "type": "ModifierKeyCode",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:LEFT_SUPER",
+          "name": "LEFT_SUPER",
+          "symbol": "ExtAnsiTermModifierKeyCode_LEFT_SUPER",
+          "type": "ModifierKeyCode",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:LEFT_HYPER",
+          "name": "LEFT_HYPER",
+          "symbol": "ExtAnsiTermModifierKeyCode_LEFT_HYPER",
+          "type": "ModifierKeyCode",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:LEFT_META",
+          "name": "LEFT_META",
+          "symbol": "ExtAnsiTermModifierKeyCode_LEFT_META",
+          "type": "ModifierKeyCode",
+          "value": 6
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:RIGHT_SHIFT",
+          "name": "RIGHT_SHIFT",
+          "symbol": "ExtAnsiTermModifierKeyCode_RIGHT_SHIFT",
+          "type": "ModifierKeyCode",
+          "value": 7
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:RIGHT_CONTROL",
+          "name": "RIGHT_CONTROL",
+          "symbol": "ExtAnsiTermModifierKeyCode_RIGHT_CONTROL",
+          "type": "ModifierKeyCode",
+          "value": 8
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:RIGHT_ALT",
+          "name": "RIGHT_ALT",
+          "symbol": "ExtAnsiTermModifierKeyCode_RIGHT_ALT",
+          "type": "ModifierKeyCode",
+          "value": 9
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:RIGHT_SUPER",
+          "name": "RIGHT_SUPER",
+          "symbol": "ExtAnsiTermModifierKeyCode_RIGHT_SUPER",
+          "type": "ModifierKeyCode",
+          "value": 10
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:RIGHT_HYPER",
+          "name": "RIGHT_HYPER",
+          "symbol": "ExtAnsiTermModifierKeyCode_RIGHT_HYPER",
+          "type": "ModifierKeyCode",
+          "value": 11
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:RIGHT_META",
+          "name": "RIGHT_META",
+          "symbol": "ExtAnsiTermModifierKeyCode_RIGHT_META",
+          "type": "ModifierKeyCode",
+          "value": 12
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:ISO_LEVEL3_SHIFT",
+          "name": "ISO_LEVEL3_SHIFT",
+          "symbol": "ExtAnsiTermModifierKeyCode_ISO_LEVEL3_SHIFT",
+          "type": "ModifierKeyCode",
+          "value": 13
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ModifierKeyCode/value:ISO_LEVEL5_SHIFT",
+          "name": "ISO_LEVEL5_SHIFT",
+          "symbol": "ExtAnsiTermModifierKeyCode_ISO_LEVEL5_SHIFT",
+          "type": "ModifierKeyCode",
+          "value": 14
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::KeyModifiers",
+      "kind": "enum",
+      "name": "KeyModifiers",
+      "symbol": "ExtAnsiTermKeyModifiers",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::KeyModifiers/value:NONE",
+          "name": "NONE",
+          "symbol": "ExtAnsiTermKeyModifiers_NONE",
+          "type": "KeyModifiers",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyModifiers/value:SHIFT",
+          "name": "SHIFT",
+          "symbol": "ExtAnsiTermKeyModifiers_SHIFT",
+          "type": "KeyModifiers",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyModifiers/value:CONTROL",
+          "name": "CONTROL",
+          "symbol": "ExtAnsiTermKeyModifiers_CONTROL",
+          "type": "KeyModifiers",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyModifiers/value:ALT",
+          "name": "ALT",
+          "symbol": "ExtAnsiTermKeyModifiers_ALT",
+          "type": "KeyModifiers",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyModifiers/value:SUPER",
+          "name": "SUPER",
+          "symbol": "ExtAnsiTermKeyModifiers_SUPER",
+          "type": "KeyModifiers",
+          "value": 8
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyModifiers/value:HYPER",
+          "name": "HYPER",
+          "symbol": "ExtAnsiTermKeyModifiers_HYPER",
+          "type": "KeyModifiers",
+          "value": 16
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyModifiers/value:META",
+          "name": "META",
+          "symbol": "ExtAnsiTermKeyModifiers_META",
+          "type": "KeyModifiers",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::KeyEventState",
+      "kind": "enum",
+      "name": "KeyEventState",
+      "symbol": "ExtAnsiTermKeyEventState",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::KeyEventState/value:NONE",
+          "name": "NONE",
+          "symbol": "ExtAnsiTermKeyEventState_NONE",
+          "type": "KeyEventState",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyEventState/value:KEYPAD",
+          "name": "KEYPAD",
+          "symbol": "ExtAnsiTermKeyEventState_KEYPAD",
+          "type": "KeyEventState",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyEventState/value:CAPS_LOCK",
+          "name": "CAPS_LOCK",
+          "symbol": "ExtAnsiTermKeyEventState_CAPS_LOCK",
+          "type": "KeyEventState",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyEventState/value:NUM_LOCK",
+          "name": "NUM_LOCK",
+          "symbol": "ExtAnsiTermKeyEventState_NUM_LOCK",
+          "type": "KeyEventState",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::KeyEvent",
+      "kind": "struct",
+      "name": "KeyEvent",
+      "symbol": "ExtAnsiTermKeyEvent",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:code",
+          "name": "code",
+          "type": "KeyCode"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:character",
+          "name": "character",
+          "type": "uchar"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:functionKey",
+          "name": "functionKey",
+          "type": "byte"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:media",
+          "name": "media",
+          "type": "MediaKeyCode"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:modifierKey",
+          "name": "modifierKey",
+          "type": "ModifierKeyCode"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:modifiers",
+          "name": "modifiers",
+          "type": "KeyModifiers"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:kind",
+          "name": "kind",
+          "type": "KeyEventKind"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/field:state",
+          "name": "state",
+          "type": "KeyEventState"
+        }
+      ],
+      "functions": [
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/function:isPress",
+          "name": "isPress",
+          "symbol": "ExtAnsiTermKeyEvent_isPress",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/function:isRelease",
+          "name": "isRelease",
+          "symbol": "ExtAnsiTermKeyEvent_isRelease",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/function:isRepeat",
+          "name": "isRepeat",
+          "symbol": "ExtAnsiTermKeyEvent_isRepeat",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::KeyEvent/function:hasModifier",
+          "name": "hasModifier",
+          "symbol": "ExtAnsiTermKeyEvent_hasModifier",
+          "visibility": "public",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::KeyEvent/function:hasModifier/parameter:modifier",
+              "name": "modifier",
+              "type": "KeyModifiers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::MouseButton",
+      "kind": "enum",
+      "name": "MouseButton",
+      "symbol": "ExtAnsiTermMouseButton",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::MouseButton/value:NONE",
+          "name": "NONE",
+          "symbol": "ExtAnsiTermMouseButton_NONE",
+          "type": "MouseButton",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseButton/value:LEFT",
+          "name": "LEFT",
+          "symbol": "ExtAnsiTermMouseButton_LEFT",
+          "type": "MouseButton",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseButton/value:RIGHT",
+          "name": "RIGHT",
+          "symbol": "ExtAnsiTermMouseButton_RIGHT",
+          "type": "MouseButton",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseButton/value:MIDDLE",
+          "name": "MIDDLE",
+          "symbol": "ExtAnsiTermMouseButton_MIDDLE",
+          "type": "MouseButton",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::MouseEventKind",
+      "kind": "enum",
+      "name": "MouseEventKind",
+      "symbol": "ExtAnsiTermMouseEventKind",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:DOWN",
+          "name": "DOWN",
+          "symbol": "ExtAnsiTermMouseEventKind_DOWN",
+          "type": "MouseEventKind",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:UP",
+          "name": "UP",
+          "symbol": "ExtAnsiTermMouseEventKind_UP",
+          "type": "MouseEventKind",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:DRAG",
+          "name": "DRAG",
+          "symbol": "ExtAnsiTermMouseEventKind_DRAG",
+          "type": "MouseEventKind",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:MOVED",
+          "name": "MOVED",
+          "symbol": "ExtAnsiTermMouseEventKind_MOVED",
+          "type": "MouseEventKind",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:SCROLL_DOWN",
+          "name": "SCROLL_DOWN",
+          "symbol": "ExtAnsiTermMouseEventKind_SCROLL_DOWN",
+          "type": "MouseEventKind",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:SCROLL_UP",
+          "name": "SCROLL_UP",
+          "symbol": "ExtAnsiTermMouseEventKind_SCROLL_UP",
+          "type": "MouseEventKind",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:SCROLL_LEFT",
+          "name": "SCROLL_LEFT",
+          "symbol": "ExtAnsiTermMouseEventKind_SCROLL_LEFT",
+          "type": "MouseEventKind",
+          "value": 6
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::MouseEventKind/value:SCROLL_RIGHT",
+          "name": "SCROLL_RIGHT",
+          "symbol": "ExtAnsiTermMouseEventKind_SCROLL_RIGHT",
+          "type": "MouseEventKind",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::MouseEvent",
+      "kind": "struct",
+      "name": "MouseEvent",
+      "symbol": "ExtAnsiTermMouseEvent",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/field:kind",
+          "name": "kind",
+          "type": "MouseEventKind"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/field:button",
+          "name": "button",
+          "type": "MouseButton"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/field:column",
+          "name": "column",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/field:row",
+          "name": "row",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/field:modifiers",
+          "name": "modifiers",
+          "type": "KeyModifiers"
+        }
+      ],
+      "functions": [
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/function:isDown",
+          "name": "isDown",
+          "symbol": "ExtAnsiTermMouseEvent_isDown",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/function:isUp",
+          "name": "isUp",
+          "symbol": "ExtAnsiTermMouseEvent_isUp",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/function:isDrag",
+          "name": "isDrag",
+          "symbol": "ExtAnsiTermMouseEvent_isDrag",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/function:isMoved",
+          "name": "isMoved",
+          "symbol": "ExtAnsiTermMouseEvent_isMoved",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/function:isScroll",
+          "name": "isScroll",
+          "symbol": "ExtAnsiTermMouseEvent_isScroll",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::MouseEvent/function:hasModifier",
+          "name": "hasModifier",
+          "symbol": "ExtAnsiTermMouseEvent_hasModifier",
+          "visibility": "public",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::MouseEvent/function:hasModifier/parameter:modifier",
+              "name": "modifier",
+              "type": "KeyModifiers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::KeyboardEnhancementFlags",
+      "kind": "enum",
+      "name": "KeyboardEnhancementFlags",
+      "symbol": "ExtAnsiTermKeyboardEnhancementFlags",
+      "visibility": "public",
+      "underlyingType": "ushort",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::KeyboardEnhancementFlags/value:NONE",
+          "name": "NONE",
+          "symbol": "ExtAnsiTermKeyboardEnhancementFlags_NONE",
+          "type": "KeyboardEnhancementFlags",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyboardEnhancementFlags/value:DISAMBIGUATE_ESCAPE_CODES",
+          "name": "DISAMBIGUATE_ESCAPE_CODES",
+          "symbol": "ExtAnsiTermKeyboardEnhancementFlags_DISAMBIGUATE_ESCAPE_CODES",
+          "type": "KeyboardEnhancementFlags",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyboardEnhancementFlags/value:REPORT_EVENT_TYPES",
+          "name": "REPORT_EVENT_TYPES",
+          "symbol": "ExtAnsiTermKeyboardEnhancementFlags_REPORT_EVENT_TYPES",
+          "type": "KeyboardEnhancementFlags",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyboardEnhancementFlags/value:REPORT_ALTERNATE_KEYS",
+          "name": "REPORT_ALTERNATE_KEYS",
+          "symbol": "ExtAnsiTermKeyboardEnhancementFlags_REPORT_ALTERNATE_KEYS",
+          "type": "KeyboardEnhancementFlags",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyboardEnhancementFlags/value:REPORT_ALL_KEYS_AS_ESCAPE_CODES",
+          "name": "REPORT_ALL_KEYS_AS_ESCAPE_CODES",
+          "symbol": "ExtAnsiTermKeyboardEnhancementFlags_REPORT_ALL_KEYS_AS_ESCAPE_CODES",
+          "type": "KeyboardEnhancementFlags",
+          "value": 8
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::KeyboardEnhancementFlags/value:REPORT_ASSOCIATED_TEXT",
+          "name": "REPORT_ASSOCIATED_TEXT",
+          "symbol": "ExtAnsiTermKeyboardEnhancementFlags_REPORT_ASSOCIATED_TEXT",
+          "type": "KeyboardEnhancementFlags",
+          "value": 16
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::Event",
+      "kind": "struct",
+      "name": "Event",
+      "symbol": "ExtAnsiTermEvent",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:kind",
+          "name": "kind",
+          "type": "EventKind"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:key",
+          "name": "key",
+          "type": "KeyEvent"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:mouse",
+          "name": "mouse",
+          "type": "MouseEvent"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:column",
+          "name": "column",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:row",
+          "name": "row",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:columns",
+          "name": "columns",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:rows",
+          "name": "rows",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:keyboardEnhancementFlags",
+          "name": "keyboardEnhancementFlags",
+          "type": "KeyboardEnhancementFlags"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/field:paste",
+          "name": "paste",
+          "type": "escaped string"
+        }
+      ],
+      "functions": [
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:keyEvent",
+          "name": "keyEvent",
+          "symbol": "ExtAnsiTermEvent_keyEvent",
+          "visibility": "public",
+          "returnType": "scoped KeyEvent*"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:mouseEvent",
+          "name": "mouseEvent",
+          "symbol": "ExtAnsiTermEvent_mouseEvent",
+          "visibility": "public",
+          "returnType": "scoped MouseEvent*"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:pasteText",
+          "name": "pasteText",
+          "symbol": "ExtAnsiTermEvent_pasteText",
+          "visibility": "public",
+          "returnType": "scoped string"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isKey",
+          "name": "isKey",
+          "symbol": "ExtAnsiTermEvent_isKey",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isKeyPress",
+          "name": "isKeyPress",
+          "symbol": "ExtAnsiTermEvent_isKeyPress",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isKeyRelease",
+          "name": "isKeyRelease",
+          "symbol": "ExtAnsiTermEvent_isKeyRelease",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isKeyRepeat",
+          "name": "isKeyRepeat",
+          "symbol": "ExtAnsiTermEvent_isKeyRepeat",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isMouse",
+          "name": "isMouse",
+          "symbol": "ExtAnsiTermEvent_isMouse",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isPaste",
+          "name": "isPaste",
+          "symbol": "ExtAnsiTermEvent_isPaste",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isResize",
+          "name": "isResize",
+          "symbol": "ExtAnsiTermEvent_isResize",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isCursorPosition",
+          "name": "isCursorPosition",
+          "symbol": "ExtAnsiTermEvent_isCursorPosition",
+          "visibility": "public",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::Event/function:isKeyboardEnhancement",
+          "name": "isKeyboardEnhancement",
+          "symbol": "ExtAnsiTermEvent_isKeyboardEnhancement",
+          "visibility": "public",
+          "returnType": "bool"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Terminal event parsed by \u0060EventReader\u0060."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::EventReader",
+      "kind": "struct",
+      "name": "EventReader",
+      "symbol": "ExtAnsiTermEventReader",
+      "visibility": "public",
+      "modifier": "fixed",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/field:pending",
+          "name": "pending",
+          "type": "escaped char[]"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/field:pendingLength",
+          "name": "pendingLength",
+          "type": "nuint"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/field:current",
+          "name": "current",
+          "type": "Event"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/field:pasteBuffer",
+          "name": "pasteBuffer",
+          "type": "escaped char[]"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/field:allocator",
+          "name": "allocator",
+          "type": "Allocator*"
+        }
+      ],
+      "functions": [
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:EventReader",
+          "name": "EventReader",
+          "symbol": "ExtAnsiTermEventReader_EventReader",
+          "visibility": "public",
+          "modifier": "constructor",
+          "returnType": "EventReader",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:EventReader/parameter:initialCapacity",
+              "name": "initialCapacity",
+              "type": "nuint",
+              "defaultValue": "256"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:EventReader/parameter:allocator",
+              "name": "allocator",
+              "modifier": "within",
+              "type": "Allocator*"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Initializes an event reader with a pending input buffer."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:~EventReader",
+          "name": "~EventReader",
+          "symbol": "ExtAnsiTermEventReader_EventReader",
+          "visibility": "public",
+          "modifier": "destructor",
+          "returnType": "void",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Releases reader-owned storage."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:poll",
+          "name": "poll",
+          "symbol": "ExtAnsiTermEventReader_poll",
+          "visibility": "public",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:poll/parameter:timeout",
+              "name": "timeout",
+              "type": "TimeSpan",
+              "defaultValue": "ZERO"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:poll/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns true when an event is buffered or input is available."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:readEvent",
+          "name": "readEvent",
+          "symbol": "ExtAnsiTermEventReader_readEvent",
+          "visibility": "public",
+          "returnType": "scoped Event*",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:readEvent/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Reads the next event, blocking according to the PAL."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:tryReadEvent",
+          "name": "tryReadEvent",
+          "symbol": "ExtAnsiTermEventReader_tryReadEvent",
+          "visibility": "public",
+          "returnType": "scoped Event*",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:tryReadEvent/parameter:timeout",
+              "name": "timeout",
+              "type": "TimeSpan",
+              "defaultValue": "ZERO"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:tryReadEvent/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Attempts to read the next event within the timeout."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:clearPending",
+          "name": "clearPending",
+          "symbol": "ExtAnsiTermEventReader_clearPending",
+          "visibility": "public",
+          "returnType": "void",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Clears pending bytes and invalidates the current event."
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:clearCurrent",
+          "name": "clearCurrent",
+          "symbol": "ExtAnsiTermEventReader_clearCurrent",
+          "returnType": "void"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:readMore",
+          "name": "readMore",
+          "symbol": "ExtAnsiTermEventReader_readMore",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:readMore/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:appendInput",
+          "name": "appendInput",
+          "symbol": "ExtAnsiTermEventReader_appendInput",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:appendInput/parameter:text",
+              "name": "text",
+              "type": "const char[]"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:ensurePendingCapacity",
+          "name": "ensurePendingCapacity",
+          "symbol": "ExtAnsiTermEventReader_ensurePendingCapacity",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:ensurePendingCapacity/parameter:capacity",
+              "name": "capacity",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:tryParseCurrent",
+          "name": "tryParseCurrent",
+          "symbol": "ExtAnsiTermEventReader_tryParseCurrent",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parsePlainKey",
+          "name": "parsePlainKey",
+          "symbol": "ExtAnsiTermEventReader_parsePlainKey",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseSs3",
+          "name": "parseSs3",
+          "symbol": "ExtAnsiTermEventReader_parseSs3",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseCsi",
+          "name": "parseCsi",
+          "symbol": "ExtAnsiTermEventReader_parseCsi",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseCsiKey",
+          "name": "parseCsiKey",
+          "symbol": "ExtAnsiTermEventReader_parseCsiKey",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseCsiKey/parameter:suffix",
+              "name": "suffix",
+              "type": "char"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseCsiKey/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseTildeKey",
+          "name": "parseTildeKey",
+          "symbol": "ExtAnsiTermEventReader_parseTildeKey",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseTildeKey/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseCursorPosition",
+          "name": "parseCursorPosition",
+          "symbol": "ExtAnsiTermEventReader_parseCursorPosition",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseCursorPosition/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseSgrMouse",
+          "name": "parseSgrMouse",
+          "symbol": "ExtAnsiTermEventReader_parseSgrMouse",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseSgrMouse/parameter:suffix",
+              "name": "suffix",
+              "type": "char"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseSgrMouse/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseResize",
+          "name": "parseResize",
+          "symbol": "ExtAnsiTermEventReader_parseResize",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseResize/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseKeyboardEnhancement",
+          "name": "parseKeyboardEnhancement",
+          "symbol": "ExtAnsiTermEventReader_parseKeyboardEnhancement",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseKeyboardEnhancement/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parsePaste",
+          "name": "parsePaste",
+          "symbol": "ExtAnsiTermEventReader_parsePaste",
+          "returnType": "bool"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseCsiModifiers",
+          "name": "parseCsiModifiers",
+          "symbol": "ExtAnsiTermEventReader_parseCsiModifiers",
+          "returnType": "KeyModifiers",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseCsiModifiers/parameter:start",
+              "name": "start",
+              "type": "nuint"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseCsiModifiers/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:parseUInt",
+          "name": "parseUInt",
+          "symbol": "ExtAnsiTermEventReader_parseUInt",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseUInt/parameter:start",
+              "name": "start",
+              "type": "nuint"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseUInt/parameter:end",
+              "name": "end",
+              "type": "nuint"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:parseUInt/parameter:next",
+              "name": "next",
+              "modifier": "out",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:findCsiEnd",
+          "name": "findCsiEnd",
+          "symbol": "ExtAnsiTermEventReader_findCsiEnd",
+          "returnType": "nuint"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:startsWith",
+          "name": "startsWith",
+          "symbol": "ExtAnsiTermEventReader_startsWith",
+          "returnType": "bool",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:startsWith/parameter:text",
+              "name": "text",
+              "type": "const char[]"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:findText",
+          "name": "findText",
+          "symbol": "ExtAnsiTermEventReader_findText",
+          "returnType": "nuint",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:findText/parameter:text",
+              "name": "text",
+              "type": "const char[]"
+            },
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:findText/parameter:start",
+              "name": "start",
+              "type": "nuint"
+            }
+          ]
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::EventReader/function:consume",
+          "name": "consume",
+          "symbol": "ExtAnsiTermEventReader_consume",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "struct:Ext::AnsiTerm::EventReader/function:consume/parameter:count",
+              "name": "count",
+              "type": "nuint"
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Stateful terminal event reader."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::TerminalSize",
+      "kind": "struct",
+      "name": "TerminalSize",
+      "symbol": "ExtAnsiTermTerminalSize",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::TerminalSize/field:columns",
+          "name": "columns",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::TerminalSize/field:rows",
+          "name": "rows",
+          "type": "ushort"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Terminal size in character cells."
+        }
+      ]
+    },
+    {
+      "id": "struct:Ext::AnsiTerm::WindowSize",
+      "kind": "struct",
+      "name": "WindowSize",
+      "symbol": "ExtAnsiTermWindowSize",
+      "visibility": "public",
+      "fields": [
+        {
+          "id": "struct:Ext::AnsiTerm::WindowSize/field:columns",
+          "name": "columns",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::WindowSize/field:rows",
+          "name": "rows",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::WindowSize/field:widthPixels",
+          "name": "widthPixels",
+          "type": "ushort"
+        },
+        {
+          "id": "struct:Ext::AnsiTerm::WindowSize/field:heightPixels",
+          "name": "heightPixels",
+          "type": "ushort"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Terminal window size in cells and pixels."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::ClearType",
+      "kind": "enum",
+      "name": "ClearType",
+      "symbol": "ExtAnsiTermClearType",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::ClearType/value:ALL",
+          "name": "ALL",
+          "symbol": "ExtAnsiTermClearType_ALL",
+          "type": "ClearType",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ClearType/value:PURGE",
+          "name": "PURGE",
+          "symbol": "ExtAnsiTermClearType_PURGE",
+          "type": "ClearType",
+          "value": 1
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ClearType/value:FROM_CURSOR_DOWN",
+          "name": "FROM_CURSOR_DOWN",
+          "symbol": "ExtAnsiTermClearType_FROM_CURSOR_DOWN",
+          "type": "ClearType",
+          "value": 2
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ClearType/value:FROM_CURSOR_UP",
+          "name": "FROM_CURSOR_UP",
+          "symbol": "ExtAnsiTermClearType_FROM_CURSOR_UP",
+          "type": "ClearType",
+          "value": 3
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ClearType/value:CURRENT_LINE",
+          "name": "CURRENT_LINE",
+          "symbol": "ExtAnsiTermClearType_CURRENT_LINE",
+          "type": "ClearType",
+          "value": 4
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ClearType/value:UNTIL_NEW_LINE",
+          "name": "UNTIL_NEW_LINE",
+          "symbol": "ExtAnsiTermClearType_UNTIL_NEW_LINE",
+          "type": "ClearType",
+          "value": 5
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ClearType/value:UNTIL_BEGINNING_OF_LINE",
+          "name": "UNTIL_BEGINNING_OF_LINE",
+          "symbol": "ExtAnsiTermClearType_UNTIL_BEGINNING_OF_LINE",
+          "type": "ClearType",
+          "value": 6
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Selects the region affected by a clear command."
+        }
+      ]
+    },
+    {
+      "id": "enum:Ext::AnsiTerm::ClipboardSelection",
+      "kind": "enum",
+      "name": "ClipboardSelection",
+      "symbol": "ExtAnsiTermClipboardSelection",
+      "visibility": "public",
+      "underlyingType": "byte",
+      "values": [
+        {
+          "id": "enum:Ext::AnsiTerm::ClipboardSelection/value:CLIPBOARD",
+          "name": "CLIPBOARD",
+          "symbol": "ExtAnsiTermClipboardSelection_CLIPBOARD",
+          "type": "ClipboardSelection",
+          "value": 0
+        },
+        {
+          "id": "enum:Ext::AnsiTerm::ClipboardSelection/value:PRIMARY",
+          "name": "PRIMARY",
+          "symbol": "ExtAnsiTermClipboardSelection_PRIMARY",
+          "type": "ClipboardSelection",
+          "value": 1
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "Selects the OSC 52 clipboard target."
+        }
+      ]
+    },
+    {
+      "id": "class:Ext::AnsiTerm::Terminal",
+      "kind": "class",
+      "name": "Terminal",
+      "symbol": "ExtAnsiTermTerminal",
+      "visibility": "public",
+      "modifier": "abstract",
+      "fields": [
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/field:stdout",
+          "name": "stdout",
+          "symbol": "ExtAnsiTermTerminal_stdout",
+          "type": "TerminalStdout?",
+          "static": true
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/field:stderr",
+          "name": "stderr",
+          "symbol": "ExtAnsiTermTerminal_stderr",
+          "type": "TerminalStderr?",
+          "static": true
+        }
+      ],
+      "functions": [
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:getStdout",
+          "name": "getStdout",
+          "symbol": "ExtAnsiTermTerminal_getStdout",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "Terminal*",
+          "propertyName": "Stdout",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns the standard-output terminal."
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:getStderr",
+          "name": "getStderr",
+          "symbol": "ExtAnsiTermTerminal_getStderr",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "Terminal*",
+          "propertyName": "Stderr",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns the standard-error terminal."
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:createQueue",
+          "name": "createQueue",
+          "symbol": "ExtAnsiTermTerminal_createQueue",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "Terminal*",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:createQueue/parameter:initialCapacity",
+              "name": "initialCapacity",
+              "type": "nuint",
+              "defaultValue": "256"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:createQueue/parameter:allocator",
+              "name": "allocator",
+              "modifier": "within",
+              "type": "Allocator*"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Creates a queued terminal command buffer."
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:destroy",
+          "name": "destroy",
+          "symbol": "ExtAnsiTermTerminal_destroy",
+          "visibility": "public",
+          "modifier": "virtual",
+          "returnType": "void",
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Releases this terminal object when it owns storage."
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:writeQueuedTo",
+          "name": "writeQueuedTo",
+          "symbol": "ExtAnsiTermTerminal_writeQueuedTo",
+          "visibility": "public",
+          "modifier": "virtual",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeQueuedTo/parameter:target",
+              "name": "target",
+              "type": "Terminal*"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes this terminal as queued output to another terminal."
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:writeRaw",
+          "name": "writeRaw",
+          "symbol": "ExtAnsiTermTerminal_writeRaw",
+          "visibility": "public",
+          "modifier": "abstract",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeRaw/parameter:elements",
+              "name": "elements",
+              "type": "const char*"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeRaw/parameter:length",
+              "name": "length",
+              "type": "nuint"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Writes raw bytes to this terminal."
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:writeChar",
+          "name": "write",
+          "symbol": "ExtAnsiTermTerminal_writeChar",
+          "visibility": "public",
+          "invokerName": "write",
+          "callableName": "writeChar",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeChar/parameter:value",
+              "name": "value",
+              "overload": true,
+              "type": "char"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:writeCharArray",
+          "name": "write",
+          "symbol": "ExtAnsiTermTerminal_writeCharArray",
+          "visibility": "public",
+          "invokerName": "write",
+          "callableName": "writeCharArray",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeCharArray/parameter:value",
+              "name": "value",
+              "overload": true,
+              "type": "const char[]"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:writeTerminal",
+          "name": "write",
+          "symbol": "ExtAnsiTermTerminal_writeTerminal",
+          "visibility": "public",
+          "invokerName": "write",
+          "callableName": "writeTerminal",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeTerminal/parameter:value",
+              "name": "value",
+              "overload": true,
+              "type": "Terminal*"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:writeLine",
+          "name": "writeLine",
+          "symbol": "ExtAnsiTermTerminal_writeLine",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeLine/parameter:value",
+              "name": "value",
+              "type": "const char[]",
+              "defaultValue": "default"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:newLine",
+          "name": "newLine",
+          "symbol": "ExtAnsiTermTerminal_newLine",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setForeground",
+          "name": "setForeground",
+          "symbol": "ExtAnsiTermTerminal_setForeground",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Foreground",
+          "propertyValueParam": "color",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setForeground/parameter:color",
+              "name": "color",
+              "type": "Color"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setForegroundRgb",
+          "name": "setForegroundRgb",
+          "symbol": "ExtAnsiTermTerminal_setForegroundRgb",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "ForegroundRgb",
+          "propertyValueParam": "color",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setForegroundRgb/parameter:color",
+              "name": "color",
+              "type": "RgbColor"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setForegroundIndex",
+          "name": "setForegroundIndex",
+          "symbol": "ExtAnsiTermTerminal_setForegroundIndex",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "ForegroundIndex",
+          "propertyValueParam": "index",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setForegroundIndex/parameter:index",
+              "name": "index",
+              "type": "byte"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setBackground",
+          "name": "setBackground",
+          "symbol": "ExtAnsiTermTerminal_setBackground",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Background",
+          "propertyValueParam": "color",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setBackground/parameter:color",
+              "name": "color",
+              "type": "Color"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setBackgroundRgb",
+          "name": "setBackgroundRgb",
+          "symbol": "ExtAnsiTermTerminal_setBackgroundRgb",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "BackgroundRgb",
+          "propertyValueParam": "color",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setBackgroundRgb/parameter:color",
+              "name": "color",
+              "type": "RgbColor"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setBackgroundIndex",
+          "name": "setBackgroundIndex",
+          "symbol": "ExtAnsiTermTerminal_setBackgroundIndex",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "BackgroundIndex",
+          "propertyValueParam": "index",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setBackgroundIndex/parameter:index",
+              "name": "index",
+              "type": "byte"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setUnderline",
+          "name": "setUnderline",
+          "symbol": "ExtAnsiTermTerminal_setUnderline",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Underline",
+          "propertyValueParam": "color",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setUnderline/parameter:color",
+              "name": "color",
+              "type": "Color"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setUnderlineRgb",
+          "name": "setUnderlineRgb",
+          "symbol": "ExtAnsiTermTerminal_setUnderlineRgb",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "UnderlineRgb",
+          "propertyValueParam": "color",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setUnderlineRgb/parameter:color",
+              "name": "color",
+              "type": "RgbColor"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setUnderlineIndex",
+          "name": "setUnderlineIndex",
+          "symbol": "ExtAnsiTermTerminal_setUnderlineIndex",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "UnderlineIndex",
+          "propertyValueParam": "index",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setUnderlineIndex/parameter:index",
+              "name": "index",
+              "type": "byte"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:resetColor",
+          "name": "resetColor",
+          "symbol": "ExtAnsiTermTerminal_resetColor",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:resetAllAttributes",
+          "name": "resetAllAttributes",
+          "symbol": "ExtAnsiTermTerminal_resetAllAttributes",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:resetStyle",
+          "name": "resetStyle",
+          "symbol": "ExtAnsiTermTerminal_resetStyle",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:writeAttribute",
+          "name": "writeAttribute",
+          "symbol": "ExtAnsiTermTerminal_writeAttribute",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeAttribute/parameter:onCode",
+              "name": "onCode",
+              "type": "nuint"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeAttribute/parameter:offCode",
+              "name": "offCode",
+              "type": "nuint"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:writeAttribute/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setBold",
+          "name": "setBold",
+          "symbol": "ExtAnsiTermTerminal_setBold",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Bold",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setBold/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setDim",
+          "name": "setDim",
+          "symbol": "ExtAnsiTermTerminal_setDim",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Dim",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setDim/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setItalic",
+          "name": "setItalic",
+          "symbol": "ExtAnsiTermTerminal_setItalic",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Italic",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setItalic/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setUnderlined",
+          "name": "setUnderlined",
+          "symbol": "ExtAnsiTermTerminal_setUnderlined",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Underlined",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setUnderlined/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setDoubleUnderlined",
+          "name": "setDoubleUnderlined",
+          "symbol": "ExtAnsiTermTerminal_setDoubleUnderlined",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "DoubleUnderlined",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setDoubleUnderlined/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setSlowBlink",
+          "name": "setSlowBlink",
+          "symbol": "ExtAnsiTermTerminal_setSlowBlink",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "SlowBlink",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setSlowBlink/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setRapidBlink",
+          "name": "setRapidBlink",
+          "symbol": "ExtAnsiTermTerminal_setRapidBlink",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "RapidBlink",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setRapidBlink/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setReverse",
+          "name": "setReverse",
+          "symbol": "ExtAnsiTermTerminal_setReverse",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Reverse",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setReverse/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setHidden",
+          "name": "setHidden",
+          "symbol": "ExtAnsiTermTerminal_setHidden",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Hidden",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setHidden/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setCrossedOut",
+          "name": "setCrossedOut",
+          "symbol": "ExtAnsiTermTerminal_setCrossedOut",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "CrossedOut",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setCrossedOut/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setFramed",
+          "name": "setFramed",
+          "symbol": "ExtAnsiTermTerminal_setFramed",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Framed",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setFramed/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setEncircled",
+          "name": "setEncircled",
+          "symbol": "ExtAnsiTermTerminal_setEncircled",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Encircled",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setEncircled/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setOverlined",
+          "name": "setOverlined",
+          "symbol": "ExtAnsiTermTerminal_setOverlined",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Overlined",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setOverlined/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setUndercurled",
+          "name": "setUndercurled",
+          "symbol": "ExtAnsiTermTerminal_setUndercurled",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Undercurled",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setUndercurled/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setUnderdotted",
+          "name": "setUnderdotted",
+          "symbol": "ExtAnsiTermTerminal_setUnderdotted",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Underdotted",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setUnderdotted/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setUnderdashed",
+          "name": "setUnderdashed",
+          "symbol": "ExtAnsiTermTerminal_setUnderdashed",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Underdashed",
+          "propertyValueParam": "value",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setUnderdashed/parameter:value",
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveTo",
+          "name": "moveTo",
+          "symbol": "ExtAnsiTermTerminal_moveTo",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveTo/parameter:column",
+              "name": "column",
+              "type": "ushort"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveTo/parameter:row",
+              "name": "row",
+              "type": "ushort"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveUp",
+          "name": "moveUp",
+          "symbol": "ExtAnsiTermTerminal_moveUp",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveUp/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveDown",
+          "name": "moveDown",
+          "symbol": "ExtAnsiTermTerminal_moveDown",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveDown/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveLeft",
+          "name": "moveLeft",
+          "symbol": "ExtAnsiTermTerminal_moveLeft",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveLeft/parameter:columns",
+              "name": "columns",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveRight",
+          "name": "moveRight",
+          "symbol": "ExtAnsiTermTerminal_moveRight",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveRight/parameter:columns",
+              "name": "columns",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveToColumn",
+          "name": "moveToColumn",
+          "symbol": "ExtAnsiTermTerminal_moveToColumn",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveToColumn/parameter:column",
+              "name": "column",
+              "type": "ushort"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveToRow",
+          "name": "moveToRow",
+          "symbol": "ExtAnsiTermTerminal_moveToRow",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveToRow/parameter:row",
+              "name": "row",
+              "type": "ushort"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveToNextLine",
+          "name": "moveToNextLine",
+          "symbol": "ExtAnsiTermTerminal_moveToNextLine",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveToNextLine/parameter:lines",
+              "name": "lines",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:moveToPreviousLine",
+          "name": "moveToPreviousLine",
+          "symbol": "ExtAnsiTermTerminal_moveToPreviousLine",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:moveToPreviousLine/parameter:lines",
+              "name": "lines",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:requestCursorPosition",
+          "name": "requestCursorPosition",
+          "symbol": "ExtAnsiTermTerminal_requestCursorPosition",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:saveCursorPosition",
+          "name": "saveCursorPosition",
+          "symbol": "ExtAnsiTermTerminal_saveCursorPosition",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:restoreCursorPosition",
+          "name": "restoreCursorPosition",
+          "symbol": "ExtAnsiTermTerminal_restoreCursorPosition",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:hideCursor",
+          "name": "hideCursor",
+          "symbol": "ExtAnsiTermTerminal_hideCursor",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:showCursor",
+          "name": "showCursor",
+          "symbol": "ExtAnsiTermTerminal_showCursor",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:enableCursorBlinking",
+          "name": "enableCursorBlinking",
+          "symbol": "ExtAnsiTermTerminal_enableCursorBlinking",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:disableCursorBlinking",
+          "name": "disableCursorBlinking",
+          "symbol": "ExtAnsiTermTerminal_disableCursorBlinking",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setCursorStyle",
+          "name": "setCursorStyle",
+          "symbol": "ExtAnsiTermTerminal_setCursorStyle",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "CursorStyle",
+          "propertyValueParam": "style",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setCursorStyle/parameter:style",
+              "name": "style",
+              "type": "CursorStyle"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:clear",
+          "name": "clear",
+          "symbol": "ExtAnsiTermTerminal_clear",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:clear/parameter:clearType",
+              "name": "clearType",
+              "type": "ClearType",
+              "defaultValue": "ALL"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:scrollUp",
+          "name": "scrollUp",
+          "symbol": "ExtAnsiTermTerminal_scrollUp",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:scrollUp/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:scrollDown",
+          "name": "scrollDown",
+          "symbol": "ExtAnsiTermTerminal_scrollDown",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:scrollDown/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setScrollRegion",
+          "name": "setScrollRegion",
+          "symbol": "ExtAnsiTermTerminal_setScrollRegion",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "ScrollRegion",
+          "propertyIndexParams": [
+            "top"
+          ],
+          "propertyValueParam": "bottom",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setScrollRegion/parameter:top",
+              "name": "top",
+              "type": "ushort"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setScrollRegion/parameter:bottom",
+              "name": "bottom",
+              "type": "ushort"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:resetScrollRegion",
+          "name": "resetScrollRegion",
+          "symbol": "ExtAnsiTermTerminal_resetScrollRegion",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:insertLines",
+          "name": "insertLines",
+          "symbol": "ExtAnsiTermTerminal_insertLines",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:insertLines/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:deleteLines",
+          "name": "deleteLines",
+          "symbol": "ExtAnsiTermTerminal_deleteLines",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:deleteLines/parameter:rows",
+              "name": "rows",
+              "type": "ushort",
+              "defaultValue": "1"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:eraseLine",
+          "name": "eraseLine",
+          "symbol": "ExtAnsiTermTerminal_eraseLine",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:eraseLine/parameter:clearType",
+              "name": "clearType",
+              "type": "ClearType",
+              "defaultValue": "CURRENT_LINE"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setTitle",
+          "name": "setTitle",
+          "symbol": "ExtAnsiTermTerminal_setTitle",
+          "visibility": "public",
+          "returnType": "void",
+          "propertyName": "Title",
+          "propertyValueParam": "title",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setTitle/parameter:title",
+              "name": "title",
+              "type": "const char[]"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:enterAlternateScreen",
+          "name": "enterAlternateScreen",
+          "symbol": "ExtAnsiTermTerminal_enterAlternateScreen",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:leaveAlternateScreen",
+          "name": "leaveAlternateScreen",
+          "symbol": "ExtAnsiTermTerminal_leaveAlternateScreen",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:enableLineWrap",
+          "name": "enableLineWrap",
+          "symbol": "ExtAnsiTermTerminal_enableLineWrap",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:disableLineWrap",
+          "name": "disableLineWrap",
+          "symbol": "ExtAnsiTermTerminal_disableLineWrap",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:beginSynchronizedUpdate",
+          "name": "beginSynchronizedUpdate",
+          "symbol": "ExtAnsiTermTerminal_beginSynchronizedUpdate",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:endSynchronizedUpdate",
+          "name": "endSynchronizedUpdate",
+          "symbol": "ExtAnsiTermTerminal_endSynchronizedUpdate",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:enableMouseCapture",
+          "name": "enableMouseCapture",
+          "symbol": "ExtAnsiTermTerminal_enableMouseCapture",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:disableMouseCapture",
+          "name": "disableMouseCapture",
+          "symbol": "ExtAnsiTermTerminal_disableMouseCapture",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:enableFocusChange",
+          "name": "enableFocusChange",
+          "symbol": "ExtAnsiTermTerminal_enableFocusChange",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:disableFocusChange",
+          "name": "disableFocusChange",
+          "symbol": "ExtAnsiTermTerminal_disableFocusChange",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:enableBracketedPaste",
+          "name": "enableBracketedPaste",
+          "symbol": "ExtAnsiTermTerminal_enableBracketedPaste",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:disableBracketedPaste",
+          "name": "disableBracketedPaste",
+          "symbol": "ExtAnsiTermTerminal_disableBracketedPaste",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:requestKeyboardEnhancementSupport",
+          "name": "requestKeyboardEnhancementSupport",
+          "symbol": "ExtAnsiTermTerminal_requestKeyboardEnhancementSupport",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:pushKeyboardEnhancementFlags",
+          "name": "pushKeyboardEnhancementFlags",
+          "symbol": "ExtAnsiTermTerminal_pushKeyboardEnhancementFlags",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:pushKeyboardEnhancementFlags/parameter:flags",
+              "name": "flags",
+              "type": "KeyboardEnhancementFlags"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:popKeyboardEnhancementFlags",
+          "name": "popKeyboardEnhancementFlags",
+          "symbol": "ExtAnsiTermTerminal_popKeyboardEnhancementFlags",
+          "visibility": "public",
+          "returnType": "void"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:copyToClipboard",
+          "name": "copyToClipboard",
+          "symbol": "ExtAnsiTermTerminal_copyToClipboard",
+          "visibility": "public",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:copyToClipboard/parameter:value",
+              "name": "value",
+              "type": "const char[]"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:copyToClipboard/parameter:selection",
+              "name": "selection",
+              "type": "ClipboardSelection",
+              "defaultValue": "CLIPBOARD"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:isInputTty",
+          "name": "isInputTty",
+          "symbol": "ExtAnsiTermTerminal_isInputTty",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:isOutputTty",
+          "name": "isOutputTty",
+          "symbol": "ExtAnsiTermTerminal_isOutputTty",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:isErrorTty",
+          "name": "isErrorTty",
+          "symbol": "ExtAnsiTermTerminal_isErrorTty",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:enableRawMode",
+          "name": "enableRawMode",
+          "symbol": "ExtAnsiTermTerminal_enableRawMode",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:enableRawMode/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:disableRawMode",
+          "name": "disableRawMode",
+          "symbol": "ExtAnsiTermTerminal_disableRawMode",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:disableRawMode/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:isRawModeEnabled",
+          "name": "isRawModeEnabled",
+          "symbol": "ExtAnsiTermTerminal_isRawModeEnabled",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "bool"
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:getSize",
+          "name": "getSize",
+          "symbol": "ExtAnsiTermTerminal_getSize",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "TerminalSize",
+          "propertyName": "Size",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:getSize/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:getWindowSize",
+          "name": "getWindowSize",
+          "symbol": "ExtAnsiTermTerminal_getWindowSize",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "WindowSize",
+          "propertyName": "WindowSize",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:getWindowSize/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:setSize",
+          "name": "setSize",
+          "symbol": "ExtAnsiTermTerminal_setSize",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "propertyName": "Size",
+          "propertyIndexParams": [
+            "columns"
+          ],
+          "propertyValueParam": "rows",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setSize/parameter:columns",
+              "name": "columns",
+              "type": "ushort"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setSize/parameter:rows",
+              "name": "rows",
+              "type": "ushort"
+            },
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:setSize/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ]
+        },
+        {
+          "id": "class:Ext::AnsiTerm::Terminal/function:requireKeyboardEnhancement",
+          "name": "requireKeyboardEnhancement",
+          "symbol": "ExtAnsiTermTerminal_requireKeyboardEnhancement",
+          "visibility": "public",
+          "modifier": "static",
+          "returnType": "void",
+          "parameters": [
+            {
+              "id": "class:Ext::AnsiTerm::Terminal/function:requireKeyboardEnhancement/parameter:error",
+              "name": "error",
+              "modifier": "thrown",
+              "type": "TerminalError"
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "name": "summary",
+          "content": "A terminal output target."
+        }
+      ]
+    }
+  ]
+}
