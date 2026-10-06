@@ -16,7 +16,7 @@
       "kind": "function",
       "name": "malloc",
       "visibility": "public",
-      "returnType": "void*",
+      "returnType": "escaped void*",
       "parameters": [
         {
           "id": "function:Std::malloc/parameter:size",
@@ -44,7 +44,7 @@
       "kind": "function",
       "name": "realloc",
       "visibility": "public",
-      "returnType": "void*",
+      "returnType": "escaped void*",
       "parameters": [
         {
           "id": "function:Std::realloc/parameter:ptr",
@@ -111,7 +111,7 @@
           "id": "interface:Std::Allocator/function:alloc",
           "name": "alloc",
           "symbol": "StdAllocator_alloc",
-          "returnType": "void*",
+          "returnType": "escaped void*",
           "parameters": [
             {
               "id": "interface:Std::Allocator/function:alloc/parameter:size",
@@ -124,7 +124,7 @@
           "id": "interface:Std::Allocator/function:realloc",
           "name": "realloc",
           "symbol": "StdAllocator_realloc",
-          "returnType": "void*",
+          "returnType": "escaped void*",
           "parameters": [
             {
               "id": "interface:Std::Allocator/function:realloc/parameter:ptr",
@@ -3925,6 +3925,19 @@
                   "content": "Path to probe."
                 }
               ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:isDirectory/parameter:noFollow",
+              "name": "noFollow",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+              "type": "bool",
+              "defaultValue": "false",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "When true, symbolic links and Windows directory reparse points are not considered directories themselves."
+                }
+              ]
             }
           ],
           "metadata": [
@@ -3940,7 +3953,13 @@
             },
             {
               "name": "remarks",
-              "content": "This is a convenience probe. It returns false for files, missing paths, and errors that prevent reliable probing."
+              "content": "This is a convenience probe. It returns false for files, missing paths, links or reparse points when %s is true, and errors that prevent reliable probing. By default, links and directory reparse points are followed.",
+              "symbols": [
+                {
+                  "ref": "staticClass:Std::FileSystem/function:isDirectory/parameter:noFollow",
+                  "text": "noFollow"
+                }
+              ]
             }
           ]
         },
@@ -3985,6 +4004,82 @@
             {
               "name": "remarks",
               "content": "Throws \u0060IoError\u0060 when the file size cannot be queried."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:iterateDirectory",
+          "name": "iterateDirectory",
+          "symbol": "StdFileSystem_iterateDirectory",
+          "visibility": "public",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+          "modifier": "static",
+          "returnType": "iter(string arg1, thrown IoError arg2)",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:iterateDirectory/parameter:path",
+              "name": "path",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+              "type": "string",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Directory path to enumerate."
+                }
+              ]
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:iterateDirectory/parameter:allocator",
+              "name": "allocator",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+              "modifier": "within",
+              "type": "Allocator*",
+              "metadata": [
+                {
+                  "name": "summary",
+                  "content": "Allocation context for the iterator state."
+                }
+              ]
+            }
+          ],
+          "metadata": [
+            {
+              "name": "summary",
+              "content": "Returns an iterator over the immediate entry names in a directory."
+            },
+            {
+              "name": "remarks",
+              "content": "Opening begins synchronously, but an open failure is delivered when the iterator is advanced. Entry order is native and unspecified. Each yielded name borrows one reusable iterator buffer and is valid only until the next iterator advancement or iterator destruction. Copy a name before retaining it."
+            }
+          ]
+        },
+        {
+          "id": "staticClass:Std::FileSystem/function:iterateDirectoryCore",
+          "name": "iterateDirectoryCore",
+          "symbol": "StdFileSystem_iterateDirectoryCore",
+          "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+          "iterator": "class",
+          "modifier": "static",
+          "returnType": "iter(string arg1, thrown IoError arg2)",
+          "parameters": [
+            {
+              "id": "staticClass:Std::FileSystem/function:iterateDirectoryCore/parameter:handle",
+              "name": "handle",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+              "type": "nint"
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:iterateDirectoryCore/parameter:openError",
+              "name": "openError",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+              "type": "IoError"
+            },
+            {
+              "id": "staticClass:Std::FileSystem/function:iterateDirectoryCore/parameter:allocator",
+              "name": "allocator",
+              "require": "SUPPORTS_FILES \u0026\u0026 SUPPORTS_FILES",
+              "modifier": "within",
+              "type": "Allocator*"
             }
           ]
         }
@@ -5778,32 +5873,32 @@
         {
           "id": "class:Std::HashMap/field:keys",
           "name": "keys",
-          "type": "K[]"
+          "type": "escaped K[]"
         },
         {
           "id": "class:Std::HashMap/field:values",
           "name": "values",
-          "type": "V[]"
+          "type": "escaped V[]"
         },
         {
           "id": "class:Std::HashMap/field:buckets",
           "name": "buckets",
-          "type": "nuint[]"
+          "type": "escaped nuint[]"
         },
         {
           "id": "class:Std::HashMap/field:next",
           "name": "next",
-          "type": "nuint[]"
+          "type": "escaped nuint[]"
         },
         {
           "id": "class:Std::HashMap/field:hashes",
           "name": "hashes",
-          "type": "nuint[]"
+          "type": "escaped nuint[]"
         },
         {
           "id": "class:Std::HashMap/field:occupied",
           "name": "occupied",
-          "type": "bool[]"
+          "type": "escaped bool[]"
         },
         {
           "id": "class:Std::HashMap/field:length",
@@ -6219,27 +6314,27 @@
         {
           "id": "class:Std::HashSet/field:keys",
           "name": "keys",
-          "type": "K[]"
+          "type": "escaped K[]"
         },
         {
           "id": "class:Std::HashSet/field:buckets",
           "name": "buckets",
-          "type": "nuint[]"
+          "type": "escaped nuint[]"
         },
         {
           "id": "class:Std::HashSet/field:next",
           "name": "next",
-          "type": "nuint[]"
+          "type": "escaped nuint[]"
         },
         {
           "id": "class:Std::HashSet/field:hashes",
           "name": "hashes",
-          "type": "nuint[]"
+          "type": "escaped nuint[]"
         },
         {
           "id": "class:Std::HashSet/field:occupied",
           "name": "occupied",
-          "type": "bool[]"
+          "type": "escaped bool[]"
         },
         {
           "id": "class:Std::HashSet/field:length",
@@ -6550,7 +6645,7 @@
         {
           "id": "class:Std::List/field:items",
           "name": "items",
-          "type": "T[]"
+          "type": "escaped T[]"
         },
         {
           "id": "class:Std::List/field:length",

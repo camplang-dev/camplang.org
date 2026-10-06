@@ -303,12 +303,35 @@ def write_section(
     write_text_if_changed(path / "_index.md", "\n".join(lines) + content)
 
 
+def rewrite_doc_links(text: str, source: Path) -> str:
+    def replace(match: re.Match[str]) -> str:
+        target, separator, fragment = match.group(2).partition("#")
+        if not target.endswith(".md") or ":" in target or target.startswith("/"):
+            return match.group(0)
+        resolved = (source.parent / target).resolve()
+        try:
+            relative = resolved.relative_to(DEV_DOCS.resolve())
+        except ValueError:
+            return match.group(0)
+        if relative.parts[0] in {"language", "compiler"}:
+            url = f"/docs/{relative.parent.as_posix()}/"
+            if relative.stem != "index":
+                url += relative.stem + "/"
+        else:
+            url = f"https://github.com/camplang-dev/camp/blob/master/docs/{relative.as_posix()}"
+        if separator:
+            url += "#" + fragment
+        return match.group(1) + url + ")"
+
+    return re.sub(r"(\[[^\]]*\]\()([^\s)]+)\)", replace, text)
+
+
 def copy_docs(source_dir: Path, destination_dir: Path, section_title: str, section_weight: int) -> None:
     index = source_dir / "index.md"
     section_content = ""
     if index.exists():
         _, index_text = read_source_front_matter(index.read_text(encoding="utf-8"))
-        section_content = render_camp_fences(remove_markdown_title(index_text))
+        section_content = render_camp_fences(remove_markdown_title(rewrite_doc_links(index_text, index)))
     write_section(destination_dir, section_title, weight=section_weight, content=section_content)
     for source in sorted(source_dir.glob("*.md")):
         if source.name == "index.md":
@@ -318,6 +341,7 @@ def copy_docs(source_dir: Path, destination_dir: Path, section_title: str, secti
         title = title_from_markdown(text, source.stem)
         nav_title = source_front_matter.get("nav_title", numbered_title(source, title))
         text = replace_markdown_title(text, title)
+        text = rewrite_doc_links(text, source)
         text = render_camp_fences(text)
         destination = destination_dir / f"{source.stem}.md"
         front_matter_lines = [
@@ -359,7 +383,7 @@ standard library, or package surface in front of you.
         <span>Compiler Guide</span>
         <small>Use campc, build files, packages, targets, metadata, diagnostics, editor tooling, debugging, and standard-library build integration.</small>
     </a>
-    <a href="/docs/stdlib/overview/">
+    <a href="/docs/stdlib/">
         <span>Standard Library API</span>
         <small>Browse the standard library surface generated from Camp metadata.</small>
     </a>

@@ -263,6 +263,7 @@ class ApiReference:
         self.top_level_function_group_counts: dict[tuple[str, str, str], int] = {}
         self.constant_group_counts: dict[tuple[str, str], int] = {}
         self.types_by_name: dict[str, dict[str, Any]] = {}
+        self.member_groups: dict[str, tuple[str, str]] = {}
 
     def write(self, metadata: dict[str, Any] | None = None) -> None:
         metadata = metadata or read_metadata(self.metadata_path)
@@ -470,11 +471,14 @@ class ApiReference:
             body.append('<p class="api-empty">No members.</p>')
         body.append(self.footer())
         self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar or self.hide_declaration_nav)
+        groups = [member for member in [*collapse_overload_items(instance_members), *collapse_overload_items(static_members)] if member[0] == "overload-group"]
+        for _, group, _, _ in groups:
+            for overload in group.get("overloads") or []:
+                self.member_groups[overload["member"]["id"]] = (self.overload_group_url(obj, group), f"{group.get('name') or 'member'} overloads")
         for member in [*lifecycle_members, *fields, *instance_members, *static_members]:
             self.write_member_detail(obj, member)
-        for member in [*collapse_overload_items(instance_members), *collapse_overload_items(static_members)]:
-            if member[0] == "overload-group":
-                self.write_overload_group_detail(obj, member)
+        for member in groups:
+            self.write_overload_group_detail(obj, member)
 
     def write_enum_page(self, obj: dict[str, Any]) -> None:
         name = display_name(obj)
@@ -489,6 +493,9 @@ class ApiReference:
             self.footer(),
         ]
         self.write_page(self.declaration_path(obj), name, self.declaration_weight(obj), "\n".join(filter(None, body)), nav_title=name, nav_hidden=self.grouped_sidebar or self.hide_declaration_nav)
+
+        for value in values:
+            self.write_member_detail(obj, value)
 
     def write_functions_page(self, functions: list[dict[str, Any]]) -> None:
         free = [fn for fn in functions if self.extension_function_owner(fn) is None] if self.grouped_sidebar else [fn for fn in functions if not receiver_type(fn)]
@@ -839,24 +846,24 @@ class ApiReference:
         return f'<div class="api-declaration"><pre class="camp-code"><code data-lang="camp">{highlight_camp_code(code)}</code></pre></div>'
 
     def member_backlink_url(self, owner: dict[str, Any], kind: str, obj: dict[str, Any]) -> str:
-        if kind == "function" and is_overload_function(obj):
-            return self.overload_group_url(owner, {"name": obj.get("name") or "overloads"})
+        if obj.get("id") in self.member_groups:
+            return self.member_groups[obj["id"]][0]
         return self.object_url(owner)
 
     def member_backlink_text(self, owner: dict[str, Any], kind: str, obj: dict[str, Any]) -> str:
-        if kind == "function" and is_overload_function(obj):
-            return f"{obj.get('name') or 'member'} overloads"
+        if obj.get("id") in self.member_groups:
+            return self.member_groups[obj["id"]][1]
         return display_name(owner)
 
     def top_level_function_backlink_url(self, fn: dict[str, Any]) -> str:
         if self.top_level_function_group_counts.get(top_level_function_group_key(fn, full_receiver=self.grouped_sidebar), 0) > 1:
             return self.top_level_overload_group_url(fn)
-        return self.category_prefix(fn)
+        return self.category_prefix(fn) if self.grouped_sidebar else self.prefix() + "functions/"
 
     def top_level_function_backlink_text(self, fn: dict[str, Any]) -> str:
         if self.top_level_function_group_counts.get(top_level_function_group_key(fn, full_receiver=self.grouped_sidebar), 0) > 1:
             return f"{group_display_name(fn)} overloads"
-        return category_name(fn)
+        return category_name(fn) if self.grouped_sidebar else "Functions"
 
     def constant_backlink_url(self, variable: dict[str, Any]) -> str:
         key = (category_name(variable), extension_variable_name(variable))

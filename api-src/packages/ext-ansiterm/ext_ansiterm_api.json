@@ -3376,9 +3376,9 @@
           ]
         },
         {
-          "id": "class:Ext::AnsiTerm::Terminal/function:destroy",
-          "name": "destroy",
-          "symbol": "ExtAnsiTermTerminal_destroy",
+          "id": "class:Ext::AnsiTerm::Terminal/function:close",
+          "name": "close",
+          "symbol": "ExtAnsiTermTerminal_close",
           "visibility": "public",
           "modifier": "virtual",
           "returnType": "void",
